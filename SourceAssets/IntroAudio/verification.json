@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "scope": "Serialized audio headers, checksums, clipping, loop seams and measured reference-mix loudness. This is not a listening evaluation.",
+  "files_checked": 14,
+  "checks": [
+    {
+      "id": "AW_Amb_MachineryLoop",
+      "passed": true,
+      "issues": [],
+      "loop_seam": {
+        "boundary_delta": 0.000885009765625,
+        "internal_delta_99th_percentile": 0.00128173828125,
+        "boundary_percentile": 92.82612224489777
+      }
+    },
+    {
+      "id": "AW_Amb_WellAirLoop",
+      "passed": true,
+      "issues": [],
+      "loop_seam": {
+        "boundary_delta": 0.001922607421875,
+        "internal_delta_99th_percentile": 0.0086669921875,
+        "boundary_percentile": 27.534572512649753
+      }
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_01",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_02",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_03",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_04",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_05",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_06",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_LanternGear_01",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_LanternGear_02",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_LanternGear_03",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Foley_HushedBreath",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Event_DistantLoadShift",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    },
+    {
+      "id": "AW_Intro30s_AudioPreview",
+      "passed": true,
+      "issues": [],
+      "loop_seam": null
+    }
+  ],
+  "preview_loudness": {
+    "integrated_lufs": -22.5,
+    "loudness_range_lu": 2.3,
+    "true_peak_dbfs": -6.0,
+    "method": "ffmpeg ebur128=peak=true on the serialized 30 s stereo PCM preview"
+  }
+}

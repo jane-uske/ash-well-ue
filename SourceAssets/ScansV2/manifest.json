@@ -1,0 +1,80 @@
+{
+  "license": "CC0",
+  "license_url": "https://polyhaven.com/license",
+  "assets": [
+    {
+      "id": "rock_face_01",
+      "source": "https://polyhaven.com/a/rock_face_01",
+      "author": {
+        "Dario Barresi": "All"
+      },
+      "textures": {
+        "base_color": {
+          "path": "rock_face_01/rock_face_01_diff_4k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/rock_face_01/rock_face_01_diff_4k.jpg",
+          "md5": "ff25dfccab87de72915e1dd59de78216",
+          "size": 11448620,
+          "sha256": "09f198615a86a874095a6c1246df6aade8185f8ee007a6c61d0d99f5f01897fc"
+        },
+        "roughness": {
+          "path": "rock_face_01/rock_face_01_rough_4k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/rock_face_01/rock_face_01_rough_4k.jpg",
+          "md5": "850a745cf6c24ffe5d4603f42edd80b0",
+          "size": 4912986,
+          "sha256": "50e6520f4081de03c5de8ca85507e350ffbea3ae0dfaa284d928f8f91c9fb9d1"
+        },
+        "normal": {
+          "path": "rock_face_01/rock_face_01_nor_dx_4k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/rock_face_01/rock_face_01_nor_dx_4k.png",
+          "md5": "3ccfc47a26f420e5be6255b21bf513cb",
+          "size": 63445092,
+          "sha256": "9cc9fbc8b2400d51063ef83b617afe0b8db4b587b34dbd646dd8ffb07bf931e6"
+        }
+      },
+      "mesh": {
+        "path": "rock_face_01/rock_face_01_4k.fbx",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/rock_face_01/rock_face_01_4k.fbx",
+        "md5": "582f5664dc46a2f2fe4dc3333329273c",
+        "size": 764220,
+        "sha256": "f26ed6b9aba36d5e1ac5533e8ab4a51dcd19ffe9382255e8f5557a75d062e240"
+      }
+    },
+    {
+      "id": "boulder_01",
+      "source": "https://polyhaven.com/a/boulder_01",
+      "author": {
+        "Rico Cilliers": "All"
+      },
+      "textures": {
+        "base_color": {
+          "path": "boulder_01/boulder_01_diff_4k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/boulder_01/boulder_01_diff_4k.jpg",
+          "md5": "0bceced14031539cff10d992df24be0e",
+          "size": 13282817,
+          "sha256": "2f724790e7f1be1eae7f79c525ea2ac32df3944721e114fd278da1e786fc1eb2"
+        },
+        "roughness": {
+          "path": "boulder_01/boulder_01_rough_4k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/boulder_01/boulder_01_rough_4k.jpg",
+          "md5": "322bb9be8e84537cfc946127fbace16c",
+          "size": 6490373,
+          "sha256": "ff60eacf20a5b8d80ce7cb189b7afbc53837e0c6405e918067aca3f6749a3514"
+        },
+        "normal": {
+          "path": "boulder_01/boulder_01_nor_dx_4k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/boulder_01/boulder_01_nor_dx_4k.png",
+          "md5": "999d4b800250b156cd2e6de743317fd0",
+          "size": 84105553,
+          "sha256": "dc76fe729a45e4f235be48d166d7e566420ff25a21ed1ad1411f93243ce7ced6"
+        }
+      },
+      "mesh": {
+        "path": "boulder_01/boulder_01_4k.fbx",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/boulder_01/boulder_01_4k.fbx",
+        "md5": "adad992e76ad4ce92dd8fc5a4136ef2a",
+        "size": 6482860,
+        "sha256": "6e125512445c76a8ddbedfba9ff3f2e5ff200a2e65d29b6ce5294d7573caad3e"
+      }
+    }
+  ]
+}

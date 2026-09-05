@@ -1,0 +1,217 @@
+{
+  "source_units": "metres",
+  "axes": {
+    "forward": "+X",
+    "right": "+Y",
+    "up": "+Z"
+  },
+  "ue_position": "Multiply these source coordinates by 100. They are already in the intended world convention; geometry actors use mirror-Y only to compensate their FBX import.",
+  "derived_from": "ServiceRefinement_Source.blend / SM_AV2_Windows_And_Lamps connected components",
+  "anchor_count": 12,
+  "anchors": [
+    {
+      "name": "WarmRoom_01",
+      "position_m": [
+        97.5,
+        -9.0,
+        -24.34
+      ],
+      "window_center_m": [
+        97.85,
+        -9.0,
+        -24.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 260,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_02",
+      "position_m": [
+        97.5,
+        8.5,
+        -24.34
+      ],
+      "window_center_m": [
+        97.85,
+        8.5,
+        -24.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 340,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_03",
+      "position_m": [
+        97.98,
+        8.5,
+        -20.34
+      ],
+      "window_center_m": [
+        98.33,
+        8.5,
+        -20.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 420,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_04",
+      "position_m": [
+        95.46,
+        -15.5,
+        -16.34
+      ],
+      "window_center_m": [
+        95.81,
+        -15.5,
+        -16.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 260,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_05",
+      "position_m": [
+        98.46,
+        -2.0,
+        -16.34
+      ],
+      "window_center_m": [
+        98.81,
+        -2.0,
+        -16.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 340,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_06",
+      "position_m": [
+        98.46,
+        8.5,
+        -16.34
+      ],
+      "window_center_m": [
+        98.81,
+        8.5,
+        -16.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 420,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_07",
+      "position_m": [
+        95.8,
+        24.5,
+        -12.34
+      ],
+      "window_center_m": [
+        96.15,
+        24.5,
+        -12.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 260,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_08",
+      "position_m": [
+        97.98,
+        -2.0,
+        -8.34
+      ],
+      "window_center_m": [
+        98.33,
+        -2.0,
+        -8.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 340,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_09",
+      "position_m": [
+        98.46,
+        -5.5,
+        -4.34
+      ],
+      "window_center_m": [
+        98.81,
+        -5.5,
+        -4.34
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 420,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_10",
+      "position_m": [
+        96.28,
+        17.5,
+        5.66
+      ],
+      "window_center_m": [
+        96.63,
+        17.5,
+        5.66
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 260,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_11",
+      "position_m": [
+        98.46,
+        8.5,
+        9.66
+      ],
+      "window_center_m": [
+        98.81,
+        8.5,
+        9.66
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 340,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    },
+    {
+      "name": "WarmRoom_12",
+      "position_m": [
+        96.76,
+        21.0,
+        9.66
+      ],
+      "window_center_m": [
+        97.11,
+        21.0,
+        9.66
+      ],
+      "temperature_kelvin": 2350,
+      "suggested_lumens": 420,
+      "suggested_radius_m": 3.6,
+      "notes": "Inside the actual open window reveal, in front of the dark recessed back panel."
+    }
+  ]
+}

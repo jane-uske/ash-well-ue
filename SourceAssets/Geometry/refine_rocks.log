@@ -1,0 +1,39 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/build_environment.py:24: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name); m.diffuse_color=col; m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_MineRock_Left.fbx'
+export finished in 0.1694 sec.
+EXPORTED {"name": "SM_MineRock_Left", "file": "SM_MineRock_Left.fbx", "vertices": 51528, "triangles": 102880, "bounds_m": {"min": [-8.2294, -5.3108, -1.874], "max": [6.4987, -1.5851, 8.4484]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_MineRock_Right.fbx'
+export finished in 0.1580 sec.
+EXPORTED {"name": "SM_MineRock_Right", "file": "SM_MineRock_Right.fbx", "vertices": 51528, "triangles": 102880, "bounds_m": {"min": [-8.1472, 1.7534, -1.874], "max": [6.5533, 5.2687, 8.4484]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_MineRoof.fbx'
+export finished in 0.0889 sec.
+EXPORTED {"name": "SM_MineRoof", "file": "SM_MineRoof.fbx", "vertices": 30744, "triangles": 61440, "bounds_m": {"min": [-8.3026, -4.0235, 5.0032], "max": [5.7068, 4.1382, 7.2988]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_FarCavern_Left.fbx'
+export finished in 0.1278 sec.
+EXPORTED {"name": "SM_FarCavern_Left", "file": "SM_FarCavern_Left.fbx", "vertices": 46116, "triangles": 92160, "bounds_m": {"min": [138.9922, -125.6437, -126.8292], "max": [172.4157, -14.16, 176.759]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_FarCavern_Center.fbx'
+export finished in 0.1402 sec.
+EXPORTED {"name": "SM_FarCavern_Center", "file": "SM_FarCavern_Center.fbx", "vertices": 46116, "triangles": 92160, "bounds_m": {"min": [139.3691, -46.0723, -127.1016], "max": [171.3006, 65.8399, 177.9324]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_FarCavern_Right.fbx'
+export finished in 0.1283 sec.
+EXPORTED {"name": "SM_FarCavern_Right", "file": "SM_FarCavern_Right.fbx", "vertices": 46116, "triangles": 92160, "bounds_m": {"min": [139.8816, 33.1194, -124.7103], "max": [172.5194, 146.3923, 178.6938]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_CavernCeiling.fbx'
+export finished in 0.1179 sec.
+EXPORTED {"name": "SM_CavernCeiling", "file": "SM_CavernCeiling.fbx", "vertices": 40992, "triangles": 81920, "bounds_m": {"min": [-9.4957, -82.4884, 102.8176], "max": [180.8245, 136.309, 146.3203]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/Geometry/SM_SideCliffLower.fbx'
+export finished in 0.0717 sec.
+EXPORTED {"name": "SM_SideCliffLower", "file": "SM_SideCliffLower.fbx", "vertices": 23058, "triangles": 46080, "bounds_m": {"min": [-11.4241, -22.8234, -97.5387], "max": [61.1888, -2.9328, 10.8196]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+信息: 已另存为 "AshWell_RockRefinement_Source.blend"
+DONE triangles= 1151736 chunks= 20
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

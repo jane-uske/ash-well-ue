@@ -1,0 +1,128 @@
+{
+  "version": 2,
+  "source_units": "metres",
+  "axes": {
+    "forward": "+X",
+    "right": "+Y",
+    "up": "+Z"
+  },
+  "shared_origin": [
+    0,
+    0,
+    0
+  ],
+  "ue_actor_scale": [
+    1,
+    -1,
+    1
+  ],
+  "fbx_axis_forward": "-Y",
+  "fbx_axis_up": "Z",
+  "material_slots": [
+    "Rock",
+    "Rust",
+    "Concrete",
+    "DarkSteel",
+    "Amber",
+    "Cloth"
+  ],
+  "uv_repeat_metres": 1.5,
+  "purpose": "Additional thin entrance framing. Left jambs stay at -2.40/-2.45m; right jambs widened to 4.8/6.5m to reveal the near pier.",
+  "helper_dependency": "../build_architecture_v2.py",
+  "chunks": [
+    {
+      "name": "SM_AV2_FG_LayeredSteel",
+      "file": "SM_AV2_FG_LayeredSteel.fbx",
+      "triangles": 49844,
+      "vertices": 25760,
+      "bounds_m": {
+        "min": [
+          3.8,
+          -2.725,
+          0.0
+        ],
+        "max": [
+          8.15,
+          6.775,
+          5.03987
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_FG_PipeJoints",
+      "file": "SM_AV2_FG_PipeJoints.fbx",
+      "triangles": 21884,
+      "vertices": 11248,
+      "bounds_m": {
+        "min": [
+          2.7,
+          -2.56769,
+          2.52
+        ],
+        "max": [
+          8.769,
+          5.55769,
+          3.91
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_FG_CablesAndDrips",
+      "file": "SM_AV2_FG_CablesAndDrips.fbx",
+      "triangles": 9392,
+      "vertices": 5616,
+      "bounds_m": {
+        "min": [
+          4.19001,
+          -2.46722,
+          2.95282
+        ],
+        "max": [
+          8.13854,
+          5.10514,
+          4.4241
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    }
+  ],
+  "triangles": 81120
+}

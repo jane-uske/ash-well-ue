@@ -1,0 +1,23 @@
+[
+  {
+    "file": "AW_Combat_Swing.wav",
+    "duration": 0.48,
+    "sample_rate": 48000,
+    "peak": 0.77,
+    "origin": "original deterministic synthesis"
+  },
+  {
+    "file": "AW_Combat_Impact.wav",
+    "duration": 0.55,
+    "sample_rate": 48000,
+    "peak": 0.77,
+    "origin": "original deterministic synthesis"
+  },
+  {
+    "file": "AW_Combat_Dodge.wav",
+    "duration": 0.58,
+    "sample_rate": 48000,
+    "peak": 0.77,
+    "origin": "original deterministic synthesis"
+  }
+]

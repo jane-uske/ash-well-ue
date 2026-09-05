@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "provider": "Poly Haven",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "api_credit": "Powered by Poly Haven",
+  "downloaded_at_utc": "2026-09-05T06:58:59.315370+00:00",
+  "path_base": "this manifest directory",
+  "materials": [
+    {
+      "id": "slate_floor_03",
+      "name": "Slate Floor 03",
+      "material_name": "WetStone",
+      "source_page": "https://polyhaven.com/a/slate_floor_03",
+      "license": "CC0-1.0",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "tile_size_m": [
+        2.0,
+        2.0
+      ],
+      "textures": {
+        "base_color": {
+          "path": "Textures/slate_floor_03/slate_floor_03_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/slate_floor_03",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/slate_floor_03/slate_floor_03_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 2645126,
+          "source_md5": "08553293b689ec359c8c70c9453dad18",
+          "size_bytes": 2645126,
+          "sha256": "56ebdc31a53c596fcde2f0288e2b4028e5eadb56c4ecf2e0efb9f51f03bdee5b",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "Textures/slate_floor_03/slate_floor_03_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/slate_floor_03",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/slate_floor_03/slate_floor_03_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 1754638,
+          "source_md5": "5190a529da4dd15b3701591b3cdf3fb8",
+          "size_bytes": 1754638,
+          "sha256": "0ebfa7a800d3acd22779b4eb381e5289d42acef556f9c91f77cc9487bac713da",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "Textures/slate_floor_03/slate_floor_03_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/slate_floor_03",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/slate_floor_03/slate_floor_03_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 22444649,
+          "source_md5": "2549838fdc40cd8b089f115a100328fa",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 22444649,
+          "sha256": "726a3bc98ed12db7976ccffca5fe4c9944d42984455117f322567245f17debed",
+          "verified_dimensions": true
+        },
+        "displacement": {
+          "path": "Textures/slate_floor_03/slate_floor_03_disp_2k.png",
+          "category": "displacement",
+          "source_page": "https://polyhaven.com/a/slate_floor_03",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/slate_floor_03/slate_floor_03_disp_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 6451274,
+          "source_md5": "0d56340642319411dcb40fd861ceeff5",
+          "size_bytes": 6451274,
+          "sha256": "6f1ba7a0e3a7ab95658b484ce264fb10f6841fb175392fbc7889be06228f96f9",
+          "verified_dimensions": true
+        }
+      }
+    },
+    {
+      "id": "denim_fabric_06",
+      "name": "Denim Fabric 06",
+      "material_name": "DarkCloth",
+      "source_page": "https://polyhaven.com/a/denim_fabric_06",
+      "license": "CC0-1.0",
+      "authors": {
+        "Greg Zaal": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "tile_size_m": [
+        0.254158,
+        0.254
+      ],
+      "textures": {
+        "base_color": {
+          "path": "Textures/denim_fabric_06/denim_fabric_06_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/denim_fabric_06",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/denim_fabric_06/denim_fabric_06_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 3469007,
+          "source_md5": "b8ff46b2ea7e9ca997fb24d3123b1bd0",
+          "size_bytes": 3469007,
+          "sha256": "ddeaa6edd75e9bb8f01764a3cf591a88cf260b89dadc1ac9ab6185c03ff0cecf",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "Textures/denim_fabric_06/denim_fabric_06_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/denim_fabric_06",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/denim_fabric_06/denim_fabric_06_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 3276268,
+          "source_md5": "157a22d387529385aae862af19ab86cb",
+          "size_bytes": 3276268,
+          "sha256": "1fdbf0bc2ee32b8f8d7c8f7618a6c950a19566b802cf775822edebd3035ea199",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "Textures/denim_fabric_06/denim_fabric_06_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/denim_fabric_06",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/denim_fabric_06/denim_fabric_06_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 23881844,
+          "source_md5": "16e7f798ef31b6ab15aed8bfef228987",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 23881844,
+          "sha256": "1ee1583b5e5584ee172ca6e518ba4cc72bcd4b096a30f10ceed3698bba13cd38",
+          "verified_dimensions": true
+        }
+      }
+    },
+    {
+      "id": "rusty_metal_04",
+      "name": "Rusty Metal 04",
+      "material_name": "OldSteel",
+      "source_page": "https://polyhaven.com/a/rusty_metal_04",
+      "license": "CC0-1.0",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "tile_size_m": [
+        2.0,
+        2.0
+      ],
+      "textures": {
+        "base_color": {
+          "path": "Textures/rusty_metal_04/rusty_metal_04_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/rusty_metal_04",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_metal_04/rusty_metal_04_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 3463347,
+          "source_md5": "4506564abb3ff16ff7a3dfecf0386ba8",
+          "size_bytes": 3463347,
+          "sha256": "dc17baa7c113af0a8db59a7166dbebd1d8bc842e69b1f07b89d9e90531ebbd22",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "Textures/rusty_metal_04/rusty_metal_04_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/rusty_metal_04",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_metal_04/rusty_metal_04_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 2548882,
+          "source_md5": "bf8eb527dd96b3491add04fc07c92455",
+          "size_bytes": 2548882,
+          "sha256": "b59cb33b478c70404b14294e39979c7a12db25e8f7fac3688cf665fcb0fdd19d",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "Textures/rusty_metal_04/rusty_metal_04_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/rusty_metal_04",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/rusty_metal_04/rusty_metal_04_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 21916372,
+          "source_md5": "a99570f9a3442ffc377d046ab5972b31",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 21916372,
+          "sha256": "febd64de5764bae3d76c53e4bf94cafaea8fd4a085b48f7cd37ed0df180ff8aa",
+          "verified_dimensions": true
+        },
+        "arm": {
+          "path": "Textures/rusty_metal_04/rusty_metal_04_arm_2k.jpg",
+          "category": "arm",
+          "source_page": "https://polyhaven.com/a/rusty_metal_04",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_metal_04/rusty_metal_04_arm_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 2940102,
+          "source_md5": "62baf816b4e6c839c94a6d9769bffa56",
+          "channels": {
+            "R": "ambient_occlusion",
+            "G": "roughness",
+            "B": "metallic"
+          },
+          "size_bytes": 2940102,
+          "sha256": "ac62465ccd41994d31fc5b6f0c1651a1e9cdd2d80ec32e3bb0cc3b4fe22f3caa",
+          "verified_dimensions": true
+        }
+      }
+    }
+  ],
+  "total_texture_bytes": 94791509,
+  "validation": "API byte size and MD5 match; image signatures checked; decoded 2048x2048 with macOS sips."
+}

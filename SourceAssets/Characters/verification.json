@@ -1,0 +1,55 @@
+{
+  "roundtrip": "Blender FBX export and fresh Blender FBX import; not a UE import/render test",
+  "results": [
+    {
+      "fbx": "SM_Expedition_Protagonist.fbx",
+      "triangles": 75288,
+      "bounds_m": [
+        [
+          -0.35800009965896606,
+          -1.0059127807617188,
+          0.0010000000474974513
+        ],
+        [
+          0.22099991142749786,
+          -0.18931807577610016,
+          1.7854610681533813
+        ]
+      ],
+      "material_slots": [
+        "Cloth",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Leather"
+      ],
+      "uv_layer_count": 2,
+      "passed": true
+    },
+    {
+      "fbx": "SM_Expedition_Companion.fbx",
+      "triangles": 76440,
+      "bounds_m": [
+        [
+          6.62605094909668,
+          -0.8115959167480469,
+          0.0010000000474974513
+        ],
+        [
+          7.313784122467041,
+          0.08716074377298355,
+          1.7854610681533813
+        ]
+      ],
+      "material_slots": [
+        "Cloth",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Leather"
+      ],
+      "uv_layer_count": 2,
+      "passed": true
+    }
+  ]
+}

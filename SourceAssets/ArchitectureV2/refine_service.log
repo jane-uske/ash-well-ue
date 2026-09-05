@@ -1,0 +1,23 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/build_architecture_v2.py:19: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=color;m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Windows_And_Lamps.fbx'
+export finished in 0.0083 sec.
+EXPORTED {"name": "SM_AV2_Windows_And_Lamps", "file": "SM_AV2_Windows_And_Lamps.fbx", "triangles": 6156, "vertices": 3192, "bounds_m": {"min": [48.6632, -26.405, -61.39], "max": [98.82249, 31.905, 99.11]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_0.fbx'
+export finished in 0.1466 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_0", "file": "SM_AV2_ServiceRooms_0.fbx", "triangles": 217457, "vertices": 112216, "bounds_m": {"min": [91.86452, -34.87785, -29.25684], "max": [97.56, -10.12151, 27.65]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_1.fbx'
+export finished in 0.1394 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_1", "file": "SM_AV2_ServiceRooms_1.fbx", "triangles": 195340, "vertices": 100800, "bounds_m": {"min": [94.86452, -10.87848, -29.25684], "max": [100.56, 10.37848, 27.65]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_2.fbx'
+export finished in 0.1427 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_2", "file": "SM_AV2_ServiceRooms_2.fbx", "triangles": 196420, "vertices": 101360, "bounds_m": {"min": [93.16451, 12.12152, -29.25684], "max": [98.86, 33.37785, 27.65]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+信息: 已另存为 "ServiceRefinement_Source.blend"
+DONE 23 CHUNKS 2605981 TRIANGLES
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

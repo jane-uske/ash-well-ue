@@ -1,0 +1,306 @@
+{
+  "scope": "Blender FBX roundtrip only; Unreal import/render must also be verified",
+  "chunks": [
+    {
+      "name": "SM_MineRock_Left",
+      "roundtrip_max_error_m": 4.6395111083619156e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_MineRock_Right",
+      "roundtrip_max_error_m": 4.533138275153448e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_MineRoof",
+      "roundtrip_max_error_m": 4.2822265625019895e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_MineSteelFrames",
+      "roundtrip_max_error_m": 2.2694396972333664e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_WalkwayDeck",
+      "roundtrip_max_error_m": 3.357543945270436e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_WalkwayEdgeBeams",
+      "roundtrip_max_error_m": 4.678668975821587e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_WalkwayRails",
+      "roundtrip_max_error_m": 4.855346679644157e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_WalkwayUnderTruss",
+      "roundtrip_max_error_m": 4.813995361274692e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_MinePipesAndCables",
+      "roundtrip_max_error_m": 3.6592483520614394e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_ColossalPierCore",
+      "roundtrip_max_error_m": 7.62939453125e-06,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_ColossalPierRibs",
+      "roundtrip_max_error_m": 8.392333985085543e-06,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_CivicHallMass",
+      "roundtrip_max_error_m": 1.6784667963065658e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_CivicHallArcades",
+      "roundtrip_max_error_m": 3.7969970705376e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_CivicHallSmallDetails",
+      "roundtrip_max_error_m": 1.52587890625e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_DistantAccessBridges",
+      "roundtrip_max_error_m": 4.8361206054892136e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 0.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_FarCavern_Left",
+      "roundtrip_max_error_m": 4.5422363285752e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_FarCavern_Center",
+      "roundtrip_max_error_m": 5.625000000009095e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_FarCavern_Right",
+      "roundtrip_max_error_m": 5.756835938086624e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_CavernCeiling",
+      "roundtrip_max_error_m": 5.6384277343113354e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    },
+    {
+      "name": "SM_SideCliffLower",
+      "roundtrip_max_error_m": 3.733520507864796e-05,
+      "uv_layers": 1,
+      "smooth_face_ratio": 1.0,
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ],
+      "result": "pass"
+    }
+  ],
+  "result": "pass"
+}

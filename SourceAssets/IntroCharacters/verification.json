@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "mesh": "SK_Intro_Protagonist.fbx",
+      "vertices": 84668,
+      "bones": 24,
+      "bounds_m": [
+        [
+          -0.3163682818412781,
+          -0.38790857791900635,
+          0.001000096439383924
+        ],
+        [
+          0.22807835042476654,
+          0.40386876463890076,
+          1.7795544862747192
+        ]
+      ],
+      "unweighted_vertices": 0,
+      "max_weight_sum_error": 8.940696716308594e-07,
+      "uv_layers": [
+        "UV0_Tile1m"
+      ],
+      "materials": [
+        "Cloth",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Leather",
+        "Canvas"
+      ]
+    },
+    {
+      "clip": "A_Intro_Protagonist_Walk.fbx",
+      "imported_frames": [
+        2.0,
+        44.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    },
+    {
+      "clip": "A_Intro_Protagonist_Idle.fbx",
+      "imported_frames": [
+        2.0,
+        86.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    },
+    {
+      "mesh": "SK_Intro_Companion.fbx",
+      "vertices": 85572,
+      "bones": 24,
+      "bounds_m": [
+        [
+          -0.3163682818412781,
+          -0.3941578269004822,
+          0.001000096439383924
+        ],
+        [
+          0.22807835042476654,
+          0.3968747854232788,
+          1.7795544862747192
+        ]
+      ],
+      "unweighted_vertices": 0,
+      "max_weight_sum_error": 8.940696716308594e-07,
+      "uv_layers": [
+        "UV0_Tile1m"
+      ],
+      "materials": [
+        "Cloth.001",
+        "DarkSteel.001",
+        "Rust.001",
+        "Amber.001",
+        "Leather.001",
+        "Canvas.001"
+      ]
+    },
+    {
+      "clip": "A_Intro_Companion_Walk.fbx",
+      "imported_frames": [
+        2.0,
+        44.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    },
+    {
+      "clip": "A_Intro_Companion_Idle.fbx",
+      "imported_frames": [
+        2.0,
+        86.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    },
+    {
+      "clip": "A_Intro_Companion_StopSignal.fbx",
+      "imported_frames": [
+        2.0,
+        92.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    },
+    {
+      "clip": "A_Intro_Companion_SignalHold.fbx",
+      "imported_frames": [
+        2.0,
+        86.0
+      ],
+      "fps": 30,
+      "root_drift_m": 0.0,
+      "bones": 24
+    }
+  ]
+}

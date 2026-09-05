@@ -1,0 +1,802 @@
+{
+  "version": 2,
+  "generator": "build_architecture_v2.py",
+  "blender_version": "5.2.0 LTS",
+  "original_geometry": true,
+  "source_units": "metres",
+  "axes": {
+    "forward": "+X",
+    "right": "+Y",
+    "up": "+Z"
+  },
+  "fbx_axis_forward": "-Y",
+  "fbx_axis_up": "Z",
+  "fbx_unit_scale_factor": 100,
+  "ue_actor_scale_after_import": [
+    1,
+    -1,
+    1
+  ],
+  "uv_repeat_metres": 1.5,
+  "material_slots": [
+    "Rock",
+    "Rust",
+    "Concrete",
+    "DarkSteel",
+    "Amber",
+    "Cloth"
+  ],
+  "chunks": [
+    {
+      "name": "SM_AV2_Pier_Core",
+      "file": "SM_AV2_Pier_Core.fbx",
+      "triangles": 38976,
+      "vertices": 19968,
+      "bounds_m": {
+        "min": [
+          47.95,
+          19.95,
+          -80.0
+        ],
+        "max": [
+          62.05,
+          34.05,
+          111.9
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Pier_Exoskeleton",
+      "file": "SM_AV2_Pier_Exoskeleton.fbx",
+      "triangles": 91648,
+      "vertices": 47488,
+      "bounds_m": {
+        "min": [
+          48.205,
+          20.205,
+          -78.0
+        ],
+        "max": [
+          61.795,
+          33.795,
+          110.0
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Pier_Galleries",
+      "file": "SM_AV2_Pier_Galleries.fbx",
+      "triangles": 248155,
+      "vertices": 126796,
+      "bounds_m": {
+        "min": [
+          47.42497,
+          19.42497,
+          -66.52406
+        ],
+        "max": [
+          62.57503,
+          34.57503,
+          97.16549
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Pier_DoorsLadders",
+      "file": "SM_AV2_Pier_DoorsLadders.fbx",
+      "triangles": 137052,
+      "vertices": 70056,
+      "bounds_m": {
+        "min": [
+          47.78224,
+          20.18,
+          -78.03
+        ],
+        "max": [
+          55.76,
+          30.15098,
+          100.03
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Windows_And_Lamps",
+      "file": "SM_AV2_Windows_And_Lamps.fbx",
+      "triangles": 6156,
+      "vertices": 3192,
+      "bounds_m": {
+        "min": [
+          48.6632,
+          -26.405,
+          -61.39
+        ],
+        "max": [
+          98.82249,
+          31.905,
+          99.11
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Piers_Front",
+      "file": "SM_AV2_Hall_Piers_Front.fbx",
+      "triangles": 26944,
+      "vertices": 13952,
+      "bounds_m": {
+        "min": [
+          86.28999,
+          -38.85,
+          -66.5
+        ],
+        "max": [
+          93.2,
+          38.85,
+          110.5
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Piers_Interior",
+      "file": "SM_AV2_Hall_Piers_Interior.fbx",
+      "triangles": 11232,
+      "vertices": 5824,
+      "bounds_m": {
+        "min": [
+          100.0,
+          -37.9,
+          -64.4
+        ],
+        "max": [
+          116.0,
+          37.9,
+          110.0
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_0",
+      "file": "SM_AV2_Hall_Arcades_0.fbx",
+      "triangles": 79896,
+      "vertices": 41424,
+      "bounds_m": {
+        "min": [
+          87.625,
+          -35.47454,
+          -32.0
+        ],
+        "max": [
+          114.125,
+          35.47454,
+          -1.15
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_1",
+      "file": "SM_AV2_Hall_Arcades_1.fbx",
+      "triangles": 79896,
+      "vertices": 41424,
+      "bounds_m": {
+        "min": [
+          87.625,
+          -35.47454,
+          3.0
+        ],
+        "max": [
+          114.125,
+          35.47454,
+          33.85
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_2",
+      "file": "SM_AV2_Hall_Arcades_2.fbx",
+      "triangles": 79896,
+      "vertices": 41424,
+      "bounds_m": {
+        "min": [
+          87.625,
+          -35.47454,
+          38.0
+        ],
+        "max": [
+          114.125,
+          35.47454,
+          68.85
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_3",
+      "file": "SM_AV2_Hall_Arcades_3.fbx",
+      "triangles": 79896,
+      "vertices": 41424,
+      "bounds_m": {
+        "min": [
+          87.625,
+          -35.47454,
+          73.0
+        ],
+        "max": [
+          114.125,
+          35.47454,
+          103.85
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_TransverseVaults",
+      "file": "SM_AV2_Hall_TransverseVaults.fbx",
+      "triangles": 119424,
+      "vertices": 61824,
+      "bounds_m": {
+        "min": [
+          88.92039,
+          -36.19,
+          -9.218
+        ],
+        "max": [
+          114.13947,
+          36.19,
+          102.13264
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Hall_FloorEdges_And_Galleries",
+      "file": "SM_AV2_Hall_FloorEdges_And_Galleries.fbx",
+      "triangles": 147368,
+      "vertices": 75184,
+      "bounds_m": {
+        "min": [
+          87.66451,
+          -36.5,
+          -68.09634
+        ],
+        "max": [
+          115.0,
+          36.5,
+          109.43549
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_0",
+      "file": "SM_AV2_ServiceRooms_0.fbx",
+      "triangles": 217457,
+      "vertices": 112216,
+      "bounds_m": {
+        "min": [
+          91.86452,
+          -34.87785,
+          -29.25684
+        ],
+        "max": [
+          97.56,
+          -10.12151,
+          27.65
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_1",
+      "file": "SM_AV2_ServiceRooms_1.fbx",
+      "triangles": 195340,
+      "vertices": 100800,
+      "bounds_m": {
+        "min": [
+          94.86452,
+          -10.87848,
+          -29.25684
+        ],
+        "max": [
+          100.56,
+          10.37848,
+          27.65
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_2",
+      "file": "SM_AV2_ServiceRooms_2.fbx",
+      "triangles": 196420,
+      "vertices": 101360,
+      "bounds_m": {
+        "min": [
+          93.16451,
+          12.12152,
+          -29.25684
+        ],
+        "max": [
+          98.86,
+          33.37785,
+          27.65
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_VerticalPipes_And_Valves",
+      "file": "SM_AV2_VerticalPipes_And_Valves.fbx",
+      "triangles": 433408,
+      "vertices": 222480,
+      "bounds_m": {
+        "min": [
+          85.18095,
+          -34.2208,
+          -62.0
+        ],
+        "max": [
+          90.0,
+          34.1311,
+          105.0
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_Ladders_And_Switchgear",
+      "file": "SM_AV2_Ladders_And_Switchgear.fbx",
+      "triangles": 143664,
+      "vertices": 73710,
+      "bounds_m": {
+        "min": [
+          87.6,
+          -33.53239,
+          -29.03
+        ],
+        "max": [
+          112.45461,
+          33.53239,
+          107.0
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_LowerFoundations",
+      "file": "SM_AV2_LowerFoundations.fbx",
+      "triangles": 2376,
+      "vertices": 1232,
+      "bounds_m": {
+        "min": [
+          85.40549,
+          -36.5,
+          -67.9
+        ],
+        "max": [
+          117.0,
+          39.0,
+          -31.625
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_LowerMachinery",
+      "file": "SM_AV2_LowerMachinery.fbx",
+      "triangles": 100000,
+      "vertices": 51138,
+      "bounds_m": {
+        "min": [
+          96.0,
+          -32.6284,
+          -62.0
+        ],
+        "max": [
+          113.0,
+          33.6284,
+          -35.0
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_DeepBridges_And_SuspendedWalks",
+      "file": "SM_AV2_DeepBridges_And_SuspendedWalks.fbx",
+      "triangles": 94265,
+      "vertices": 48400,
+      "bounds_m": {
+        "min": [
+          22.41748,
+          -48.9629,
+          -67.635
+        ],
+        "max": [
+          96.12479,
+          36.41675,
+          33.08548
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_DrapedCables",
+      "file": "SM_AV2_DrapedCables.fbx",
+      "triangles": 19488,
+      "vertices": 11136,
+      "bounds_m": {
+        "min": [
+          54.95935,
+          -31.02411,
+          -68.00053
+        ],
+        "max": [
+          92.02499,
+          33.33396,
+          100.00061
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    },
+    {
+      "name": "SM_AV2_UpperClerestory",
+      "file": "SM_AV2_UpperClerestory.fbx",
+      "triangles": 57024,
+      "vertices": 29568,
+      "bounds_m": {
+        "min": [
+          107.055,
+          -31.875,
+          78.0
+        ],
+        "max": [
+          113.4,
+          31.875,
+          94.2
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Rock",
+        "Rust",
+        "Concrete",
+        "DarkSteel",
+        "Amber",
+        "Cloth"
+      ]
+    }
+  ],
+  "replace_old_prefixes": [
+    "SM_ColossalPier",
+    "SM_CivicHall",
+    "SM_DistantAccessBridges"
+  ],
+  "anchors_m": {
+    "pier_center": [
+      55,
+      27,
+      0
+    ],
+    "hall_front": [
+      89,
+      0,
+      0
+    ],
+    "hall_rear": [
+      114,
+      0,
+      0
+    ],
+    "bridge_start": [
+      24,
+      8,
+      0
+    ]
+  },
+  "design": [
+    "Open front and rear arcades separated by 24m, with no full facade backing wall.",
+    "Actual hollow room shells with recessed lights and paired upper lancet openings.",
+    "Tiered near pier with projecting galleries, human-scale ladders, pipe clamps and maintenance doors.",
+    "Large flywheels and pressure machinery under lower platforms.",
+    "Shared pivot origin; imported UE actor mirror Y restores the verified source convention."
+  ],
+  "triangles": 2605981,
+  "service_revision": {
+    "version": 2,
+    "changed_files": [
+      "SM_AV2_ServiceRooms_0",
+      "SM_AV2_ServiceRooms_1",
+      "SM_AV2_ServiceRooms_2",
+      "SM_AV2_Windows_And_Lamps"
+    ],
+    "new_gallery_levels_m": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "window_light_size_m": [
+      0.025,
+      0.25,
+      0.8
+    ],
+    "description": "Human-scale multi-pane dark recessed windows, supported galleries and stairs; no floating room shells."
+  }
+}

@@ -1,0 +1,15 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/DeepCrossing/build_deep_crossing.py:14: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=color;m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/DeepCrossing/SM_DeepCrossing_Bridge.fbx'
+export finished in 0.0237 sec.
+EXPORTED {"name": "SM_DeepCrossing_Bridge", "file": "SM_DeepCrossing_Bridge.fbx", "triangles": 26152, "vertices": 13456, "bounds_m": {"min": [35.91358, -12.84082, -24.08], "max": [59.08642, 22.84082, -20.96]}, "origin_m": [0, 0, 0], "material_slots": ["Concrete", "DarkSteel", "Rust", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/DeepCrossing/SM_DeepCrossing_WorkersAndLamps.fbx'
+export finished in 0.0097 sec.
+EXPORTED {"name": "SM_DeepCrossing_WorkersAndLamps", "file": "SM_DeepCrossing_WorkersAndLamps.fbx", "triangles": 8444, "vertices": 4344, "bounds_m": {"min": [39.79081, -5.9762, -22.0], "max": [53.965, 16.71427, -20.3]}, "origin_m": [0, 0, 0], "material_slots": ["Concrete", "DarkSteel", "Rust", "Amber", "Cloth"]}
+信息: 已另存为 "DeepCrossing_Source.blend"
+COMPLETE {"triangles": 34596, "lights": [{"name": "DeepCrossingLamp_1", "source_m": [39.991458892822266, -5.862664699554443, -20.780000686645508], "suggested_unreal_intensity_lumens": 300, "suggested_attenuation_radius_cm": 450, "suggested_color_srgb": [1, 0.48, 0.16]}, {"name": "DeepCrossingLamp_2", "source_m": [46.92145919799805, 5.357335090637207, -20.780000686645508], "suggested_unreal_intensity_lumens": 300, "suggested_attenuation_radius_cm": 450, "suggested_color_srgb": [1, 0.48, 0.16]}, {"name": "DeepCrossingLamp_3", "source_m": [53.85145950317383, 16.577335357666016, -20.780000686645508], "suggested_unreal_intensity_lumens": 300, "suggested_attenuation_radius_cm": 450, "suggested_color_srgb": [1, 0.48, 0.16]}]}
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

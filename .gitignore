@@ -1,0 +1,14 @@
+Binaries/
+Intermediate/
+DerivedDataCache/
+Saved/
+.vs/
+.idea/
+.DS_Store
+__pycache__/
+*.py[cod]
+*.blend1
+*.blend2
+.env
+.env.*
+.codex/

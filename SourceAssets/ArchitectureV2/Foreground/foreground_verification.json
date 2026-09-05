@@ -1,0 +1,35 @@
+{
+  "result": "pass",
+  "scope": "Blender FBX roundtrip structural integrity; Unreal render is a separate check",
+  "chunk_count": 3,
+  "triangles": 81120,
+  "checks": [
+    {
+      "name": "SM_AV2_FG_LayeredSteel",
+      "coordinate_error_m": 3.12316894568454e-06,
+      "vertices": 25760,
+      "polygons": 24758,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_FG_PipeJoints",
+      "coordinate_error_m": 1.2869262695502925e-06,
+      "vertices": 11248,
+      "polygons": 10526,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_FG_CablesAndDrips",
+      "coordinate_error_m": 4.362335205065904e-06,
+      "vertices": 5616,
+      "polygons": 3728,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "sample_rate": 48000,
+  "format": "PCM16 WAV",
+  "seed": 20260905,
+  "provenance": "Original procedural synthesis created for this project; no third-party samples, recordings, AI voice services, or paid assets.",
+  "generator": "generate_intro_audio.py",
+  "license_note": "Original project assets; no external attribution requirement. This statement does not assign a third-party license.",
+  "validation_note": "Files and signal metrics verified programmatically. No claim of human listening or perceptual loudness certification.",
+  "assets": [
+    {
+      "id": "AW_Amb_MachineryLoop",
+      "file": "AW_Amb_MachineryLoop.wav",
+      "purpose": "Deep continuous machinery heard through the well structure",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration_seconds": 24.0,
+      "looping": true,
+      "peak_dbfs": -15.715,
+      "rms_dbfs": -29.0,
+      "dc_offset": [
+        0.0,
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": -61.013,
+      "suggested_ue_volume": 0.85,
+      "notes": "24 s exact periodic loop; low fundamental is deliberately restrained. Stereo non-spatial bed, or collapse to mono for one distant source.",
+      "bytes": 4608044,
+      "sha256": "200164cefd7e558bba7d8a8c893f9aabf7adca7a5046d7bd337372dbd32f1625",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Amb_WellAirLoop",
+      "file": "AW_Amb_WellAirLoop.wav",
+      "purpose": "Restrained spacious air and distant ventilation",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration_seconds": 24.0,
+      "looping": true,
+      "peak_dbfs": -22.0,
+      "rms_dbfs": -37.275,
+      "dc_offset": [
+        -0.0,
+        0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": -54.341,
+      "suggested_ue_volume": 0.65,
+      "notes": "24 s exact periodic loop, no baked reverb; pairs below the machinery bed. Avoid raising it until it sounds like surf.",
+      "bytes": 4608044,
+      "sha256": "f45dc537734b1ab9688475ef8999ed12f55c67419ad55b63c07306a7914637ff",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_01",
+      "file": "AW_Foley_WetStoneStep_01.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.74,
+      "looping": false,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -28.832,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 71084,
+      "sha256": "73ca2a04eadd75fe2d9227f2890cc2230685ed1c5d84cce99a7c7278034499bb",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_02",
+      "file": "AW_Foley_WetStoneStep_02.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.758,
+      "looping": false,
+      "peak_dbfs": -10.7,
+      "rms_dbfs": -31.844,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 72812,
+      "sha256": "2e0729b8d3660d0832491c07b5437923307c85a8174a39adb1b632c01612f2d3",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_03",
+      "file": "AW_Foley_WetStoneStep_03.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.776,
+      "looping": false,
+      "peak_dbfs": -11.4,
+      "rms_dbfs": -31.324,
+      "dc_offset": [
+        0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 74540,
+      "sha256": "1d8e455ecce96998e787782e90e6e7e8cf02e614bbacc6182471d568d6269344",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_04",
+      "file": "AW_Foley_WetStoneStep_04.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.794,
+      "looping": false,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -30.651,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 76268,
+      "sha256": "3b07ce4c45b7f3854684df6687c8d2455675a0be37cf3a0abecfdb8d792433fc",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_05",
+      "file": "AW_Foley_WetStoneStep_05.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.812,
+      "looping": false,
+      "peak_dbfs": -10.7,
+      "rms_dbfs": -30.862,
+      "dc_offset": [
+        0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 77996,
+      "sha256": "08bca4075ba45d55f37a03d5cf65e7f37e5fea767785f04f797eeefe4ef8d946",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_WetStoneStep_06",
+      "file": "AW_Foley_WetStoneStep_06.wav",
+      "purpose": "Heavy boot on damp cracked stone; close dry point source",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 0.83,
+      "looping": false,
+      "peak_dbfs": -11.4,
+      "rms_dbfs": -29.977,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.8,
+      "notes": "Play one variation per actual footfall. Randomize pitch narrowly 0.96–1.04 and volume 0.85–1.0; add UE cave reflections, not another dry simultaneous footstep.",
+      "bytes": 79724,
+      "sha256": "2c1139bf83b745eb4739e47c95d0aae683232e95fd0cbd6b6c5ea8918beb3b46",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_LanternGear_01",
+      "file": "AW_Foley_LanternGear_01.wav",
+      "purpose": "Quiet lantern handle and pack fittings shifting under load",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 1.35,
+      "looping": false,
+      "peak_dbfs": -17.0,
+      "rms_dbfs": -38.86,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.55,
+      "notes": "Use sparingly every 3–5 steps, or once as the companion stops. Not a continuous rattle loop.",
+      "bytes": 129644,
+      "sha256": "e1e4153e6c291af638a73cca0f85feb2da77ba4af67c90226f74c785fb7d2a12",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_LanternGear_02",
+      "file": "AW_Foley_LanternGear_02.wav",
+      "purpose": "Quiet lantern handle and pack fittings shifting under load",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 1.53,
+      "looping": false,
+      "peak_dbfs": -18.0,
+      "rms_dbfs": -38.37,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.55,
+      "notes": "Use sparingly every 3–5 steps, or once as the companion stops. Not a continuous rattle loop.",
+      "bytes": 146924,
+      "sha256": "db73ad197daf496f5c022f9ccf61ad6cf14a342ae37b7236ebd4ed04c354c26d",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_LanternGear_03",
+      "file": "AW_Foley_LanternGear_03.wav",
+      "purpose": "Quiet lantern handle and pack fittings shifting under load",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 1.71,
+      "looping": false,
+      "peak_dbfs": -19.0,
+      "rms_dbfs": -41.461,
+      "dc_offset": [
+        0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.55,
+      "notes": "Use sparingly every 3–5 steps, or once as the companion stops. Not a continuous rattle loop.",
+      "bytes": 164204,
+      "sha256": "e27f44a8a9f9793969ae7bebf234cb7538b634bacb2b7a6a1629bf923576838b",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Foley_HushedBreath",
+      "file": "AW_Foley_HushedBreath.wav",
+      "purpose": "Brief unvoiced breath on the companion stopping beat",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 1.1,
+      "looping": false,
+      "peak_dbfs": -23.0,
+      "rms_dbfs": -42.396,
+      "dc_offset": [
+        0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.45,
+      "notes": "Optional synthesized breath, not intelligible speech. Keep quiet; do not label it a voiced shush.",
+      "bytes": 105644,
+      "sha256": "1a06194d74a3d1b476b7df1f7e2fcc1a76dee69fc0e6dea50b70fb04b123a2e3",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Event_DistantLoadShift",
+      "file": "AW_Event_DistantLoadShift.wav",
+      "purpose": "A distant load transfers through immense machinery; triggers the companion stop",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 1,
+      "duration_seconds": 5.5,
+      "looping": false,
+      "peak_dbfs": -17.0,
+      "rms_dbfs": -34.026,
+      "dc_offset": [
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 0.9,
+      "notes": "Low non-explosive structural response. Spatialize 25–60 m ahead and below; allow a long dark cave reverb tail. Do not add a jump-scare rise.",
+      "bytes": 528044,
+      "sha256": "770964a4745351215b7d7ea007b9ef6665f6f9759e5b496f2c9038d447ecd1a6",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    },
+    {
+      "id": "AW_Intro30s_AudioPreview",
+      "file": "AW_Intro30s_AudioPreview.wav",
+      "purpose": "30 s illustrative sound-only mix for review; DO NOT layer with runtime assets",
+      "format": "PCM16",
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration_seconds": 30.0,
+      "looping": false,
+      "peak_dbfs": -6.0,
+      "rms_dbfs": -23.109,
+      "dc_offset": [
+        0.0,
+        -0.0
+      ],
+      "clipped_samples": 0,
+      "loop_boundary_delta_dbfs": null,
+      "suggested_ue_volume": 1,
+      "notes": "Offline demonstration with light early echoes. Not imported by default. Timing is illustrative; actual footsteps must follow runtime movement.",
+      "bytes": 5760044,
+      "sha256": "aa83a72886c5e46e8873d666063e55c483471053523656547a13d61f6b77eb32",
+      "provenance": "Original procedural synthesis; generator source included. No third-party samples."
+    }
+  ],
+  "timing_suggestions": [
+    {
+      "time": 1.5,
+      "asset": "AW_Foley_WetStoneStep_01",
+      "role": "player footfall"
+    },
+    {
+      "time": 2.34,
+      "asset": "AW_Foley_WetStoneStep_02",
+      "role": "player footfall"
+    },
+    {
+      "time": 3.18,
+      "asset": "AW_Foley_WetStoneStep_03",
+      "role": "player footfall"
+    },
+    {
+      "time": 4.02,
+      "asset": "AW_Foley_WetStoneStep_04",
+      "role": "player footfall"
+    },
+    {
+      "time": 4.86,
+      "asset": "AW_Foley_WetStoneStep_05",
+      "role": "player footfall"
+    },
+    {
+      "time": 5.7,
+      "asset": "AW_Foley_WetStoneStep_06",
+      "role": "player footfall"
+    },
+    {
+      "time": 6.54,
+      "asset": "AW_Foley_WetStoneStep_01",
+      "role": "player footfall"
+    },
+    {
+      "time": 7.38,
+      "asset": "AW_Foley_WetStoneStep_02",
+      "role": "player footfall"
+    },
+    {
+      "time": 8.22,
+      "asset": "AW_Foley_WetStoneStep_03",
+      "role": "player footfall"
+    },
+    {
+      "time": 9.06,
+      "asset": "AW_Foley_WetStoneStep_04",
+      "role": "player footfall"
+    },
+    {
+      "time": 9.9,
+      "asset": "AW_Foley_WetStoneStep_05",
+      "role": "player footfall"
+    },
+    {
+      "time": 10.74,
+      "asset": "AW_Foley_WetStoneStep_06",
+      "role": "player footfall"
+    },
+    {
+      "time": 11.58,
+      "asset": "AW_Foley_WetStoneStep_01",
+      "role": "player footfall"
+    },
+    {
+      "time": 12.42,
+      "asset": "AW_Foley_WetStoneStep_02",
+      "role": "player footfall"
+    },
+    {
+      "time": 13.26,
+      "asset": "AW_Foley_WetStoneStep_03",
+      "role": "player footfall"
+    },
+    {
+      "time": 13.9,
+      "asset": "AW_Event_DistantLoadShift",
+      "role": "distant structural cue"
+    },
+    {
+      "time": 14.45,
+      "asset": "AW_Foley_LanternGear_02",
+      "role": "companion stops; pack settles"
+    },
+    {
+      "time": 14.95,
+      "asset": "AW_Foley_HushedBreath",
+      "role": "optional quiet exhale"
+    },
+    {
+      "time": 15.2,
+      "asset": null,
+      "role": "no more footsteps; listen to the machinery through the rest of the 30 s"
+    }
+  ],
+  "unreal": {
+    "import_folder": "/Game/AshWell/Audio/Intro",
+    "default_reverb": "Use one dark cave reverb/AudioVolume for point sources; dry sources are provided.",
+    "ambient": "Two non-spatial continuous stereo beds. Enable looping on their SoundWave or sound cue.",
+    "steps": "Mono; trigger from travelled distance, choose variation, attenuate companion substantially.",
+    "event": "Mono point source 25–60 m ahead and below; one event near the stop moment.",
+    "excluded_by_default": [
+      "AW_Intro30s_AudioPreview"
+    ]
+  }
+}

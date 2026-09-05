@@ -1,0 +1,173 @@
+{
+  "generator": "build_deep_crossing.py",
+  "authorship": "Original procedural geometry for Ash Well; no downloaded mesh or purchased assets.",
+  "license": "CC0-1.0",
+  "source_units": "metres",
+  "source_axes": "+X forward, +Y right, +Z up",
+  "start_m": [
+    37.0,
+    -12.0,
+    -22.0
+  ],
+  "end_m": [
+    58.0,
+    22.0,
+    -22.0
+  ],
+  "width_m": 1.8,
+  "rail_height_m": 1.0,
+  "under_truss_depth_m": 2.0,
+  "source_origins": [
+    0,
+    0,
+    0
+  ],
+  "fbx_export": {
+    "axis_forward": "-Y",
+    "axis_up": "Z",
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "apply_unit_scale": true
+  },
+  "parent_import": "Place both meshes at world origin. Parent handles Y mirror, UE lights, material binding and visibility.",
+  "material_slots": [
+    "Concrete",
+    "DarkSteel",
+    "Rust",
+    "Amber",
+    "Cloth"
+  ],
+  "assets": [
+    {
+      "name": "SM_DeepCrossing_Bridge",
+      "file": "SM_DeepCrossing_Bridge.fbx",
+      "triangles": 26152,
+      "vertices": 13456,
+      "bounds_m": {
+        "min": [
+          35.91358,
+          -12.84082,
+          -24.08
+        ],
+        "max": [
+          59.08642,
+          22.84082,
+          -20.96
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Concrete",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Cloth"
+      ],
+      "sha256": "c96bdca10f0e181929867c5c6b951e5d8672062c6b778c92e217d0d7301a391d"
+    },
+    {
+      "name": "SM_DeepCrossing_WorkersAndLamps",
+      "file": "SM_DeepCrossing_WorkersAndLamps.fbx",
+      "triangles": 8444,
+      "vertices": 4344,
+      "bounds_m": {
+        "min": [
+          39.79081,
+          -5.9762,
+          -22.0
+        ],
+        "max": [
+          53.965,
+          16.71427,
+          -20.3
+        ]
+      },
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "material_slots": [
+        "Concrete",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Cloth"
+      ],
+      "sha256": "fee717d7f270db4c26c686357772fb907545482719330a08357d223fdc763a48"
+    }
+  ],
+  "workers": [
+    {
+      "id": "worker_1",
+      "feet_source_m": [
+        43.44463348388672,
+        -1.8893330097198486,
+        -22.0
+      ],
+      "height_m": 1.7,
+      "station_fraction": 0.3
+    },
+    {
+      "id": "worker_2",
+      "feet_source_m": [
+        51.4277458190918,
+        11.968156814575195,
+        -22.0
+      ],
+      "height_m": 1.7,
+      "station_fraction": 0.7
+    }
+  ],
+  "light_anchors": [
+    {
+      "name": "DeepCrossingLamp_1",
+      "source_m": [
+        39.991458892822266,
+        -5.862664699554443,
+        -20.780000686645508
+      ],
+      "suggested_unreal_intensity_lumens": 300,
+      "suggested_attenuation_radius_cm": 450,
+      "suggested_color_srgb": [
+        1,
+        0.48,
+        0.16
+      ]
+    },
+    {
+      "name": "DeepCrossingLamp_2",
+      "source_m": [
+        46.92145919799805,
+        5.357335090637207,
+        -20.780000686645508
+      ],
+      "suggested_unreal_intensity_lumens": 300,
+      "suggested_attenuation_radius_cm": 450,
+      "suggested_color_srgb": [
+        1,
+        0.48,
+        0.16
+      ]
+    },
+    {
+      "name": "DeepCrossingLamp_3",
+      "source_m": [
+        53.85145950317383,
+        16.577335357666016,
+        -20.780000686645508
+      ],
+      "suggested_unreal_intensity_lumens": 300,
+      "suggested_attenuation_radius_cm": 450,
+      "suggested_color_srgb": [
+        1,
+        0.48,
+        0.16
+      ]
+    }
+  ],
+  "total_triangles": 34596
+}

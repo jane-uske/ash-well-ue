@@ -1,0 +1,215 @@
+{
+  "result": "pass",
+  "scope": "Blender FBX roundtrip structural integrity; Unreal render is a separate check",
+  "chunk_count": 23,
+  "triangles": 2605981,
+  "checks": [
+    {
+      "name": "SM_AV2_Pier_Core",
+      "coordinate_error_m": 8.392333981532829e-06,
+      "vertices": 19968,
+      "polygons": 18144,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Pier_Exoskeleton",
+      "coordinate_error_m": 9.460449220455303e-06,
+      "vertices": 47488,
+      "polygons": 45696,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Pier_Galleries",
+      "coordinate_error_m": 8.90991210766856e-06,
+      "vertices": 126796,
+      "polygons": 120689,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Pier_DoorsLadders",
+      "coordinate_error_m": 1.1448364258370702e-05,
+      "vertices": 70056,
+      "polygons": 66582,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Windows_And_Lamps",
+      "coordinate_error_m": 1.594543456917563e-05,
+      "vertices": 3192,
+      "polygons": 3078,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Piers_Front",
+      "coordinate_error_m": 1.3732910154828915e-05,
+      "vertices": 13952,
+      "polygons": 13408,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Piers_Interior",
+      "coordinate_error_m": 2.0599365235796085e-05,
+      "vertices": 5824,
+      "polygons": 5616,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_0",
+      "coordinate_error_m": 1.4548339841269353e-05,
+      "vertices": 41424,
+      "polygons": 39900,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_1",
+      "coordinate_error_m": 1.4548339841269353e-05,
+      "vertices": 41424,
+      "polygons": 39900,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_2",
+      "coordinate_error_m": 1.4548339841269353e-05,
+      "vertices": 41424,
+      "polygons": 39900,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_Arcades_3",
+      "coordinate_error_m": 1.4548339841269353e-05,
+      "vertices": 41424,
+      "polygons": 39900,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_TransverseVaults",
+      "coordinate_error_m": 1.7700195314773737e-05,
+      "vertices": 61824,
+      "polygons": 55680,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Hall_FloorEdges_And_Galleries",
+      "coordinate_error_m": 1.52587890625e-05,
+      "vertices": 75184,
+      "polygons": 71348,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_0",
+      "coordinate_error_m": 1.7671813964170724e-05,
+      "vertices": 112216,
+      "polygons": 107743,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_1",
+      "coordinate_error_m": 1.71237182620132e-05,
+      "vertices": 100800,
+      "polygons": 96782,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_ServiceRooms_2",
+      "coordinate_error_m": 1.71237182620132e-05,
+      "vertices": 101360,
+      "polygons": 97322,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_VerticalPipes_And_Valves",
+      "coordinate_error_m": 1.174316406604703e-05,
+      "vertices": 222480,
+      "polygons": 208912,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_Ladders_And_Switchgear",
+      "coordinate_error_m": 1.8479003905724767e-05,
+      "vertices": 73710,
+      "polygons": 69972,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_LowerFoundations",
+      "coordinate_error_m": 1.9073486328125e-05,
+      "vertices": 1232,
+      "polygons": 1188,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_LowerMachinery",
+      "coordinate_error_m": 1.6363525389806455e-05,
+      "vertices": 51138,
+      "polygons": 48984,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_DeepBridges_And_SuspendedWalks",
+      "coordinate_error_m": 1.3513183596103318e-05,
+      "vertices": 48400,
+      "polygons": 46227,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_DrapedCables",
+      "coordinate_error_m": 1.3771972653842113e-05,
+      "vertices": 11136,
+      "polygons": 6960,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    },
+    {
+      "name": "SM_AV2_UpperClerestory",
+      "coordinate_error_m": 1.71661376953125e-05,
+      "vertices": 29568,
+      "polygons": 28512,
+      "smooth_face_ratio": 1.0,
+      "uv_layers": 1,
+      "result": "pass"
+    }
+  ]
+}

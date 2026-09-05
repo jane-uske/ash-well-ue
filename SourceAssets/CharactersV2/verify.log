@@ -1,0 +1,6 @@
+FBX version: 7400
+FBX version: 7400
+EXPEDITION_FBX_CHECKS_PASS [{"fbx": "SM_Expedition_Protagonist.fbx", "triangles": 168284, "bounds_m": [[-0.31636837124824524, -0.9879086017608643, 0.0010000000474974513], [0.22807826101779938, -0.19613124430179596, 1.7795543670654297]], "material_slots": ["Cloth", "DarkSteel", "Rust", "Amber", "Leather", "Canvas"], "uv_layer_count": 1, "uv0_area": 6.1288022094576355, "uv0_area_matches_metres_squared": true, "material_slot_face_counts": {"Cloth": 87884, "DarkSteel": 13252, "Rust": 4604, "Amber": 92, "Leather": 27932, "Canvas": 34520}, "passed": true}, {"fbx": "SM_Expedition_Companion.fbx", "triangles": 170156, "bounds_m": [[6.663114070892334, -0.7991332411766052, 0.0010000000474974513], [7.367220401763916, 0.06315535306930542, 1.7795543670654297]], "material_slots": ["Cloth", "DarkSteel", "Rust", "Amber", "Leather", "Canvas"], "uv_layer_count": 1, "uv0_area": 6.09243609469035, "uv0_area_matches_metres_squared": true, "material_slot_face_counts": {"Cloth": 87500, "DarkSteel": 13252, "Rust": 4604, "Amber": 92, "Leather": 30188, "Canvas": 34520}, "passed": true}]
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

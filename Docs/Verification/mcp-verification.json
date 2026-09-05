@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "url": "http://127.0.0.1:8001/mcp",
+  "evidence": [
+    {
+      "tool": "get_current_level",
+      "result": {
+        "returnValue": "/Game/AshWell/Maps/FirstDescentIntro"
+      }
+    },
+    {
+      "tool": "add_to_scene_from_class",
+      "result": {
+        "returnValue": {
+          "refPath": "/Game/AshWell/Maps/FirstDescentIntro.FirstDescentIntro:PersistentLevel.PointLight_4"
+        }
+      }
+    },
+    {
+      "tool": "set_actor_transform",
+      "result": {
+        "returnValue": true
+      }
+    },
+    {
+      "tool": "get_actor_transform",
+      "result": {
+        "returnValue": {
+          "location": {
+            "x": 123,
+            "y": 456,
+            "z": -10000
+          },
+          "rotation": {
+            "pitch": 0,
+            "yaw": 0,
+            "roll": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        }
+      }
+    },
+    {
+      "tool": "remove_from_scene",
+      "result": {
+        "returnValue": true
+      }
+    },
+    {
+      "tool": "find_actors",
+      "result": {
+        "returnValue": []
+      }
+    }
+  ]
+}

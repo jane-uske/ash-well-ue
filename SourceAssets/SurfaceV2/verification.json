@@ -1,0 +1,78 @@
+{
+  "scope": "Fresh Blender FBX import only; no Unreal import or render claims.",
+  "result": "pass",
+  "assets": [
+    {
+      "file": "SM_SurfaceV2_BrokenStoneDeck.fbx",
+      "triangles": 111636,
+      "bounds_m": {
+        "min": [
+          -1.997876763343811,
+          -1.4693118333816528,
+          -0.08698562532663345
+        ],
+        "max": [
+          24.000293731689453,
+          9.46396541595459,
+          -0.0040740929543972015
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "uv_layers": 1,
+      "vertex_color_attributes": 1,
+      "pass": true
+    },
+    {
+      "file": "SM_SurfaceV2_MortarAndDebris.fbx",
+      "triangles": 19360,
+      "bounds_m": {
+        "min": [
+          -2.000000238418579,
+          -1.5079119205474854,
+          -0.05912332236766815
+        ],
+        "max": [
+          24.011550903320312,
+          9.474993705749512,
+          0.02112332358956337
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "uv_layers": 1,
+      "vertex_color_attributes": 1,
+      "pass": true
+    },
+    {
+      "file": "SM_SurfaceV2_SteelRepairs.fbx",
+      "triangles": 204,
+      "bounds_m": {
+        "min": [
+          1.8749085664749146,
+          -0.770747184753418,
+          -0.024000000208616257
+        ],
+        "max": [
+          16.40645980834961,
+          6.473414897918701,
+          -0.006000000052154064
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "uv_layers": 1,
+      "vertex_color_attributes": 1,
+      "pass": true
+    }
+  ]
+}

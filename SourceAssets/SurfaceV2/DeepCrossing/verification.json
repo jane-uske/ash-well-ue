@@ -1,0 +1,54 @@
+{
+  "scope": "Independent Blender FBX reimport only; UE import and visual framing remain parent checks.",
+  "result": "pass",
+  "assets": [
+    {
+      "file": "SM_DeepCrossing_Bridge.fbx",
+      "triangles": 26152,
+      "bounds": {
+        "min": [
+          35.913578033447266,
+          -12.84082317352295,
+          -24.079999923706055
+        ],
+        "max": [
+          59.08642578125,
+          22.84080696105957,
+          -20.959999084472656
+        ]
+      },
+      "slots": [
+        "Concrete",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Cloth"
+      ],
+      "pass": true
+    },
+    {
+      "file": "SM_DeepCrossing_WorkersAndLamps.fbx",
+      "triangles": 8444,
+      "bounds": {
+        "min": [
+          39.79080581665039,
+          -5.9762043952941895,
+          -22.0
+        ],
+        "max": [
+          53.96500015258789,
+          16.71426010131836,
+          -20.299999237060547
+        ]
+      },
+      "slots": [
+        "Concrete",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Cloth"
+      ],
+      "pass": true
+    }
+  ]
+}

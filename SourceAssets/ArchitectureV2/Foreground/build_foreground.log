@@ -1,0 +1,19 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/build_architecture_v2.py:17: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=color;m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/Foreground/SM_AV2_FG_LayeredSteel.fbx'
+export finished in 0.0373 sec.
+EXPORTED {"name": "SM_AV2_FG_LayeredSteel", "file": "SM_AV2_FG_LayeredSteel.fbx", "triangles": 49844, "vertices": 25760, "bounds_m": {"min": [3.8, -2.725, 0.0], "max": [8.15, 6.775, 5.03987]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/Foreground/SM_AV2_FG_PipeJoints.fbx'
+export finished in 0.0161 sec.
+EXPORTED {"name": "SM_AV2_FG_PipeJoints", "file": "SM_AV2_FG_PipeJoints.fbx", "triangles": 21884, "vertices": 11248, "bounds_m": {"min": [2.7, -2.56769, 2.52], "max": [8.769, 5.55769, 3.91]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/Foreground/SM_AV2_FG_CablesAndDrips.fbx'
+export finished in 0.0067 sec.
+EXPORTED {"name": "SM_AV2_FG_CablesAndDrips", "file": "SM_AV2_FG_CablesAndDrips.fbx", "triangles": 9392, "vertices": 5616, "bounds_m": {"min": [4.19001, -2.46722, 2.95282], "max": [8.13854, 5.10514, 4.4241]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+信息: 已另存为 "Foreground_Source.blend"
+DONE 81120
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

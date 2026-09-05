@@ -1,0 +1,99 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/build_architecture_v2.py:17: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=color;m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Pier_Core.fbx'
+export finished in 0.0490 sec.
+EXPORTED {"name": "SM_AV2_Pier_Core", "file": "SM_AV2_Pier_Core.fbx", "triangles": 38976, "vertices": 19968, "bounds_m": {"min": [47.95, 19.95, -80.0], "max": [62.05, 34.05, 111.9]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Pier_Exoskeleton.fbx'
+export finished in 0.0842 sec.
+EXPORTED {"name": "SM_AV2_Pier_Exoskeleton", "file": "SM_AV2_Pier_Exoskeleton.fbx", "triangles": 91648, "vertices": 47488, "bounds_m": {"min": [48.205, 20.205, -78.0], "max": [61.795, 33.795, 110.0]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Pier_Galleries.fbx'
+export finished in 0.2467 sec.
+EXPORTED {"name": "SM_AV2_Pier_Galleries", "file": "SM_AV2_Pier_Galleries.fbx", "triangles": 248155, "vertices": 126796, "bounds_m": {"min": [47.42497, 19.42497, -66.52406], "max": [62.57503, 34.57503, 97.16549]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Pier_DoorsLadders.fbx'
+export finished in 0.1220 sec.
+EXPORTED {"name": "SM_AV2_Pier_DoorsLadders", "file": "SM_AV2_Pier_DoorsLadders.fbx", "triangles": 137052, "vertices": 70056, "bounds_m": {"min": [47.78224, 20.18, -78.03], "max": [55.76, 30.15098, 100.03]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Windows_And_Lamps.fbx'
+export finished in 0.0053 sec.
+EXPORTED {"name": "SM_AV2_Windows_And_Lamps", "file": "SM_AV2_Windows_And_Lamps.fbx", "triangles": 2808, "vertices": 1456, "bounds_m": {"min": [48.6632, -33.5945, -61.39], "max": [98.8725, 31.9305, 99.11]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Piers_Front.fbx'
+export finished in 0.0237 sec.
+EXPORTED {"name": "SM_AV2_Hall_Piers_Front", "file": "SM_AV2_Hall_Piers_Front.fbx", "triangles": 26944, "vertices": 13952, "bounds_m": {"min": [86.28999, -38.85, -66.5], "max": [93.2, 38.85, 110.5]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Piers_Interior.fbx'
+export finished in 0.0108 sec.
+EXPORTED {"name": "SM_AV2_Hall_Piers_Interior", "file": "SM_AV2_Hall_Piers_Interior.fbx", "triangles": 11232, "vertices": 5824, "bounds_m": {"min": [100.0, -37.9, -64.4], "max": [116.0, 37.9, 110.0]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Arcades_0.fbx'
+export finished in 0.0817 sec.
+EXPORTED {"name": "SM_AV2_Hall_Arcades_0", "file": "SM_AV2_Hall_Arcades_0.fbx", "triangles": 79896, "vertices": 41424, "bounds_m": {"min": [87.625, -35.47454, -32.0], "max": [114.125, 35.47454, -1.15]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Arcades_1.fbx'
+export finished in 0.0913 sec.
+EXPORTED {"name": "SM_AV2_Hall_Arcades_1", "file": "SM_AV2_Hall_Arcades_1.fbx", "triangles": 79896, "vertices": 41424, "bounds_m": {"min": [87.625, -35.47454, 3.0], "max": [114.125, 35.47454, 33.85]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Arcades_2.fbx'
+export finished in 0.0932 sec.
+EXPORTED {"name": "SM_AV2_Hall_Arcades_2", "file": "SM_AV2_Hall_Arcades_2.fbx", "triangles": 79896, "vertices": 41424, "bounds_m": {"min": [87.625, -35.47454, 38.0], "max": [114.125, 35.47454, 68.85]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_Arcades_3.fbx'
+export finished in 0.0971 sec.
+EXPORTED {"name": "SM_AV2_Hall_Arcades_3", "file": "SM_AV2_Hall_Arcades_3.fbx", "triangles": 79896, "vertices": 41424, "bounds_m": {"min": [87.625, -35.47454, 73.0], "max": [114.125, 35.47454, 103.85]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_TransverseVaults.fbx'
+export finished in 0.1105 sec.
+EXPORTED {"name": "SM_AV2_Hall_TransverseVaults", "file": "SM_AV2_Hall_TransverseVaults.fbx", "triangles": 119424, "vertices": 61824, "bounds_m": {"min": [88.92039, -36.19, -9.218], "max": [114.13947, 36.19, 102.13264]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Hall_FloorEdges_And_Galleries.fbx'
+export finished in 0.1475 sec.
+EXPORTED {"name": "SM_AV2_Hall_FloorEdges_And_Galleries", "file": "SM_AV2_Hall_FloorEdges_And_Galleries.fbx", "triangles": 147368, "vertices": 75184, "bounds_m": {"min": [87.66451, -36.5, -68.09634], "max": [115.0, 36.5, 109.43549]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_0.fbx'
+export finished in 0.0734 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_0", "file": "SM_AV2_ServiceRooms_0.fbx", "triangles": 71776, "vertices": 37112, "bounds_m": {"min": [92.3945, -34.77, -26.15], "max": [97.56, -10.23, 44.8]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_1.fbx'
+export finished in 0.0638 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_1", "file": "SM_AV2_ServiceRooms_1.fbx", "triangles": 59764, "vertices": 30896, "bounds_m": {"min": [95.3945, -10.77, -26.15], "max": [100.56, 10.27, 44.8]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_ServiceRooms_2.fbx'
+export finished in 0.0649 sec.
+EXPORTED {"name": "SM_AV2_ServiceRooms_2", "file": "SM_AV2_ServiceRooms_2.fbx", "triangles": 64516, "vertices": 33360, "bounds_m": {"min": [93.69452, 12.23, -26.15], "max": [98.86, 33.27, 44.8]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_VerticalPipes_And_Valves.fbx'
+export finished in 0.4696 sec.
+EXPORTED {"name": "SM_AV2_VerticalPipes_And_Valves", "file": "SM_AV2_VerticalPipes_And_Valves.fbx", "triangles": 433408, "vertices": 222480, "bounds_m": {"min": [85.18095, -34.2208, -62.0], "max": [90.0, 34.1311, 105.0]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_Ladders_And_Switchgear.fbx'
+export finished in 0.1459 sec.
+EXPORTED {"name": "SM_AV2_Ladders_And_Switchgear", "file": "SM_AV2_Ladders_And_Switchgear.fbx", "triangles": 143664, "vertices": 73710, "bounds_m": {"min": [87.6, -33.53239, -29.03], "max": [112.45461, 33.53239, 107.0]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_LowerFoundations.fbx'
+export finished in 0.0077 sec.
+EXPORTED {"name": "SM_AV2_LowerFoundations", "file": "SM_AV2_LowerFoundations.fbx", "triangles": 2376, "vertices": 1232, "bounds_m": {"min": [85.40549, -36.5, -67.9], "max": [117.0, 39.0, -31.625]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_LowerMachinery.fbx'
+export finished in 0.0889 sec.
+EXPORTED {"name": "SM_AV2_LowerMachinery", "file": "SM_AV2_LowerMachinery.fbx", "triangles": 100000, "vertices": 51138, "bounds_m": {"min": [96.0, -32.6284, -62.0], "max": [113.0, 33.6284, -35.0]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_DeepBridges_And_SuspendedWalks.fbx'
+export finished in 0.1028 sec.
+EXPORTED {"name": "SM_AV2_DeepBridges_And_SuspendedWalks", "file": "SM_AV2_DeepBridges_And_SuspendedWalks.fbx", "triangles": 94265, "vertices": 48400, "bounds_m": {"min": [22.41748, -48.9629, -67.635], "max": [96.12479, 36.41675, 33.08548]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_DrapedCables.fbx'
+export finished in 0.0193 sec.
+EXPORTED {"name": "SM_AV2_DrapedCables", "file": "SM_AV2_DrapedCables.fbx", "triangles": 19488, "vertices": 11136, "bounds_m": {"min": [54.95935, -31.02411, -68.00053], "max": [92.02499, 33.33396, 100.00061]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ArchitectureV2/SM_AV2_UpperClerestory.fbx'
+export finished in 0.0449 sec.
+EXPORTED {"name": "SM_AV2_UpperClerestory", "file": "SM_AV2_UpperClerestory.fbx", "triangles": 57024, "vertices": 29568, "bounds_m": {"min": [107.055, -31.875, 78.0], "max": [113.4, 31.875, 94.2]}, "origin_m": [0, 0, 0], "material_slots": ["Rock", "Rust", "Concrete", "DarkSteel", "Amber", "Cloth"]}
+信息: 已另存为 "ArchitectureV2_Source.blend"
+DONE 23 CHUNKS 2189472 TRIANGLES
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

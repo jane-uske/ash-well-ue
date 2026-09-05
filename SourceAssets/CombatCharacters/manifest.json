@@ -1,0 +1,122 @@
+{
+  "source": "Original procedural combat animation on the unchanged Intro protagonist rig",
+  "skeleton": "/Game/AshWell/Intro/Characters/SK_Intro_Protagonist_Skeleton",
+  "coordinates": "Metres, +X forward, +Y right, +Z up; FBX -Y forward / Z up",
+  "bones": [
+    "root",
+    "pelvis",
+    "spine_01",
+    "spine_02",
+    "neck",
+    "head",
+    "upperarm_L",
+    "forearm_L",
+    "hand_L",
+    "lantern_L",
+    "lamp_light_L",
+    "upperarm_R",
+    "forearm_R",
+    "hand_R",
+    "lantern_R",
+    "lamp_light_R",
+    "thigh_L",
+    "calf_L",
+    "foot_L",
+    "coat_L",
+    "thigh_R",
+    "calf_R",
+    "foot_R",
+    "coat_R"
+  ],
+  "animations": [
+    {
+      "name": "A_Combat_Protagonist_Attack",
+      "file": "A_Combat_Protagonist_Attack.fbx",
+      "duration_seconds": 0.8333333333333334,
+      "fps": 60,
+      "frames": [
+        1,
+        51
+      ],
+      "root_motion": false,
+      "loop": false,
+      "sha256": "304cca9c71a9c1a16ac46ae4b0ebbd22b3a6b2554798f814da40019284552693"
+    },
+    {
+      "name": "A_Combat_Protagonist_Dodge",
+      "file": "A_Combat_Protagonist_Dodge.fbx",
+      "duration_seconds": 0.5833333333333334,
+      "fps": 60,
+      "frames": [
+        1,
+        36
+      ],
+      "root_motion": false,
+      "loop": false,
+      "sha256": "c80dad305d20387bb8fcde6b4fecfc6b0e2bc4e84d3f7f012918e098d98c3296"
+    },
+    {
+      "name": "A_Combat_Protagonist_Hit",
+      "file": "A_Combat_Protagonist_Hit.fbx",
+      "duration_seconds": 0.45,
+      "fps": 60,
+      "frames": [
+        1,
+        28
+      ],
+      "root_motion": false,
+      "loop": false,
+      "sha256": "9aeebfa4142c0cb7c89b55b1086e92d641ba25cc8d9f8d19c9a9af0c8224b79b"
+    },
+    {
+      "name": "A_Combat_Protagonist_Death",
+      "file": "A_Combat_Protagonist_Death.fbx",
+      "duration_seconds": 1.3,
+      "fps": 60,
+      "frames": [
+        1,
+        79
+      ],
+      "root_motion": false,
+      "loop": false,
+      "sha256": "06b4594351877a423c613fff66ac124d00acb30c131b54aff82c303ec7ac3eb9"
+    },
+    {
+      "name": "A_Combat_Protagonist_CombatWalk",
+      "file": "A_Combat_Protagonist_CombatWalk.fbx",
+      "duration_seconds": 0.6,
+      "fps": 60,
+      "frames": [
+        1,
+        37
+      ],
+      "root_motion": false,
+      "loop": true,
+      "sha256": "cce2c732327fae75ac65526ce149ee72bfc8c7cae8640c649751c8a3a774cb76"
+    }
+  ],
+  "attack_windows_seconds": {
+    "windup": [
+      0,
+      0.3
+    ],
+    "active": [
+      0.3,
+      0.45
+    ],
+    "recovery": [
+      0.45,
+      0.8333333333333334
+    ]
+  },
+  "combat_walk_nominal_cm_s": 240,
+  "combat_walk_step_interval_seconds": 0.3,
+  "combat_walk_step_distance_cm": 72,
+  "left_weapon_bone": "hand_L",
+  "lantern_light_bone": "lamp_light_R",
+  "limitations": [
+    "Procedural prototype poses, not motion capture.",
+    "Dodge is a compact low step with actor translation supplied by runtime; no full roll.",
+    "Left hand weapon is a separate runtime attachment; this package contains animation only."
+  ]
+}

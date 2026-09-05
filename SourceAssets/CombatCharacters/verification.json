@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "verification_scope": "Blender FBX round trip; not an Unreal runtime check",
+  "checks": [
+    {
+      "clip": "A_Combat_Protagonist_Attack",
+      "frames": [
+        2.0,
+        52.0
+      ],
+      "fps": 60,
+      "duration": 0.8333333333333334,
+      "bones": 24,
+      "root_drift_m": 0.0,
+      "root_rotation_drift_rad": 0.0,
+      "endpoints_bone_position_error_m": 0.01572310083935186,
+      "left_hand_travel_span_m": 0.7468205414653631,
+      "minimum_pelvis_height_m": 0.7950513362884521
+    },
+    {
+      "clip": "A_Combat_Protagonist_Dodge",
+      "frames": [
+        2.0,
+        37.0
+      ],
+      "fps": 60,
+      "duration": 0.5833333333333334,
+      "bones": 24,
+      "root_drift_m": 0.0,
+      "root_rotation_drift_rad": 0.0,
+      "endpoints_bone_position_error_m": 0.0143984111029513,
+      "left_hand_travel_span_m": 0.47886119672735955,
+      "minimum_pelvis_height_m": 0.5700000524520874
+    },
+    {
+      "clip": "A_Combat_Protagonist_Hit",
+      "frames": [
+        2.0,
+        29.0
+      ],
+      "fps": 60,
+      "duration": 0.45,
+      "bones": 24,
+      "root_drift_m": 0.0,
+      "root_rotation_drift_rad": 0.0,
+      "endpoints_bone_position_error_m": 0.013218627333807855,
+      "left_hand_travel_span_m": 0.11756260877577651,
+      "minimum_pelvis_height_m": 0.840032696723938
+    },
+    {
+      "clip": "A_Combat_Protagonist_Death",
+      "frames": [
+        2.0,
+        80.0
+      ],
+      "fps": 60,
+      "duration": 1.3,
+      "bones": 24,
+      "root_drift_m": 0.0,
+      "root_rotation_drift_rad": 0.0,
+      "endpoints_bone_position_error_m": 1.406501916997314,
+      "left_hand_travel_span_m": 0.5480855702948235,
+      "minimum_pelvis_height_m": 0.3500000238418579
+    },
+    {
+      "clip": "A_Combat_Protagonist_CombatWalk",
+      "frames": [
+        2.0,
+        38.0
+      ],
+      "fps": 60,
+      "duration": 0.6,
+      "bones": 24,
+      "root_drift_m": 0.0,
+      "root_rotation_drift_rad": 0.0,
+      "endpoints_bone_position_error_m": 0.0,
+      "left_hand_travel_span_m": 0.2746417947576667,
+      "minimum_pelvis_height_m": 0.7610001564025879
+    }
+  ]
+}

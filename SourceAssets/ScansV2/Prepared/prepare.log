@@ -1,0 +1,20 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/prepare_scans.py:31: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('Scan inspection');mat.use_nodes=True
+00:03.352  render           | Saved: '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/Prepared/rock_face_01_from_minus_y.png'
+00:04.863  render           | Saved: '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/Prepared/rock_face_01_from_plus_y.png'
+FBX version: 7400
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/Prepared/SM_Scan_RockFace01.fbx'
+export finished in 0.0467 sec.
+FBX version: 7400
+PREPARED {"id": "rock_face_01", "selected_source_object": "rock_face_01", "file": "SM_Scan_RockFace01.fbx", "sha256": "6563e5e0969d0f15a8619e778e01c0329abee0b311ae03b9975fbb8b7ab581a3", "vertices": 10531, "triangles": 20174, "bounds_m": {"min": [-3.4531807899475098, -0.8962743282318115, -0.05868561565876007], "max": [3.6550512313842773, 4.728030204772949, 4.921751499176025]}, "origin_m": [0.0, 0.0, 0.0], "rotation_radians": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0], "material_slots": ["rock_face_01"], "uv_layers": ["UVMap"], "uv_changed": false, "normal_convention": "Original geometry winding and custom normals preserved. Source DirectX normal texture untouched; Unreal FlipGreenChannel=False.", "dominant_normal_surface_area_m2": {"+X": 2.487567125444457, "-X": 0.4754903466136966, "+Y": 0.18105189735430116, "-Y": 13.723594873038177, "+Z": 37.25908091777205, "-Z": 4.577772915628884}, "total_surface_area_m2": 58.704558075851565, "texture_paths": {"base_color": "../rock_face_01/rock_face_01_diff_4k.jpg", "roughness": "../rock_face_01/rock_face_01_rough_4k.jpg", "normal": "../rock_face_01/rock_face_01_nor_dx_4k.png"}, "source_page": "https://polyhaven.com/a/rock_face_01", "license": "CC0", "roundtrip_validation": "PASS: one mesh, chosen source LOD, equal triangle count, UV coordinate multiset, and world bounds."}
+FBX version: 7400
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/Prepared/SM_Scan_Boulder01_LOD0.fbx'
+export finished in 0.1428 sec.
+FBX version: 7400
+PREPARED {"id": "boulder_01", "selected_source_object": "boulder_01_LOD0", "file": "SM_Scan_Boulder01_LOD0.fbx", "sha256": "b7c2b0fd6add47afa881ff34b1a57cf4dd67286428191b97b7b266dd54da30fb", "vertices": 33063, "triangles": 66122, "bounds_m": {"min": [-0.7481597065925598, -0.8818937540054321, -0.07364296913146973], "max": [0.5239759087562561, 0.9484404921531677, 0.9301872253417969]}, "origin_m": [0.0, 0.0, 0.0], "rotation_radians": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0], "material_slots": ["boulder_01"], "uv_layers": ["UVMap"], "uv_changed": false, "normal_convention": "Original geometry winding and custom normals preserved. Source DirectX normal texture untouched; Unreal FlipGreenChannel=False.", "dominant_normal_surface_area_m2": {"+X": 1.131633087131604, "-X": 0.8639676703253372, "+Y": 0.7778465776275425, "-Y": 0.5786344739013884, "+Z": 1.4757863743753887, "-Z": 1.708857531337344}, "total_surface_area_m2": 6.536725714698605, "texture_paths": {"base_color": "../boulder_01/boulder_01_diff_4k.jpg", "roughness": "../boulder_01/boulder_01_rough_4k.jpg", "normal": "../boulder_01/boulder_01_nor_dx_4k.png"}, "source_page": "https://polyhaven.com/a/boulder_01", "license": "CC0", "roundtrip_validation": "PASS: one mesh, chosen source LOD, equal triangle count, UV coordinate multiset, and world bounds."}
+COMPLETE /Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/ScansV2/Prepared/manifest.json
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

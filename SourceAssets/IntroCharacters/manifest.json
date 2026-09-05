@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "source": "Original CharactersV2 procedural geometry with original semantic skinning and animation",
+  "source_coordinates": "Metres, +X forward, +Y right, +Z up. Feet/root centred at world origin.",
+  "fbx": {
+    "axis_forward": "-Y",
+    "axis_up": "Z",
+    "units": "metres",
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "bone_primary_axis": "Y",
+    "bone_secondary_axis": "X",
+    "add_leaf_bones": false
+  },
+  "bones": [
+    "root",
+    "pelvis",
+    "spine_01",
+    "spine_02",
+    "neck",
+    "head",
+    "thigh_L",
+    "calf_L",
+    "foot_L",
+    "upperarm_L",
+    "forearm_L",
+    "hand_L",
+    "lantern_L",
+    "lamp_light_L",
+    "coat_L",
+    "thigh_R",
+    "calf_R",
+    "foot_R",
+    "upperarm_R",
+    "forearm_R",
+    "hand_R",
+    "lantern_R",
+    "lamp_light_R",
+    "coat_R"
+  ],
+  "assets": [
+    {
+      "name": "SK_Intro_Protagonist",
+      "fbx": "SK_Intro_Protagonist.fbx",
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "placement_baked_m": [
+        0,
+        0,
+        0
+      ],
+      "yaw_baked_deg": 0,
+      "bounds_m": [
+        [
+          -0.3163682818412781,
+          -0.38790854811668396,
+          0.0010000000474974513
+        ],
+        [
+          0.22807833552360535,
+          0.40386879444122314,
+          1.7795543670654297
+        ]
+      ],
+      "triangles": 168284,
+      "vertices": 84668,
+      "lantern_center_m": [
+        0.07000000029802322,
+        0.34546327590942383,
+        0.6740000247955322
+      ],
+      "material_slots": [
+        "Cloth",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Leather",
+        "Canvas"
+      ],
+      "uv0": {
+        "layer": "UV0_Tile1m",
+        "purpose": "surface textures, tiling permitted",
+        "metres_per_uv_unit_approx": 1,
+        "surface_area_m2": 6.128813078113012,
+        "normalized_uv_area": 6.128813078113013,
+        "texture_0254m_repeat_multiplier": 3.937007874015748
+      },
+      "pose": "slight forward lean; relaxed elbows; right hand lantern",
+      "skeletal_mesh": "SK_Intro_Protagonist.fbx",
+      "rig": "SK_Intro_Protagonist_Rig",
+      "animations": [
+        {
+          "name": "A_Intro_Protagonist_Walk",
+          "file": "A_Intro_Protagonist_Walk.fbx",
+          "duration_seconds": 1.4,
+          "frames": [
+            1,
+            43
+          ],
+          "fps": 30,
+          "loop": true,
+          "root_motion": false
+        },
+        {
+          "name": "A_Intro_Protagonist_Idle",
+          "file": "A_Intro_Protagonist_Idle.fbx",
+          "duration_seconds": 2.8,
+          "frames": [
+            1,
+            85
+          ],
+          "fps": 30,
+          "loop": true,
+          "root_motion": false
+        }
+      ],
+      "root_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.7785543670179322,
+      "capsule_radius_cm": 34,
+      "capsule_half_height_cm": 90,
+      "lantern_bone": "lantern_R",
+      "lantern_light_bone": "lamp_light_R",
+      "lantern_light_bone_offset_m": [
+        0,
+        0,
+        0
+      ],
+      "lantern_light_note": "Attach the point light directly to lamp_light_L/R at zero offset; this bone is at the glass centre.",
+      "walk_cycle_seconds": 1.4,
+      "nominal_walk_speed_cm_s": 51.4
+    },
+    {
+      "name": "SK_Intro_Companion",
+      "fbx": "SK_Intro_Companion.fbx",
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "placement_baked_m": [
+        0,
+        0,
+        0
+      ],
+      "yaw_baked_deg": 0,
+      "bounds_m": [
+        [
+          -0.3163682818412781,
+          -0.3941577970981598,
+          0.0010000000474974513
+        ],
+        [
+          0.22807833552360535,
+          0.3968748152256012,
+          1.7795543670654297
+        ]
+      ],
+      "triangles": 170156,
+      "vertices": 85572,
+      "lantern_center_m": [
+        0.07000000029802322,
+        -0.336536705493927,
+        0.6740000247955322
+      ],
+      "material_slots": [
+        "Cloth",
+        "DarkSteel",
+        "Rust",
+        "Amber",
+        "Leather",
+        "Canvas"
+      ],
+      "uv0": {
+        "layer": "UV0_Tile1m",
+        "purpose": "surface textures, tiling permitted",
+        "metres_per_uv_unit_approx": 1,
+        "surface_area_m2": 6.134581615420814,
+        "normalized_uv_area": 6.134581615420814,
+        "texture_0254m_repeat_multiplier": 3.937007874015748
+      },
+      "pose": "slight forward lean; relaxed elbows; right hand lantern",
+      "skeletal_mesh": "SK_Intro_Companion.fbx",
+      "rig": "SK_Intro_Companion_Rig",
+      "animations": [
+        {
+          "name": "A_Intro_Companion_Walk",
+          "file": "A_Intro_Companion_Walk.fbx",
+          "duration_seconds": 1.4,
+          "frames": [
+            1,
+            43
+          ],
+          "fps": 30,
+          "loop": true,
+          "root_motion": false
+        },
+        {
+          "name": "A_Intro_Companion_Idle",
+          "file": "A_Intro_Companion_Idle.fbx",
+          "duration_seconds": 2.8,
+          "frames": [
+            1,
+            85
+          ],
+          "fps": 30,
+          "loop": true,
+          "root_motion": false
+        },
+        {
+          "name": "A_Intro_Companion_StopSignal",
+          "file": "A_Intro_Companion_StopSignal.fbx",
+          "duration_seconds": 3.0,
+          "frames": [
+            1,
+            91
+          ],
+          "fps": 30,
+          "loop": false,
+          "root_motion": false
+        },
+        {
+          "name": "A_Intro_Companion_SignalHold",
+          "file": "A_Intro_Companion_SignalHold.fbx",
+          "duration_seconds": 2.8,
+          "frames": [
+            1,
+            85
+          ],
+          "fps": 30,
+          "loop": true,
+          "root_motion": false
+        }
+      ],
+      "root_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.7785543670179322,
+      "capsule_radius_cm": 34,
+      "capsule_half_height_cm": 90,
+      "lantern_bone": "lantern_L",
+      "lantern_light_bone": "lamp_light_L",
+      "lantern_light_bone_offset_m": [
+        0,
+        0,
+        0
+      ],
+      "lantern_light_note": "Attach the point light directly to lamp_light_L/R at zero offset; this bone is at the glass centre.",
+      "walk_cycle_seconds": 1.4,
+      "nominal_walk_speed_cm_s": 51.4
+    }
+  ],
+  "limitations": [
+    "Procedural prototype animation, no motion capture or cloth simulation.",
+    "Closed long coat uses two secondary bones; extreme poses are outside its intended range.",
+    "All clips in place; translate character actor at the documented walking speed.",
+    "StopSignal begins from neutral feet and should be blended in over 0.2 seconds when possible."
+  ]
+}

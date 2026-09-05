@@ -1,0 +1,19 @@
+/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/build_surface_v2.py:21: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m=bpy.data.materials.new(name);m.diffuse_color=color;m.use_nodes=True
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/SM_SurfaceV2_BrokenStoneDeck.fbx'
+export finished in 0.2159 sec.
+EXPORTED {"name": "SM_SurfaceV2_BrokenStoneDeck", "file": "SM_SurfaceV2_BrokenStoneDeck.fbx", "vertices": 56682, "triangles": 111636, "origin_m": [0, 0, 0], "bounds_m": {"min": [-1.997877, -1.469312, -0.086986], "max": [24.000292, 9.463969, -0.004074]}, "material_slots": ["WetStone", "Debris", "DarkSteel"], "sha256": "318b3f84735388d5caed0e10ee47f6f62e064936f17ca5a8f036b4581372d9a9", "uv_metres_per_unit": 1, "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/SM_SurfaceV2_MortarAndDebris.fbx'
+export finished in 0.0355 sec.
+EXPORTED {"name": "SM_SurfaceV2_MortarAndDebris", "file": "SM_SurfaceV2_MortarAndDebris.fbx", "vertices": 10577, "triangles": 19360, "origin_m": [0, 0, 0], "bounds_m": {"min": [-2.0, -1.507912, -0.059123], "max": [24.011549, 9.474998, 0.021123]}, "material_slots": ["WetStone", "Debris", "DarkSteel"], "sha256": "d48abe8efd32ab980ab8dcd88eae47fe0fb8ea977305100f4af09c046fb4a5ae", "uv_metres_per_unit": 1, "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."}
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/SurfaceV2/SM_SurfaceV2_SteelRepairs.fbx'
+export finished in 0.0041 sec.
+EXPORTED {"name": "SM_SurfaceV2_SteelRepairs", "file": "SM_SurfaceV2_SteelRepairs.fbx", "vertices": 120, "triangles": 204, "origin_m": [0, 0, 0], "bounds_m": {"min": [1.874908, -0.770746, -0.024], "max": [16.406458, 6.473417, -0.006]}, "material_slots": ["WetStone", "Debris", "DarkSteel"], "sha256": "36c85d163f4d7ec0a95102535f81d9f4cf8560f29dce16cb4243bf0617ad564d", "uv_metres_per_unit": 1, "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."}
+信息: 已另存为 "AshWell_SurfaceV2_Source.blend"
+COMPLETE {"stones": 432, "chips": 296, "triangles": 131200}
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

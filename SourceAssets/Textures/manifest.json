@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "provider": "Poly Haven",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "downloaded_at_utc": "2026-09-05T06:23:00.912116+00:00",
+  "path_base": "this manifest directory",
+  "dimensions_note": "Poly Haven API dimensions are millimeters; tile_size_m stores meters. Source pages confirm 1.5m, 2.2m, 3m widths.",
+  "api_credit": "Powered by Poly Haven",
+  "materials": [
+    {
+      "id": "rock_01",
+      "name": "Rock 01",
+      "material_name": "M_Rock",
+      "source_page": "https://polyhaven.com/a/rock_01",
+      "license": "CC0-1.0",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "tile_size_m": [
+        1.5,
+        1.5
+      ],
+      "textures": {
+        "base_color": {
+          "path": "rock_01/rock_01_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/rock_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_01/rock_01_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 3020379,
+          "source_md5": "fd84a894b55e56b17bdfdeec99277f92",
+          "size_bytes": 3020379,
+          "sha256": "fe9013368539b5604602e64bfa48bef1a2a4c452fcb6894868fb556d0b14501c",
+          "md5": "fd84a894b55e56b17bdfdeec99277f92",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "rock_01/rock_01_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/rock_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rock_01/rock_01_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 1772336,
+          "source_md5": "cdaa2b58562517340a9c9d00757cb71d",
+          "size_bytes": 1772336,
+          "sha256": "fad2e7353b9af032a36d394d33b23154ec7bce3371f9e9436cf318c5f863d64d",
+          "md5": "cdaa2b58562517340a9c9d00757cb71d",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "rock_01/rock_01_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/rock_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/rock_01/rock_01_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 7379401,
+          "source_md5": "312f5ec5e0498b52c2841ebf41b5b236",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 7379401,
+          "sha256": "e75062267abe1ae9d3792d4a2667f893a1a952dd0c59274a13fb3d348ca97a3a",
+          "md5": "312f5ec5e0498b52c2841ebf41b5b236",
+          "verified_dimensions": true
+        }
+      },
+      "metallic_default": 0.0
+    },
+    {
+      "id": "rust_coarse_01",
+      "name": "Rust Coarse 01",
+      "material_name": "M_Rust",
+      "source_page": "https://polyhaven.com/a/rust_coarse_01",
+      "license": "CC0-1.0",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "tile_size_m": [
+        2.2,
+        2.2
+      ],
+      "textures": {
+        "base_color": {
+          "path": "rust_coarse_01/rust_coarse_01_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/rust_coarse_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rust_coarse_01/rust_coarse_01_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 3519719,
+          "source_md5": "c1f3d0f3e8ea08bfed17bd27a5bb4a45",
+          "size_bytes": 3519719,
+          "sha256": "5b8801674fa53ff1b6f7853300f50aa7a1b31e69278554803bd957fe9fa7e392",
+          "md5": "c1f3d0f3e8ea08bfed17bd27a5bb4a45",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "rust_coarse_01/rust_coarse_01_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/rust_coarse_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rust_coarse_01/rust_coarse_01_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 2845362,
+          "source_md5": "10a240a8a6e841e9667497377df90f72",
+          "size_bytes": 2845362,
+          "sha256": "652eaa2e668c4d24b038716e01c460e6614429634f67ddbcd7f9593296a24885",
+          "md5": "10a240a8a6e841e9667497377df90f72",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "rust_coarse_01/rust_coarse_01_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/rust_coarse_01",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/rust_coarse_01/rust_coarse_01_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 22604420,
+          "source_md5": "cc3189c164d9a35c44af4dea82119e1b",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 22604420,
+          "sha256": "9f8e305588fe98ea3f9d4ad48d751db8abaf4136eb0854519a53d1df730d082c",
+          "md5": "cc3189c164d9a35c44af4dea82119e1b",
+          "verified_dimensions": true
+        }
+      },
+      "metallic_default": 0.0
+    },
+    {
+      "id": "concrete_floor_worn_001",
+      "name": "Concrete Floor Worn 001",
+      "material_name": "M_Concrete",
+      "source_page": "https://polyhaven.com/a/concrete_floor_worn_001",
+      "license": "CC0-1.0",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "tile_size_m": [
+        3.0,
+        3.0
+      ],
+      "textures": {
+        "base_color": {
+          "path": "concrete_floor_worn_001/concrete_floor_worn_001_diff_2k.jpg",
+          "category": "base_color",
+          "source_page": "https://polyhaven.com/a/concrete_floor_worn_001",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_diff_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": true,
+          "expected_size_bytes": 482906,
+          "source_md5": "6a3645f19f2ac4b7f60f43419c5d09ec",
+          "size_bytes": 482906,
+          "sha256": "e29b45cdcd6d02fae3c087c456196ffa750779a9b62e7071aa3831dc322a0cc4",
+          "md5": "6a3645f19f2ac4b7f60f43419c5d09ec",
+          "verified_dimensions": true
+        },
+        "roughness": {
+          "path": "concrete_floor_worn_001/concrete_floor_worn_001_rough_2k.jpg",
+          "category": "roughness",
+          "source_page": "https://polyhaven.com/a/concrete_floor_worn_001",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_rough_2k.jpg",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 735249,
+          "source_md5": "169cac76d6499d7d70d1dbb237fcc976",
+          "size_bytes": 735249,
+          "sha256": "b904992f0d75da2c41edf832bbb838622cca076f48f7913065a152c3b640690e",
+          "md5": "169cac76d6499d7d70d1dbb237fcc976",
+          "verified_dimensions": true
+        },
+        "normal": {
+          "path": "concrete_floor_worn_001/concrete_floor_worn_001_nor_dx_2k.png",
+          "category": "normal",
+          "source_page": "https://polyhaven.com/a/concrete_floor_worn_001",
+          "source_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/concrete_floor_worn_001/concrete_floor_worn_001_nor_dx_2k.png",
+          "license": "CC0-1.0",
+          "resolution": [
+            2048,
+            2048
+          ],
+          "srgb": false,
+          "expected_size_bytes": 22874193,
+          "source_md5": "2a43c19cc282d806786705c1632a57e8",
+          "normal_convention": "DirectX",
+          "flip_green_channel": false,
+          "size_bytes": 22874193,
+          "sha256": "56a04b667b3995f649a6dc778919e2be42a64a45961a95ebceba99f24cd54463",
+          "md5": "2a43c19cc282d806786705c1632a57e8",
+          "verified_dimensions": true
+        }
+      },
+      "metallic_default": 0.0
+    }
+  ],
+  "total_texture_bytes": 65233965,
+  "validation": "All downloaded images passed API byte size and MD5 checks, image signature checks, and macOS sips 2048x2048 decoding."
+}

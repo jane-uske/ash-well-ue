@@ -1,0 +1,196 @@
+{
+  "schema_version": 2,
+  "generator": "build_surface_v2.py",
+  "authorship": "Original procedural geometry generated for Ash Well; no downloaded meshes.",
+  "texture_manifest": "texture_manifest.json",
+  "source_units": "metres",
+  "source_axes": {
+    "forward": "+X",
+    "right": "+Y",
+    "up": "+Z"
+  },
+  "route": "Same route(t) as Geometry/build_environment.py; t=4..32, centreline x=-2..24, width=2.94m inside existing 3m edge structure.",
+  "material_slots": [
+    "WetStone",
+    "Debris",
+    "DarkSteel"
+  ],
+  "recommended_material_bindings": {
+    "WetStone": {
+      "texture_material": "WetStone",
+      "uv_multiplier": 0.5,
+      "base_color_desaturation": 0.8,
+      "base_color_multiplier": [
+        0.42,
+        0.46,
+        0.49
+      ],
+      "metallic": 0,
+      "roughness_range": [
+        0.26,
+        0.7
+      ],
+      "normal_strength": 0.65,
+      "note": "Vertex RGB supplies subtle slab variation; vertex alpha optional wetness. Avoid uniform mirror roughness."
+    },
+    "Debris": {
+      "texture_material": "WetStone",
+      "uv_multiplier": 0.65,
+      "base_color_desaturation": 0.85,
+      "base_color_multiplier": [
+        0.22,
+        0.24,
+        0.23
+      ],
+      "metallic": 0,
+      "roughness": 0.76,
+      "normal_strength": 0.45
+    },
+    "DarkSteel": {
+      "texture_material": "OldSteel",
+      "uv_multiplier": 0.5,
+      "base_color_desaturation": 0.7,
+      "base_color_multiplier": [
+        0.3,
+        0.32,
+        0.34
+      ],
+      "metallic": "Use blue channel of ARM texture",
+      "roughness_range": [
+        0.42,
+        0.82
+      ]
+    }
+  },
+  "import": {
+    "place_all_actors_at": [
+      0,
+      0,
+      0
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "scale": [
+      1,
+      1,
+      1
+    ],
+    "convert_scene_unit": true,
+    "mesh_origin_m": [
+      0,
+      0,
+      0
+    ],
+    "parent_handles_y_mirror": true,
+    "fbx_axis_forward": "-Y",
+    "fbx_axis_up": "Z",
+    "vertex_color_import": "REPLACE",
+    "replace_old_actor": "SM_WalkwayDeck only; retain edge beams, rails and truss."
+  },
+  "stone_pieces": 432,
+  "loose_chips": 296,
+  "slab_surface_range_m": [
+    -0.034802,
+    -0.004074
+  ],
+  "standing_areas": "Around protagonist x=0,y=-0.6 and companion x=7,y=-0.4 slabs remain at/below z=-0.005; no upward actor translation required.",
+  "assets": [
+    {
+      "name": "SM_SurfaceV2_BrokenStoneDeck",
+      "file": "SM_SurfaceV2_BrokenStoneDeck.fbx",
+      "vertices": 56682,
+      "triangles": 111636,
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "bounds_m": {
+        "min": [
+          -1.997877,
+          -1.469312,
+          -0.086986
+        ],
+        "max": [
+          24.000292,
+          9.463969,
+          -0.004074
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "sha256": "318b3f84735388d5caed0e10ee47f6f62e064936f17ca5a8f036b4581372d9a9",
+      "uv_metres_per_unit": 1,
+      "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."
+    },
+    {
+      "name": "SM_SurfaceV2_MortarAndDebris",
+      "file": "SM_SurfaceV2_MortarAndDebris.fbx",
+      "vertices": 10577,
+      "triangles": 19360,
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "bounds_m": {
+        "min": [
+          -2.0,
+          -1.507912,
+          -0.059123
+        ],
+        "max": [
+          24.011549,
+          9.474998,
+          0.021123
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "sha256": "d48abe8efd32ab980ab8dcd88eae47fe0fb8ea977305100f4af09c046fb4a5ae",
+      "uv_metres_per_unit": 1,
+      "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."
+    },
+    {
+      "name": "SM_SurfaceV2_SteelRepairs",
+      "file": "SM_SurfaceV2_SteelRepairs.fbx",
+      "vertices": 120,
+      "triangles": 204,
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "bounds_m": {
+        "min": [
+          1.874908,
+          -0.770746,
+          -0.024
+        ],
+        "max": [
+          16.406458,
+          6.473417,
+          -0.006
+        ]
+      },
+      "material_slots": [
+        "WetStone",
+        "Debris",
+        "DarkSteel"
+      ],
+      "sha256": "36c85d163f4d7ec0a95102535f81d9f4cf8560f29dce16cb4243bf0617ad564d",
+      "uv_metres_per_unit": 1,
+      "vertex_color": "RGB = restrained stone value variation, A = wetness amount (0..1)."
+    }
+  ],
+  "total_triangles": 131200
+}

@@ -1,0 +1,21 @@
+00:00.465  blend            | Read blend: "/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/IntroCharacters/IntroCharacters.blend"
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/A_Combat_Protagonist_Attack.fbx'
+export finished in 0.0333 sec.
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/A_Combat_Protagonist_Dodge.fbx'
+export finished in 0.0259 sec.
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/A_Combat_Protagonist_Hit.fbx'
+export finished in 0.0217 sec.
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/A_Combat_Protagonist_Death.fbx'
+export finished in 0.0406 sec.
+
+FBX export starting... '/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/A_Combat_Protagonist_CombatWalk.fbx'
+export finished in 0.0259 sec.
+信息: 已另存为 "CombatAnimations.blend"
+COMBAT_ANIMATIONS_EXPORTED [{"name": "A_Combat_Protagonist_Attack", "file": "A_Combat_Protagonist_Attack.fbx", "duration_seconds": 0.8333333333333334, "fps": 60, "frames": [1, 51], "root_motion": false, "loop": false, "sha256": "304cca9c71a9c1a16ac46ae4b0ebbd22b3a6b2554798f814da40019284552693"}, {"name": "A_Combat_Protagonist_Dodge", "file": "A_Combat_Protagonist_Dodge.fbx", "duration_seconds": 0.5833333333333334, "fps": 60, "frames": [1, 36], "root_motion": false, "loop": false, "sha256": "c80dad305d20387bb8fcde6b4fecfc6b0e2bc4e84d3f7f012918e098d98c3296"}, {"name": "A_Combat_Protagonist_Hit", "file": "A_Combat_Protagonist_Hit.fbx", "duration_seconds": 0.45, "fps": 60, "frames": [1, 28], "root_motion": false, "loop": false, "sha256": "9aeebfa4142c0cb7c89b55b1086e92d641ba25cc8d9f8d19c9a9af0c8224b79b"}, {"name": "A_Combat_Protagonist_Death", "file": "A_Combat_Protagonist_Death.fbx", "duration_seconds": 1.3, "fps": 60, "frames": [1, 79], "root_motion": false, "loop": false, "sha256": "06b4594351877a423c613fff66ac124d00acb30c131b54aff82c303ec7ac3eb9"}, {"name": "A_Combat_Protagonist_CombatWalk", "file": "A_Combat_Protagonist_CombatWalk.fbx", "duration_seconds": 0.6, "fps": 60, "frames": [1, 37], "root_motion": false, "loop": true, "sha256": "cce2c732327fae75ac65526ce149ee72bfc8c7cae8640c649751c8a3a774cb76"}]
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

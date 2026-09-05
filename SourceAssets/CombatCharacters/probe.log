@@ -1,0 +1,9 @@
+00:00.499  blend            | Read blend: "/Users/rare/dev/ash-well/unreal/AshWell/SourceAssets/CombatCharacters/CombatAnimations.blend"
+RIG POSE A_Combat_Protagonist_Attack <bpy_struct, ActionSlot("OBSK_Intro_Protagonist_Rig") at 0x772ea1b5e0>
+MOD []
+ACTION [('A_Combat_Protagonist_Attack', 1), ('A_Combat_Protagonist_CombatWalk', 1), ('A_Combat_Protagonist_Death', 1), ('A_Combat_Protagonist_Dodge', 1), ('A_Combat_Protagonist_Hit', 1), ('A_Intro_Companion_Idle', 1), ('A_Intro_Companion_SignalHold', 1), ('A_Intro_Companion_StopSignal', 1), ('A_Intro_Companion_Walk', 1), ('A_Intro_Protagonist_Idle', 1), ('A_Intro_Protagonist_Walk', 1)]
+PB (-0.10000011324882507, -0.47999998927116394, 1.649999976158142)
+PB25 (0.2901172637939453, -0.3293749988079071, 1.31320059299469)
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit
