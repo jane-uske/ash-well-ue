@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "zero-stamina light attacks, charged heavy/dodge and insufficient-resource rejection",
+      "passed": true
+    },
+    {
+      "check": "locomotion Idle",
+      "passed": true
+    },
+    {
+      "check": "human scale and material Idle",
+      "passed": true
+    },
+    {
+      "check": "locomotion Walk",
+      "passed": true
+    },
+    {
+      "check": "human scale and material Walk",
+      "passed": true
+    },
+    {
+      "check": "locomotion Run",
+      "passed": true
+    },
+    {
+      "check": "human scale and material Run",
+      "passed": true
+    },
+    {
+      "check": "locomotion Sprint",
+      "passed": true
+    },
+    {
+      "check": "human scale and material Sprint",
+      "passed": true
+    },
+    {
+      "check": "locomotion Guard",
+      "passed": true
+    },
+    {
+      "check": "human scale and material Guard",
+      "passed": true
+    },
+    {
+      "check": "locomotion CombatWalk",
+      "passed": true
+    },
+    {
+      "check": "human scale and material CombatWalk",
+      "passed": true
+    },
+    {
+      "check": "blade attached at pose 0",
+      "passed": true
+    },
+    {
+      "check": "blade attached at pose 1",
+      "passed": true
+    },
+    {
+      "check": "blade attached at pose 2",
+      "passed": true
+    },
+    {
+      "check": "blade attached at pose 3",
+      "passed": true
+    },
+    {
+      "check": "blade attached at pose 4",
+      "passed": true
+    },
+    {
+      "check": "battle_light",
+      "passed": true
+    },
+    {
+      "check": "battle_heavy",
+      "passed": true
+    },
+    {
+      "check": "battle_miss",
+      "passed": true
+    },
+    {
+      "check": "battle_slam",
+      "passed": true
+    },
+    {
+      "check": "battle_kick",
+      "passed": true
+    },
+    {
+      "check": "battle_charge",
+      "passed": true
+    },
+    {
+      "check": "battle_dodge_slam",
+      "passed": true
+    },
+    {
+      "check": "battle_dodge_kick",
+      "passed": true
+    },
+    {
+      "check": "battle_dodge_charge",
+      "passed": true
+    },
+    {
+      "check": "battle_camera",
+      "passed": true
+    },
+    {
+      "check": "ending",
+      "passed": true
+    }
+  ],
+  "scope": "Actual runtime behaviour and pose-scale/attachment telemetry. Requires screenshot/video review for visual quality. No human playtest or long performance test claim."
+}

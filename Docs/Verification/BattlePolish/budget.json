@@ -1,0 +1,9 @@
+{
+  "authorized_credit_limit": 400,
+  "balance_before": 2360,
+  "balance_after": 2340,
+  "credits_spent": 20,
+  "rigging_tasks": 1,
+  "animation_tasks": 5,
+  "credential_session_closed": true
+}

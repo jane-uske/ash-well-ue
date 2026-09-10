@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": {
+    "victory": true,
+    "completed": true,
+    "ending": true,
+    "record": true,
+    "phase_two": true,
+    "new_actions": true,
+    "speed_normal": true
+  }
+}

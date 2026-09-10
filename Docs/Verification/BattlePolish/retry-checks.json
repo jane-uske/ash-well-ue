@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": {
+    "death": true,
+    "fresh_health": true,
+    "boss_reset": true,
+    "speed_normal": true,
+    "new_assets": true
+  }
+}

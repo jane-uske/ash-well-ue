@@ -1,0 +1,4 @@
+{"case": "sword_pose", "passed": true, "checks": {"complete": true, "new_assets": true, "speed_restored": true}, "health": 100, "enemy_health": 800, "duration": 8.502902704232838}
+{"case": "sword_locomotion", "passed": true, "checks": {"complete": true, "new_assets": true, "speed_restored": true}, "health": 100, "enemy_health": 800, "duration": 11.80848092486849}
+{"case": "battle_camera", "passed": true, "checks": {"complete": true, "new_assets": true, "speed_restored": true, "five_positions": true, "no_camera_penetration": true}, "health": 100, "enemy_health": 800, "duration": 7.00175503914943}
+{"case": "ending", "passed": true, "checks": {"complete": true, "new_assets": true, "speed_restored": true}, "health": 100, "enemy_health": 0, "duration": 19.0173590843915}

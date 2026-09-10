@@ -1,0 +1,34 @@
+Setting up bundled DotNet SDK
+/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/ThirdParty/DotNet/10.0/mac-arm64
+Running dotnet Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.dll AshWellEditor Mac Development /Users/rare/dev/ash-well-ue/AshWell.uproject -waitmutex -NoHotReload
+Log file: /Users/rare/Library/Application Support/Epic/UnrealBuildTool/Log.txt
+Determining max actions to execute in parallel (18 physical cores, 18 logical cores)
+  Executing up to 18 processes, one per physical core
+Using 'git status' to determine working set for adaptive non-unity build (/Users/rare/dev/ash-well-ue).
+UbaServer - Listening on 0.0.0.0:1345
+Invalidating makefile for AshWellEditor (DefaultEngine.ini modified)
+Compiling with non-standard Xcode: /Applications/Xcode-beta.app/Contents/Developer
+Compiling with Mac SDK 27.0, minimum Target OS version 14.00
+Building AshWellEditor...
+===== Toolchain Information =====
+Using Clang compiler 21.1.6 (/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++)
+  Apple clang version 21.0.0 (clang-2100.3.23.3) Target: arm64-apple-darwin27.0.0 Thread model: posix InstalledDir: /Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+Using Clang archiver (/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool)
+  Apple clang version 21.0.0 (clang-2100.3.23.3) Target: arm64-apple-darwin27.0.0 Thread model: posix InstalledDir: /Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[Adaptive Build] Excluded from AshWell unity file: AshWellIntroGameMode.cpp, AshWellWarden.cpp, AshWellIntroCharacter.cpp, AshWellAnimInstance.cpp, AshWellCombatArena.cpp, AshWellWardenVisual.cpp, AshWellSession.cpp, AshWellIntroHUD.cpp, AshWellCombatCharacter.cpp, AshWellChapterDirector.cpp, AshWellPolishQA.cpp, AshWellBattleFX.cpp
+=================================
+Using Unreal Build Accelerator local executor to run 2 action(s)
+  CPU 18 physical cores, 18 logical cores
+  Memory 128 GB physical, 102.19 GB/128 GB committed
+  UBA Storage capacity 40 GB
+[1/2] Compile [Apple] AshWellCombatCharacter.cpp
+[2/2] Link [Apple] libUnrealEditor-AshWell.dylib
+
+Total time in Unreal Build Accelerator local executor: 6.78 seconds
+Output binary: /Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor
+Deploying AshWellEditor Mac Development...
+Deploying now!
+
+Result: Succeeded
+Total execution time: 9.82 seconds
+Trace written to file /Users/rare/Library/Application Support/Epic/UnrealBuildTool/Trace.uba with size 4.6kb

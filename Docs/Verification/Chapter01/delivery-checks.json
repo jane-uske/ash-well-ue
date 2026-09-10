@@ -1,0 +1,8 @@
+{
+  "map_exists": true,
+  "source_blend_exists": true,
+  "mesh_files": 10,
+  "route_passed": true,
+  "fight_ending_passed": true,
+  "player_rules_passed": true
+}

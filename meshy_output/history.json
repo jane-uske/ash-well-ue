@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "projects": [
+    {
+      "folder": "20260909_battle_motion_v01",
+      "prompt": "CC0 Quaternius motion carrier, no character redesign",
+      "task_type": "rigging",
+      "root_task_id": "01a086df-51a8-7630-aa72-8863b57b3ea5",
+      "created_at": "2026-09-10T00:15:10.866916",
+      "updated_at": "2026-09-10T00:15:10.870818",
+      "task_count": 6
+    },
+    {
+      "folder": "20260910_203249_ashwell-traveller-sword-v01_01a08b48",
+      "prompt": "",
+      "task_type": "image-to-3d",
+      "root_task_id": "01a08b48-d2d6-77fb-ab13-6a59677b3b0d",
+      "created_at": "2026-09-10T20:36:33.117986",
+      "updated_at": "2026-09-10T20:40:14.278633",
+      "task_count": 2
+    },
+    {
+      "folder": "20260910_224236_ashwell-hero-complete-motion_01a08bc5",
+      "prompt": "",
+      "task_type": "animation",
+      "root_task_id": "01a08bc5-4493-7264-9add-c51d7d481eef",
+      "created_at": "2026-09-10T22:42:36.944476",
+      "updated_at": "2026-09-10T22:44:08.275587",
+      "task_count": 14
+    }
+  ]
+}

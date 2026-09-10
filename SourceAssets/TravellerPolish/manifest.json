@@ -1,0 +1,13 @@
+{
+  "vertices": 7158,
+  "triangles": 14304,
+  "source": "SK_TravellerCloak.003",
+  "export": "/Users/rare/dev/ash-well-ue/SourceAssets/TravellerPolish/SK_TravellerCloak.fbx",
+  "preserved": [
+    "body",
+    "skeleton proportions",
+    "animations",
+    "weapon",
+    "original cloak"
+  ]
+}

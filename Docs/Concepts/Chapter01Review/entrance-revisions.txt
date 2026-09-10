@@ -1,0 +1,33 @@
+v01 gear correction
+Precise costume correction of the FIRST attached environment image, using the SECOND attached character sheet as costume authority. Preserve the entire environment image pixel composition as closely as possible: same architecture, sky, cliffs, broken bridge, foreground pavement, light, camera and protagonist's size, head, stance and feet.
+
+Change ONLY the protagonist's asymmetric armor and sword carrying arrangement, which are currently mirror-reversed:
+We see the protagonist from behind. Therefore his anatomical LEFT is the image-viewer's LEFT. Put his sole iron shoulder pauldron on image-viewer's LEFT shoulder, matching the BACK panel of the character sheet. Remove armor from viewer-RIGHT shoulder, replacing with plain dark cloth.
+Put the sword hilt above his anatomical RIGHT shoulder, which is image-viewer's RIGHT in this back view. The scabbard must descend diagonally from upper RIGHT to lower LEFT across his back, exactly as in the character sheet BACK view. Remove the old reversed sword and old reversed straps fully; exactly one sheathed sword remains. Maintain realistic leather mounts, same simple sword and charcoal cloak. No other character or composition edits, no labels, no added text, no UI.
+
+v02 cleanliness
+Edit the attached AshWell entrance concept, preserving the exact camera, world layout, broken bridge gap, gate hall position, sinkhole, waterfall, and protagonist identity and correctly placed equipment.
+
+The user wants this image MUCH CLEANER. Reduce visual grime and clutter dramatically. Give it graceful, restrained ancient-fantasy art direction with clean readable forms and air, rather than dirty desaturated ruin textures.
+
+Stone architecture: large pale limestone blocks, subtle warm ivory-gray color, broad clean planes with restrained age and mild edge erosion. Remove almost all black streaks, muddy smears, crusts, random cracks, high-frequency surface noise and moss blankets. Retain the major broken bridge and missing architectural sections, but make the remaining masonry well-proportioned, dignified and legible. The age should come from the architectural form and controlled structural damage, not dirt over every surface.
+
+Ground: orderly broad stone paving, clearer grout lines, remove most scattered rubble, loose rocks, tangled weeds and foreground debris. Keep the walkable route visibly clean and composed. Reduce creeping vegetation to a few deliberately placed small green patches; retain selected upright trees as calm shapes. Remove the visually messy bare twig tangle in the left courtyard or simplify it to one graceful tree with sparse green leaves.
+
+Protagonist: same young man, same short black hair, anatomy and size, charcoal cloak, iron pauldron ONLY on his anatomical LEFT (viewer LEFT in back view), one sheathed sword hilt above RIGHT shoulder. Make cloak well-kept matte cloth with visible soft folds and a neat knee-length split hem, almost no tears or dangling threads, only tiny wear. Clean leather boots and straps, restrained dark iron, no caked dirt. Preserve modest traveler outfit and gear geometry.
+
+Lighting: open luminous pale afternoon light, slightly cooler clean air, soft atmospheric separation in the sinkhole, no dirty brown wash. Pale gold highlights at the destination hall, clear neutral midtones, gentle slate-blue distant depth. Keep controlled natural color, not oversaturated. Improve material separation and simplify micro-detail across the entire image. More elegant and tranquil, still monumental and mysterious.
+
+Do not add UI, labels, text, characters or new buildings. Do not change terrain connectivity. This is a targeted cleanliness/material/art-direction revision of this exact concept, not a new composition.
+
+v03 cinematic lighting
+Relight and rerender the attached exact AshWell environment concept with cinematic photographic realism. User feedback: the earlier version was too dirty; this clean version is far too bright and evenly lit, and they want cinema-quality imagery. Preserve the CLEAN well-defined architecture and uncluttered paving, but decisively change its exposure, light, materials and tonal structure.
+
+STRICT spatial and identity invariants: identical camera framing, protagonist pose, scale, silhouette and equipment sides; identical broken bridge gap, left stairs and arcade, destination gate hall, waterfall and deeper city; no composition redesign. Anatomical left pauldron is on viewer-left in this rear view; one sword hilt above viewer-right shoulder. Dark, maintained cloth cloak with intact hem. Do not add grime, rubble, fake symbols, UI or people.
+
+Lighting: a dense cool overcast afternoon with broken storm clouds and only one restrained opening in the clouds. The foreground and protagonist stand in soft cool shade, about 1 to 1.5 photographic stops lower exposure than the source, but retain fully readable cloth folds and stone detail. The opposite gate hall receives a narrow, soft, pale warm side-light across its doorway and a portion of the facade. Other walls must not all glow ivory. Make the sky subdued and cloud-heavy with detail, no brilliant blue sky, no midday sunshine. Window opening mildly luminous rather than glowing white. Use physically believable occlusion under arches and contact shadows. Deep, controlled negative fill shapes the near architecture. Atmospheric depth cool and subtle, not white fog filling the whole image. Separate near, mid and far in value without crushing blacks.
+
+Material rendering: achieve the visual finish of a carefully photographed live-action fantasy film environment, natural mineral detail, convincing stone mass, variable but restrained roughness, subtle broad weathering, believable leather and heavy wool, metallic shoulder armor reflecting the actual environment. No smooth cartoon surfaces, no plastic, no chalk-white uniform masonry. Keep stone clean neutral gray-beige, not dirty brown. Cleanliness means organized shapes and subtle surface detail, NOT bright exposure. Paving remains dry or only subtly satin, not glossy wet. Add no random cracks or grunge.
+
+Color and camera finish: subdued warm-neutral masonry against cool slate shadows, muted dark green vegetation, restrained filmic highlight rolloff, rich readable shadows, natural color response. No oversaturation, no HDR tone-mapped game screenshot appearance, no orange-teal filter, no bloom, no fake anamorphic flares, no heavy film grain, no soft-focus blur. Strong cinematic depth and realistic texture at normal viewing scale, natural sharpness rather than CG oversharpening. The mood is majestic, quiet, mysterious and slightly ominous. This is a concept image target, not evidence of a rendered game.
+

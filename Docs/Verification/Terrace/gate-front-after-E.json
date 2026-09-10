@@ -1,0 +1,7 @@
+{
+  "position": "<Struct 'Vector' (0x711295b120) {x: 1100.000000, y: 0.000000, z: 1690.150002}>",
+  "gate": "<Struct 'Vector' (0x711295b120) {x: 1300.000000, y: 0.000000, z: 1780.000000}>",
+  "open": false,
+  "distance": 219.255615234375,
+  "world": "/Game/AshWell/Terrace/UEDPIE_0_L_BrokenChainTerrace.L_BrokenChainTerrace"
+}

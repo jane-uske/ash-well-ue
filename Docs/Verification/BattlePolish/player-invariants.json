@@ -1,0 +1,95 @@
+{
+  "baseline": "65a681b7a9c8e0bdfc862a90c70bffd3815c1410",
+  "passed": true,
+  "checks": [
+    {
+      "check": "unchanged player ToggleLock",
+      "passed": true,
+      "baseline_sha256": "8c7a4e74c7919b4bdbe3a9c3ee647c4b3bdf57f97a4e6dec220486e5cd9ff060",
+      "current_sha256": "8c7a4e74c7919b4bdbe3a9c3ee647c4b3bdf57f97a4e6dec220486e5cd9ff060"
+    },
+    {
+      "check": "unchanged player IsInvulnerable",
+      "passed": true,
+      "baseline_sha256": "5d0488238317e80f1aa0cbded6ef3c9e9739bb4e84cd909f2dc89a04c15fa840",
+      "current_sha256": "5d0488238317e80f1aa0cbded6ef3c9e9739bb4e84cd909f2dc89a04c15fa840"
+    },
+    {
+      "check": "unchanged player InputDirection",
+      "passed": true,
+      "baseline_sha256": "ff3e5c26ced2eeb3676c837dcc0e03fe0021321d14641f40f45fe01cb76b1621",
+      "current_sha256": "ff3e5c26ced2eeb3676c837dcc0e03fe0021321d14641f40f45fe01cb76b1621"
+    },
+    {
+      "check": "unchanged player MoveForwardCombat",
+      "passed": true,
+      "baseline_sha256": "096d40c54365e8ae112a6f42be9a9612e5845cd589986835896cef867907dbd4",
+      "current_sha256": "096d40c54365e8ae112a6f42be9a9612e5845cd589986835896cef867907dbd4"
+    },
+    {
+      "check": "unchanged player MoveRightCombat",
+      "passed": true,
+      "baseline_sha256": "d0d145362d7828d4dd2c9a38c6189acd2a2f19f12058b2e4cc8fdaa80ea3b795",
+      "current_sha256": "d0d145362d7828d4dd2c9a38c6189acd2a2f19f12058b2e4cc8fdaa80ea3b795"
+    },
+    {
+      "check": "unchanged player SlowDown",
+      "passed": true,
+      "baseline_sha256": "e47d466ec0e97266609029929014a3dd3162155e2ba9a4edb8f691bb0ded5063",
+      "current_sha256": "e47d466ec0e97266609029929014a3dd3162155e2ba9a4edb8f691bb0ded5063"
+    },
+    {
+      "check": "unchanged player SlowUp",
+      "passed": true,
+      "baseline_sha256": "dee20bb7c7dd3f5cb72dd6fdde7a770806e692bf377d295f922d0aba319e06fe",
+      "current_sha256": "dee20bb7c7dd3f5cb72dd6fdde7a770806e692bf377d295f922d0aba319e06fe"
+    },
+    {
+      "check": "unchanged player IsDead",
+      "passed": true,
+      "baseline_sha256": "0ee0fb321bbf1b75ae340a9d0a356d0a8d59d726d531a22a3696afc18c5cb340",
+      "current_sha256": "0ee0fb321bbf1b75ae340a9d0a356d0a8d59d726d531a22a3696afc18c5cb340"
+    },
+    {
+      "check": "unchanged player HasWon",
+      "passed": true,
+      "baseline_sha256": "03d807d429a576f4e234553424ea3a2dc62c26972cc2d8bf53e638c601ff9236",
+      "current_sha256": "03d807d429a576f4e234553424ea3a2dc62c26972cc2d8bf53e638c601ff9236"
+    },
+    {
+      "check": "unchanged player ShouldUpdateLocomotion",
+      "passed": true,
+      "baseline_sha256": "9e183a24dc81a29d4ef6713bae98113fb7e4a84ab7cefd92bad5e580ae9f84a2",
+      "current_sha256": "9e183a24dc81a29d4ef6713bae98113fb7e4a84ab7cefd92bad5e580ae9f84a2"
+    },
+    {
+      "check": "retained Stamina+26*Dt",
+      "passed": true
+    },
+    {
+      "check": "retained StateTime>=.8333f",
+      "passed": true
+    },
+    {
+      "check": "retained StateTime>=.5833f",
+      "passed": true
+    },
+    {
+      "check": "retained StateTime>=.45f",
+      "passed": true
+    },
+    {
+      "check": "retained 570.f*FMath::Sin(FMath::Clamp(StateTime/.5833f,0.f,1.f)*PI)",
+      "passed": true
+    },
+    {
+      "check": "retained StateTime>=.23f&&StateTime<=.43f",
+      "passed": true
+    },
+    {
+      "check": "retained ActionDirection*(100*Dt)",
+      "passed": true
+    }
+  ],
+  "scope": "Unchanged input, invulnerability, locomotion and action timings. Attack/Dodge/UpdateAttack/TakeDamage now intentionally support Heavy and impact feedback; validate those through test_battle_runtime.py, not byte-identical legacy function bodies."
+}

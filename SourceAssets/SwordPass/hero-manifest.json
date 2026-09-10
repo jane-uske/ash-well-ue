@@ -1,0 +1,16 @@
+{
+  "source": "Meshy image-to-3d + auto-rig, derived from approved original traveller reference",
+  "skeleton": "/Game/AshWell/Intro/Characters/SK_Intro_Protagonist_Skeleton",
+  "body_triangles": 31198,
+  "cloak_triangles": 1664,
+  "images": [
+    "/Users/rare/dev/ash-well-ue/SourceAssets/SwordPass/T_Traveller_BaseColor.png",
+    "/Users/rare/dev/ash-well-ue/SourceAssets/SwordPass/T_Traveller_MR.png",
+    "/Users/rare/dev/ash-well-ue/SourceAssets/SwordPass/T_Traveller_Normal.png"
+  ],
+  "limitations": [
+    "Cloth is separately skinned, not simulated",
+    "Hand skin has no independent finger animation",
+    "Reusing existing skeleton proportions; extreme poses require visual review"
+  ]
+}

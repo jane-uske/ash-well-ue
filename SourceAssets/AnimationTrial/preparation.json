@@ -1,0 +1,10 @@
+{
+  "source": "Quaternius Universal Animation Library Standard",
+  "source_clip": "Sword_Attack",
+  "source_duration_seconds": 1.5333333333333332,
+  "export_duration_seconds": 1.5416666666666667,
+  "fps": 24,
+  "bones": 53,
+  "weapon_bone": "DEF-hand.R",
+  "note": "Sword slash repurposing experiment; not authored hammer motion or Warden retarget."
+}

@@ -1,0 +1,238 @@
+{
+  "passed": true,
+  "baseline": "65a681b7a9c8e0bdfc862a90c70bffd3815c1410",
+  "project": "/Users/rare/dev/ash-well-ue",
+  "check_count": 38,
+  "failures": [],
+  "checks": [
+    {
+      "check": "AAshWellWarden::Tick",
+      "passed": true,
+      "baseline_sha256": "b30922ac24d40abcdcb3f8e5578f48dce73c6a3ce9a344a6537c9e8269811abe",
+      "current_sha256": "b30922ac24d40abcdcb3f8e5578f48dce73c6a3ce9a344a6537c9e8269811abe"
+    },
+    {
+      "check": "AAshWellWarden::ChangeState",
+      "passed": true,
+      "baseline_sha256": "878b0ce683d216ca4d9ff7bdc942fe463090d80b7d701348faceeee22676aafd",
+      "current_sha256": "878b0ce683d216ca4d9ff7bdc942fe463090d80b7d701348faceeee22676aafd"
+    },
+    {
+      "check": "AAshWellWarden::TryStrike",
+      "passed": true,
+      "baseline_sha256": "f1e9fcaf850b0ad0fff472ae523c98d5792cca89394b380fcc17dd228a8c559b",
+      "current_sha256": "f1e9fcaf850b0ad0fff472ae523c98d5792cca89394b380fcc17dd228a8c559b"
+    },
+    {
+      "check": "AAshWellWarden::StepTowardTarget",
+      "passed": true,
+      "baseline_sha256": "a3642001a1b1ccdbd2684d8e2ebc78b76021fbd109176f97ea82f0769a2dd069",
+      "current_sha256": "a3642001a1b1ccdbd2684d8e2ebc78b76021fbd109176f97ea82f0769a2dd069"
+    },
+    {
+      "check": "AAshWellWarden::ReceiveMeleeHit",
+      "passed": true,
+      "baseline_sha256": "0c243f4a8b846a3f6c8d471f3935b15caef96aaa48c621c72dddb240b3c093bd",
+      "current_sha256": "0c243f4a8b846a3f6c8d471f3935b15caef96aaa48c621c72dddb240b3c093bd"
+    },
+    {
+      "check": "AAshWellWarden::GetAimPoint",
+      "passed": true,
+      "baseline_sha256": "09aaad05384cee0029460ec150b6ff9b30763d698d561a8059d0a0530cddce49",
+      "current_sha256": "09aaad05384cee0029460ec150b6ff9b30763d698d561a8059d0a0530cddce49"
+    },
+    {
+      "check": "AAshWellWarden::FaceTarget",
+      "passed": true,
+      "baseline_sha256": "832e155e70a4c5fbab6f95a5e41f17a61b34787805d42ee026ca486d922cb3ef",
+      "current_sha256": "832e155e70a4c5fbab6f95a5e41f17a61b34787805d42ee026ca486d922cb3ef"
+    },
+    {
+      "check": "AAshWellWarden::SetArenaBounds",
+      "passed": true,
+      "baseline_sha256": "7ac852b64cb86d85fde819bc133cceb4abd2c73810095210e9b63164ddeb0e82",
+      "current_sha256": "7ac852b64cb86d85fde819bc133cceb4abd2c73810095210e9b63164ddeb0e82"
+    },
+    {
+      "check": "AAshWellWarden::ActivateEncounter",
+      "passed": true,
+      "baseline_sha256": "e1ddad9b2526c5b21db2316bba0eff375a598ab17000f0a3ffb30d474055c7f0",
+      "current_sha256": "e1ddad9b2526c5b21db2316bba0eff375a598ab17000f0a3ffb30d474055c7f0"
+    },
+    {
+      "check": "AAshWellWarden::GetAttackProgress",
+      "passed": true,
+      "baseline_sha256": "7220e93e8b7ec3c2fc7ed166d5edf62b8239219e9244d2db80679a9f115664a3",
+      "current_sha256": "7220e93e8b7ec3c2fc7ed166d5edf62b8239219e9244d2db80679a9f115664a3"
+    },
+    {
+      "check": "AAshWellCombatCharacter::Attack",
+      "passed": true,
+      "baseline_sha256": "a20b481f30f1ebd514294845a0f185d4e231d613835937ba7ec1b7f908f0616b",
+      "current_sha256": "a20b481f30f1ebd514294845a0f185d4e231d613835937ba7ec1b7f908f0616b"
+    },
+    {
+      "check": "AAshWellCombatCharacter::Dodge",
+      "passed": true,
+      "baseline_sha256": "59f40ec40ab4275b8203eac130658f0852842b99f504235ce6f84129568b1af9",
+      "current_sha256": "59f40ec40ab4275b8203eac130658f0852842b99f504235ce6f84129568b1af9"
+    },
+    {
+      "check": "AAshWellCombatCharacter::ToggleLock",
+      "passed": true,
+      "baseline_sha256": "8c7a4e74c7919b4bdbe3a9c3ee647c4b3bdf57f97a4e6dec220486e5cd9ff060",
+      "current_sha256": "8c7a4e74c7919b4bdbe3a9c3ee647c4b3bdf57f97a4e6dec220486e5cd9ff060"
+    },
+    {
+      "check": "AAshWellCombatCharacter::UpdateAttack",
+      "passed": true,
+      "baseline_sha256": "7aef366dfcdd572b64f28ec12f372d27c02b5e673ccbdf485b704419fd83a8c6",
+      "current_sha256": "7aef366dfcdd572b64f28ec12f372d27c02b5e673ccbdf485b704419fd83a8c6"
+    },
+    {
+      "check": "AAshWellCombatCharacter::TakeDamage",
+      "passed": true,
+      "baseline_sha256": "2c06f0980a9090de42c9824b001ec20231c707939bc0e8646ee8d25b409b2741",
+      "current_sha256": "2c06f0980a9090de42c9824b001ec20231c707939bc0e8646ee8d25b409b2741"
+    },
+    {
+      "check": "AAshWellCombatCharacter::UpdateCamera",
+      "passed": true,
+      "baseline_sha256": "3954953286c5a4a1c69e87835f160e6c3f2605747fb4aa837a84e0ba85a2faee",
+      "current_sha256": "3954953286c5a4a1c69e87835f160e6c3f2605747fb4aa837a84e0ba85a2faee"
+    },
+    {
+      "check": "AAshWellCombatCharacter::IsInvulnerable",
+      "passed": true,
+      "baseline_sha256": "5d0488238317e80f1aa0cbded6ef3c9e9739bb4e84cd909f2dc89a04c15fa840",
+      "current_sha256": "5d0488238317e80f1aa0cbded6ef3c9e9739bb4e84cd909f2dc89a04c15fa840"
+    },
+    {
+      "check": "AAshWellCombatCharacter::SetAction",
+      "passed": true,
+      "baseline_sha256": "b2c3d5b730a21db814f3e76072b404f9bc7578643fe87cf7b145417463c2cf27",
+      "current_sha256": "b2c3d5b730a21db814f3e76072b404f9bc7578643fe87cf7b145417463c2cf27"
+    },
+    {
+      "check": "AAshWellCombatCharacter::Tick",
+      "passed": true,
+      "baseline_sha256": "45b7163d679d26146294d7881f6fc0dd1e1b846cb1e2d4c3e6b4abd8acf482bf",
+      "current_sha256": "45b7163d679d26146294d7881f6fc0dd1e1b846cb1e2d4c3e6b4abd8acf482bf"
+    },
+    {
+      "check": "AAshWellCombatCharacter::SetupPlayerInputComponent",
+      "passed": true,
+      "baseline_sha256": "bd4b642e5c96c3ec23ca8676de40358c4ed8802e75ce2fdd09cecb02b7d8e924",
+      "current_sha256": "bd4b642e5c96c3ec23ca8676de40358c4ed8802e75ce2fdd09cecb02b7d8e924"
+    },
+    {
+      "check": "AAshWellCombatCharacter::InputDirection",
+      "passed": true,
+      "baseline_sha256": "ff3e5c26ced2eeb3676c837dcc0e03fe0021321d14641f40f45fe01cb76b1621",
+      "current_sha256": "ff3e5c26ced2eeb3676c837dcc0e03fe0021321d14641f40f45fe01cb76b1621"
+    },
+    {
+      "check": "AAshWellCombatCharacter::MoveForwardCombat",
+      "passed": true,
+      "baseline_sha256": "096d40c54365e8ae112a6f42be9a9612e5845cd589986835896cef867907dbd4",
+      "current_sha256": "096d40c54365e8ae112a6f42be9a9612e5845cd589986835896cef867907dbd4"
+    },
+    {
+      "check": "AAshWellCombatCharacter::MoveRightCombat",
+      "passed": true,
+      "baseline_sha256": "d0d145362d7828d4dd2c9a38c6189acd2a2f19f12058b2e4cc8fdaa80ea3b795",
+      "current_sha256": "d0d145362d7828d4dd2c9a38c6189acd2a2f19f12058b2e4cc8fdaa80ea3b795"
+    },
+    {
+      "check": "AAshWellCombatCharacter::LookYawCombat",
+      "passed": true,
+      "baseline_sha256": "7b2dbbe33d3bd8825fcebfb908f3451821df5927e331df0e7277f1107325c125",
+      "current_sha256": "7b2dbbe33d3bd8825fcebfb908f3451821df5927e331df0e7277f1107325c125"
+    },
+    {
+      "check": "AAshWellCombatCharacter::LookPitchCombat",
+      "passed": true,
+      "baseline_sha256": "6657475eb0c55a08168aae51767d040241e7791a83b9d96d88ec8c35bdc42222",
+      "current_sha256": "6657475eb0c55a08168aae51767d040241e7791a83b9d96d88ec8c35bdc42222"
+    },
+    {
+      "check": "AAshWellCombatCharacter::SlowDown",
+      "passed": true,
+      "baseline_sha256": "e47d466ec0e97266609029929014a3dd3162155e2ba9a4edb8f691bb0ded5063",
+      "current_sha256": "e47d466ec0e97266609029929014a3dd3162155e2ba9a4edb8f691bb0ded5063"
+    },
+    {
+      "check": "AAshWellCombatCharacter::SlowUp",
+      "passed": true,
+      "baseline_sha256": "dee20bb7c7dd3f5cb72dd6fdde7a770806e692bf377d295f922d0aba319e06fe",
+      "current_sha256": "dee20bb7c7dd3f5cb72dd6fdde7a770806e692bf377d295f922d0aba319e06fe"
+    },
+    {
+      "check": "AAshWellCombatCharacter::Interact",
+      "passed": true,
+      "baseline_sha256": "2d784ca46e25a0bee713135ad761c113024c1526bdbbc7b711ece8b51eb043b7",
+      "current_sha256": "2d784ca46e25a0bee713135ad761c113024c1526bdbbc7b711ece8b51eb043b7"
+    },
+    {
+      "check": "AAshWellCombatCharacter::IsDead",
+      "passed": true,
+      "baseline_sha256": "0ee0fb321bbf1b75ae340a9d0a356d0a8d59d726d531a22a3696afc18c5cb340",
+      "current_sha256": "0ee0fb321bbf1b75ae340a9d0a356d0a8d59d726d531a22a3696afc18c5cb340"
+    },
+    {
+      "check": "AAshWellCombatCharacter::HasWon",
+      "passed": true,
+      "baseline_sha256": "03d807d429a576f4e234553424ea3a2dc62c26972cc2d8bf53e638c601ff9236",
+      "current_sha256": "03d807d429a576f4e234553424ea3a2dc62c26972cc2d8bf53e638c601ff9236"
+    },
+    {
+      "check": "AAshWellCombatCharacter::ShouldUpdateLocomotion",
+      "passed": true,
+      "baseline_sha256": "9e183a24dc81a29d4ef6713bae98113fb7e4a84ab7cefd92bad5e580ae9f84a2",
+      "current_sha256": "9e183a24dc81a29d4ef6713bae98113fb7e4a84ab7cefd92bad5e580ae9f84a2"
+    },
+    {
+      "check": "Warden constant MaximumHealth",
+      "passed": true,
+      "baseline_sha256": "659512d5740c284fca8ccca046cd343d3ee13325e728035e170c1e3f79bb607a",
+      "current_sha256": "659512d5740c284fca8ccca046cd343d3ee13325e728035e170c1e3f79bb607a"
+    },
+    {
+      "check": "Warden constant WindupSeconds",
+      "passed": true,
+      "baseline_sha256": "2e60825003d049bfaebd59c1d8b110fa2524361eeb44da612192b2d4b2975170",
+      "current_sha256": "2e60825003d049bfaebd59c1d8b110fa2524361eeb44da612192b2d4b2975170"
+    },
+    {
+      "check": "Warden constant StrikeSeconds",
+      "passed": true,
+      "baseline_sha256": "e369baabe016a90281a1b0d6f6363e02c0772c0a08d9473e3af613cd9ef8c149",
+      "current_sha256": "e369baabe016a90281a1b0d6f6363e02c0772c0a08d9473e3af613cd9ef8c149"
+    },
+    {
+      "check": "Warden constant RecoverySeconds",
+      "passed": true,
+      "baseline_sha256": "66ed6f0ba794cd2664990b35a5731f382c7795f42b95c53d02eb9c9f900c3aae",
+      "current_sha256": "66ed6f0ba794cd2664990b35a5731f382c7795f42b95c53d02eb9c9f900c3aae"
+    },
+    {
+      "check": "Warden constant AttackDamage",
+      "passed": true,
+      "baseline_sha256": "5aac71589d43838d30e4138ac17a8eec542adb96b3e6b34cccfc6e8d348fa87d",
+      "current_sha256": "5aac71589d43838d30e4138ac17a8eec542adb96b3e6b34cccfc6e8d348fa87d"
+    },
+    {
+      "check": "Warden constant WalkSpeed",
+      "passed": true,
+      "baseline_sha256": "88dc5614817b8f9d26ffb6d9179da761df421efcbd287ed449baea6755c6b7e6",
+      "current_sha256": "88dc5614817b8f9d26ffb6d9179da761df421efcbd287ed449baea6755c6b7e6"
+    },
+    {
+      "check": "Warden capsule creation/root/collision",
+      "passed": true,
+      "baseline_sha256": "d47c04d913f513e9487ccd24e16121c0f4012ebff8c4a5f8673da19ce4795fc9",
+      "current_sha256": "d47c04d913f513e9487ccd24e16121c0f4012ebff8c4a5f8673da19ce4795fc9"
+    }
+  ],
+  "scope": "Source invariants only; visual assets and actual runtime require separate verification."
+}

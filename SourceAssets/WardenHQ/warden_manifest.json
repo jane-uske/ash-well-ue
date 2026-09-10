@@ -1,0 +1,560 @@
+{
+  "source": "/Users/rare/dev/ash-well-local3d/results/warden-hq-v01/warden_pbr.glb",
+  "source_sha256": "a3ae115983235512a0665c5de5587f459df63387ba1b877c3e65e67d5834d12c",
+  "original_triangles": 249998,
+  "simplified_exterior_triangles": 162498,
+  "total_segment_triangles": 164389,
+  "coordinate_contract": "Blender inspection and FBX use RH centimeter coordinates, X forward and character right -Y. Unreal FBX importer performs mandatory RH-to-LH Y reflection; do not compensate it. Manifest joints_cm and bounds_cm use final UE LH centimeters, X forward, character right +Y, Z up. All origins zero. Import convert_scene=False,convert_scene_unit=False,import_uniform_scale=1,transform_vertex_to_absolute=True; component scale1.",
+  "fbx_export_handedness": "Export unchanged normalized RH mesh. Native UE import maps (x,y,z) to (x,-y,z), preserving approved visible handedness. No extra reflection or reversed winding at export.",
+  "source_to_ue": {
+    "source_front": "-Y",
+    "center_source_x": 0.105,
+    "source_feet_z": -0.8940808176994324,
+    "cm_per_source_unit": 143.30669732583596,
+    "mapping": "(-source.y, .105-source.x, source.z+.8940808176994324)*143.30669732583596"
+  },
+  "body_height_cm": 270,
+  "small_island_faces_reassigned_without_removal": 2809,
+  "joints_cm": {
+    "RightShoulder": [
+      -2.1496005058288574,
+      48.72427749633789,
+      205.5133819580078
+    ],
+    "RightElbow": [
+      2.1496005058288574,
+      59.4722785949707,
+      168.97018432617188
+    ],
+    "RightHand": [
+      8.025175094604492,
+      65.77777099609375,
+      117.09315490722656
+    ],
+    "LeftShoulder": [
+      -2.1496005058288574,
+      -47.29121017456055,
+      205.5133819580078
+    ],
+    "LeftElbow": [
+      2.1496005058288574,
+      -56.606143951416016,
+      168.97018432617188
+    ],
+    "LeftHand": [
+      8.025175094604492,
+      -61.33526611328125,
+      117.09315490722656
+    ],
+    "RightHip": [
+      -3.582667350769043,
+      24.362138748168945,
+      102.33256530761719
+    ],
+    "RightKnee": [
+      -2.5795204639434814,
+      30.094406127929688,
+      49.309085845947266
+    ],
+    "RightAnkle": [
+      0.7165334820747375,
+      31.52747344970703,
+      12.049344062805176
+    ],
+    "LeftHip": [
+      -3.582667350769043,
+      -32.2440071105957,
+      102.33256530761719
+    ],
+    "LeftKnee": [
+      -2.5795204639434814,
+      -33.67707443237305,
+      49.309085845947266
+    ],
+    "LeftAnkle": [
+      0.7165334820747375,
+      -33.67707443237305,
+      12.049344062805176
+    ],
+    "HammerGrip": [
+      8.025175094604492,
+      65.77777099609375,
+      117.09315490722656
+    ],
+    "HammerHead": [
+      4.299201011657715,
+      85.84071350097656,
+      13.912331581115723
+    ],
+    "HammerTip": [
+      6.448801517486572,
+      91.7162857055664,
+      -14.892314910888672
+    ]
+  },
+  "blender_rh_joints_cm": {
+    "RightShoulder": [
+      -2.1496005058288574,
+      -48.72427749633789,
+      205.5133819580078
+    ],
+    "RightElbow": [
+      2.1496005058288574,
+      -59.4722785949707,
+      168.97018432617188
+    ],
+    "RightHand": [
+      8.025175094604492,
+      -65.77777099609375,
+      117.09315490722656
+    ],
+    "LeftShoulder": [
+      -2.1496005058288574,
+      47.29121017456055,
+      205.5133819580078
+    ],
+    "LeftElbow": [
+      2.1496005058288574,
+      56.606143951416016,
+      168.97018432617188
+    ],
+    "LeftHand": [
+      8.025175094604492,
+      61.33526611328125,
+      117.09315490722656
+    ],
+    "RightHip": [
+      -3.582667350769043,
+      -24.362138748168945,
+      102.33256530761719
+    ],
+    "RightKnee": [
+      -2.5795204639434814,
+      -30.094406127929688,
+      49.309085845947266
+    ],
+    "RightAnkle": [
+      0.7165334820747375,
+      -31.52747344970703,
+      12.049344062805176
+    ],
+    "LeftHip": [
+      -3.582667350769043,
+      32.2440071105957,
+      102.33256530761719
+    ],
+    "LeftKnee": [
+      -2.5795204639434814,
+      33.67707443237305,
+      49.309085845947266
+    ],
+    "LeftAnkle": [
+      0.7165334820747375,
+      33.67707443237305,
+      12.049344062805176
+    ],
+    "HammerGrip": [
+      8.025175094604492,
+      -65.77777099609375,
+      117.09315490722656
+    ],
+    "HammerHead": [
+      4.299201011657715,
+      -85.84071350097656,
+      13.912331581115723
+    ],
+    "HammerTip": [
+      6.448801517486572,
+      -91.7162857055664,
+      -14.892314910888672
+    ]
+  },
+  "parts": {
+    "Hammer": {
+      "name": "SM_WardenHQ_Hammer",
+      "triangles": 10616,
+      "source_faces": 10616,
+      "cap_faces_before_triangulation": 0,
+      "bounds_cm": [
+        [
+          -2.114238739013672,
+          59.906864166259766,
+          -14.980358123779297
+        ],
+        [
+          50.349239349365234,
+          100.0096206665039,
+          108.67423248291016
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -2.114238739013672,
+          -100.0096206665039,
+          -14.980358123779297
+        ],
+        [
+          50.349239349365234,
+          -59.906864166259766,
+          108.67423248291016
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "RightForearm": {
+      "name": "SM_WardenHQ_RightForearm",
+      "triangles": 7116,
+      "source_faces": 7116,
+      "cap_faces_before_triangulation": 0,
+      "bounds_cm": [
+        [
+          -20.1099796295166,
+          42.9246940612793,
+          102.88285064697266
+        ],
+        [
+          19.29401969909668,
+          77.3130874633789,
+          171.56973266601562
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -20.1099796295166,
+          -77.3130874633789,
+          102.88285064697266
+        ],
+        [
+          19.29401969909668,
+          -42.9246940612793,
+          171.56973266601562
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "RightUpperArm": {
+      "name": "SM_WardenHQ_RightUpperArm",
+      "triangles": 4170,
+      "source_faces": 3943,
+      "cap_faces_before_triangulation": 2,
+      "bounds_cm": [
+        [
+          -23.79053497314453,
+          35.785552978515625,
+          166.3197021484375
+        ],
+        [
+          21.646419525146484,
+          74.80014038085938,
+          201.40077209472656
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -23.79053497314453,
+          -74.80014038085938,
+          166.3197021484375
+        ],
+        [
+          21.646419525146484,
+          -35.785552978515625,
+          201.40077209472656
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "Body": {
+      "name": "SM_WardenHQ_Body",
+      "triangles": 95060,
+      "source_faces": 94606,
+      "cap_faces_before_triangulation": 4,
+      "bounds_cm": [
+        [
+          -51.30858612060547,
+          -65.89873504638672,
+          45.22454833984375
+        ],
+        [
+          40.92556381225586,
+          68.03944396972656,
+          269.97998046875
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -51.30858612060547,
+          -68.03944396972656,
+          45.22454833984375
+        ],
+        [
+          40.92556381225586,
+          65.89873504638672,
+          269.97998046875
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "RightFoot": {
+      "name": "SM_WardenHQ_RightFoot",
+      "triangles": 2078,
+      "source_faces": 1978,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -19.629056930541992,
+          18.711727142333984,
+          -0.010762598365545273
+        ],
+        [
+          33.96491241455078,
+          54.643577575683594,
+          14.583106994628906
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -19.629056930541992,
+          -54.643577575683594,
+          -0.010762598365545273
+        ],
+        [
+          33.96491241455078,
+          -18.711727142333984,
+          14.583106994628906
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "RightShin": {
+      "name": "SM_WardenHQ_RightShin",
+      "triangles": 6564,
+      "source_faces": 6423,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -19.84891700744629,
+          10.367182731628418,
+          11.088696479797363
+        ],
+        [
+          32.37583541870117,
+          53.32319259643555,
+          49.773155212402344
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -19.84891700744629,
+          -53.32319259643555,
+          11.088696479797363
+        ],
+        [
+          32.37583541870117,
+          -10.367182731628418,
+          49.773155212402344
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "RightThigh": {
+      "name": "SM_WardenHQ_RightThigh",
+      "triangles": 10847,
+      "source_faces": 10683,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -21.209991455078125,
+          1.2650361061096191,
+          43.07579803466797
+        ],
+        [
+          21.534086227416992,
+          51.198665618896484,
+          99.72337341308594
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -21.209991455078125,
+          -51.198665618896484,
+          43.07579803466797
+        ],
+        [
+          21.534086227416992,
+          -1.2650361061096191,
+          99.72337341308594
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "LeftThigh": {
+      "name": "SM_WardenHQ_LeftThigh",
+      "triangles": 7866,
+      "source_faces": 7712,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -21.029296875,
+          -53.19744110107422,
+          41.775733947753906
+        ],
+        [
+          20.85784149169922,
+          -8.753238677978516,
+          98.05476379394531
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -21.029296875,
+          8.753238677978516,
+          41.775733947753906
+        ],
+        [
+          20.85784149169922,
+          53.19744110107422,
+          98.05476379394531
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "LeftShin": {
+      "name": "SM_WardenHQ_LeftShin",
+      "triangles": 6244,
+      "source_faces": 6023,
+      "cap_faces_before_triangulation": 2,
+      "bounds_cm": [
+        [
+          -19.76873016357422,
+          -58.63944625854492,
+          10.779946327209473
+        ],
+        [
+          32.210472106933594,
+          -17.330656051635742,
+          49.36894607543945
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -19.76873016357422,
+          17.330656051635742,
+          10.779946327209473
+        ],
+        [
+          32.210472106933594,
+          58.63944625854492,
+          49.36894607543945
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "LeftFoot": {
+      "name": "SM_WardenHQ_LeftFoot",
+      "triangles": 2040,
+      "source_faces": 1949,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -19.321990966796875,
+          -59.54103088378906,
+          0.8840364217758179
+        ],
+        [
+          33.77098083496094,
+          -26.20124626159668,
+          14.289664268493652
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -19.321990966796875,
+          26.20124626159668,
+          0.8840364217758179
+        ],
+        [
+          33.77098083496094,
+          59.54103088378906,
+          14.289664268493652
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "LeftUpperArm": {
+      "name": "SM_WardenHQ_LeftUpperArm",
+      "triangles": 4734,
+      "source_faces": 4485,
+      "cap_faces_before_triangulation": 3,
+      "bounds_cm": [
+        [
+          -29.72635841369629,
+          -74.33052062988281,
+          167.60614013671875
+        ],
+        [
+          22.312397003173828,
+          -40.65021896362305,
+          200.15553283691406
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -29.72635841369629,
+          40.65021896362305,
+          167.60614013671875
+        ],
+        [
+          22.312397003173828,
+          74.33052062988281,
+          200.15553283691406
+        ]
+      ],
+      "uv_layers": 1
+    },
+    "LeftForearm": {
+      "name": "SM_WardenHQ_LeftForearm",
+      "triangles": 7054,
+      "source_faces": 6964,
+      "cap_faces_before_triangulation": 1,
+      "bounds_cm": [
+        [
+          -18.824003219604492,
+          -74.4101791381836,
+          110.7401123046875
+        ],
+        [
+          18.79941749572754,
+          -43.17363357543945,
+          170.8652801513672
+        ]
+      ],
+      "blender_rh_bounds_cm": [
+        [
+          -18.824003219604492,
+          43.17363357543945,
+          110.7401123046875
+        ],
+        [
+          18.79941749572754,
+          74.4101791381836,
+          170.8652801513672
+        ]
+      ],
+      "uv_layers": 1
+    }
+  },
+  "textures": {
+    "base_color": "pbr_albedo_texture.png",
+    "metallic_roughness": "pbr_mr_texture.png",
+    "roughness_channel": "G",
+    "metallic_channel": "B",
+    "base_color_srgb": true,
+    "metallic_roughness_srgb": false
+  },
+  "limitations": [
+    "Rigid segment articulation is a playable adaptation, not a production skeletal rig.",
+    "Fingers remain part of forearm mesh; only hammer is separated.",
+    "Static skirt can intersect legs at exaggerated angles.",
+    "Dark caps conceal cut interiors; prototype seams may show at close range."
+  ]
+}

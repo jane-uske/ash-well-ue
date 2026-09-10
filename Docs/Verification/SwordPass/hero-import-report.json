@@ -1,0 +1,21 @@
+{
+  "meshes": [
+    "/Game/AshWell/Combat/SwordPass/SK_Traveller.SK_Traveller",
+    "/Game/AshWell/Combat/SwordPass/SK_TravellerCloak.SK_TravellerCloak"
+  ],
+  "textures": [
+    "/Game/AshWell/Combat/SwordPass/T_Traveller_Normal.T_Traveller_Normal",
+    "/Game/AshWell/Combat/SwordPass/T_Traveller_MR.T_Traveller_MR",
+    "/Game/AshWell/Combat/SwordPass/T_Traveller_BaseColor.T_Traveller_BaseColor"
+  ],
+  "SK_Traveller_nanite_before": false,
+  "SK_TravellerCloak_nanite_before": false,
+  "SM_TravellerSword": {
+    "center": "<Struct 'Vector' (0x88dc0a4b8c0) {x: 42.600000, y: 0.000000, z: 0.000000}>",
+    "extent": "<Struct 'Vector' (0x88dc0a4b8d8) {x: 58.400000, y: 12.450000, z: 1.900000}>"
+  },
+  "SM_TravellerScabbard": {
+    "center": "<Struct 'Vector' (0x88dc0a42ec0) {x: 55.250000, y: 0.000000, z: 0.000000}>",
+    "extent": "<Struct 'Vector' (0x88dc0a42ed8) {x: 45.250000, y: 3.500000, z: 1.650000}>"
+  }
+}

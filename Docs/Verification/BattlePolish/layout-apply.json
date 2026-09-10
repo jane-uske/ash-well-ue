@@ -1,0 +1,46 @@
+{
+  "intersections": [
+    {
+      "label": "AW2_SM_AV2_DeepBridges_And_SuspendedWalks",
+      "folder": "Chapter01/InheritedFar",
+      "mesh": "/Game/AshWell/Meshes/ArchitectureV2/SM_AV2_DeepBridges_And_SuspendedWalks.SM_AV2_DeepBridges_And_SuspendedWalks",
+      "origin": [
+        7427.113525390625,
+        -627.3089599609375,
+        -1727.475830078125
+      ],
+      "extent": [
+        3685.364990234375,
+        4268.9825439453125,
+        5036.024169921875
+      ],
+      "location": [
+        1500.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "AWC_View_Station_573",
+      "folder": "Chapter01/Cameras",
+      "mesh": "/Engine/EditorMeshes/MatineeCam_SM.MatineeCam_SM",
+      "origin": [
+        2550.0,
+        700.0,
+        250.0
+      ],
+      "extent": [
+        1010.0,
+        1010.0,
+        1010.0
+      ],
+      "location": [
+        2550.0,
+        700.0,
+        250.0
+      ]
+    }
+  ],
+  "moved": [],
+  "ring_radius_cm": 50.0
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "file": "AW_Polish_Ambient.wav",
+    "seconds": 16,
+    "origin": "Original deterministic synthesis",
+    "loop": true,
+    "sha256": "89482c924fd72fcfb33e311a8d116fe00a5186cbce35e5179352093f858e5902"
+  },
+  {
+    "file": "AW_Polish_Combat.wav",
+    "seconds": 16,
+    "origin": "Original deterministic synthesis",
+    "loop": true,
+    "sha256": "94aa89e610c33180f829f3268dc2e0312195f909b7808dc763967ed4f0644128"
+  },
+  {
+    "file": "AW_Polish_Overload.wav",
+    "seconds": 16,
+    "origin": "Original deterministic synthesis",
+    "loop": true,
+    "sha256": "a4364e962e361ff70514109641ac539d1901db491731bd56262602b98364df64"
+  },
+  {
+    "file": "AW_Polish_Voice.wav",
+    "seconds": 5.425,
+    "origin": "Local Kokoro-82M, Apache-2.0 model; stock zm_yunxi voice; no voice clone",
+    "text": "别……再送电了。",
+    "loop": false,
+    "sha256": "3a0696fe69df726c05c50e1d05f22082491011724166d45445f34eb20a24f8b0"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "import": {
+    "isError": false,
+    "source": "Saved/Chapter01/mcp-import.json",
+    "tool": "ChapterOneTools.run_stage"
+  },
+  "build": {
+    "isError": false,
+    "source": "Saved/Chapter01/mcp-build-final.json",
+    "tool": "ChapterOneTools.run_stage"
+  }
+}

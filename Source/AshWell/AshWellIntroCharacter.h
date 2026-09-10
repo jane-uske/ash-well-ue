@@ -31,7 +31,10 @@ public:
     UPROPERTY(EditAnywhere, Category="Intro") TArray<TObjectPtr<USoundBase>> FootstepSounds;
     UPROPERTY(EditAnywhere, Category="Intro") TArray<TObjectPtr<USoundBase>> GearSounds;
 protected:
+    virtual void PlayCharacterAnimation(UAnimSequence* Animation,bool bLoop);
     virtual bool ShouldUpdateLocomotion() const { return true; }
+    virtual bool ShouldFaceMovement() const { return true; }
+    virtual UAnimSequence* SelectLocomotionAnimation(float Speed) const { return Speed>5 ? WalkAnimation.Get() : IdleAnimation.Get(); }
     virtual float GetLocomotionReferenceSpeed() const { return AnimationWalkSpeed; }
     virtual float GetFootstepSpacing() const { return 36.0f; }
 private:
@@ -51,6 +54,7 @@ private:
     bool bQuiet=false;
     bool bAutoTour=false;
     bool bWasWalking=false;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> LastLocomotionAnimation;
     float TourElapsed=0;
     float StepDistance=0;
     float TotalDistance=0;

@@ -1,0 +1,9 @@
+{
+  "normal_attack_victory": true,
+  "both_player_moves": true,
+  "phase_two": true,
+  "record": true,
+  "lift": true,
+  "complete": true,
+  "time_dilation_restored": true
+}

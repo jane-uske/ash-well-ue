@@ -1,0 +1,7 @@
+{
+  "handled_ensures": 0,
+  "fatal_errors": 0,
+  "missing_game_feature_class": false,
+  "normal_gate_preview_launched": true,
+  "note": "Owned verification instance closed after detecting another normal game instance; no user instance terminated."
+}

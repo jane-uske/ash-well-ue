@@ -1,0 +1,44 @@
+[
+  {
+    "file": "AW_Battle_MetalHit.wav",
+    "seconds": 0.65,
+    "rms_dbfs": -19.68732088243633,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_GroundSlam.wav",
+    "seconds": 1.3,
+    "rms_dbfs": -19.041274227194705,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_Swing.wav",
+    "seconds": 0.42,
+    "rms_dbfs": -11.238656341454865,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_Roll.wav",
+    "seconds": 0.58,
+    "rms_dbfs": -13.11010739814787,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_Kick.wav",
+    "seconds": 0.4,
+    "rms_dbfs": -17.03832800245729,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_Drag.wav",
+    "seconds": 0.65,
+    "rms_dbfs": -12.180876630959428,
+    "source": "Original deterministic synthesis; no third-party samples"
+  },
+  {
+    "file": "AW_Battle_Windup.wav",
+    "seconds": 0.8,
+    "rms_dbfs": -9.367457785836192,
+    "source": "Original deterministic synthesis; no third-party samples"
+  }
+]

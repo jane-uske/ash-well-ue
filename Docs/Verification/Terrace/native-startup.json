@@ -1,0 +1,6 @@
+{
+  "native_map_loaded": "/Game/AshWell/Terrace/L_BrokenChainTerrace",
+  "native_game_mode": "BP_TerraceGameMode_C",
+  "startup_warning": "Nonfatal handled ensure: GameFeatures.GameFeatureData primary asset class missing; map subsequently loaded and process remained running. No project config changed.",
+  "map_scope": "Independent exploration graybox; no Boss transition integrated."
+}

@@ -1,0 +1,121 @@
+{
+  "source": "Meshy API GET /openapi/v1/animations/library?category=Fighting",
+  "checked_on": "2026-09-09",
+  "returned_fighting_presets": 154,
+  "credits_consumed": 0,
+  "status": "catalog_verified_not_downloaded_or_retargeted",
+  "candidates": [
+    {
+      "action_id": 97,
+      "name": "Left Slash",
+      "key": "Left_Slash",
+      "category": "Fighting",
+      "sub_category": "AttackingwithWeapon",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Left_Slash.gif"
+    },
+    {
+      "action_id": 103,
+      "name": "Simple Kick",
+      "key": "Simple_Kick",
+      "category": "Fighting",
+      "sub_category": "AttackingwithWeapon",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Simple_Kick.gif"
+    },
+    {
+      "action_id": 127,
+      "name": "Charged Ground Slam",
+      "key": "Charged_Ground_Slam",
+      "category": "Fighting",
+      "sub_category": "CastingSpell",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Charged_Ground_Slam.gif"
+    },
+    {
+      "action_id": 128,
+      "name": "Heavy Hammer Swing",
+      "key": "Heavy_Hammer_Swing",
+      "category": "Fighting",
+      "sub_category": "AttackingwithWeapon",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Heavy_Hammer_Swing.gif"
+    },
+    {
+      "action_id": 156,
+      "name": "Stand Dodge",
+      "key": "Stand_Dodge",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Stand_Dodge.gif"
+    },
+    {
+      "action_id": 158,
+      "name": "Roll Dodge",
+      "key": "Roll_Dodge",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Roll_Dodge.gif"
+    },
+    {
+      "action_id": 159,
+      "name": "Roll Dodge 1",
+      "key": "Roll_Dodge_1",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Roll_Dodge_1.gif"
+    },
+    {
+      "action_id": 160,
+      "name": "Roll Dodge 2",
+      "key": "Roll_Dodge_2",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Roll_Dodge_2.gif"
+    },
+    {
+      "action_id": 161,
+      "name": "Roll Dodge 3",
+      "key": "Roll_Dodge_3",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Roll_Dodge_3.gif"
+    },
+    {
+      "action_id": 163,
+      "name": "Roll Dodge 4",
+      "key": "Roll_Dodge_4",
+      "category": "Fighting",
+      "sub_category": "Transitioning",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Roll_Dodge_4.gif"
+    },
+    {
+      "action_id": 178,
+      "name": "Hit Reaction",
+      "key": "Hit_Reaction",
+      "category": "Fighting",
+      "sub_category": "GettingHit",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Hit_Reaction.gif"
+    },
+    {
+      "action_id": 179,
+      "name": "Hit Reaction 1",
+      "key": "Hit_Reaction_1",
+      "category": "Fighting",
+      "sub_category": "GettingHit",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Hit_Reaction_1.gif"
+    },
+    {
+      "action_id": 206,
+      "name": "Spartan Kick",
+      "key": "Spartan_Kick",
+      "category": "Fighting",
+      "sub_category": "Punching",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Spartan_Kick.gif"
+    },
+    {
+      "action_id": 219,
+      "name": "Right-hand Sword Slash",
+      "key": "Right_Hand_Sword_Slash",
+      "category": "Fighting",
+      "sub_category": "Punching",
+      "preview_url": "https://cdn.meshy.ai/webapp-assets/feature-demo/animation/preview/biped/Right_Hand_Sword_Slash.gif"
+    }
+  ]
+}

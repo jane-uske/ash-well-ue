@@ -1,0 +1,47 @@
+{
+  "skeleton": "/Game/AshWell/Intro/Characters/SK_Intro_Protagonist_Skeleton",
+  "animations": [
+    {
+      "name": "A_Battle_Slash",
+      "file": "A_Battle_Slash.fbx",
+      "source_preset": "Slash",
+      "duration_seconds": 0.8333333333333334,
+      "frames": [
+        1,
+        51
+      ]
+    },
+    {
+      "name": "A_Battle_Heavy",
+      "file": "A_Battle_Heavy.fbx",
+      "source_preset": "Hammer",
+      "duration_seconds": 1.1,
+      "frames": [
+        1,
+        67
+      ]
+    },
+    {
+      "name": "A_Battle_Dodge",
+      "file": "A_Battle_Dodge.fbx",
+      "source_preset": "Roll",
+      "duration_seconds": 0.5833333333333334,
+      "frames": [
+        1,
+        36
+      ]
+    },
+    {
+      "name": "A_Battle_Hit",
+      "file": "A_Battle_Hit.fbx",
+      "source_preset": "Hit",
+      "duration_seconds": 0.45,
+      "frames": [
+        1,
+        28
+      ]
+    }
+  ],
+  "source": "Meshy API presets on Quaternius carrier, retargeted and phase-remapped locally",
+  "root_motion": false
+}

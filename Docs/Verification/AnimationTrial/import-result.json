@@ -1,0 +1,20 @@
+{
+  "state": "completed",
+  "mesh": "/Game/AshWell/AnimationTrial/SK_TrialMannequin.SK_TrialMannequin",
+  "skeleton": "/Game/AshWell/AnimationTrial/SK_TrialMannequin_Skeleton.SK_TrialMannequin_Skeleton",
+  "animation": "/Game/AshWell/AnimationTrial/A_Trial_SourceSlash.A_Trial_SourceSlash",
+  "length_seconds": 1.5416666269302368,
+  "actors": [
+    {
+      "actor": "/Game/AshWell/AnimationTrial/AnimationTrial.AnimationTrial:PersistentLevel.SkeletalMeshActor_2",
+      "rate": 1.0
+    },
+    {
+      "actor": "/Game/AshWell/AnimationTrial/AnimationTrial.AnimationTrial:PersistentLevel.SkeletalMeshActor_3",
+      "rate": 0.62
+    }
+  ],
+  "map": "/Game/AshWell/AnimationTrial/AnimationTrial",
+  "sequence": "/Game/AshWell/AnimationTrial/LS_AnimationComparison.LS_AnimationComparison",
+  "note": "Community sword slash plus simple hammer, source and 0.62x. Not a production heavy hammer attack."
+}

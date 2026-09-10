@@ -1,0 +1,26 @@
+{
+  "origin": "Original Blender geometry, no external asset",
+  "units": "centimetres",
+  "handle_origin": "grip; Blender -Y becomes UE hand-local +Y",
+  "head_origin": "head centre; attached at grip +Y54cm",
+  "parts": [
+    {
+      "name": "SM_PlayerHammer_Handle",
+      "triangles": 2632,
+      "material_slots": [
+        "AW_Hammer_Steel.002",
+        "AW_Hammer_Rubber.001",
+        "AW_Hammer_Edge.001"
+      ]
+    },
+    {
+      "name": "SM_PlayerHammer_Head",
+      "triangles": 1880,
+      "material_slots": [
+        "AW_Hammer_Steel.002",
+        "AW_Hammer_Edge.001",
+        "AW_Hammer_Ochre.001"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "frames": [
+    {
+      "frame": 8,
+      "bytes": 2164199,
+      "sha256": "7976fe33db12c85ee26d11f58ccfc7060e80666504327a8947986d0be2f97b9e"
+    },
+    {
+      "frame": 45,
+      "bytes": 2166754,
+      "sha256": "796a66ddd54cb11231cd8066086442b2b2de6b065f8b918dff2857ed5415b2d7"
+    }
+  ],
+  "playing": true
+}

@@ -33,7 +33,7 @@ public:
     FVector GetEnemyStart() const;
 
     UFUNCTION(BlueprintPure, Category = "Combat Prototype")
-    FVector2D GetHalfExtents() const { return FVector2D(700.f, 650.f); }
+    FVector2D GetHalfExtents() const { return FVector2D(700.f*GetActorScale3D().X, 650.f*GetActorScale3D().Y); }
 
     UFUNCTION(BlueprintPure, Category = "Combat Prototype")
     FVector GetConsoleLocation() const;
@@ -43,6 +43,20 @@ public:
 
     UFUNCTION(BlueprintPure, Category = "Combat Prototype")
     bool IsPowered() const { return bPowered; }
+    FVector GetArrivalStart() const;
+    FVector GetLiftPoint() const;
+    bool HasSunoMusic() const { return bSunoMusic; }
+    bool IsGrandEncounter() const { return bGrandEncounter; }
+    bool IsEntryOpen() const { return !bGrandEncounter || EntryTime>=2.7f; }
+    FVector GetEntryPoint() const;
+    bool OpenEntry(const FVector& PlayerPosition);
+    void FinishEncounter();
+    void SetOverload();
+    void DuckForImpact();
+    void Depart();
+    bool IsLiftReady() const { return bFinished; }
+    bool HasDeparted() const { return DepartureTime>=5.f; }
+    bool IsDeparting() const { return bDeparting; }
 
 protected:
     virtual void BeginPlay() override;
@@ -61,6 +75,21 @@ private:
     void BuildConnection();
     void BuildSwitchgear();
     void BuildTurbine();
+    void BuildExit();
+    void BuildPolishDetails();
+    void BuildEntry();
+    void BuildBattleAtmosphere();
+    float ImpactDuckTime=0;
+    bool bGrandEncounter=false,bEntryOpening=false,bSunoMusic=false;
+    float EntryTime=0;
+    UPROPERTY(Transient) TObjectPtr<UStaticMeshComponent> EntryLeft;
+    UPROPERTY(Transient) TObjectPtr<UStaticMeshComponent> EntryRight;
+    bool bFinished=false,bDeparting=false,bOverloaded=false;
+    float FinishTime=0,DepartureTime=0;
+    UPROPERTY(Transient) TObjectPtr<USceneComponent> LiftRoot;
+    UPROPERTY(Transient) TObjectPtr<UStaticMeshComponent> ExitGate;
+    UPROPERTY(Transient) TArray<TObjectPtr<UAudioComponent>> MusicLayers;
+    UPROPERTY(Transient) TObjectPtr<UAudioComponent> WardenVoice;
 
     UPROPERTY(VisibleAnywhere)
     TObjectPtr<USceneComponent> SceneRoot;

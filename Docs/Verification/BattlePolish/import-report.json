@@ -1,0 +1,29 @@
+{
+  "assets": [
+    "/Game/AshWell/Combat/BattlePolish/SM_BattleShockRing.SM_BattleShockRing",
+    "/Game/AshWell/Combat/BattlePolish/SM_BattleVault.SM_BattleVault",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_MetalHit.AW_Battle_MetalHit",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_GroundSlam.AW_Battle_GroundSlam",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_Drag.AW_Battle_Drag",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_Swing.AW_Battle_Swing",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_Windup.AW_Battle_Windup",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_Roll.AW_Battle_Roll",
+    "/Game/AshWell/Combat/BattlePolish/AW_Battle_Kick.AW_Battle_Kick",
+    {
+      "animation": "/Game/AshWell/Combat/BattlePolish/A_Battle_Slash.A_Battle_Slash",
+      "seconds": 0.8333333134651184
+    },
+    {
+      "animation": "/Game/AshWell/Combat/BattlePolish/A_Battle_Heavy.A_Battle_Heavy",
+      "seconds": 1.100000023841858
+    },
+    {
+      "animation": "/Game/AshWell/Combat/BattlePolish/A_Battle_Dodge.A_Battle_Dodge",
+      "seconds": 0.5833333134651184
+    },
+    {
+      "animation": "/Game/AshWell/Combat/BattlePolish/A_Battle_Hit.A_Battle_Hit",
+      "seconds": 0.44999998807907104
+    }
+  ]
+}

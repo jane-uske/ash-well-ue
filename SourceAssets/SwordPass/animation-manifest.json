@@ -1,0 +1,63 @@
+{
+  "skeleton": "/Game/AshWell/Intro/Characters/SK_Intro_Protagonist_Skeleton",
+  "animations": [
+    {
+      "name": "A_Sword_Idle",
+      "file": "A_Sword_Idle.fbx",
+      "duration_seconds": 2.5,
+      "source": "Idle_Loop",
+      "upper_body_guard": false
+    },
+    {
+      "name": "A_Sword_Walk",
+      "file": "A_Sword_Walk.fbx",
+      "duration_seconds": 1.3333333333333333,
+      "source": "Walk_Loop",
+      "upper_body_guard": false
+    },
+    {
+      "name": "A_Sword_Run",
+      "file": "A_Sword_Run.fbx",
+      "duration_seconds": 0.9333333333333333,
+      "source": "Jog_Fwd_Loop",
+      "upper_body_guard": false
+    },
+    {
+      "name": "A_Sword_Sprint",
+      "file": "A_Sword_Sprint.fbx",
+      "duration_seconds": 0.6666666666666666,
+      "source": "Sprint_Loop",
+      "upper_body_guard": false
+    },
+    {
+      "name": "A_Sword_Guard",
+      "file": "A_Sword_Guard.fbx",
+      "duration_seconds": 1.6666666666666667,
+      "source": "Sword_Idle",
+      "upper_body_guard": false
+    },
+    {
+      "name": "A_Sword_CombatWalk",
+      "file": "A_Sword_CombatWalk.fbx",
+      "duration_seconds": 1.3333333333333333,
+      "source": "Walk_Loop",
+      "upper_body_guard": true
+    },
+    {
+      "name": "A_Sword_Slash",
+      "file": "A_Sword_Slash.fbx",
+      "duration_seconds": 0.8333333333333334,
+      "source": "Sword_Idle",
+      "upper_body_guard": true
+    },
+    {
+      "name": "A_Sword_Heavy",
+      "file": "A_Sword_Heavy.fbx",
+      "duration_seconds": 1.1,
+      "source": "Sword_Idle",
+      "upper_body_guard": true
+    }
+  ],
+  "license": "Quaternius Universal Animation Library Standard, CC0; see SourceAssets/AnimationTrial/License.txt",
+  "root_motion": false
+}

@@ -1,6 +1,9 @@
 #include "AshWellIntroHUD.h"
+#include "AshWellChapterDirector.h"
 #include "AshWellCombatCharacter.h"
 #include "AshWellWarden.h"
+#include "AshWellSession.h"
+#include "AshWellIntroGameMode.h"
 #include "GameFramework/PlayerController.h"
 
 #include "CanvasItem.h"
@@ -61,7 +64,7 @@ void AAshWellIntroHUD::InitializeFont()
     // A redistributable project font takes priority. The system path is only a
     // local editor fallback; packaged builds should include the project font.
     FontPath = FPaths::Combine(FPaths::ProjectContentDir(),
-        TEXT("AshWell/Intro/Fonts/NotoSansSC-Regular.ttf"));
+        TEXT("AshWell/Intro/Fonts/NotoSansSC-Regular.otf"));
 
 #if PLATFORM_MAC
     if (!FPaths::FileExists(FontPath))
@@ -143,9 +146,18 @@ void AAshWellIntroHUD::DrawHUD()
     const float Scale = FMath::Clamp(FMath::Min(Width / 1920.0f, Height / 1080.0f), 0.65f, 1.6f);
     if (UGameplayStatics::IsGamePaused(this))
     {
-        DrawCaption(TEXT("已暂停 · Esc 继续 · R 重来"),
-            FVector2D(Width * 0.5f, Height * 0.5f), 17.0f * Scale,
-            FLinearColor(0.94f, 0.92f, 0.85f, 1.0f), true);
+        DrawRect(FLinearColor(.015,.019,.022,.88),0,0,Width,Height);
+        DrawCaption(TEXT("检修站  /  暂停"),FVector2D(Width*.5,Height*.28),28*Scale,FLinearColor(.87,.81,.68,1),true);
+        if(auto* S=Cast<UAshWellSession>(GetGameInstance()))
+        {
+            auto* PC=Cast<AAshWellIntroPlayerController>(GetOwningPlayerController());
+            const int32 Selected=PC?PC->GetSettingsRow():0;
+            const FString Rows[]={FString::Printf(TEXT("主音量   %d%%"),FMath::RoundToInt(S->MasterVolume*100)),
+                FString::Printf(TEXT("鼠标灵敏度   %.1f"),S->MouseSensitivity),S->bSubtitles?TEXT("对白字幕   开启"):TEXT("对白字幕   关闭")};
+            for(int32 I=0;I<3;++I)DrawCaption((Selected==I?TEXT("›  "):TEXT("   "))+Rows[I],FVector2D(Width*.5,Height*.40+I*46*Scale),20*Scale,Selected==I?FLinearColor(1,.68,.30,1):FLinearColor(.67,.69,.68,1),true);
+        }
+        DrawCaption(TEXT("↑ ↓ 选择    ← → 调整    Esc 继续"),FVector2D(Width*.5,Height*.68),16*Scale,FLinearColor(.8,.8,.75,1),true);
+        DrawCaption(TEXT("R 重新挑战    F10 退出游戏"),FVector2D(Width*.5,Height*.74),14*Scale,FLinearColor(.6,.62,.61,1),true);
         return;
     }
 
@@ -201,25 +213,36 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
     Bar(X+44*Scale,Y+4*Scale,225*Scale,10*Scale,Player->GetHealthFraction(),FLinearColor(.48f,.085f,.06f,.95f));
     DrawCaption(TEXT("体力"),FVector2D(X,Y+25*Scale),12*Scale,Ink,false);
     Bar(X+44*Scale,Y+29*Scale,225*Scale,7*Scale,Player->GetStaminaFraction(),FLinearColor(.35f,.43f,.24f,.95f));
-    DrawCaption(TEXT("检修站 · 第一场交锋"),FVector2D(Width-150*Scale,40*Scale),14*Scale,Ink,true);
-    DrawCaption(TEXT("WASD 移动   ·   左键 攻击   ·   空格 闪避   ·   Tab 锁定   ·   R 重来"),
+    auto* Chapter=AAshWellChapterDirector::Find(GetWorld());
+    DrawCaption(Chapter?Chapter->Zone():TEXT("灰烬深井 / 检修站"),FVector2D(Width-170*Scale,40*Scale),14*Scale,Ink,true);
+    DrawCaption(TEXT("WASD 跑动 · Ctrl 慢走   ·   空格 跳跃 · Shift 闪避   ·   左键 横斩 · 右键 重击   ·   Tab 锁定   ·   R 重来"),
         FVector2D(Width*.5f,Height-32*Scale),12*Scale,FLinearColor(.8f,.79f,.74f,.78f),true);
     DrawCaption(Player->GetPrompt(),FVector2D(Width*.5f,Height-76*Scale),16*Scale,Ink,true);
+    auto* Session=Cast<UAshWellSession>(GetGameInstance());
+    if(!Session||Session->bSubtitles)DrawCaption(Player->GetStorySubtitle(),FVector2D(Width*.5f,Height*.73f),20*Scale,Ink,true);
+    if(Player->IsRecordVisible())
+    {
+        DrawRect(FLinearColor(.016,.020,.025,.94),Width*.20,Height*.24,Width*.60,Height*.35);
+        DrawCaption(TEXT("服役记录 · 井下维护 / 07"),FVector2D(Width*.5,Height*.29),23*Scale,FLinearColor(.85,.68,.43,1),true);
+        DrawCaption(TEXT("原岗位：升降机检修工    状态：强制服役"),FVector2D(Width*.5,Height*.37),18*Scale,Ink,true);
+        DrawCaption(TEXT("终止申请：驳回    原因：替代人员尚未到岗"),FVector2D(Width*.5,Height*.43),18*Scale,Ink,true);
+        DrawCaption(TEXT("警告：断电后残存意识可能恢复。禁止擅自停机。"),FVector2D(Width*.5,Height*.51),17*Scale,FLinearColor(.76,.47,.36,1),true);
+    }
     AAshWellWarden* Enemy=Player->GetWarden();
-    if(!Player->HasPower())
+    if(!Player->HasPower()&&(!Chapter||Chapter->IsAtStation()))
     {
         FVector2D Marker;
-        if(GetOwningPlayerController()->ProjectWorldLocationToScreen(Player->GetConsolePoint()+FVector(0,0,75),Marker))
+        if(GetOwningPlayerController()->ProjectWorldLocationToScreen((Player->IsEntryClosed()?Player->GetEntryPoint():Player->GetConsolePoint())+FVector(0,0,75),Marker))
         {
             Marker.X=FMath::Clamp(Marker.X,100.0,static_cast<double>(Width)-100.0);
             Marker.Y=FMath::Clamp(Marker.Y,120.0,static_cast<double>(Height)-185.0);
-            DrawCaption(TEXT("供电闸  [E]"),Marker,15*Scale,FLinearColor(.94f,.71f,.36f,1),true);
+            DrawCaption(Player->IsEntryClosed()?TEXT("开启铁门  [E]"):TEXT("供电闸  [E]"),Marker,15*Scale,FLinearColor(.94f,.71f,.36f,1),true);
         }
     }
     if(Enemy&&Player->IsEncounterActive()&&!Player->HasWon())
     {
         const float BW=Width*.46f;
-        DrawCaption(TEXT("七号守井者"),FVector2D(Width*.5f,Height-172*Scale),16*Scale,Ink,true);
+        DrawCaption(Enemy->IsPhaseTwo()?TEXT("七号守井者 · 过载"):TEXT("七号守井者"),FVector2D(Width*.5f,Height-172*Scale),16*Scale,Ink,true);
         Bar((Width-BW)*.5f,Height-130*Scale,BW,9*Scale,Enemy->GetHealthFraction(),FLinearColor(.45f,.075f,.045f,.95f));
         if(Player->IsLockedOn())
         {
@@ -240,7 +263,7 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
         DrawRect(Red,0,0,Width,18*Scale);DrawRect(Red,0,Height-18*Scale,Width,18*Scale);
         DrawRect(Red,0,0,18*Scale,Height);DrawRect(Red,Width-18*Scale,0,18*Scale,Height);
     }
-    if(Player->IsDead()||Player->HasWon())
+    if(Player->IsDead()||(Player->HasWon()&&Player->GetEndingTime()<2.f))
     {
         DrawRect(FLinearColor(.015f,.017f,.02f,.55f),0,Height*.40f,Width,Height*.15f);
         DrawCaption(Player->IsDead()?TEXT("你倒下了"):TEXT("守井者已停机"),FVector2D(Width*.5f,Height*.445f),30*Scale,

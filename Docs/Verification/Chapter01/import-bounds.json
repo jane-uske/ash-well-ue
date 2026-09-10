@@ -1,0 +1,45 @@
+{
+  "meshes": [
+    {
+      "name": "SM_C1_WorkerFacade",
+      "bounds": "<Struct 'Vector' (0x662a5ab84d8) {x: 252.500000, y: 106.500000, z: 340.000000}>"
+    },
+    {
+      "name": "SM_C1_ClothAwning",
+      "bounds": "<Struct 'Vector' (0x662a5e09258) {x: 250.000000, y: 130.281792, z: 156.990021}>"
+    },
+    {
+      "name": "SM_C1_WaterPump",
+      "bounds": "<Struct 'Vector' (0x662a653f1d8) {x: 113.750000, y: 89.000000, z: 134.500000}>"
+    },
+    {
+      "name": "SM_C1_WaterCan",
+      "bounds": "<Struct 'Vector' (0x662a653e598) {x: 21.000000, y: 21.000000, z: 35.750000}>"
+    },
+    {
+      "name": "SM_C1_TunnelFrame",
+      "bounds": "<Struct 'Vector' (0x662a6fcb298) {x: 42.500000, y: 352.500000, z: 281.493073}>"
+    },
+    {
+      "name": "SM_C1_CatwalkDeck",
+      "bounds": "<Struct 'Vector' (0x662a7fa9d98) {x: 200.000000, y: 145.000000, z: 32.500000}>"
+    },
+    {
+      "name": "SM_C1_RailPanel",
+      "bounds": "<Struct 'Vector' (0x662a88e7918) {x: 206.000000, y: 10.000000, z: 57.750000}>"
+    },
+    {
+      "name": "SM_C1_DepartureFrame",
+      "bounds": "<Struct 'Vector' (0x662a9243c98) {x: 50.000000, y: 400.000000, z: 217.500000}>"
+    },
+    {
+      "name": "SM_C1_DepartureGate",
+      "bounds": "<Struct 'Vector' (0x662a99a7718) {x: 21.250000, y: 320.000000, z: 195.000000}>"
+    },
+    {
+      "name": "SM_C1_CagedLamp",
+      "bounds": "<Struct 'Vector' (0x662a99a44d8) {x: 21.000000, y: 21.000000, z: 25.750000}>"
+    }
+  ],
+  "ok": true
+}

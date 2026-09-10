@@ -13,6 +13,10 @@ public:
     UFUNCTION(Exec) void IntroTour();
     UFUNCTION(Exec) void IntroRestart();
     void TogglePause();
+    int32 GetSettingsRow() const { return SettingsRow; }
+private:
+    int32 SettingsRow=0;
+    void SettingsUp();void SettingsDown();void SettingsLeft();void SettingsRight();void QuitGame();
 };
 UCLASS()
 class ASHWELL_API AAshWellIntroGameMode : public AGameModeBase

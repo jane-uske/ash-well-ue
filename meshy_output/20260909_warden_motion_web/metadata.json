@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-09",
+  "name": "AW_Warden_RightHammer_Slam_v01",
+  "provider": "Meshy web",
+  "model": "Motion Prime",
+  "duration_seconds": 3,
+  "credits_used": 10,
+  "status": "generated_saved_in_web_deferred_integration",
+  "exported": false,
+  "imported_into_game": false,
+  "note": "User requested scene and music first. Pro prompts blocked preset animation workflow; no purchase. Existing game animations retained.",
+  "prompt": "A heavy armored humanoid performs one deliberate RIGHT-HANDED overhead hammer slam. Feet planted wide. Slowly raise the right hand above the head, bend knees and lean back under weight, then drive the right arm down forcefully with hips and torso, crouch on impact, pause low, recover to standing. Left hand stays low near the hip. No walking, no spin, no jump. Full body, in place."
+}

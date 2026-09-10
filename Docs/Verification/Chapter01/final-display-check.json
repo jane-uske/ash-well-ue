@@ -1,0 +1,11 @@
+{
+  "material_compile_failures": 0,
+  "final_route_reached_station": true,
+  "reset_health": 100,
+  "reset_boss_health": 800,
+  "reset_position": [
+    3180,
+    980,
+    90
+  ]
+}

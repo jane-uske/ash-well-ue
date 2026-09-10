@@ -1,0 +1,95 @@
+{
+  "scene": "AW_Chapter01_Kit.001",
+  "units": "centimetres",
+  "original_geometry": true,
+  "export": "FBX mesh only, no cameras/lights; +1 UE instance scale",
+  "meshes": [
+    {
+      "name": "SM_C1_WorkerFacade",
+      "triangles": 5064,
+      "materials": [
+        "AWC_Stone.001",
+        "AWC_Steel.001",
+        "AWC_Rust.001",
+        "AWC_Dark.001",
+        "AWC_Amber.001"
+      ]
+    },
+    {
+      "name": "SM_C1_ClothAwning",
+      "triangles": 536,
+      "materials": [
+        "AWC_Cloth.001",
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_WaterPump",
+      "triangles": 1448,
+      "materials": [
+        "AWC_Stone.001",
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_WaterCan",
+      "triangles": 312,
+      "materials": [
+        "AWC_Rust.001",
+        "AWC_Steel.001"
+      ]
+    },
+    {
+      "name": "SM_C1_TunnelFrame",
+      "triangles": 2088,
+      "materials": [
+        "AWC_Stone.001",
+        "AWC_Rust.001",
+        "AWC_Steel.001"
+      ]
+    },
+    {
+      "name": "SM_C1_CatwalkDeck",
+      "triangles": 1404,
+      "materials": [
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_RailPanel",
+      "triangles": 864,
+      "materials": [
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_DepartureFrame",
+      "triangles": 972,
+      "materials": [
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_DepartureGate",
+      "triangles": 756,
+      "materials": [
+        "AWC_Steel.001",
+        "AWC_Rust.001"
+      ]
+    },
+    {
+      "name": "SM_C1_CagedLamp",
+      "triangles": 592,
+      "materials": [
+        "AWC_Steel.001",
+        "AWC_Amber.001"
+      ]
+    }
+  ],
+  "total_triangles": 14036
+}

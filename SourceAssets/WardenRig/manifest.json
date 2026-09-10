@@ -1,0 +1,22 @@
+{
+  "bones": [
+    "root",
+    "RightUpperArm",
+    "RightThigh",
+    "RightShin",
+    "RightForearm",
+    "RightFoot",
+    "LeftUpperArm",
+    "LeftThigh",
+    "LeftShin",
+    "LeftForearm",
+    "LeftFoot",
+    "Hammer",
+    "Body"
+  ],
+  "vertices": 77306,
+  "triangles": 153773,
+  "blended_joint_vertices": 261,
+  "hammer": "Existing independent SM_WardenHQ_Hammer; driven by same grip transform",
+  "coordinate_contract": "RH centimetres; UE import convert_scene=False, convert_scene_unit=False"
+}

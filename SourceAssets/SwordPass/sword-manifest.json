@@ -1,0 +1,21 @@
+{
+  "source": "Original Blender mesh, no external asset",
+  "units": "centimetres",
+  "blade_cm": [
+    14,
+    101
+  ],
+  "grip_origin_cm": [
+    0,
+    0,
+    0
+  ],
+  "runtime_axis": "+X",
+  "materials": [
+    "Blade",
+    "Iron",
+    "Grip",
+    "Trim"
+  ],
+  "triangles": 3420
+}

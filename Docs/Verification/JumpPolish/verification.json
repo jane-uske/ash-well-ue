@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-10",
+  "cases": [
+    {
+      "case": "hero_jump",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "jumped_once": true,
+        "real_height": true,
+        "landed": true,
+        "dodge_after_landing": true,
+        "action_rules": true,
+        "new_hero": true,
+        "jump_clip": true,
+        "unit_scale": true,
+        "cloth_solver": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 800,
+      "duration": 2.5147091550170444
+    },
+    {
+      "case": "hero_sprint",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "all_phases": true,
+        "input_rules": true,
+        "only_tap_rolled": true,
+        "sprint_jump": true,
+        "exhaustion": true,
+        "released": true,
+        "landed": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 800,
+      "duration": 3.8176747066318057
+    },
+    {
+      "case": "jump_phases",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "phase_assets": true,
+        "all_phases": true,
+        "no_air_cycle": true,
+        "returned_to_ground": true,
+        "one_jump": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 800,
+      "duration": 2.503860129916575
+    }
+  ],
+  "phase_evidence": {
+    "mask": 15,
+    "rewind_or_missing_phase_errors": 0
+  },
+  "source": "Quaternius Universal Animation Library Standard (CC0)",
+  "new_meshy_credits": 0,
+  "limits": "Reviewed phase stills and runtime progression; naturalness still benefits from player feedback."
+}

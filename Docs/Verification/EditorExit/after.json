@@ -1,0 +1,30 @@
+[
+  {
+    "mode": "native",
+    "pid": 61503,
+    "exit_code": 0,
+    "cleanup_hook": true,
+    "normal_exit": true,
+    "new_reports": [],
+    "passed": true
+  },
+  {
+    "mode": "native_repeat",
+    "pid": 61979,
+    "exit_code": 0,
+    "cleanup_hook": true,
+    "normal_exit": true,
+    "new_reports": [],
+    "passed": true
+  },
+  {
+    "mode": "signal",
+    "pid": 62743,
+    "exit_code": 0,
+    "cleanup_hook": true,
+    "normal_exit": false,
+    "new_reports": [],
+    "passed": true,
+    "expected_signal_exit_path": true
+  }
+]

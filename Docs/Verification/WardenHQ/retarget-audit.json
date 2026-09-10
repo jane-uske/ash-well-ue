@@ -1,0 +1,412 @@
+{
+  "created_utc": "2026-09-05T18:29:18.809573+00:00",
+  "method": "Independent numerical reproduction of current UpdateGeneratedVisual: mirrored legacy Y, source rest landmarks, fixed native weapon length, torso hinge, reachable weapon-direction cone, rigid two-segment IK. 10001 samples per phase. No runtime/render claim.",
+  "source_sha256": {
+    "Source/AshWell/AshWellWardenVisual.cpp": "e9c896a9416a16f58b708e931060f537504dc7e999053b9be3b29bca998f5dd9",
+    "Source/AshWell/AshWellWarden.cpp": "50825bc23358be07324af684e39636e26c758ed2ec2c86d9a4b148d650c87307",
+    "Source/AshWell/WardenHQRestPose.inl": "e89439898e928a9277fa32cdd134f4344084e690edf23130d7aa25e0b1f2f61a"
+  },
+  "coordinate_note": "Body-relative centimeters; source anatomical right arm +Y and legacy hand/head Y explicitly mirrored, matching actual C++. Parent Body rotation preserves Euclidean residual magnitudes.",
+  "arm_cm": {
+    "upper": 38.332858031928865,
+    "lower": 52.58809501263932,
+    "minimum_ik_reach": 14.265236980710457,
+    "maximum_ik_reach": 90.91095304456819,
+    "cone_safe_reach": 90.4209530445682
+  },
+  "weapon_grip_to_head_cm": 105.17930784630242,
+  "torso_profile_degrees": {
+    "rest": 4,
+    "raised": -5,
+    "slam": 48
+  },
+  "timing_preserved": true,
+  "gameplay_source_checks": {
+    "baseline": "65a681b7a9c8e0bdfc862a90c70bffd3815c1410",
+    "check_count": 38,
+    "failures": []
+  },
+  "phases": {
+    "windup": {
+      "duration_s": 1.05,
+      "samples": 10001,
+      "start": {
+        "state_time_s": 0.0,
+        "blend_alpha": 0.0,
+        "torso_lean_degrees": 4.0,
+        "target_head_body_cm": [
+          84.0,
+          83.0,
+          36.0
+        ],
+        "actual_head_body_cm": [
+          84.0,
+          83.0,
+          36.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 89.61384142883502,
+        "solved_grip_body_cm": [
+          48.342156,
+          83.0,
+          134.950518
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9758995912912455,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 117.98728745080972,
+        "tangent_length": null
+      },
+      "end": {
+        "state_time_s": 1.05,
+        "blend_alpha": 1,
+        "torso_lean_degrees": -5,
+        "target_head_body_cm": [
+          -83,
+          82,
+          316
+        ],
+        "actual_head_body_cm": [
+          -83.0,
+          82.0,
+          316.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 43.20261975026256,
+        "solved_grip_body_cm": [
+          -22.608593,
+          82.0,
+          229.886327
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.7495250863710096,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 94.04786015641186,
+        "tangent_length": null
+      },
+      "max_residual": {
+        "state_time_s": 0.00609,
+        "blend_alpha": 0.0001533,
+        "torso_lean_degrees": 3.998621,
+        "target_head_body_cm": [
+          83.974405,
+          82.999847,
+          36.042914
+        ],
+        "actual_head_body_cm": [
+          83.974405,
+          82.999847,
+          36.042914
+        ],
+        "head_residual_cm": 3.8263897345803626e-14,
+        "desired_arm_distance_cm": 89.5695281443464,
+        "solved_grip_body_cm": [
+          48.319736,
+          82.999847,
+          134.994576
+        ],
+        "orientation_correction_degrees": 0.0,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9756904490869813,
+        "direction_unit_length_error": 0.0,
+        "legacy_hand_to_head_distance_cm": 117.95529616266997,
+        "tangent_length": null
+      },
+      "max_orientation_correction": {
+        "state_time_s": 0.46788,
+        "blend_alpha": 0.5754138,
+        "torso_lean_degrees": -1.178724,
+        "target_head_body_cm": [
+          -12.094108,
+          82.424586,
+          197.11587
+        ],
+        "actual_head_body_cm": [
+          -12.094108,
+          82.424586,
+          197.11587
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 90.4209530445682,
+        "solved_grip_body_cm": [
+          84.477014,
+          49.768145,
+          223.005287
+        ],
+        "orientation_correction_degrees": 18.44666343946131,
+        "cone_corrected": true,
+        "raw_cone_cos_limit": 0.5547254973903015,
+        "direction_unit_length_error": 0.0,
+        "legacy_hand_to_head_distance_cm": 14.368782273727785,
+        "tangent_length": 0.9648096022365966
+      },
+      "cone_corrected_sample_count": 732,
+      "cone_correction_interval_s": [
+        0.431025,
+        0.50778
+      ],
+      "unreachable_cone_sample_count": 0,
+      "max_direction_unit_length_error": 3.3306690738754696e-16,
+      "minimum_arm_distance_cm": 33.75585186718551,
+      "maximum_arm_distance_cm": 90.42095304456822
+    },
+    "strike": {
+      "duration_s": 0.22,
+      "samples": 10001,
+      "start": {
+        "state_time_s": 0.0,
+        "blend_alpha": 0.0,
+        "torso_lean_degrees": -5.0,
+        "target_head_body_cm": [
+          -83.0,
+          82.0,
+          316.0
+        ],
+        "actual_head_body_cm": [
+          -83.0,
+          82.0,
+          316.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 43.20261975026256,
+        "solved_grip_body_cm": [
+          -22.608593,
+          82.0,
+          229.886327
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.7495250863710096,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 94.04786015641186,
+        "tangent_length": null
+      },
+      "end": {
+        "state_time_s": 0.22,
+        "blend_alpha": 1,
+        "torso_lean_degrees": 48,
+        "target_head_body_cm": [
+          195,
+          67,
+          30
+        ],
+        "actual_head_body_cm": [
+          195.0,
+          67.0,
+          30.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 87.33245352417703,
+        "solved_grip_body_cm": [
+          119.267019,
+          70.538924,
+          102.901841
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9725546072779839,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 148.60349928585129,
+        "tangent_length": null
+      },
+      "max_residual": {
+        "state_time_s": 0.120868,
+        "blend_alpha": 0.4716256,
+        "torso_lean_degrees": 19.996155,
+        "target_head_body_cm": [
+          48.111906,
+          74.925617,
+          181.115089
+        ],
+        "actual_head_body_cm": [
+          48.111906,
+          74.925617,
+          181.115089
+        ],
+        "head_residual_cm": 3.256115871121665e-14,
+        "desired_arm_distance_cm": 90.42095304456818,
+        "solved_grip_body_cm": [
+          -50.012716,
+          81.259672,
+          218.453072
+        ],
+        "orientation_correction_degrees": 2.545163906543789,
+        "cone_corrected": true,
+        "raw_cone_cos_limit": 0.5521087263391621,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 23.427634724529767,
+        "tangent_length": 0.8574670579920677
+      },
+      "max_orientation_correction": {
+        "state_time_s": 0.11044,
+        "blend_alpha": 0.3937563,
+        "torso_lean_degrees": 15.869081,
+        "target_head_body_cm": [
+          26.464238,
+          76.093656,
+          203.385712
+        ],
+        "actual_head_body_cm": [
+          26.464238,
+          76.093656,
+          203.385712
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 90.4209530445682,
+        "solved_grip_body_cm": [
+          -44.26175,
+          14.263929,
+          156.082369
+        ],
+        "orientation_correction_degrees": 45.96633698146542,
+        "cone_corrected": true,
+        "raw_cone_cos_limit": 0.6309271567374697,
+        "direction_unit_length_error": 0.0,
+        "legacy_hand_to_head_distance_cm": 11.385929458014875,
+        "tangent_length": 0.9928664291714504
+      },
+      "cone_corrected_sample_count": 1011,
+      "cone_correction_interval_s": [
+        0.099264,
+        0.121484
+      ],
+      "unreachable_cone_sample_count": 0,
+      "max_direction_unit_length_error": 2.220446049250313e-16,
+      "minimum_arm_distance_cm": 32.64152948732313,
+      "maximum_arm_distance_cm": 90.42095304456822
+    },
+    "recovery": {
+      "duration_s": 1.25,
+      "samples": 10001,
+      "start": {
+        "state_time_s": 0.0,
+        "blend_alpha": 0,
+        "torso_lean_degrees": 48,
+        "target_head_body_cm": [
+          195,
+          67,
+          30
+        ],
+        "actual_head_body_cm": [
+          195.0,
+          67.0,
+          30.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 87.33245352417703,
+        "solved_grip_body_cm": [
+          119.267019,
+          70.538924,
+          102.901841
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9725546072779839,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 148.60349928585129,
+        "tangent_length": null
+      },
+      "end": {
+        "state_time_s": 1.25,
+        "blend_alpha": 1,
+        "torso_lean_degrees": 4,
+        "target_head_body_cm": [
+          84,
+          83,
+          36
+        ],
+        "actual_head_body_cm": [
+          84.0,
+          83.0,
+          36.0
+        ],
+        "head_residual_cm": 0.0,
+        "desired_arm_distance_cm": 89.61384142883502,
+        "solved_grip_body_cm": [
+          48.342156,
+          83.0,
+          134.950518
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9758995912912455,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 117.98728745080972,
+        "tangent_length": null
+      },
+      "max_residual": {
+        "state_time_s": 1.091875,
+        "blend_alpha": 0.809488,
+        "torso_lean_degrees": 12.38253,
+        "target_head_body_cm": [
+          105.146837,
+          79.951807,
+          34.856928
+        ],
+        "actual_head_body_cm": [
+          105.146837,
+          79.951807,
+          34.856928
+        ],
+        "head_residual_cm": 3.8263897345803626e-14,
+        "desired_arm_distance_cm": 90.05846087391981,
+        "solved_grip_body_cm": [
+          59.482097,
+          80.776198,
+          129.60258
+        ],
+        "orientation_correction_degrees": 8.537736462515939e-07,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9835250924541091,
+        "direction_unit_length_error": 1.1102230246251565e-16,
+        "legacy_hand_to_head_distance_cm": 121.53169529206005,
+        "tangent_length": null
+      },
+      "max_orientation_correction": {
+        "state_time_s": 0.62475,
+        "blend_alpha": 0.2466867,
+        "torso_lean_degrees": 37.145783,
+        "target_head_body_cm": [
+          167.617771,
+          70.946988,
+          31.48012
+        ],
+        "actual_head_body_cm": [
+          167.617771,
+          70.946988,
+          31.48012
+        ],
+        "head_residual_cm": 3.552713678800501e-15,
+        "desired_arm_distance_cm": 88.87049010502903,
+        "solved_grip_body_cm": [
+          98.977137,
+          73.804662,
+          111.122973
+        ],
+        "orientation_correction_degrees": 1.9090959104164224e-06,
+        "cone_corrected": false,
+        "raw_cone_cos_limit": 0.9777602261738586,
+        "direction_unit_length_error": 3.3306690738754696e-16,
+        "legacy_hand_to_head_distance_cm": 138.631894104099,
+        "tangent_length": null
+      },
+      "cone_corrected_sample_count": 0,
+      "cone_correction_interval_s": null,
+      "unreachable_cone_sample_count": 0,
+      "max_direction_unit_length_error": 3.3306690738754696e-16,
+      "minimum_arm_distance_cm": 87.33245352417703,
+      "maximum_arm_distance_cm": 90.19801607899366
+    }
+  },
+  "endpoints_anchored_within_0_001_cm": true,
+  "maximum_head_residual_cm": 3.8263897345803626e-14,
+  "all_phases_reachable": true,
+  "prototype_limitations": [
+    "The generated hammer keeps a fixed 105.18 cm length. Its shaft orientation differs from the old synthetic shaft during the middle of the motion; maximum correction is approximately 18.45 degrees in windup and 45.97 degrees in strike.",
+    "All sampled head positions, including intermediate motions and ground contact, match the Y-mirrored original trajectory after reachable-cone correction.",
+    "Static rigid segment adaptation is not a production skeletal rig. This source audit does not validate imported materials, mesh handedness/bounds, visible seams, runtime float residuals, or actual frame timing."
+  ],
+  "decision": "Reachable-cone implementation matches the proposed math; no additional code edits. Runtime GeneratedHammerError telemetry should independently verify the actual UE pose."
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "SM_PlayerHammer_Handle",
+    "center": "<Struct 'Vector' (0x6803f6a64c0) {x: 0.000000, y: 24.750000, z: 0.000000}>",
+    "extent": "<Struct 'Vector' (0x6803f6a64d8) {x: 3.250000, y: 31.250000, z: 2.800000}>"
+  },
+  {
+    "name": "SM_PlayerHammer_Head",
+    "center": "<Struct 'Vector' (0x6803f6a7180) {x: 0.000000, y: -0.475000, z: 0.000000}>",
+    "extent": "<Struct 'Vector' (0x6803f6a7198) {x: 13.500000, y: 8.375000, z: 8.900000}>"
+  }
+]

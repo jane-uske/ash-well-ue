@@ -84,7 +84,7 @@ void AAshWellIntroCharacter::BeginPlay()
         if(auto* S=LoadObject<USoundBase>(nullptr,*(FString(TEXT("/Game/AshWell/Intro/Audio/"))+Name+TEXT(".")+Name)))GearSounds.Add(S);
     }
     if(HeroMesh) GetMesh()->SetSkeletalMesh(HeroMesh);
-    if(IdleAnimation) GetMesh()->PlayAnimation(IdleAnimation,true);
+    if(IdleAnimation) PlayCharacterAnimation(IdleAnimation,true);
     PreviousLocation=GetActorLocation();
     SetAutoTour(FParse::Param(FCommandLine::Get(),TEXT("IntroTour")));
 }
@@ -156,18 +156,19 @@ void AAshWellIntroCharacter::Tick(float Dt)
     if(Travel<40){TotalDistance+=Travel;StepDistance+=Travel;}
     const float Speed=GetVelocity().Size2D();
     const bool bWalking=Speed>5;
-    if(bWalking)
+    if(bWalking&&ShouldFaceMovement())
     {
         const FRotator Facing(0,GetVelocity().Rotation().Yaw,0);
         SetActorRotation(FMath::RInterpTo(GetActorRotation(),Facing,Dt,5));
     }
-    if(ShouldUpdateLocomotion() && bWalking!=bWasWalking)
+    if(ShouldUpdateLocomotion())
     {
-        if(UAnimSequence* Anim=bWalking?WalkAnimation:IdleAnimation)GetMesh()->PlayAnimation(Anim,true);
+        UAnimSequence* Anim=SelectLocomotionAnimation(Speed);
+        if(Anim&&Anim!=LastLocomotionAnimation){PlayCharacterAnimation(Anim,true);LastLocomotionAnimation=Anim;}
         bWasWalking=bWalking;
     }
-    if(!ShouldUpdateLocomotion()){bWasWalking=false;StepDistance=0;}
-    if(ShouldUpdateLocomotion()&&bWalking)if(UAnimSingleNodeInstance* Inst=GetMesh()->GetSingleNodeInstance())Inst->SetPlayRate(FMath::Clamp(Speed/GetLocomotionReferenceSpeed(),.4f,1.8f));
+    else{bWasWalking=false;LastLocomotionAnimation=nullptr;StepDistance=0;}
+    if(ShouldUpdateLocomotion()&&bWalking)if(UAnimSingleNodeInstance* Inst=Cast<UAnimSingleNodeInstance>(GetMesh()->GetAnimInstance()))Inst->SetPlayRate(FMath::Clamp(Speed/GetLocomotionReferenceSpeed(),.4f,1.8f));
     if(ShouldUpdateLocomotion()&&bWalking&&GetCharacterMovement()->IsMovingOnGround()&&StepDistance>GetFootstepSpacing()){StepDistance-=GetFootstepSpacing();PlayFootstep();}
     FVector Lamp=Here+GetActorRotation().RotateVector(FVector(8,35,-20));
     if(GetMesh()->DoesSocketExist(TEXT("lamp_light_R"))) Lamp=GetMesh()->GetSocketLocation(TEXT("lamp_light_R"));
@@ -187,6 +188,11 @@ void AAshWellIntroCharacter::PlayFootstep()
     }
     if(StepCount%3==1&&GearSounds.Num())UGameplayStatics::PlaySoundAtLocation(this,GearSounds[StepCount%GearSounds.Num()],GetActorLocation(),.18f);
     ++StepCount;
+}
+
+void AAshWellIntroCharacter::PlayCharacterAnimation(UAnimSequence* Animation,bool bLoop)
+{
+    GetMesh()->PlayAnimation(Animation,bLoop);
 }
 void AAshWellIntroCharacter::WriteTelemetry()
 {

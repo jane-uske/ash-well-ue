@@ -1,0 +1,61 @@
+{
+  "units": "centimetres",
+  "skeleton_root_scale": 1,
+  "animations": [
+    {
+      "name": "Walk",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 1.3333333333333333
+    },
+    {
+      "name": "Sprint",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 0.6666666666666666
+    },
+    {
+      "name": "Slash",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 0.8333333333333334
+    },
+    {
+      "name": "Run",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 0.9333333333333333
+    },
+    {
+      "name": "Idle",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 2.5
+    },
+    {
+      "name": "Heavy",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 1.1
+    },
+    {
+      "name": "Guard",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 1.6666666666666667
+    },
+    {
+      "name": "CombatWalk",
+      "source": "SwordPass/SwordLocomotion.blend",
+      "duration": 1.3333333333333333
+    },
+    {
+      "name": "Hit",
+      "source": "BattlePolish/BattlePlayerAnimations.blend",
+      "duration": 0.45
+    },
+    {
+      "name": "Dodge",
+      "source": "BattlePolish/BattlePlayerAnimations.blend",
+      "duration": 0.5833333333333334
+    },
+    {
+      "name": "Death",
+      "source": "CombatCharacters/CombatAnimations.blend",
+      "duration": 1.3
+    }
+  ]
+}

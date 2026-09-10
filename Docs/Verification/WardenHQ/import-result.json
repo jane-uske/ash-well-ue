@@ -1,0 +1,168 @@
+{
+  "state": "completed",
+  "meshes": [
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_Body.SM_WardenHQ_Body",
+      "center": [
+        -5.191511154174805,
+        1.0703544616699219,
+        157.60226440429688
+      ],
+      "extent": [
+        46.117074966430664,
+        66.96908950805664,
+        112.37771606445312
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_Hammer.SM_WardenHQ_Hammer",
+      "center": [
+        24.11750030517578,
+        79.95824241638184,
+        46.84693717956543
+      ],
+      "extent": [
+        26.231739044189453,
+        20.05137825012207,
+        61.82729530334473
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_LeftFoot.SM_WardenHQ_LeftFoot",
+      "center": [
+        7.224494934082031,
+        -42.87113857269287,
+        7.586850345134735
+      ],
+      "extent": [
+        26.546485900878906,
+        16.66989231109619,
+        6.702813923358917
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_LeftForearm.SM_WardenHQ_LeftForearm",
+      "center": [
+        -0.012292861938476562,
+        -58.79190635681152,
+        140.80269622802734
+      ],
+      "extent": [
+        18.811710357666016,
+        15.61827278137207,
+        30.062583923339844
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_LeftShin.SM_WardenHQ_LeftShin",
+      "center": [
+        6.2208709716796875,
+        -37.98505115509033,
+        30.074446201324463
+      ],
+      "extent": [
+        25.989601135253906,
+        20.65439510345459,
+        19.29449987411499
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_LeftThigh.SM_WardenHQ_LeftThigh",
+      "center": [
+        -0.08572769165039062,
+        -30.975339889526367,
+        69.91524887084961
+      ],
+      "extent": [
+        20.94356918334961,
+        22.22210121154785,
+        28.139514923095703
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_LeftUpperArm.SM_WardenHQ_LeftUpperArm",
+      "center": [
+        -3.7069807052612305,
+        -57.49036979675293,
+        183.8808364868164
+      ],
+      "extent": [
+        26.01937770843506,
+        16.840150833129883,
+        16.274696350097656
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_RightFoot.SM_WardenHQ_RightFoot",
+      "center": [
+        7.1679277420043945,
+        36.67765235900879,
+        7.2861721981316805
+      ],
+      "extent": [
+        26.796984672546387,
+        17.965925216674805,
+        7.296934796497226
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_RightForearm.SM_WardenHQ_RightForearm",
+      "center": [
+        -0.40797996520996094,
+        60.1188907623291,
+        137.22629165649414
+      ],
+      "extent": [
+        19.70199966430664,
+        17.194196701049805,
+        34.343441009521484
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_RightShin.SM_WardenHQ_RightShin",
+      "center": [
+        6.263459205627441,
+        31.845187664031982,
+        30.430925846099854
+      ],
+      "extent": [
+        26.11237621307373,
+        21.478004932403564,
+        19.34222936630249
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_RightThigh.SM_WardenHQ_RightThigh",
+      "center": [
+        0.1620473861694336,
+        26.23185086250305,
+        71.39958572387695
+      ],
+      "extent": [
+        21.37203884124756,
+        24.966814756393433,
+        28.323787689208984
+      ]
+    },
+    {
+      "asset": "/Game/AshWell/Combat/WardenHQ/SM_WardenHQ_RightUpperArm.SM_WardenHQ_RightUpperArm",
+      "center": [
+        -1.0720577239990234,
+        55.2928466796875,
+        183.86023712158203
+      ],
+      "extent": [
+        22.718477249145508,
+        19.507293701171875,
+        17.54053497314453
+      ]
+    }
+  ],
+  "material": "/Game/AshWell/Combat/WardenHQ/M_WardenHQ.M_WardenHQ",
+  "channels": {
+    "base_color": "sRGB RGB",
+    "roughness": "linear G",
+    "metallic": "linear B"
+  },
+  "camera_light_imported": false
+}

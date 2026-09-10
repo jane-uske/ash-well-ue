@@ -5,7 +5,9 @@
 
 class AAshWellCombatArena;
 class AAshWellWarden;
+class AAshWellBattleFX;
 class UStaticMeshComponent;
+class UWindDirectionalSourceComponent;
 
 UCLASS()
 class ASHWELL_API AAshWellCombatCharacter : public AAshWellIntroCharacter
@@ -26,36 +28,82 @@ public:
     bool IsEncounterActive() const { return bEncounterActive; }
     bool HasPower() const;
     FVector GetConsolePoint() const;
+    FVector GetEntryPoint() const;
+    bool IsEntryClosed() const;
     bool IsInvulnerable() const;
     FString GetCombatState() const;
     FString GetPrompt() const;
     AAshWellWarden* GetWarden() const { return Warden; }
     void Attack();
+    void HeavyAttack();
     void Dodge();
+    virtual void Jump() override;
+    virtual void Landed(const FHitResult& Hit) override;
+    virtual void OnJumped_Implementation() override;
     void ToggleLock();
     void Interact();
+    float GetEndingTime() const { return EndingTime; }
+    bool IsRecordVisible() const { return RecordTime>0; }
+    bool HasFinishedSlice() const;
+    FString GetStorySubtitle() const;
 protected:
+    virtual void PlayCharacterAnimation(UAnimSequence* Animation,bool bLoop) override;
     virtual bool ShouldUpdateLocomotion() const override;
-    virtual float GetLocomotionReferenceSpeed() const override { return bCombatWalkLoaded?240.0f:51.4f; }
-    virtual float GetFootstepSpacing() const override { return bCombatWalkLoaded?72.0f:36.0f; }
+    virtual bool ShouldFaceMovement() const override { return !bLockedOn && ActionState==EAction::Idle; }
+    virtual UAnimSequence* SelectLocomotionAnimation(float Speed) const override;
+    virtual float GetLocomotionReferenceSpeed() const override;
+    virtual float GetFootstepSpacing() const override { return bHeroComplete&&!bSprint&&!IsSwordReady()?(bSlow?72.f:103.f):bSwordPass?(bSprint&&!bLockedOn?67.f:IsSwordReady()||bSlow?57.f:142.f):(bCombatWalkLoaded?72.0f:36.0f); }
 private:
-    enum class EAction : uint8 { Idle,Attack,Dodge,Hit,Dead };
+    friend class AAshWellChapterDirector;
+    enum class EAction : uint8 { Idle,Attack,Heavy,Dodge,Hit,Dead };
     void MoveForwardCombat(float Value);
     void MoveRightCombat(float Value);
     void LookYawCombat(float Value);
     void LookPitchCombat(float Value);
     void SlowDown();
     void SlowUp();
+    void SprintDown();
+    void SprintUp();
+    bool IsSwordReady() const;
+    FVector SwordPoint(float Distance) const;
     void SetAction(EAction Action);
     void UpdateAttack();
     void UpdateCamera(float DeltaSeconds);
     void WriteCombatSnapshot();
     void RunCombatQA(float DeltaSeconds);
+    void RunPolishProbe(float DeltaSeconds);
+    FString QAProbe;
+    int32 ProbeStep=0;
+    float ProbeYaw=0;
+    float ProbeYawDrift=0;
+    float ProbeMinimumDilation=1,ProbeMinimumSeparation=100000;
     FVector InputDirection() const;
     UPROPERTY(Transient) TObjectPtr<AAshWellCombatArena> Arena;
     UPROPERTY(Transient) TObjectPtr<AAshWellWarden> Warden;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> AttackAnimation;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> HeavyAnimation;
+    UPROPERTY(Transient) TObjectPtr<AAshWellBattleFX> BattleFX;
+    bool bBattlePolish=false;
+    bool bSwordPass=false,bSprint=false,bTravellerVisual=false,bHeroComplete=false;
+    int32 ClothProbeVertex=INDEX_NONE;
+    UPROPERTY(Transient) TObjectPtr<UWindDirectionalSourceComponent> HeroWind;
+    float ClothMotion=0;
+    FVector PreviousClothPoint=FVector::ZeroVector;
+    UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> TravellerCloak;
+    UPROPERTY(Transient) TObjectPtr<UStaticMeshComponent> SwordScabbard;
+    float SwordReadyTime=0;
+    FVector PreviousSwordBase=FVector::ZeroVector;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordWalk;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordRun;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordSprint;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordIdle;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordGuard;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordCombatWalk;
+    int32 HeavyCount=0;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> JumpAnimation;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> DodgeAnimation;
+    int32 JumpCount=0;
+    float JumpStartHeight=0,JumpPeakHeight=0;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> HitAnimation;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> DeathAnimation;
     UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> CombatCompanion;
@@ -74,8 +122,10 @@ private:
     FVector PreviousWeaponPosition=FVector::ZeroVector;
     int32 QACaptureIndex=0;
     bool bLockedOn=false,bEncounterActive=false,bAttackConnected=false,bCombatWalkLoaded=false,bSlow=false;
-    bool bQA=false,bQAComplete=false;
+    bool bQA=false,bQAComplete=false,bPolishedWeapon=false,bSwingAudioPlayed=false;
     float QAElapsed=0;
+    float EndingTime=-1,RecordTime=0;
+    bool bReadRecord=false,bSawOverload=false;
     int32 AttackCount=0,HitCount=0,DodgeCount=0,DamageTakenCount=0,EvadedHits=0;
     FString Feedback;
 };

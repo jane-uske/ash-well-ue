@@ -1,0 +1,17 @@
+{
+  "map": "L_Chapter01_Descent",
+  "qa": false,
+  "elapsed": 24.20221519470215,
+  "route_index": 1,
+  "route_points": 18,
+  "pump_fixed": false,
+  "station_reached": false,
+  "failed": false,
+  "failure": "",
+  "grounded": true,
+  "victory": false,
+  "chapter_complete": false,
+  "x": -11000,
+  "y": 800,
+  "z": 1690
+}

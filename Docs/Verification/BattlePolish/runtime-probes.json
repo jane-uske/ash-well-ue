@@ -1,0 +1,213 @@
+[
+  {
+    "case": "battle_light",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "impact": true,
+      "slowdown_observed": true
+    },
+    "health": 100,
+    "enemy_health": 760,
+    "duration": 2.6044904076843522
+  },
+  {
+    "case": "battle_heavy",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "impact": true,
+      "slowdown_observed": true
+    },
+    "health": 100,
+    "enemy_health": 745,
+    "duration": 2.6072176410234533
+  },
+  {
+    "case": "battle_miss",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "no_damage": true,
+      "no_hit": true,
+      "no_slowdown": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 2.610835588478949
+  },
+  {
+    "case": "battle_slam",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "kind": true,
+      "heading": true
+    },
+    "health": 65,
+    "enemy_health": 800,
+    "duration": 2.533491986745503
+  },
+  {
+    "case": "battle_kick",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "kind": true,
+      "heading": true
+    },
+    "health": 80,
+    "enemy_health": 800,
+    "duration": 2.442806041741278
+  },
+  {
+    "case": "battle_charge",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "kind": true,
+      "heading": true
+    },
+    "health": 70,
+    "enemy_health": 800,
+    "duration": 3.0983579595922492
+  },
+  {
+    "case": "battle_dodge_slam",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "unharmed": true,
+      "dodged": true,
+      "heading": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 2.5567665872513317
+  },
+  {
+    "case": "battle_dodge_kick",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "unharmed": true,
+      "dodged": true,
+      "heading": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 2.444226088875439
+  },
+  {
+    "case": "battle_dodge_charge",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "unharmed": true,
+      "dodged": true,
+      "heading": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 3.085725865268614
+  },
+  {
+    "case": "battle_body",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "separated": true,
+      "actually_approached": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 3.5090430369018577
+  },
+  {
+    "case": "battle_wall",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "stopped": true,
+      "attempted_roll": true,
+      "grounded": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 2.5069573325454257
+  },
+  {
+    "case": "invulnerability",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "unharmed": true,
+      "evaded": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 3.7162790363072418
+  },
+  {
+    "case": "stamina",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "four_attacks": true,
+      "cost": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 4.375211632752325
+  },
+  {
+    "case": "battle_camera",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "five_positions": true,
+      "no_camera_penetration": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 7.0087098245858215
+  }
+]

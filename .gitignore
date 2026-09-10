@@ -12,3 +12,13 @@ __pycache__/
 .env
 .env.*
 .codex/
+
+Artifacts/
+
+.venv-meshy/
+
+# Local packaging state and raw service responses (may contain signed URLs).
+Build/Mac/FileOpenOrder/
+Build/Mac/*.PackageVersionCounter
+meshy_output/**/task_*.json
+meshy_output/**/download_*.json

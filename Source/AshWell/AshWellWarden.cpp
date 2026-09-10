@@ -1,4 +1,6 @@
 #include "AshWellWarden.h"
+#include "AshWellCombatCharacter.h"
+#include "AshWellBattleFX.h"
 
 #include "Components/CapsuleComponent.h"
 #include "Components/PointLightComponent.h"
@@ -10,6 +12,8 @@
 #include "Materials/MaterialInterface.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Sound/SoundBase.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 AAshWellWarden::AAshWellWarden()
 {
@@ -115,6 +119,7 @@ UStaticMeshComponent* AAshWellWarden::AddPart(const TCHAR* Name, UStaticMesh* Me
 void AAshWellWarden::BeginPlay()
 {
     Super::BeginPlay();
+    bSingleStrike=FParse::Param(FCommandLine::Get(),TEXT("SingleStrike"));
     Tags.AddUnique(TEXT("AshWellCombatEnemy"));
     SwingSound=LoadObject<USoundBase>(nullptr,TEXT("/Game/AshWell/Combat/Audio/AW_Combat_Swing.AW_Combat_Swing"));
     SlamSound=LoadObject<USoundBase>(nullptr,TEXT("/Game/AshWell/Combat/Audio/AW_Combat_Impact.AW_Combat_Impact"));
@@ -125,6 +130,17 @@ void AAshWellWarden::BeginPlay()
             if(Part->GetStaticMesh()&&Part->GetStaticMesh()->GetPathName().StartsWith(TEXT("/Engine/BasicShapes/Cube")))Part->SetStaticMesh(Armor);
         }
     }
+    bBattlePolish=!FParse::Param(FCommandLine::Get(),TEXT("BattleBaseline"));
+    if(bBattlePolish)
+    {
+        auto Audio=[](const TCHAR* N){FString S=FString(TEXT("AW_Battle_"))+N;return LoadObject<USoundBase>(nullptr,*(FString(TEXT("/Game/AshWell/Combat/BattlePolish/"))+S+TEXT(".")+S));};
+        if(auto* A=Audio(TEXT("GroundSlam")))SlamSound=A;
+        if(auto* A=Audio(TEXT("Swing")))SwingSound=A;
+        WindupSound=Audio(TEXT("Windup"));KickSound=Audio(TEXT("Kick"));DragSound=Audio(TEXT("Drag"));
+        Capsule->SetCapsuleRadius(82.f);
+    }
+    InitializeGeneratedVisual();
+    UpdatePose(0.0f);
 }
 
 void AAshWellWarden::SetArenaBounds(FVector Center, FVector2D HalfExtents)
@@ -146,13 +162,25 @@ void AAshWellWarden::ChangeState(EWellWardenState NewState)
     const EWellWardenState PreviousState=State;
     State = NewState;
     StateTime = 0.0f;
-    if (State == EWellWardenState::Strike) bStrikeHit = false;
-    if(State==EWellWardenState::Strike&&SwingSound)UGameplayStatics::PlaySoundAtLocation(this,SwingSound,GetAimPoint(),.7f,.65f);
+    if (State == EWellWardenState::Strike)
+    {
+        bStrikeHit=false;bImpactPlayed=false;++StrikeCount;
+        CommittedDirection=GetActorForwardVector();PreviousHammer=GetAttackContact();
+        UE_LOG(LogTemp,Display,TEXT("AW_STRIKE kind=%s phase=%d combo=%d"),*GetAttackLabel(),bPhaseTwo?2:1,bComboFollowup);
+    }
+    if(State==EWellWardenState::Strike)
+    {
+        USoundBase* Sound=AttackKind==EWellWardenAttack::Kick?KickSound:SwingSound;
+        if(Sound)UGameplayStatics::PlaySoundAtLocation(this,Sound,GetAimPoint(),bBattlePolish?.4f:.7f,AttackKind==EWellWardenAttack::Kick?.72f:.65f);
+    }
     if(State==EWellWardenState::Recovery&&PreviousState==EWellWardenState::Strike)
     {
-        const FVector Ground=GetActorLocation()+GetActorForwardVector()*190-FVector(0,0,125);
-        if(SlamSound)UGameplayStatics::PlaySoundAtLocation(this,SlamSound,Ground,.85f,.65f);
-        EmitSparks(Ground);
+        if(AttackKind!=EWellWardenAttack::Sweep&&AttackKind!=EWellWardenAttack::Kick&&!bImpactPlayed)
+        {
+            const FVector Ground=GetHammerPosition();
+            if(SlamSound)UGameplayStatics::PlaySoundAtLocation(this,SlamSound,Ground,bBattlePolish?1.4f:.85f,bBattlePolish?.92f:.65f);
+            EmitSparks(Ground);if(bBattlePolish)if(auto* FX=AAshWellBattleFX::Find(GetWorld()))FX->Burst(Ground,3);bImpactPlayed=true;
+        }
     }
     if (State == EWellWardenState::Dead)
     {
@@ -165,8 +193,51 @@ void AAshWellWarden::ChangeState(EWellWardenState NewState)
 void AAshWellWarden::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+    // Evaluate pose and sweep together at bounded intervals, including low-FPS frames.
+    const int32 Steps=FMath::Clamp(FMath::CeilToInt(DeltaSeconds*120.f),1,120);
+    for(int32 I=0;I<Steps;++I)TickCombatStep(DeltaSeconds/Steps);
+    UpdateSparks(DeltaSeconds);
+}
+
+float AAshWellWarden::WindupDuration() const {
+    if(bBattlePolish&&!FParse::Param(FCommandLine::Get(),TEXT("SwordBaseline")))
+        return AttackKind==EWellWardenAttack::Kick?1.15f:AttackKind==EWellWardenAttack::Charge?1.65f:1.55f;
+    return AttackKind==EWellWardenAttack::Kick?.85f:AttackKind==EWellWardenAttack::Charge?1.20f:AttackKind==EWellWardenAttack::Sweep?.90f:AttackKind==EWellWardenAttack::Pursuit?1.20f:WindupSeconds; }
+float AAshWellWarden::StrikeDuration() const { return AttackKind==EWellWardenAttack::Kick?.32f:AttackKind==EWellWardenAttack::Charge?.62f:AttackKind==EWellWardenAttack::Slam?StrikeSeconds:.35f; }
+float AAshWellWarden::RecoveryDuration() const { return bComboFollowup?1.50f:AttackKind==EWellWardenAttack::Kick?1.15f:AttackKind==EWellWardenAttack::Charge?1.60f:AttackKind==EWellWardenAttack::Sweep?1.20f:AttackKind==EWellWardenAttack::Pursuit?1.50f:RecoverySeconds; }
+float AAshWellWarden::CurrentDamage() const { return AttackKind==EWellWardenAttack::Kick?20.f:AttackKind==EWellWardenAttack::Charge?30.f:AttackKind==EWellWardenAttack::Sweep?25.f:AttackKind==EWellWardenAttack::Pursuit?30.f:AttackDamage; }
+
+void AAshWellWarden::BeginAttack(EWellWardenAttack Kind)
+{
+    AttackKind=Kind;
+    if(Kind==EWellWardenAttack::Pursuit||Kind==EWellWardenAttack::Charge)PursuitCooldown=6.f;
+    if(Kind==EWellWardenAttack::Kick)KickCooldown=4.f;
+    ChangeState(EWellWardenState::Windup);
+    if(bBattlePolish)
+    {USoundBase* S=Kind==EWellWardenAttack::Charge?DragSound:WindupSound;if(S)UGameplayStatics::PlaySoundAtLocation(this,S,GetAimPoint(),Kind==EWellWardenAttack::Charge?.5f:.18f,Kind==EWellWardenAttack::Kick?1.35f:.80f);}
+    else if(SwingSound)UGameplayStatics::PlaySoundAtLocation(this,SwingSound,GetAimPoint(),.35f,Kind==EWellWardenAttack::Sweep?1.35f:Kind==EWellWardenAttack::Pursuit?.85f:.5f);
+    PreviousHammer=GetAttackContact();
+}
+
+void AAshWellWarden::FinishRecovery()
+{
+    if(bOverloadPending&&!bSingleStrike)
+    {
+        bOverloadPending=false;bPhaseTwo=true;bComboPending=false;bComboFollowup=false;
+        ChangeState(EWellWardenState::Overload);
+        UE_LOG(LogTemp,Display,TEXT("AW_OVERLOAD health=%.0f"),Health);
+        return;
+    }
+    bComboFollowup=false;ChangeState(EWellWardenState::Chase);
+}
+
+void AAshWellWarden::TickCombatStep(float DeltaSeconds)
+{
+    if(const auto* Player=Cast<AAshWellCombatCharacter>(Target.Get()))if(Player->IsDead())return;
     StateTime += DeltaSeconds;
     TotalTime += DeltaSeconds;
+    PursuitCooldown=FMath::Max(0.f,PursuitCooldown-DeltaSeconds);
+    KickCooldown=FMath::Max(0.f,KickCooldown-DeltaSeconds);
     HitFlash = FMath::Max(0.0f, HitFlash - DeltaSeconds);
     switch (State)
     {
@@ -176,27 +247,47 @@ void AAshWellWarden::Tick(float DeltaSeconds)
             FaceTarget(DeltaSeconds, 160.0f);
             const float Distance = FVector::Dist2D(GetActorLocation(), Target->GetActorLocation());
             const FVector Direction = (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal2D();
-            if (Distance <= 245.0f && FVector::DotProduct(GetActorForwardVector(), Direction) > 0.65f)
-                ChangeState(EWellWardenState::Windup);
+            if (Distance <= 240.0f*GetActorScale3D().X && FVector::DotProduct(GetActorForwardVector(), Direction) > 0.65f)
+            {
+                ++MeleeSelections;
+                bComboPending=bPhaseTwo&&MeleeSelections%3==0;
+                if(bBattlePolish&&!bSingleStrike)BeginAttack((bComboPending||(Distance<130.f*GetActorScale3D().X&&KickCooldown<=0&&MeleeSelections%2==0))?EWellWardenAttack::Kick:EWellWardenAttack::Slam);
+                else BeginAttack(bSingleStrike?EWellWardenAttack::Slam:(bComboPending||MeleeSelections%2==0)?EWellWardenAttack::Sweep:EWellWardenAttack::Slam);
+            }
+            else if(!bSingleStrike&&Distance>320.f*GetActorScale3D().X&&Distance<650.f*GetActorScale3D().X&&PursuitCooldown<=0&&FVector::DotProduct(GetActorForwardVector(),Direction)>.8f)
+                BeginAttack(bBattlePolish?EWellWardenAttack::Charge:EWellWardenAttack::Pursuit);
             else StepTowardTarget(DeltaSeconds);
         }
         break;
     case EWellWardenState::Windup:
         // The final 0.35 seconds commits to a direction, so a lateral dodge can earn an opening.
-        if (StateTime < WindupSeconds - 0.35f) FaceTarget(DeltaSeconds, 70.0f);
-        if (StateTime >= WindupSeconds) ChangeState(EWellWardenState::Strike);
+        if (StateTime < WindupDuration() - (bBattlePolish?.55f:.35f)) FaceTarget(DeltaSeconds, 70.0f);
+        if(AttackKind==EWellWardenAttack::Pursuit&&StateTime<.70f)StepTowardTarget(DeltaSeconds*.8f);
+        if (StateTime >= WindupDuration()) ChangeState(EWellWardenState::Strike);
         break;
     case EWellWardenState::Strike:
-        // The weapon is descending before damage becomes active.
-        if (StateTime >= 0.065f) TryStrike();
-        if (StateTime >= StrikeSeconds)
+        if(AttackKind==EWellWardenAttack::Pursuit||AttackKind==EWellWardenAttack::Charge)
         {
-            EmitSparks(GetActorTransform().TransformPosition(FVector(190,-65,-120)));
+            FVector D=CommittedDirection*((AttackKind==EWellWardenAttack::Charge?700.f:600.f)*DeltaSeconds);
+            FVector End=GetActorLocation()+D;
+            if(bHasBounds){End.X=FMath::Clamp(End.X,ArenaCenter.X-ArenaHalfExtents.X+Capsule->GetScaledCapsuleRadius(),ArenaCenter.X+ArenaHalfExtents.X-Capsule->GetScaledCapsuleRadius());End.Y=FMath::Clamp(End.Y,ArenaCenter.Y-ArenaHalfExtents.Y+Capsule->GetScaledCapsuleRadius(),ArenaCenter.Y+ArenaHalfExtents.Y-Capsule->GetScaledCapsuleRadius());}
+            AddActorWorldOffset(End-GetActorLocation(),true);
+        }
+        if (StateTime >= StrikeDuration())
+        {
+            StateTime=StrikeDuration();UpdatePose(DeltaSeconds);TryStrike();PreviousHammer=GetAttackContact();
             ChangeState(EWellWardenState::Recovery);
         }
         break;
     case EWellWardenState::Recovery:
-        if (StateTime >= RecoverySeconds) ChangeState(EWellWardenState::Chase);
+        if(bComboPending&&StateTime>=.55f)
+        {
+            bComboPending=false;bComboFollowup=true;BeginAttack(EWellWardenAttack::Slam);
+        }
+        else if (StateTime >= RecoveryDuration()) FinishRecovery();
+        break;
+    case EWellWardenState::Overload:
+        if(StateTime>=2.f)ChangeState(EWellWardenState::Chase);
         break;
     case EWellWardenState::Stagger:
         if (StateTime >= 0.32f)
@@ -204,16 +295,25 @@ void AAshWellWarden::Tick(float DeltaSeconds)
             if (RecoveryAfterStagger > 0.0f)
             {
                 ChangeState(EWellWardenState::Recovery);
-                StateTime = RecoverySeconds-RecoveryAfterStagger;
+                StateTime = RecoveryDuration()-RecoveryAfterStagger;
                 RecoveryAfterStagger = 0.0f;
             }
-            else ChangeState(EWellWardenState::Chase);
+            else FinishRecovery();
         }
         break;
     default: break;
     }
     UpdatePose(DeltaSeconds);
-    UpdateSparks(DeltaSeconds);
+    if(State==EWellWardenState::Strike&&StateTime>=(AttackKind==EWellWardenAttack::Charge?.28f:.025f))TryStrike();
+    if(State==EWellWardenState::Strike&&(AttackKind!=EWellWardenAttack::Charge||StateTime>.46f)&&AttackKind!=EWellWardenAttack::Sweep&&AttackKind!=EWellWardenAttack::Kick&&!bImpactPlayed&&GetHammerPosition().Z-Body->GetComponentLocation().Z<60.f)
+    {
+        const FVector Contact=GetHammerPosition();
+        if(SlamSound)UGameplayStatics::PlaySoundAtLocation(this,SlamSound,Contact,bBattlePolish?1.4f:.85f,bBattlePolish?.92f:.65f);
+        EmitSparks(Contact);if(bBattlePolish)if(auto* FX=AAshWellBattleFX::Find(GetWorld()))FX->Burst(Contact,3);bImpactPlayed=true;
+    }
+    if(bBattlePolish&&State==EWellWardenState::Strike&&AttackKind!=EWellWardenAttack::Kick)
+        if(auto* FX=AAshWellBattleFX::Find(GetWorld()))FX->Trail(PreviousHammer,GetHammerPosition());
+    PreviousHammer=GetAttackContact();
 }
 
 void AAshWellWarden::FaceTarget(float DeltaSeconds, float DegreesPerSecond)
@@ -230,8 +330,8 @@ void AAshWellWarden::StepTowardTarget(float DeltaSeconds)
     FVector Destination = GetActorLocation() + (Target->GetActorLocation() - GetActorLocation()).GetSafeNormal2D() * WalkSpeed * DeltaSeconds;
     if (bHasBounds)
     {
-        Destination.X = FMath::Clamp(Destination.X, ArenaCenter.X-ArenaHalfExtents.X+65.0f, ArenaCenter.X+ArenaHalfExtents.X-65.0f);
-        Destination.Y = FMath::Clamp(Destination.Y, ArenaCenter.Y-ArenaHalfExtents.Y+65.0f, ArenaCenter.Y+ArenaHalfExtents.Y-65.0f);
+        Destination.X = FMath::Clamp(Destination.X, ArenaCenter.X-ArenaHalfExtents.X+Capsule->GetScaledCapsuleRadius(), ArenaCenter.X+ArenaHalfExtents.X-Capsule->GetScaledCapsuleRadius());
+        Destination.Y = FMath::Clamp(Destination.Y, ArenaCenter.Y-ArenaHalfExtents.Y+Capsule->GetScaledCapsuleRadius(), ArenaCenter.Y+ArenaHalfExtents.Y-Capsule->GetScaledCapsuleRadius());
     }
     const FVector Before = GetActorLocation();
     FHitResult Hit;
@@ -242,38 +342,39 @@ void AAshWellWarden::StepTowardTarget(float DeltaSeconds)
         Slide.Z = 0.0f;
         AddActorWorldOffset(Slide, true);
     }
-    GaitPhase += FVector::Dist2D(Before, GetActorLocation()) / 33.0f;
+    GaitPhase += FVector::Dist2D(Before, GetActorLocation()) / (22.9183f*GetActorScale3D().X);
 }
 
 void AAshWellWarden::TryStrike()
 {
-    if (bStrikeHit || !Target.IsValid()) return;
-    const FVector TargetPosition = Target->GetActorLocation();
-    const FVector Offset = TargetPosition - GetActorLocation();
-    if (Offset.Size2D() > 305.0f || FMath::Abs(Offset.Z) > 170.0f) return;
-    if (FVector::DotProduct(GetActorForwardVector(), Offset.GetSafeNormal2D()) < 0.52f) return;
+    if (bStrikeHit || !Target.IsValid() || (AttackKind==EWellWardenAttack::Charge&&StateTime<.28f)) return;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(WardenMelee), false, this);
     FHitResult Hit;
-    if (GetWorld()->LineTraceSingleByChannel(Hit, GetAimPoint(), TargetPosition, ECC_Visibility, Params)
-        && Hit.GetActor() != Target.Get()) return;
-    bStrikeHit = true;
-    UGameplayStatics::ApplyDamage(Target.Get(), AttackDamage, nullptr, this, nullptr);
+    // A conservative sphere around the visible head, swept over evaluated poses.
+    if(GetWorld()->SweepSingleByChannel(Hit,PreviousHammer,GetAttackContact(),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere((AttackKind==EWellWardenAttack::Kick?21.f:34.f)*GetActorScale3D().X),Params)
+        && Hit.GetActor()==Target.Get())
+    {
+        bStrikeHit=true;++ContactCount;
+        const float Applied=UGameplayStatics::ApplyDamage(Target.Get(),CurrentDamage(),nullptr,this,nullptr);
+        UE_LOG(LogTemp,Display,TEXT("AW_CONTACT kind=%s applied=%.1f"),*GetAttackLabel(),Applied);
+    }
 }
 
 bool AAshWellWarden::ReceiveMeleeHit(float Damage, const FVector& Source)
 {
     if (IsDead() || Damage <= 0.0f) return false;
     Health = FMath::Max(0.0f, Health - Damage);
+    if(Health<=MaximumHealth*.5f&&!bPhaseTwo)bOverloadPending=true;
     HitFlash = 0.16f;
     FVector HitPoint = GetAimPoint() + (Source-GetAimPoint()).GetSafeNormal() * 32.0f;
     EmitSparks(HitPoint);
     if (Health <= 0.0f) ChangeState(EWellWardenState::Dead);
     else if ((State == EWellWardenState::Chase || State == EWellWardenState::Recovery)
-        && TotalTime-LastStaggerTime > 1.6f)
+        && !bComboPending && TotalTime-LastStaggerTime > 1.6f)
     {
         LastStaggerTime = TotalTime;
         // A successful punish must not accidentally shorten the enemy's recovery.
-        RecoveryAfterStagger = State == EWellWardenState::Recovery ? FMath::Max(0.0f, RecoverySeconds-StateTime) : 0.0f;
+        RecoveryAfterStagger = State == EWellWardenState::Recovery ? FMath::Max(0.0f, RecoveryDuration()-StateTime) : 0.0f;
         ChangeState(EWellWardenState::Stagger);
     }
     return true;
@@ -290,12 +391,14 @@ void AAshWellWarden::SetLink(UStaticMeshComponent* Part, const FVector& A, const
 
 void AAshWellWarden::UpdatePose(float DeltaSeconds)
 {
-    const bool bWalking = State == EWellWardenState::Chase;
-    const float Gait = bWalking ? FMath::Sin(GaitPhase) : 0.0f;
+    const bool bWalking = State == EWellWardenState::Chase || (State==EWellWardenState::Windup&&AttackKind==EWellWardenAttack::Pursuit&&StateTime<.7f);
+    // Linear planted-foot travel cancels actor translation on the flat deck.
+    const float Gait = bWalking ? 2.f/PI*FMath::Asin(FMath::Sin(GaitPhase)) :
+        (AttackKind==EWellWardenAttack::Pursuit&&State==EWellWardenState::Strike?-1.3f*FMath::Sin(PI*FMath::Clamp(StateTime/StrikeDuration(),0.f,1.f)):0.f);
     const float LeftLift = bWalking ? FMath::Max(0.0f, FMath::Cos(GaitPhase))*13.0f : 0.0f;
     const float RightLift = bWalking ? FMath::Max(0.0f, -FMath::Cos(GaitPhase))*13.0f : 0.0f;
-    const FVector LeftToe(15+Gait*26,38,10+LeftLift);
-    const FVector RightToe(15-Gait*26,-38,10+RightLift);
+    const FVector LeftToe(15+Gait*36,38,10+LeftLift);
+    const FVector RightToe(15-Gait*36,-38,10+RightLift);
     LeftFoot->SetRelativeLocation(LeftToe);
     RightFoot->SetRelativeLocation(RightToe);
     const FVector LeftKnee(14+Gait*12,38,64+LeftLift*0.3f);
@@ -307,16 +410,17 @@ void AAshWellWarden::UpdatePose(float DeltaSeconds)
 
     const FVector RestHand(44,-83,147);
     const FVector RestHead(84,-83,36);
-    const FVector RaisedHand(-29,-82,239);
-    const FVector RaisedHead(-83,-82,316);
-    const FVector SlamHand(88,-72,133);
-    const FVector SlamHead(195,-67,30);
+    const bool Broad=bBattlePolish&&!FParse::Param(FCommandLine::Get(),TEXT("SwordBaseline"));
+    const FVector RaisedHand=Broad?FVector(-48,-82,256):FVector(-29,-82,239);
+    const FVector RaisedHead=Broad?FVector(-126,-82,347):FVector(-83,-82,316);
+    const FVector SlamHand(88,-35,133);
+    const FVector SlamHead(210,-15,30);
     FVector Hand = RestHand;
     FVector Head = RestHead;
     float Lean = 0;
     if (State == EWellWardenState::Windup)
     {
-        const float Alpha = FMath::Clamp(StateTime/(WindupSeconds-0.20f), 0.0f, 1.0f);
+        const float Alpha = FMath::Clamp(StateTime/(WindupDuration()-(Broad?.40f:.20f)), 0.0f, 1.0f);
         const float Smooth = Alpha*Alpha*(3-2*Alpha);
         Hand = FMath::Lerp(RestHand, RaisedHand, Smooth);
         Head = FMath::Lerp(RestHead, RaisedHead, Smooth);
@@ -324,14 +428,14 @@ void AAshWellWarden::UpdatePose(float DeltaSeconds)
     }
     else if (State == EWellWardenState::Strike)
     {
-        const float Alpha = FMath::Clamp(StateTime/(StrikeSeconds*0.8f),0.0f,1.0f);
+        const float Alpha = FMath::Clamp(StateTime/(StrikeDuration()*0.8f),0.0f,1.0f);
         Hand = FMath::Lerp(RaisedHand,SlamHand,Alpha*Alpha);
         Head = FMath::Lerp(RaisedHead,SlamHead,Alpha*Alpha);
         Lean = FMath::Lerp(7.0f,-8.0f,Alpha);
     }
     else if (State == EWellWardenState::Recovery)
     {
-        const float Alpha = FMath::Clamp((StateTime-0.42f)/(RecoverySeconds-0.42f),0.0f,1.0f);
+        const float Alpha = FMath::Clamp((StateTime-0.42f)/(RecoveryDuration()-0.42f),0.0f,1.0f);
         Hand = FMath::Lerp(SlamHand,RestHand,Alpha);
         Head = FMath::Lerp(SlamHead,RestHead,Alpha);
         Lean = -8.0f*(1-Alpha);
@@ -339,6 +443,35 @@ void AAshWellWarden::UpdatePose(float DeltaSeconds)
     else if (State == EWellWardenState::Stagger)
     {
         Lean = 10.0f*FMath::Sin(FMath::Clamp(StateTime/0.32f,0.0f,1.0f)*PI);
+    }
+    if(AttackKind==EWellWardenAttack::Sweep&&(State==EWellWardenState::Windup||State==EWellWardenState::Strike||State==EWellWardenState::Recovery))
+    {
+        const FVector ReadyHand(15,-92,160),ReadyHead(-70,-150,145);
+        if(State==EWellWardenState::Windup)
+        {const float A=FMath::SmoothStep(0.f,.70f,StateTime);Hand=FMath::Lerp(RestHand,ReadyHand,A);Head=FMath::Lerp(RestHead,ReadyHead,A);}
+        else if(State==EWellWardenState::Strike)
+        {const float A=FMath::Clamp(StateTime/.35f,0.f,1.f);const float Angle=FMath::Lerp(-1.95f,1.12f,A);Head=FVector(205*FMath::Cos(Angle),205*FMath::Sin(Angle),108);Hand=FVector(Head.X*.42,Head.Y*.42-20,163);}
+        else
+        {const float A=FMath::SmoothStep(.30f,RecoveryDuration(),StateTime);Head=FMath::Lerp(FVector(89,185,108),RestHead,A);Hand=FMath::Lerp(FVector(37,58,163),RestHand,A);}
+        Lean=0;
+    }
+    if(bBattlePolish&&AttackKind==EWellWardenAttack::Kick&&IsAttacking())
+    {Hand=RestHand+FVector(-8,0,12);Head=RestHead+FVector(-8,0,12);Lean=0;}
+    if(bBattlePolish&&AttackKind==EWellWardenAttack::Kick&&State==EWellWardenState::Recovery)
+    {Hand=RestHand;Head=RestHead;Lean=0;}
+    if(AttackKind==EWellWardenAttack::Charge&&(IsAttacking()||State==EWellWardenState::Recovery))
+    {
+        const FVector DragHand(20,-70,125),DragHead(-65,-80,24),EndHand(86,-38,154),EndHead(190,-10,105);
+        if(State==EWellWardenState::Windup){float A=FMath::SmoothStep(0.f,.65f,StateTime);Hand=FMath::Lerp(RestHand,DragHand,A);Head=FMath::Lerp(RestHead,DragHead,A);}
+        else if(State==EWellWardenState::Strike){float A=FMath::SmoothStep(.28f,.57f,StateTime);Hand=FMath::Lerp(DragHand,EndHand,A);Head=FMath::Lerp(DragHead,EndHead,A);}
+        else{float A=FMath::SmoothStep(.30f,RecoveryDuration(),StateTime);Hand=FMath::Lerp(EndHand,RestHand,A);Head=FMath::Lerp(EndHead,RestHead,A);}
+        Lean=0;
+    }
+    if(State==EWellWardenState::Overload)
+    {
+        const float Load=FMath::SmoothStep(0.f,.35f,StateTime)*(1-FMath::SmoothStep(1.2f,2.f,StateTime));
+        Hand+=FVector(-10,0,-14)*Load;Head+=FVector(-8,0,5)*Load;
+        Lean=0;
     }
     if (bWalking) { Hand.Z += FMath::Abs(Gait)*5; Head.Z += FMath::Abs(Gait)*5; }
     FVector Elbow = (FVector(0,-65,194)+Hand)*0.5f + FVector(-18,-19,-4);
@@ -356,6 +489,8 @@ void AAshWellWarden::UpdatePose(float DeltaSeconds)
     WarningRing->SetRelativeLocation(Head+FVector(0,0,22));
     WarningRing->SetVisibility(IsAttacking());
 
+    UpdateGeneratedVisual(Hand, Head, Gait, LeftLift, RightLift);
+
     if (IsDead())
     {
         const float Alpha = FMath::Clamp(StateTime/1.05f,0.0f,1.0f);
@@ -369,7 +504,7 @@ void AAshWellWarden::UpdatePose(float DeltaSeconds)
         const float Jolt = HitFlash > 0 ? FMath::Sin(TotalTime*130)*HitFlash*26 : 0;
         Body->SetRelativeLocation(FVector(Jolt,0,-135));
         Body->SetRelativeRotation(FRotator(Lean,0,bWalking?Gait*1.0f:0));
-        const bool bWarning = State == EWellWardenState::Windup;
+        const bool bWarning = State == EWellWardenState::Windup || State==EWellWardenState::Overload;
         EyeLight->SetIntensity(bWarning ? 170+100*FMath::Sin(StateTime*19) : 95.0f);
         EyeLight->SetLightColor(bWarning ? FLinearColor(1.0f,0.045f,0.008f) : FLinearColor(1.0f,0.22f,0.025f));
     }
@@ -413,7 +548,7 @@ FVector AAshWellWarden::GetAimPoint() const
 
 float AAshWellWarden::GetAttackProgress() const
 {
-    if (State == EWellWardenState::Windup) return FMath::Clamp(StateTime/WindupSeconds,0.0f,1.0f);
+    if (State == EWellWardenState::Windup) return FMath::Clamp(StateTime/WindupDuration(),0.0f,1.0f);
     return State == EWellWardenState::Strike ? 1.0f : 0.0f;
 }
 
@@ -427,7 +562,21 @@ FString AAshWellWarden::GetStateLabel() const
     case EWellWardenState::Strike: return TEXT("重击");
     case EWellWardenState::Recovery: return TEXT("破绽");
     case EWellWardenState::Stagger: return TEXT("失衡");
+    case EWellWardenState::Overload: return TEXT("过载");
     case EWellWardenState::Dead: return TEXT("停机");
     }
     return FString();
+}
+
+FString AAshWellWarden::GetAttackLabel() const
+{
+    return AttackKind==EWellWardenAttack::Kick?TEXT("kick"):AttackKind==EWellWardenAttack::Charge?TEXT("charge"):AttackKind==EWellWardenAttack::Sweep?TEXT("sweep"):AttackKind==EWellWardenAttack::Pursuit?TEXT("pursuit"):TEXT("slam");
+}
+
+float AAshWellWarden::MotionAlpha() const
+{
+    if(State==EWellWardenState::Windup)return .27f*FMath::SmoothStep(0.f,WindupDuration(),StateTime);
+    if(State==EWellWardenState::Strike)return FMath::Lerp(.27f,.43f,FMath::Clamp(StateTime/StrikeDuration(),0.f,1.f));
+    if(State==EWellWardenState::Recovery)return FMath::Lerp(.43f,1.f,FMath::SmoothStep(0.f,RecoveryDuration(),StateTime));
+    return 0.f;
 }

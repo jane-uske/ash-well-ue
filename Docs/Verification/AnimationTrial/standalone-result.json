@@ -1,0 +1,10 @@
+{
+  "map_loaded": true,
+  "error_count": 0,
+  "fatal_count": 0,
+  "screenshot": "runtime.png",
+  "source_speed": 1.0,
+  "comparison_speed": 0.62,
+  "combat_guards_passed": 38,
+  "scope": "Animation playback trial on source mannequin; not Warden retargeting"
+}
