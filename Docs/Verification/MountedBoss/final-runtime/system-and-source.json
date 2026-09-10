@@ -1,0 +1,153 @@
+{
+  "collected_utc": "2026-09-10T17:01:36.809265+00:00",
+  "os": "Darwin",
+  "os_release": "27.0.0",
+  "architecture": "arm64",
+  "macos_product_version": "27.0",
+  "macos_build_version": "26A428",
+  "cpu": "Apple M5 Max",
+  "hardware_model": "Mac17,6",
+  "memory_bytes": "137438953472",
+  "engine_build_version": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 2,
+    "Changelist": 56702186,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 1,
+    "BranchName": "++UE5+Release-5.8"
+  },
+  "runtime_engines": [
+    "5.8.2-56702186+++UE5+Release-5.8"
+  ],
+  "source_snapshot": [
+    {
+      "path": "AshWell.uproject",
+      "sha256": "a60210cb3c5cdb3e61c40df825445e6f1e819618f7c537593a0ae87cd0cecdee",
+      "mtime_utc": "2026-09-05T16:46:20.541389+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Config/DefaultEngine.ini",
+      "sha256": "315fc4765628688b19462781ff0f2804483f2d9283287c8c5b81d35d30365f34",
+      "mtime_utc": "2026-09-10T13:45:30.995847+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Config/DefaultInput.ini",
+      "sha256": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+      "mtime_utc": "2026-09-05T17:10:53.253041+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Scripts/collect_mounted_evidence.py",
+      "sha256": "cb9bea013bd6e422b3c43f9ce0b807db1a4f07b105132eea2e0a7dc9ee5b1a7b",
+      "mtime_utc": "2026-09-10T17:02:27.820114+00:00",
+      "changed_after_run_started": true
+    },
+    {
+      "path": "Scripts/launch_mounted_boss.command",
+      "sha256": "572bf8afae9f47e1b9ac78f72f63d49582587424e32ff20a5beeac590bf1180a",
+      "mtime_utc": "2026-09-10T16:37:26.647773+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Scripts/test_mounted_runtime.py",
+      "sha256": "6b1244fdece7091d39d7c2cb968092e2e68644d2d2aefecc58fe47e4d8dd3dfb",
+      "mtime_utc": "2026-09-10T16:38:27.597882+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWell.Build.cs",
+      "sha256": "9eb6073d520ea0ef28577e9994a647b01a398ec548ad958d1b2abfe83a1f99cb",
+      "mtime_utc": "2026-09-10T16:45:37.852048+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellBattleFX.cpp",
+      "sha256": "66ee91e2bfb733c314fe5d92c51fe4bcf1c57435de9ae76651ebaff3a0257ade",
+      "mtime_utc": "2026-09-10T16:37:26.647703+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellBattleFX.h",
+      "sha256": "7a0f47a41d96e8c56a45d97dbe9b27d3af3785d5464e2102d035ad1c083ea5a8",
+      "mtime_utc": "2026-09-10T16:37:26.647623+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellCombatCharacter.cpp",
+      "sha256": "61ad9ce3353f09f3ae6c1baf7bdcb7f96627a335cbfa940b8c30a0c90ebdad87",
+      "mtime_utc": "2026-09-10T16:50:52.299915+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellCombatCharacter.h",
+      "sha256": "bea4f9a2c2050f301e1739493a1dc688b4be0e2510f86a891894c44cb1a4de3a",
+      "mtime_utc": "2026-09-10T16:45:37.851798+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellIntroCharacter.cpp",
+      "sha256": "c8f7a6030ae240bd81ac543ec9dd10ddb825cf930cdfe05542940cf4fa79ae10",
+      "mtime_utc": "2026-09-10T12:51:30.494635+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellIntroGameMode.cpp",
+      "sha256": "33cf8ef61950ee3565ccf974e7d2be73dcb13f676def8ccf97d667ab13981c51",
+      "mtime_utc": "2026-09-06T13:04:51.886570+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellIntroHUD.cpp",
+      "sha256": "572009a11ae7d1577a0e1da424fa3ad1eb4e1333df344e40c21ccb431642e661",
+      "mtime_utc": "2026-09-10T16:37:24.608795+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellMountedBoss.cpp",
+      "sha256": "fe0a2ccc29c40a04708eb3e68346059b68b4447d0ff9f6a138a58c952e848a75",
+      "mtime_utc": "2026-09-10T16:48:19.795901+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellMountedBoss.h",
+      "sha256": "758e7eabe335de7a427196fd6e34fd569a88021c848aa03b3c81020befae2ba8",
+      "mtime_utc": "2026-09-10T16:37:26.647120+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellMountedBossVisual.cpp",
+      "sha256": "3901d593ede15cf222f1592791d9705491e06ec25a1d8218c62dea76bedc2a5f",
+      "mtime_utc": "2026-09-10T16:48:19.795737+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellMountedDebug.cpp",
+      "sha256": "66927e272baee8428cba9b1b85942a4b63b733c75e0560f6bf13b9c6d58d3258",
+      "mtime_utc": "2026-09-10T16:45:37.852267+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/AshWellMountedPlayer.cpp",
+      "sha256": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+      "mtime_utc": "2026-09-10T16:51:13.888818+00:00",
+      "changed_after_run_started": false
+    },
+    {
+      "path": "Source/AshWell/MountedGallopDistance.inl",
+      "sha256": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60",
+      "mtime_utc": "2026-09-10T16:32:49.781294+00:00",
+      "changed_after_run_started": false
+    }
+  ],
+  "compiled_sources_modified_after_run_started": [],
+  "source_snapshot_limit": "Hashes taken at evidence collection. Timestamps can detect later edits but do not prove which sources produced a binary; pair with build log and preserved binary hash.",
+  "project_binary": {
+    "path": "Binaries/Mac/libUnrealEditor-AshWell.dylib",
+    "sha256": "00da150c3fa4d07a988f4d170af29571c727de97c5b14a9465606729d3648afb",
+    "bytes": 1393664
+  }
+}

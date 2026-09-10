@@ -1,0 +1,106 @@
+{
+  "collected_utc": "2026-09-10T17:31:44.363690+00:00",
+  "cases": [
+    {
+      "case": "battle_light",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "damage": true,
+        "once": true,
+        "impact": true,
+        "slowdown_observed": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 760,
+      "duration": 2.6024841833277605
+    },
+    {
+      "case": "battle_dodge_charge",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "unharmed": true,
+        "dodged": true,
+        "heading": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 800,
+      "duration": 3.5378221710561775
+    }
+  ],
+  "files": [
+    {
+      "source": "Saved/MountedBoss/baseline-final.log",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/baseline-final.log",
+      "sha256": "f82356405e9ca0477090dab083211707c3b3d40cba29eebd266e397af845ff35",
+      "mtime_utc": "2026-09-10T17:28:52.934097+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/runtime-probes.json",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/runtime-probes.json",
+      "sha256": "c418736976de03713c896b39e9fe138ce28e46b80b2b048e4ea462c5bc8bc080",
+      "mtime_utc": "2026-09-10T17:28:52.934195+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_light.json",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_light.json",
+      "sha256": "a91fa0faa53b5f02f1de83e2b9f094f667861982308abe290f078a4b51a752e7",
+      "mtime_utc": "2026-09-10T17:28:39.718498+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_light.log",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_light.log",
+      "sha256": "6e449d20e4bac49b0774352957c17b1d130ede3f29862381c9d67f6cd02296b0",
+      "mtime_utc": "2026-09-10T17:28:39.525266+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_light-stdout.log",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_light-stdout.log",
+      "sha256": "47cd6ee98a926e60c6508cf32a481d03306146e3ada2a3ebe2aa495a7644d894",
+      "mtime_utc": "2026-09-10T17:28:57.363619+00:00"
+    },
+    {
+      "source": "Saved/Screenshots/Polish/battle_light.png",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_light.png",
+      "sha256": "a6aa554f0fffb9565f65d7b12753098477d90d9630e7c0131b4b0f96b90971df",
+      "mtime_utc": "2026-09-10T17:28:38.930874+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_dodge_charge.json",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_dodge_charge.json",
+      "sha256": "ec6398692de97943df1bb5a24dc4ed0df966279c6a08b099c097b56d214df5b0",
+      "mtime_utc": "2026-09-10T17:28:52.933725+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_dodge_charge.log",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_dodge_charge.log",
+      "sha256": "3506e837b0e62c1b9732849b9b37bd8146567653c72f4347bc4dc426f2a3c806",
+      "mtime_utc": "2026-09-10T17:28:52.813021+00:00"
+    },
+    {
+      "source": "Saved/BattlePolish/battle_dodge_charge-stdout.log",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_dodge_charge-stdout.log",
+      "sha256": "b5ee2c1a866c8dc32aae7e919ace3a83d1f9cd3be5bbce9eede20d1bb9a0e193",
+      "mtime_utc": "2026-09-10T17:28:52.835194+00:00"
+    },
+    {
+      "source": "Saved/Screenshots/Polish/battle_dodge_charge.png",
+      "archive": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/battle_dodge_charge.png",
+      "sha256": "ec5351f990b70170f4ccd558976ec83e7d271aa05d15f079ba1d240efae6dd35",
+      "mtime_utc": "2026-09-10T17:28:52.314286+00:00"
+    }
+  ],
+  "current_module_sha256": "19323b736e3560a3602423e0898f68ee86f22c5bd1be5ce11abb78884b827640",
+  "scope": "Existing test_battle_runtime.py launches chapter01 command with WardenProbe. Two checks on the final module preserve light attack and dodge_charge behavior; not a full Warden suite or human station-gate playthrough. Desktop remained locked."
+}

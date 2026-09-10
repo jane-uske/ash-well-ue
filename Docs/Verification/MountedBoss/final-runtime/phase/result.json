@@ -1,0 +1,41 @@
+{
+  "case": "phase",
+  "passed": true,
+  "elapsed_seconds": 15.62,
+  "evidence_directory": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260911-005158-f321083f/phase",
+  "probe_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/probe-phase.json",
+  "process": {
+    "pid": 64609,
+    "terminated_by_harness": true,
+    "killed_after_grace": false,
+    "exit_code": 0
+  },
+  "checks": {
+    "completed": true,
+    "correct_probe": true,
+    "correct_map": true,
+    "hero_v02_loaded": true,
+    "horse_visual_loaded": true,
+    "rider_visual_loaded": true,
+    "finite_health": true,
+    "finite_stamina": true,
+    "stamina_never_negative": true,
+    "fixture_assertions_passed": true,
+    "no_global_slowdown": true,
+    "no_fatal_error": true,
+    "no_hero_load_error": true,
+    "hero_material_compiles": true,
+    "cloth_scale_valid": true,
+    "phase_two_entered": true,
+    "crossed_health_threshold": true,
+    "phase_observed": true,
+    "transitioned_after_attack": true,
+    "encounter_continues": true,
+    "engine_log_present": true,
+    "owned_process_stopped": true
+  },
+  "failed_checks": [],
+  "health": 100,
+  "boss_health": 440,
+  "screenshot_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260911-005158-f321083f/phase/screenshot.png"
+}

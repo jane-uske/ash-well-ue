@@ -1,0 +1,1158 @@
+{
+  "schema_version": 1,
+  "snapshot_time_utc": "2026-09-10T16:38:12.625189+00:00",
+  "scope": "Actual MountedBoss experiment assets and relevant runtime fallbacks; facts reflect files inspected at this snapshot.",
+  "project_root": "/Users/rare/dev/ash-well-ue",
+  "engine_and_platform": {
+    "engine": "Unreal Engine 5.8.2-56702186",
+    "target_project_engine_association": "5.8",
+    "tested_os": "macOS 27.0 (26A428)",
+    "tested_cpu_gpu": "Apple M5 Max",
+    "render_backend": "Metal",
+    "runtime_evidence": {
+      "path": "Saved/MountedBoss/scene.log",
+      "exists": true,
+      "sha256": "cd8d767b802a4822170411102b149a09355bb1a853b8b638d5506e6ed49d0d32"
+    },
+    "other_platforms_tested": false,
+    "packaged_game_tested": false
+  },
+  "verification_levels": {
+    "source_provenance": "Where the actual local file came from",
+    "asset_conversion": "Geometry/rig/format tests only",
+    "ue_import": "Editor import and asset availability only",
+    "runtime": "Actual Mac game evidence; does not automatically pass animation quality",
+    "visual_quality": "Still limited and separately reviewed; no cinematic/final-art claim"
+  },
+  "credentials_read": false,
+  "new_paid_calls": 0,
+  "assets": [
+    {
+      "id": "horse_quaternius",
+      "category": "mount mesh and source animations",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Quaternius",
+        "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+        "download_route": "Official page public Google Drive; Horse.blend id 1XEstRdaMvbc7Xb5tK_mk6KP6fkFz_WXh",
+        "generation_method": "Existing third-party model and authored animation; not newly AI generated in this experiment"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/MountedBoss/originals/Horse_Quaternius.blend",
+          "exists": true,
+          "sha256": "56cb97026a6f4dbd9024e94cc58784e94e635042e4686b4c2344bf1eba715e01"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/SK_Horse.fbx",
+          "exists": true,
+          "sha256": "5a590627a48e5120a895351957e733c4b9e06e41fe900331f7cee4de6888419c"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/horse_manifest.json",
+          "exists": true,
+          "sha256": "8a9b2922b8998d30815d8e4568e9bcb787d144002d1ce7dbd49e5c86f6559fdd"
+        }
+      ],
+      "license": {
+        "identifier": "CC0-1.0",
+        "status": "verified_downloaded_license",
+        "evidence": [
+          {
+            "path": "SourceAssets/MountedBoss/originals/License.txt",
+            "exists": true,
+            "sha256": "83d8959f9fc56353ed571fbe2dc52e4bcd64508e2399501cd45ac2ce3df0bf8c"
+          }
+        ],
+        "source_urls": [
+          "https://quaternius.com/packs/ultimateanimatedanimals.html",
+          "https://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "ai_restrictions": {
+          "status": "unknown",
+          "details": [
+            "The supplied license has no separate AI-specific statement; unknown is not an assertion of a restriction."
+          ]
+        },
+        "attribution_requirement": "not required by CC0"
+      },
+      "formats": [
+        "Blender .blend",
+        "FBX 7400",
+        "UE SkeletalMesh / AnimationSequence"
+      ],
+      "skeleton": {
+        "name": "SK_Horse_Skeleton",
+        "ue_path": "/Game/AshWell/Combat/MountedBoss/SK_Horse_Skeleton",
+        "bones": 51,
+        "root": "root",
+        "type": "custom quadruped, not UE mannequin",
+        "units": "cm; component scale 1; forward +X; ground z=0",
+        "seat_bone": "Torso2",
+        "source_foot_bones": [
+          "FF.L",
+          "FF.R",
+          "FFB.L",
+          "FFB.R"
+        ],
+        "runtime_foot_bones": [
+          "FF_L",
+          "FF_R",
+          "FFB_L",
+          "FFB_R"
+        ],
+        "retargeted_to_other_rigs": false
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/MountedBoss/SK_Horse",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Idle",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Walk",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Gallop",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Death",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Kick",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Headbutt",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_Jump",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_GallopJump",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_HitLeft",
+        "/Game/AshWell/Combat/MountedBoss/A_Horse_HitRight"
+      ],
+      "tests": {
+        "asset_conversion": {
+          "result": "passed",
+          "evidence": {
+            "path": "SourceAssets/MountedBoss/bake-verification.json",
+            "exists": true,
+            "sha256": "18cba4d45e6ba0ffc8c4bdd84111165fe536a4c74ed6c9952da59844ff08a908"
+          },
+          "meaning": "Four baked foot positions checked against original on every frame; not a gameplay contact test."
+        },
+        "ue_import": {
+          "result": "passed",
+          "evidence": {
+            "path": "Saved/MountedBoss/asset-import.json",
+            "exists": true,
+            "sha256": "16c6e4e6466cd8973fa1efb8ee9d00ce8ce7b36b6847b6316596c2a40e294924"
+          }
+        },
+        "runtime": {
+          "result": "loaded and observed on Mac; gait quality not passed",
+          "evidence": [
+            {
+              "path": "Saved/MountedBoss/movement-final.log",
+              "exists": true,
+              "sha256": "9e0e832f4ea675684dc45cbe400e1554f14c0a4412946cd2bf6ac5a2a77e5ac2"
+            },
+            {
+              "path": "Saved/MountedBoss/probe-movement.json",
+              "exists": true,
+              "sha256": "dcd11ceef38b22e081d4910c1585cbee430a7a4aa46a668364e0865897825319"
+            }
+          ]
+        },
+        "offline_gait_analysis": {
+          "path": "SourceAssets/MountedBoss/gait-phase-distance-analysis.json",
+          "exists": true,
+          "sha256": "ed2ed474c0321cf56a15d64af87ddff85002eb7676704df67b54200f2156284b"
+        }
+      },
+      "limitations": [
+        "1093 vertices; low polygon validation art, not realistic finished mount.",
+        "No dedicated rear, turning, stop, or rider-synchronized attack performance.",
+        "Import success and conversion accuracy do not establish low sliding; measured runtime support slip remains material.",
+        "Jump and GallopJump are loaded resources but do not themselves provide shield attacks."
+      ]
+    },
+    {
+      "id": "mounted_props",
+      "category": "polearm and saddle",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "AshWell project",
+        "generation_method": "Original deterministic Blender geometry authored by project scripts; no external model and no paid generative call"
+      },
+      "files": [
+        {
+          "path": "Scripts/build_mounted_asset_props.py",
+          "exists": true,
+          "sha256": "f1419540aa11f9964e8044e638c5ae9ec808563b1ca40fa093338d01bcc28fec"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/SM_MountedHalberd.fbx",
+          "exists": true,
+          "sha256": "5f033e087de5971305dc1d7defe4f947f22f099fa23462db23ccb67fe9731c59"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/SM_MountedSaddle.fbx",
+          "exists": true,
+          "sha256": "b187d2a5023d8eceeef9178b718c1d51fc9c9e4e7c910cb647155b0df38ebf6b"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/props_manifest.json",
+          "exists": true,
+          "sha256": "bb9daaaabbc0b9c3216ccc54884dbb9f1d3ce6a51f309d2aaad4006dbceaca8e"
+        }
+      ],
+      "license": {
+        "identifier": "project-created",
+        "status": "no_third_party_asset_license_identified",
+        "evidence": [],
+        "source_urls": [],
+        "ai_restrictions": {
+          "status": "not_applicable",
+          "details": [
+            "Locally authored geometry; no external model license is being claimed."
+          ]
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "Blender .blend",
+        "FBX 7400",
+        "UE StaticMesh"
+      ],
+      "skeleton": {
+        "type": "none; rigid props",
+        "units": "cm; polearm grip origin 0; tip +195cm X; butt -85cm X; saddle origin seat"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/MountedBoss/SM_MountedHalberd",
+        "/Game/AshWell/Combat/MountedBoss/SM_MountedSaddle"
+      ],
+      "tests": {
+        "ue_import": {
+          "result": "passed",
+          "evidence": {
+            "path": "Saved/MountedBoss/asset-import.json",
+            "exists": true,
+            "sha256": "16c6e4e6466cd8973fa1efb8ee9d00ce8ce7b36b6847b6316596c2a40e294924"
+          }
+        },
+        "static_seated_alignment": {
+          "result": "inspected",
+          "evidence": {
+            "path": "SourceAssets/MountedBoss/seated-legs-diagnostic.png",
+            "exists": true,
+            "sha256": "77bcd1118df96f5a12e0e4f84799b3033dea91f03d4fa388d84c2571778fff76"
+          }
+        }
+      },
+      "limitations": [
+        "Saddle runtime Z scale 0.925 matches short original Warden leg reach; no new animation."
+      ]
+    },
+    {
+      "id": "mounted_rider_warden_derivative",
+      "category": "rider mesh and inherited textures",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Existing user-approved WardenHQ project asset",
+        "generation_method": "Local Hunyuan3D-2 full shape + Hunyuan3D-2.1 PBR through Hunyuan3D-Swift MLX; not Meshy",
+        "pipeline_evidence": {
+          "path": "/Users/rare/dev/ash-well-local3d/results/warden-hq-v01/README.md",
+          "exists": true,
+          "sha256": "29d609a96eadbbde20970da3832c0b333088b23473fec7c30725e5701c22a151"
+        },
+        "concept_input": "/Users/rare/dev/ash-well/assets/concepts/boss-warden-v01/warden-concept.png",
+        "additional_processing": [
+          "SD2.1 VAE",
+          "DINOv2",
+          "rembg / ISNet general use",
+          "Real-ESRGAN x4plus",
+          "Blender segmentation, rigging and reversible seated skirt trim"
+        ],
+        "global_release_license_status": "unknown; model conditions and mixed dependency terms must remain distinguishable"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/WardenHQ/warden_pbr.glb",
+          "exists": true,
+          "sha256": "a3ae115983235512a0665c5de5587f459df63387ba1b877c3e65e67d5834d12c"
+        },
+        {
+          "path": "SourceAssets/WardenHQ/warden_manifest.json",
+          "exists": true,
+          "sha256": "a963b6ab46b6d41ffdfd8f487f006091f922ef65ab1d61384b608ba8fcf1e484"
+        },
+        {
+          "path": "SourceAssets/WardenRig/SK_WardenRig.fbx",
+          "exists": true,
+          "sha256": "ecfb72fe8ee76e2cee03d9291ccb101fd9a0475a70fe292a21fca8537a2b175c"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/SK_MountedRider.fbx",
+          "exists": true,
+          "sha256": "99bca8a44153781accbd2f94ee339b7d64f67de15612f64ea9fa4c719dfaaf0c"
+        },
+        {
+          "path": "SourceAssets/MountedBoss/mounted_rider_manifest.json",
+          "exists": true,
+          "sha256": "c993175a4799ad1c3e84ef0ae6b7509434a03118fc62d60410624d182a97e1b0"
+        },
+        {
+          "path": "SourceAssets/WardenHQ/pbr_albedo_texture.png",
+          "exists": true,
+          "sha256": "b0a2919322cb754e8608d451cb4d594939a34132ab997ee3178e32d7467f1055"
+        },
+        {
+          "path": "SourceAssets/WardenHQ/pbr_mr_texture.png",
+          "exists": true,
+          "sha256": "e22d771bb952194fba12c02b96af7877d36e8b7407567bbb9fe5670b3bf98263"
+        }
+      ],
+      "license": {
+        "identifier": "Tencent Hunyuan 3D 2.0 and 2.1 Community License Agreements; mixed pipeline dependencies",
+        "status": "primary_model_terms_verified_other_dependency_terms_incomplete",
+        "evidence": [
+          {
+            "path": "Docs/Implementation/MountedBoss/licenses/Hunyuan3D-2-LICENSE.txt",
+            "exists": true,
+            "sha256": "94259df223918a5733677965c1bfe1774a2dba25042d9c3b47a3418ea6c1f324"
+          },
+          {
+            "path": "Docs/Implementation/MountedBoss/licenses/Hunyuan3D-2.1-LICENSE.txt",
+            "exists": true,
+            "sha256": "b79ac5e11ce063b6c6570dbe9686a45a03ba08bd248aa6aa82fb342a23a81c0c"
+          },
+          {
+            "path": "/Users/rare/dev/ash-well-local3d/hunyuan3d-swift/LICENSE",
+            "exists": true,
+            "sha256": "e0485dc21868a42682cf1255af42d1bf038cf5e80608b2006b5c69d65d426d7f"
+          }
+        ],
+        "source_urls": [
+          "https://github.com/Tencent-Hunyuan/Hunyuan3D-2/blob/main/LICENSE",
+          "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1/blob/main/LICENSE"
+        ],
+        "ai_restrictions": {
+          "status": "restricted",
+          "details": [
+            "Sections 5(b) of both model agreements restrict using Works or Outputs to improve other AI models, except the named Hunyuan model or its model derivatives.",
+            "Sections 5(c) also restrict Works/Outputs outside the defined Territory.",
+            "Section 6(d) states Tencent claims no rights in generated Outputs; this does not erase the other use terms.",
+            "Hunyuan3D-Swift code is MIT; that code license does not replace the model terms.",
+            "SD2.1 VAE, DINOv2, rembg/ISNet and Real-ESRGAN model-specific terms and generation-time license snapshots have not all been audited; corresponding output/public-distribution status is unknown."
+          ]
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "GLB",
+        "Blender .blend",
+        "FBX",
+        "PNG 4096 color and packed metallic-roughness",
+        "UE SkeletalMesh"
+      ],
+      "skeleton": {
+        "name": "SK_MountedRider_Skeleton",
+        "ue_path": "/Game/AshWell/Combat/MountedBoss/SK_MountedRider_Skeleton",
+        "bones": 13,
+        "required_driven_bones": [
+          "Body",
+          "RightUpperArm",
+          "RightForearm",
+          "LeftUpperArm",
+          "LeftForearm",
+          "RightThigh",
+          "RightShin",
+          "RightFoot",
+          "LeftThigh",
+          "LeftShin",
+          "LeftFoot"
+        ],
+        "additional_original_bones": [
+          "root",
+          "Hammer"
+        ],
+        "type": "custom segmented Warden rig; runtime PoseableMesh part transforms",
+        "units": "cm; original rig scale 1, runtime rider component scale 0.68",
+        "retargeted_from_horse": false
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/MountedBoss/SK_MountedRider",
+        "/Game/AshWell/Combat/WardenHQ/M_WardenHQ",
+        "/Game/AshWell/Combat/WardenHQ/M_WardenHQ_Inner"
+      ],
+      "tests": {
+        "preservation": {
+          "result": "passed",
+          "evidence": {
+            "path": "SourceAssets/MountedBoss/mounted-rider-preservation.json",
+            "exists": true,
+            "sha256": "d322e34ff66563af3fb5166bae62caed3fb6c6827f79b9ceb6ef28a944b20513"
+          },
+          "meaning": "All 29669 non-Body vertices/weights, all bones/rest matrices, original file hash preserved."
+        },
+        "static_visual": {
+          "result": "trim inspected",
+          "evidence": {
+            "path": "SourceAssets/MountedBoss/mounted-rider-trim-diagnostic.png",
+            "exists": true,
+            "sha256": "59847efea6407e81ca1e4809e7c70c724fefffba72c77cce7bc53c52ff70d55b"
+          }
+        },
+        "ue_import": {
+          "result": "passed",
+          "evidence": {
+            "path": "Saved/MountedBoss/mounted-rider-import.json",
+            "exists": true,
+            "sha256": "9500ac0d3fdbbad805d1d122ac2ff831b06d1b7a83d742d6252e85328fffbc88"
+          }
+        },
+        "runtime": {
+          "result": "rider present in actual Mac game; telemetry does not distinguish trimmed mesh from Warden fallback, so trimmed-mesh runtime acceptance is not established by this manifest",
+          "evidence": {
+            "path": "Saved/MountedBoss/scene.png",
+            "exists": true,
+            "sha256": "cd72c4fb7548772d5f78be09c3bcfb3798833ba952b7ec5552dbd1a44fd20cae"
+          },
+          "current_selection_evidence": "Source/AshWell/AshWellMountedBossVisual.cpp"
+        }
+      },
+      "limitations": [
+        "No independent finger rig; source armour has segmentation and generation limitations.",
+        "Seated trim only; not a new full character or newly captured rider animation.",
+        "Same artist intent retained but simplified horse and detailed armour differ in finish."
+      ]
+    },
+    {
+      "id": "hero_v02_mesh_and_meshy_motion",
+      "category": "player",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Existing AshWell HeroComplete / SwordPass",
+        "generation_method": "Meshy image-to-3D and auto rig of approved traveller reference, then Blender mirror/unit/cloth adaptation; separate Meshy motion candidates",
+        "generation_records": [
+          "Docs/Implementation/hero-complete-v02.md",
+          "Docs/Implementation/sword-traveller-v01.md",
+          "SourceAssets/SwordPass/hero-manifest.json",
+          "SourceAssets/HeroComplete/meshy-motion-manifest.json"
+        ],
+        "reference": "Docs/ArtDirection/Characters/hero-turnaround-v01.png",
+        "credential_files_read_for_this_manifest": false
+      },
+      "files": [
+        {
+          "path": "SourceAssets/HeroComplete/SK_Hero.fbx",
+          "exists": true,
+          "sha256": "f611fe19b3c32952a47fa84e734d307f11fcba9abc4202c69edf0593a004d1d7"
+        },
+        {
+          "path": "SourceAssets/HeroComplete/SK_HeroCloak.fbx",
+          "exists": true,
+          "sha256": "0f379cc49810db421352f3a0633574958ee5ac6a00ff0698989dc404a0fdc843"
+        },
+        {
+          "path": "SourceAssets/HeroComplete/manifest.json",
+          "exists": true,
+          "sha256": "2a015006e041ed36ab5c1ac53f8f96cae4e3033d8cdd4b4057396fd25140a1dc"
+        },
+        {
+          "path": "SourceAssets/HeroComplete/meshy-motion-manifest.json",
+          "exists": true,
+          "sha256": "490d542ae9423dcd295d1a0aa82a6a836e054e6a93869c20f8c1a6400dc28f1b"
+        },
+        {
+          "path": "SourceAssets/SwordPass/hero-manifest.json",
+          "exists": true,
+          "sha256": "ad882f9870ed6bc607f6a1c7b99289e4ab5c08c9761efb1876546bfb2a4e61d6"
+        }
+      ],
+      "license": {
+        "identifier": "Meshy service generated-output terms; underlying project reference rights",
+        "status": "unknown_account_plan_and_generation_time_terms_not_audited",
+        "evidence": [],
+        "source_urls": [
+          "https://www.meshy.ai/terms-of-use"
+        ],
+        "ai_restrictions": {
+          "status": "unknown",
+          "details": [
+            "Current artifact generation history is documented; subscription/ownership terms and separate AI-use restrictions were not verified.",
+            "Do not infer CC0 or unrestricted ownership from the fact that generation credits were paid."
+          ]
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "Original GLB",
+        "Blender .blend",
+        "FBX",
+        "PNG PBR textures",
+        "UE SkeletalMesh / Chaos Cloth / AnimationSequence"
+      ],
+      "skeleton": {
+        "name": "SK_Hero_Skeleton",
+        "ue_path": "/Game/AshWell/Combat/HeroComplete/SK_Hero_Skeleton",
+        "type": "custom normalized humanoid inherited from traveller pipeline; not horse rig",
+        "bone_count": "unknown_not_enumerated_in_this_audit",
+        "units": "cm; root and component scale 1; historical mirror baked into geometry/rest skeleton"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/HeroComplete/SK_Hero",
+        "/Game/AshWell/Combat/HeroComplete/SK_HeroCloak",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_MeshyWalk",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_MeshyRun",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_MeshyDodge"
+      ],
+      "tests": {
+        "prior_pipeline_import": {
+          "path": "Saved/HeroComplete/import.json",
+          "exists": true,
+          "sha256": "0587d970f50415711099438aea13e9fd7ef9d81d4bd4f6980a74fcdae5e3a23d"
+        },
+        "mounted_runtime_presence": {
+          "result": "hero_v02 loaded in actual Mac game probes",
+          "evidence": {
+            "path": "Saved/MountedBoss/probe-movement.json",
+            "exists": true,
+            "sha256": "dcd11ceef38b22e081d4910c1585cbee430a7a4aa46a668364e0865897825319"
+          }
+        }
+      },
+      "limitations": [
+        "Original v02 document is historical evidence, not proof of every present runtime choice.",
+        "Fingers and facial rig remain limited; gameplay/cloth performance is separate from model import."
+      ]
+    },
+    {
+      "id": "hero_quaternius_and_local_motion",
+      "category": "player animation",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Quaternius Universal Animation Library Standard + project adaptation",
+        "source_url": "https://quaternius.com/packs/universalanimationlibrary.html",
+        "generation_method": "CC0 community motions retargeted and locally posed for sword guard/slash/heavy; JumpPolish uses Jump_Start / Jump_Loop / Jump_Land"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/AnimationTrial/License.txt",
+          "exists": true,
+          "sha256": "11eac7504a28077e9d8dbac8ddfca2566510efba7eef46e11f21cdd2bc96d4d5"
+        },
+        {
+          "path": "SourceAssets/SwordPass/animation-manifest.json",
+          "exists": true,
+          "sha256": "b298b86c9ee90549c4d548461c40a257ce1245cd63ca9858b092bce481fc9232"
+        },
+        {
+          "path": "SourceAssets/HeroComplete/A_Hero_Slash.fbx",
+          "exists": true,
+          "sha256": "70431775606c1d6dd2a2f3ddefa64c219c3da3fc52e807e62d4466364aa9c56f"
+        },
+        {
+          "path": "SourceAssets/HeroComplete/A_Hero_Heavy.fbx",
+          "exists": true,
+          "sha256": "0511cf04528ba21a5720b4ae1c977f9bec349f12e20cac53c5caa7f13c527123"
+        },
+        {
+          "path": "SourceAssets/JumpPolish/manifest.json",
+          "exists": true,
+          "sha256": "b31dd125a83b08bd29630e62df0b7f0995f66f200f67344bbcee3345350ffd85"
+        },
+        {
+          "path": "SourceAssets/JumpPolish/A_Hero_JumpTakeoff.fbx",
+          "exists": true,
+          "sha256": "e4dce92af44431040ed845fd592ddf520cf6f0ed5a2d0cc7ef6445256e127f0a"
+        },
+        {
+          "path": "SourceAssets/JumpPolish/A_Hero_JumpAir.fbx",
+          "exists": true,
+          "sha256": "d0eda1376197c19b8fa3a08a39d5da168033b104efcb68688e65543f4710029b"
+        },
+        {
+          "path": "SourceAssets/JumpPolish/A_Hero_JumpLand.fbx",
+          "exists": true,
+          "sha256": "ab7f39d12b71a6970858aab4f2518b26f960508398881a7e4b7911fc13c2e63e"
+        }
+      ],
+      "license": {
+        "identifier": "CC0-1.0",
+        "status": "verified_local_license",
+        "evidence": [
+          {
+            "path": "SourceAssets/AnimationTrial/License.txt",
+            "exists": true,
+            "sha256": "11eac7504a28077e9d8dbac8ddfca2566510efba7eef46e11f21cdd2bc96d4d5"
+          }
+        ],
+        "source_urls": [
+          "https://quaternius.com/packs/universalanimationlibrary.html"
+        ],
+        "ai_restrictions": {
+          "status": "unknown",
+          "details": [
+            "No separate AI-specific statement found in supplied license text.",
+            "This entry covers community motion and local edits, not ownership of the Meshy-derived player mesh."
+          ]
+        },
+        "attribution_requirement": "not required by CC0"
+      },
+      "formats": [
+        "Blender .blend",
+        "FBX animation",
+        "UE AnimationSequence"
+      ],
+      "skeleton": {
+        "target": "/Game/AshWell/Combat/HeroComplete/SK_Hero_Skeleton",
+        "retargeting": "Already locally retargeted to existing Hero; no universal rig compatibility claim"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_Idle",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_Guard",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_CombatWalk",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_Slash",
+        "/Game/AshWell/Combat/HeroComplete/A_Hero_Heavy",
+        "/Game/AshWell/Combat/JumpPolish/A_Hero_JumpTakeoff",
+        "/Game/AshWell/Combat/JumpPolish/A_Hero_JumpAir",
+        "/Game/AshWell/Combat/JumpPolish/A_Hero_JumpLand"
+      ],
+      "tests": {
+        "prior_import_evidence": [
+          {
+            "path": "Saved/HeroComplete/import.json",
+            "exists": true,
+            "sha256": "0587d970f50415711099438aea13e9fd7ef9d81d4bd4f6980a74fcdae5e3a23d"
+          },
+          {
+            "path": "Saved/JumpPolish/import.json",
+            "exists": true,
+            "sha256": "46f19f1fe464d81a750c5ce80aa0f767a66ba60011541fa9679bba1bfc64beb8"
+          }
+        ],
+        "current_selection_evidence": {
+          "path": "Source/AshWell/AshWellCombatCharacter.cpp",
+          "exists": true,
+          "sha256": "aef7ab4a8145e2b2d4706b09794efabb3b1f1fd8892d70813716afac8083a6a5"
+        }
+      },
+      "limitations": [
+        "Current code prefers all three JumpPolish clips when present; legacy MeshyJump remains fallback.",
+        "Animation import is not proof of correct gameplay cancellation or world-space landing."
+      ]
+    },
+    {
+      "id": "hero_sword_and_scabbard",
+      "category": "player props",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "AshWell project",
+        "generation_method": "Original Blender mesh, no external weapon asset"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/SwordPass/sword-manifest.json",
+          "exists": true,
+          "sha256": "7231910612fd07cb63464c43d6732c8d6abbe06d2ffbb9618fa6e297b37b6e31"
+        },
+        {
+          "path": "SourceAssets/SwordPass/SM_TravellerSword.fbx",
+          "exists": true,
+          "sha256": "15630e4bcb52c171bd34e50e30724fa284e98bf707c1ffc0ea9327356b405a83"
+        },
+        {
+          "path": "SourceAssets/SwordPass/SM_TravellerScabbard.fbx",
+          "exists": true,
+          "sha256": "d0089aa20faaa85676694338b87143afac855a4c5bed33473acdf5d431e34369"
+        }
+      ],
+      "license": {
+        "identifier": "project-created",
+        "status": "no_third_party_asset_license_identified",
+        "evidence": [],
+        "source_urls": [],
+        "ai_restrictions": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "Blender .blend",
+        "FBX",
+        "UE StaticMesh"
+      ],
+      "skeleton": {
+        "type": "none; rigid attachment",
+        "units": "cm; +X weapon axis"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/SwordPass/SM_TravellerSword",
+        "/Game/AshWell/Combat/SwordPass/SM_TravellerScabbard"
+      ],
+      "tests": {
+        "existing_pipeline": "sword v01 assets reused; Mounted runtime uses existing attack/attachment paths"
+      },
+      "limitations": [
+        "Grip and sweep timing must be checked in runtime, not inferred from geometry alone."
+      ]
+    },
+    {
+      "id": "battle_audio",
+      "category": "sound",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "AshWell project",
+        "generation_method": "Deterministic procedural waveform synthesis; no third-party audio samples or AI music model",
+        "runtime_use": "active player/boss sounds; Kick repurposed as hoof impact"
+      },
+      "files": [
+        {
+          "path": "Scripts/build_battle_audio.py",
+          "exists": true,
+          "sha256": "7d7aebe4e4da9c3adbf3786a327f56f60993e593bc1cbed15d4aac8870cd1ded"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/audio-manifest.json",
+          "exists": true,
+          "sha256": "f4f3bbf7ccbd599da149a0a3d96613db945cf8c8374a809b1bec34581babf741"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/AW_Battle_Swing.wav",
+          "exists": true,
+          "sha256": "97db823a5487a39ba076d06b0663da0ab7353bcbcd9026c9abf1adc90f071606"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/AW_Battle_MetalHit.wav",
+          "exists": true,
+          "sha256": "dca5ca5fbb906dc9bd9a4eeda6ebd9fdfb6773bf444ec0c669737856a8965c6f"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/AW_Battle_Roll.wav",
+          "exists": true,
+          "sha256": "811ee6a5c2cfc96494de595284ebdb0b95addc6449b2fc512a530714ae57d3f3"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/AW_Battle_GroundSlam.wav",
+          "exists": true,
+          "sha256": "0fb6395c3e85828bcdf88c5bb486a40f4afa3e0c7170bb6b11b7bf1030ec5fc8"
+        },
+        {
+          "path": "SourceAssets/BattlePolish/AW_Battle_Kick.wav",
+          "exists": true,
+          "sha256": "cc498886f5d9ec8a829f7843e7972c85b3959e9b7869f347d38350a284f94aac"
+        }
+      ],
+      "license": {
+        "identifier": "project-created",
+        "status": "no_third_party_sample_license_identified",
+        "evidence": [],
+        "source_urls": [],
+        "ai_restrictions": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "WAV 48000 Hz mono PCM16",
+        "UE SoundWave"
+      ],
+      "skeleton": {
+        "type": "not_applicable"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/BattlePolish/AW_Battle_Swing",
+        "/Game/AshWell/Combat/BattlePolish/AW_Battle_MetalHit",
+        "/Game/AshWell/Combat/BattlePolish/AW_Battle_Roll",
+        "/Game/AshWell/Combat/BattlePolish/AW_Battle_GroundSlam",
+        "/Game/AshWell/Combat/BattlePolish/AW_Battle_Kick"
+      ],
+      "tests": {
+        "source_check": "Synthesis script and existing audio manifest inspected",
+        "runtime_selection_evidence": [
+          {
+            "path": "Source/AshWell/AshWellMountedBoss.cpp",
+            "exists": true,
+            "sha256": "35b80d170a6e4d837517288e8b392d34328c0e26f97b7d9f3250a0778179515b"
+          },
+          {
+            "path": "Source/AshWell/AshWellCombatCharacter.cpp",
+            "exists": true,
+            "sha256": "aef7ab4a8145e2b2d4706b09794efabb3b1f1fd8892d70813716afac8083a6a5"
+          }
+        ]
+      },
+      "limitations": [
+        "Kick is an impact effect, not a real recorded hoof sound; perceptual synchronization and timbre need actual listening."
+      ]
+    },
+    {
+      "id": "combat_audio_fallback",
+      "category": "sound",
+      "integration_status_at_snapshot": "fallback_only",
+      "origin": {
+        "provider": "AshWell project",
+        "generation_method": "Deterministic procedural waveform synthesis; no third-party audio samples or AI music model",
+        "runtime_use": "legacy fallback"
+      },
+      "files": [
+        {
+          "path": "Scripts/generate_combat_audio.py",
+          "exists": true,
+          "sha256": "bf4da616dbcbf052ff5bcb971549ee488605fc384c987ee827395b6cb2d63714"
+        },
+        {
+          "path": "SourceAssets/CombatAudio/manifest.json",
+          "exists": true,
+          "sha256": "a10dcf05da39319747b0e4c39369997ec806e676a3705a1de3071262cd793d68"
+        },
+        {
+          "path": "SourceAssets/CombatAudio/AW_Combat_Swing.wav",
+          "exists": true,
+          "sha256": "f2774dd53f9334a9c4eeb72730e43c9b91ffa635656142405abfe550b03f5a1d"
+        },
+        {
+          "path": "SourceAssets/CombatAudio/AW_Combat_Impact.wav",
+          "exists": true,
+          "sha256": "fc24563b41b11f15585e9cdfc84105ad9282a68ef759d851fe2064da95266e0d"
+        },
+        {
+          "path": "SourceAssets/CombatAudio/AW_Combat_Dodge.wav",
+          "exists": true,
+          "sha256": "d6c4e1767426cad3e551a4552be1323545ac2376f4de32b90ae33a42cef68fd2"
+        }
+      ],
+      "license": {
+        "identifier": "project-created",
+        "status": "no_third_party_sample_license_identified",
+        "evidence": [],
+        "source_urls": [],
+        "ai_restrictions": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "WAV 48000 Hz mono PCM16",
+        "UE SoundWave"
+      ],
+      "skeleton": {
+        "type": "not_applicable"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Combat/Audio/AW_Combat_Swing",
+        "/Game/AshWell/Combat/Audio/AW_Combat_Impact",
+        "/Game/AshWell/Combat/Audio/AW_Combat_Dodge"
+      ],
+      "tests": {
+        "source_check": "Synthesis script and existing audio manifest inspected",
+        "runtime_selection_evidence": [
+          {
+            "path": "Source/AshWell/AshWellMountedBoss.cpp",
+            "exists": true,
+            "sha256": "35b80d170a6e4d837517288e8b392d34328c0e26f97b7d9f3250a0778179515b"
+          },
+          {
+            "path": "Source/AshWell/AshWellCombatCharacter.cpp",
+            "exists": true,
+            "sha256": "aef7ab4a8145e2b2d4706b09794efabb3b1f1fd8892d70813716afac8083a6a5"
+          }
+        ]
+      },
+      "limitations": [
+        "Kick is an impact effect, not a real recorded hoof sound; perceptual synchronization and timbre need actual listening."
+      ]
+    },
+    {
+      "id": "courtyard_reused_textures",
+      "category": "scene textures",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Poly Haven",
+        "source_urls": [
+          "https://polyhaven.com/a/concrete_floor_worn_001",
+          "https://polyhaven.com/a/rock_face_01"
+        ],
+        "generation_method": "Existing scans/textures reused in project procedural materials; no new generative texture call"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/Textures/concrete_floor_worn_001/concrete_floor_worn_001_diff_2k.jpg",
+          "exists": true,
+          "sha256": "e29b45cdcd6d02fae3c087c456196ffa750779a9b62e7071aa3831dc322a0cc4"
+        },
+        {
+          "path": "SourceAssets/ScansV2/rock_face_01/rock_face_01_diff_4k.jpg",
+          "exists": true,
+          "sha256": "09f198615a86a874095a6c1246df6aade8185f8ee007a6c61d0d99f5f01897fc"
+        },
+        {
+          "path": "SourceAssets/Textures/manifest.json",
+          "exists": true,
+          "sha256": "75a4b943f01e1cae688e4b6b5b8d5be097499261635c17373be14e32d97c057d"
+        },
+        {
+          "path": "SourceAssets/ScansV2/manifest.json",
+          "exists": true,
+          "sha256": "ddf567b1ab33bb2d6b72d7a7fb51c94cfdb4e69288f3b76b0271a2155f9dfd39"
+        }
+      ],
+      "license": {
+        "identifier": "CC0-1.0",
+        "status": "local_manifest_and_official_license_verified",
+        "evidence": [
+          {
+            "path": "SourceAssets/Textures/manifest.json",
+            "exists": true,
+            "sha256": "75a4b943f01e1cae688e4b6b5b8d5be097499261635c17373be14e32d97c057d"
+          },
+          {
+            "path": "SourceAssets/ScansV2/manifest.json",
+            "exists": true,
+            "sha256": "ddf567b1ab33bb2d6b72d7a7fb51c94cfdb4e69288f3b76b0271a2155f9dfd39"
+          }
+        ],
+        "source_urls": [
+          "https://polyhaven.com/license"
+        ],
+        "ai_restrictions": {
+          "status": "no_separate_ai_restriction_identified_in_official_asset_license",
+          "details": [
+            "Official page distinguishes CC0 asset files from website content and website/API access terms."
+          ]
+        },
+        "attribution_requirement": "not required by CC0"
+      },
+      "formats": [
+        "JPG base color; PNG normal maps elsewhere in source packs",
+        "UE Texture2D / Material"
+      ],
+      "skeleton": {
+        "type": "none"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Textures/V2/T_concrete_floor_worn_001_base_color",
+        "/Game/AshWell/Textures/V2/T_rock_face_01_base_color"
+      ],
+      "tests": {
+        "historical_file_validation": "Original manifests include file hashes and image dimension checks",
+        "mounted_scene_reference": {
+          "path": "Scripts/build_mounted_arena.py",
+          "exists": true,
+          "sha256": "97c3853be2ac63169e4ef8e828e744bef1a52577cb1c2298942cf4c474846b8d"
+        },
+        "native_scene_observation": {
+          "path": "Saved/MountedBoss/scene.png",
+          "exists": true,
+          "sha256": "cd72c4fb7548772d5f78be09c3bcfb3798833ba952b7ec5552dbd1a44fd20cae"
+        }
+      },
+      "limitations": [
+        "Only paths referenced by mounted scene are listed as active; other installed Poly Haven textures are not thereby claimed used."
+      ]
+    },
+    {
+      "id": "courtyard_background_rocks",
+      "category": "scene mesh",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "Poly Haven",
+        "source_url": "https://polyhaven.com/a/boulder_01",
+        "author": "Rico Cilliers",
+        "generation_method": "Existing scan normalized in prior project pipeline"
+      },
+      "files": [
+        {
+          "path": "SourceAssets/ScansV2/boulder_01/boulder_01_4k.fbx",
+          "exists": true,
+          "sha256": "6e125512445c76a8ddbedfba9ff3f2e5ff200a2e65d29b6ce5294d7573caad3e"
+        },
+        {
+          "path": "SourceAssets/ScansV2/Prepared/SM_Scan_Boulder01_LOD0.fbx",
+          "exists": true,
+          "sha256": "b7c2b0fd6add47afa881ff34b1a57cf4dd67286428191b97b7b266dd54da30fb"
+        },
+        {
+          "path": "SourceAssets/ScansV2/Prepared/manifest.json",
+          "exists": true,
+          "sha256": "ab2500df41b8094087f1589e63116fde5867e0afe8c2c9eb6840f8b8d817600c"
+        }
+      ],
+      "license": {
+        "identifier": "CC0-1.0",
+        "status": "local_manifest_and_official_license_verified",
+        "evidence": [
+          {
+            "path": "SourceAssets/Textures/manifest.json",
+            "exists": true,
+            "sha256": "75a4b943f01e1cae688e4b6b5b8d5be097499261635c17373be14e32d97c057d"
+          },
+          {
+            "path": "SourceAssets/ScansV2/manifest.json",
+            "exists": true,
+            "sha256": "ddf567b1ab33bb2d6b72d7a7fb51c94cfdb4e69288f3b76b0271a2155f9dfd39"
+          }
+        ],
+        "source_urls": [
+          "https://polyhaven.com/license"
+        ],
+        "ai_restrictions": {
+          "status": "no_separate_ai_restriction_identified_in_official_asset_license",
+          "details": [
+            "Official page distinguishes CC0 asset files from website content and website/API access terms."
+          ]
+        },
+        "attribution_requirement": "not required by CC0"
+      },
+      "formats": [
+        "FBX",
+        "JPG/PNG PBR maps",
+        "UE StaticMesh"
+      ],
+      "skeleton": {
+        "type": "none",
+        "source_units": "metres; see Prepared manifest"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/Meshes/ScansV2/SM_Scan_Boulder01_LOD0"
+      ],
+      "tests": {
+        "historical_roundtrip": "Source manifest records geometry, UV and bounds checks; not repeated in this audit",
+        "mounted_scene_reference": {
+          "path": "Scripts/build_mounted_arena.py",
+          "exists": true,
+          "sha256": "97c3853be2ac63169e4ef8e828e744bef1a52577cb1c2298942cf4c474846b8d"
+        }
+      },
+      "limitations": [
+        "Decorative backdrop outside fight bounds; not a finished landscape or traversable world."
+      ]
+    },
+    {
+      "id": "courtyard_assembly_and_engine_content",
+      "category": "scene/lighting/basic shield",
+      "integration_status_at_snapshot": "integrated",
+      "origin": {
+        "provider": "AshWell local scene assembly plus bundled Epic engine content",
+        "generation_method": "Locally authored courtyard arrangement/material constants/trees from engine primitives; bundled sky sphere and ambient cubemap"
+      },
+      "files": [
+        {
+          "path": "Scripts/build_mounted_arena.py",
+          "exists": true,
+          "sha256": "97c3853be2ac63169e4ef8e828e744bef1a52577cb1c2298942cf4c474846b8d"
+        },
+        {
+          "path": "Scripts/tune_mounted_arena.py",
+          "exists": true,
+          "sha256": "2d74bd0ffa06aa12896c68c2cc6b607437ba630a0f6a0f311e75f30bc6a7163b"
+        },
+        {
+          "path": "Content/AshWell/MountedBoss/L_MountedCourtyard.umap",
+          "exists": true,
+          "sha256": "a5cc041be7de6ed21daeb0633e93e1d6311eb6e5c6545d8c99f4a0eeeebf72f6"
+        }
+      ],
+      "license": {
+        "identifier": "project-created arrangement + Epic Unreal Engine bundled content terms",
+        "status": "bundled_origin_verified_full_license_compliance_not_audited",
+        "evidence": [],
+        "source_urls": [
+          "https://www.unrealengine.com/eula/unreal"
+        ],
+        "ai_restrictions": {
+          "status": "unknown",
+          "details": [
+            "Engine primitive meshes, sky and cubemap are not CC0.",
+            "Exact engine content AI-related terms not checked in this audit; status unknown."
+          ]
+        },
+        "attribution_requirement": "unknown unless separately documented"
+      },
+      "formats": [
+        "UE .umap",
+        "UE StaticMesh/Material/Blueprint/cubemap"
+      ],
+      "skeleton": {
+        "type": "none"
+      },
+      "target_engine": "Unreal Engine 5.8",
+      "ue_assets": [
+        "/Game/AshWell/MountedBoss/L_MountedCourtyard",
+        "/Engine/BasicShapes/Cube",
+        "/Engine/BasicShapes/Cylinder",
+        "/Engine/BasicShapes/Sphere",
+        "/Engine/EngineSky/BP_Sky_Sphere",
+        "/Engine/MapTemplates/Sky/DaylightAmbientCubemap"
+      ],
+      "tests": {
+        "map_created": {
+          "path": "Saved/MountedBoss/arena-build.json",
+          "exists": true,
+          "sha256": "285d6e176d0949a99eb633fab96ca8b1e10204d61b2a1c1e6f729f343e3708ca"
+        },
+        "native_game_scene_observed": {
+          "path": "Saved/MountedBoss/scene.png",
+          "exists": true,
+          "sha256": "cd72c4fb7548772d5f78be09c3bcfb3798833ba952b7ec5552dbd1a44fd20cae"
+        },
+        "current_light_tuning": {
+          "path": "Saved/MountedBoss/lighting.json",
+          "exists": true,
+          "sha256": "e3814b07846274ab96ab7eb912a5634b22e9a0fd62a8f28f7fe0a869daf9e956"
+        }
+      },
+      "limitations": [
+        "Procedural shield remains simple geometry; no separately licensed shield pack.",
+        "Playable local experiment; no Windows/Linux/console or packaged-game verification."
+      ]
+    }
+  ],
+  "not_used_candidates": [
+    {
+      "name": "HorseStarterKit",
+      "status": "not_used_not_download_verified_in_this_task",
+      "license": "unknown",
+      "engine_compatibility": "unknown",
+      "note": "A candidate mentioned in discussion is not an integrated or validated asset."
+    },
+    {
+      "name": "BlendSwap Horse Rigged All Gaits by fdoss001",
+      "source_url": "https://blendswap.com/blend/28627",
+      "status": "researched_not_downloaded_not_used",
+      "license": "Derivative page CC0 badge conflicts with linked original horse model attribution provenance; no clearance claim",
+      "original_source_url": "https://blendswap.com/blend/17172",
+      "note": "Download requires login; not used as a substitute for Quaternius."
+    },
+    {
+      "name": "Elden Ring / Tree Sentinel footage",
+      "status": "reference_only_no_extracted_game_asset",
+      "source_url": "https://www.bilibili.com/video/BV1cw411M7xw/",
+      "license": "not_a_project_asset_license",
+      "note": "Combat reference does not confer permission to extract or redistribute game meshes, animation, textures or audio."
+    }
+  ],
+  "audit_gaps": [
+    "Meshy generation-time plan/output rights and AI-specific terms unknown.",
+    "Hunyuan pipeline dependency model terms not all audited; globally unrestricted release is not established.",
+    "Engine bundled-content terms not fully audited.",
+    "Other target platforms and packaged distribution not tested."
+  ],
+  "runtime_data_adapters": [
+    {
+      "id": "gallop_phase_distance_lut",
+      "source": {
+        "path": "SourceAssets/MountedBoss/gallop-phase-distance-lut.json",
+        "exists": true,
+        "sha256": "e93bf7de4afe6b60fc3a5b322946f4fae0aac7fbdc1b9e9b34e9cfec92059fc3"
+      },
+      "output": {
+        "path": "Source/AshWell/MountedGallopDistance.inl",
+        "exists": true,
+        "sha256": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60"
+      },
+      "status": "37-float conservative data table prepared; runtime acceptance remains root task responsibility"
+    }
+  ]
+}

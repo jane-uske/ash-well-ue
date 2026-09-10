@@ -1,0 +1,11 @@
+{
+  "status": "rejected_not_delivered",
+  "source_metadata": "Saved/MountedBoss/Recordings/20260910T170835Z/recording.json",
+  "metadata_sha256": "4c040d43415efd29090abac7b4a5c8e7b4333ae46c9aad1d772ad54ee4d7a21e",
+  "reported_visual_failure": "Parent observed frozen or stale display using the previous screenshot-request recorder.",
+  "verified_file_failure": "Expected game-audio.wav is absent beside recording.json; previous recorder used a relative output directory.",
+  "duration_seconds": 103.695694,
+  "new_recorder_status": "FFrameGrabber/asyncPNG720p24fps and absoluteWAVpath implemented and compiled; actual recording blocked by macOS lock screen, user unlock required.",
+  "video_copied": false,
+  "acceptance_passed": false
+}

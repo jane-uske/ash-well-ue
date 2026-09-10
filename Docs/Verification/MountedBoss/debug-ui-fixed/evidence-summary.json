@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "checks": {
+    "passed": 13
+  },
+  "log": "Docs/Verification/MountedBoss/debug-ui-fixed/20260910T170554Z-74684B15.jsonl",
+  "log_sha256": "fc3c7a15756a42dbbcb7c0561d56ef311cea66fa8c13a8415f9c6ef3d40427c4",
+  "verifier_report": "Docs/Verification/MountedBoss/debug-ui-fixed/verification.json",
+  "pause": {
+    "status": "passed",
+    "reason": "A real pause/resume must preserve world clock, Boss state clock, state and attack serial",
+    "tolerance_seconds": 0.0001,
+    "minimum_real_pause_seconds": 0.15,
+    "intervals": [
+      {
+        "pause_line": 73,
+        "resume_line": 74,
+        "real_pause_seconds": 13.498800624161959,
+        "status": "passed",
+        "world_clock_drift_seconds": 0.0,
+        "boss_clock_drift_seconds": 0.0,
+        "state_and_serial_unchanged": true
+      }
+    ]
+  },
+  "ui_observation": "Parent agent operated F2,F3,F4,F5 in a normal UE game window, confirmed normal lit view in CUA screenshots; keyboard hold duration cannot be controlled by this CUA surface.",
+  "scope": "Logged controls and post-F5 autonomous AI verified. Not a deterministic replay or full manual combat victory; long-heldShift remains unverified."
+}

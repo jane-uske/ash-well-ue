@@ -1,0 +1,2067 @@
+{
+  "schema_version": 1,
+  "document_status": "frozen_handoff_current9_prior27_ui13_final_baseline2_passed_video_missing_overall_incomplete",
+  "generated_at_utc": "2026-09-10T16:55:26.062089+00:00",
+  "acceptance_passed": false,
+  "source_snapshot_sha256": {
+    "AshWell.uproject": "a60210cb3c5cdb3e61c40df825445e6f1e819618f7c537593a0ae87cd0cecdee",
+    "Config/DefaultEngine.ini": "315fc4765628688b19462781ff0f2804483f2d9283287c8c5b81d35d30365f34",
+    "Config/DefaultInput.ini": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+    "Scripts/collect_mounted_evidence.py": "cb9bea013bd6e422b3c43f9ce0b807db1a4f07b105132eea2e0a7dc9ee5b1a7b",
+    "Scripts/launch_mounted_boss.command": "572bf8afae9f47e1b9ac78f72f63d49582587424e32ff20a5beeac590bf1180a",
+    "Scripts/test_mounted_runtime.py": "6b1244fdece7091d39d7c2cb968092e2e68644d2d2aefecc58fe47e4d8dd3dfb",
+    "Source/AshWell/AshWell.Build.cs": "e792794651f77432e3281f977faa1b616acc91e1bba1c05de5f2ccbf2d4de591",
+    "Source/AshWell/AshWellBattleFX.cpp": "66ee91e2bfb733c314fe5d92c51fe4bcf1c57435de9ae76651ebaff3a0257ade",
+    "Source/AshWell/AshWellBattleFX.h": "7a0f47a41d96e8c56a45d97dbe9b27d3af3785d5464e2102d035ad1c083ea5a8",
+    "Source/AshWell/AshWellCombatCharacter.cpp": "e9c22e7c7f864a50a0e1216ce20fc112cacaf1d4d6587745c0611a4c7b876025",
+    "Source/AshWell/AshWellCombatCharacter.h": "b04aee877254dc4403a15cfe0af91cb0742e70c05bc44f7d06a05ec1ff420eaf",
+    "Source/AshWell/AshWellIntroCharacter.cpp": "c8f7a6030ae240bd81ac543ec9dd10ddb825cf930cdfe05542940cf4fa79ae10",
+    "Source/AshWell/AshWellIntroGameMode.cpp": "33cf8ef61950ee3565ccf974e7d2be73dcb13f676def8ccf97d667ab13981c51",
+    "Source/AshWell/AshWellIntroHUD.cpp": "572009a11ae7d1577a0e1da424fa3ad1eb4e1333df344e40c21ccb431642e661",
+    "Source/AshWell/AshWellMountedBoss.cpp": "c3afd7e79f3b2fba7134541c66651b755e25a17d372219bc5adf6b27a7c72438",
+    "Source/AshWell/AshWellMountedBoss.h": "758e7eabe335de7a427196fd6e34fd569a88021c848aa03b3c81020befae2ba8",
+    "Source/AshWell/AshWellMountedBossVisual.cpp": "3901d593ede15cf222f1592791d9705491e06ec25a1d8218c62dea76bedc2a5f",
+    "Source/AshWell/AshWellMountedDebug.cpp": "8784f3dc932a0869b93e4c2fb659b724596d49ae21966984a601a39a26b8bf49",
+    "Source/AshWell/AshWellMountedPlayer.cpp": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+    "Source/AshWell/MountedGallopDistance.inl": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60"
+  },
+  "latest_history_is_not_final_acceptance": true,
+  "historical_runs": [
+    {
+      "run_id": "20260910-234944-6224e3d9",
+      "report": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/test-results.json",
+      "status": "complete",
+      "aggregate_passed": false,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "light",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/light/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/light/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/light/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "heavy",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/heavy/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/heavy/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/heavy/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "hit_sweep",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_sweep/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_sweep/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_sweep/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "hit_overhead",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_overhead/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_overhead/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_overhead/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "hit_charge",
+          "passed": false,
+          "failed_checks": [
+            "correct_damage",
+            "damaged_once",
+            "correct_contact_source",
+            "no_duplicate_contact"
+          ],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_charge/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "hit_shield",
+          "passed": false,
+          "failed_checks": [
+            "correct_damage",
+            "damaged_once",
+            "correct_contact_source",
+            "no_duplicate_contact"
+          ],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_shield/engine.log",
+          "screenshot": null
+        },
+        {
+          "case": "hit_rear",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_rear/result.json",
+          "probe": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_rear/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_rear/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260910-234944-6224e3d9/hit_rear/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-000557-259053c6",
+      "report": "Saved/MountedBoss/runs/20260911-000557-259053c6/test-results.json",
+      "status": "complete",
+      "aggregate_passed": false,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "light",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/screenshot.png"
+        },
+        {
+          "case": "heavy",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/screenshot.png"
+        },
+        {
+          "case": "miss",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/screenshot.png"
+        },
+        {
+          "case": "body",
+          "passed": false,
+          "failed_checks": [
+            "body_did_not_overlap"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/body/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/body/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/body/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/body/screenshot.png"
+        },
+        {
+          "case": "hit_sweep",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_sweep/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_sweep/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_sweep/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_sweep/screenshot.png"
+        },
+        {
+          "case": "hit_overhead",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/screenshot.png"
+        },
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_charge/screenshot.png"
+        },
+        {
+          "case": "hit_shield",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/screenshot.png"
+        },
+        {
+          "case": "hit_rear",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_rear/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_rear/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_rear/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_rear/screenshot.png"
+        },
+        {
+          "case": "dodge_sweep",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/screenshot.png"
+        },
+        {
+          "case": "dodge_overhead",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/screenshot.png"
+        },
+        {
+          "case": "dodge_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_charge/screenshot.png"
+        },
+        {
+          "case": "dodge_shield",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/screenshot.png"
+        },
+        {
+          "case": "dodge_rear",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/screenshot.png"
+        },
+        {
+          "case": "movement",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/movement/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/movement/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/movement/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/movement/screenshot.png"
+        },
+        {
+          "case": "camera",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/screenshot.png"
+        },
+        {
+          "case": "disengage",
+          "passed": false,
+          "failed_checks": [
+            "returned_and_reset"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/disengage/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/disengage/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/disengage/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/disengage/screenshot.png"
+        },
+        {
+          "case": "phase",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/screenshot.png"
+        },
+        {
+          "case": "victory",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/screenshot.png"
+        },
+        {
+          "case": "retry",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/screenshot.png"
+        },
+        {
+          "case": "input",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/screenshot.png"
+        },
+        {
+          "case": "natural_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/natural_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/natural_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/natural_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/natural_charge/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-001817-23c88ebe",
+      "report": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/test-results.json",
+      "status": "complete",
+      "aggregate_passed": true,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "body",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/screenshot.png"
+        },
+        {
+          "case": "disengage",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/screenshot.png"
+        },
+        {
+          "case": "death",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/screenshot.png"
+        },
+        {
+          "case": "movement",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/movement/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/movement/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/movement/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/movement/screenshot.png"
+        },
+        {
+          "case": "natural_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/natural_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/natural_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/natural_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/natural_charge/screenshot.png"
+        },
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/hit_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/hit_charge/screenshot.png"
+        },
+        {
+          "case": "dodge_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/dodge_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/dodge_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/dodge_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/dodge_charge/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-002318-0cb02cc6",
+      "report": "Saved/MountedBoss/runs/20260911-002318-0cb02cc6/test-results.json",
+      "status": "complete",
+      "aggregate_passed": true,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "movement",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-002318-0cb02cc6/movement/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-002318-0cb02cc6/movement/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-002318-0cb02cc6/movement/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-002318-0cb02cc6/movement/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-002603-0160a49d",
+      "report": "Saved/MountedBoss/runs/20260911-002603-0160a49d/test-results.json",
+      "status": "complete",
+      "aggregate_passed": true,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "movement",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/movement/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/movement/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/movement/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/movement/screenshot.png"
+        },
+        {
+          "case": "hit_sweep",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/screenshot.png"
+        },
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_charge/screenshot.png"
+        },
+        {
+          "case": "hit_rear",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-004008-369e7435",
+      "report": "Saved/MountedBoss/runs/20260911-004008-369e7435/test-results.json",
+      "status": "complete",
+      "aggregate_passed": false,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "hit_charge",
+          "passed": false,
+          "failed_checks": [
+            "correct_damage",
+            "damaged_once",
+            "correct_contact_source",
+            "no_duplicate_contact"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_charge/screenshot.png"
+        },
+        {
+          "case": "dodge_charge",
+          "passed": false,
+          "failed_checks": [
+            "paired_hit_control_passed"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_charge/screenshot.png"
+        },
+        {
+          "case": "hit_body_check",
+          "passed": false,
+          "failed_checks": [
+            "correct_damage",
+            "damaged_once",
+            "correct_contact_source",
+            "no_duplicate_contact"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_body_check/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_body_check/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_body_check/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_body_check/screenshot.png"
+        },
+        {
+          "case": "dodge_body_check",
+          "passed": false,
+          "failed_checks": [
+            "paired_hit_control_passed"
+          ],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_body_check/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_body_check/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_body_check/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_body_check/screenshot.png"
+        },
+        {
+          "case": "hit_leap_shield",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/hit_leap_shield/screenshot.png"
+        },
+        {
+          "case": "dodge_leap_shield",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/dodge_leap_shield/screenshot.png"
+        },
+        {
+          "case": "cleanup",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/screenshot.png"
+        },
+        {
+          "case": "movement",
+          "passed": true,
+          "failed_checks": [],
+          "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/screenshot.png"
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-004436-c0210b43",
+      "report": "Saved/MountedBoss/runs/20260911-004436-c0210b43/test-results.json",
+      "status": "complete",
+      "aggregate_passed": false,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/screenshot.png"
+        },
+        {
+          "case": "dodge_charge",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/screenshot.png"
+        },
+        {
+          "case": "hit_body_check",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/screenshot.png"
+        },
+        {
+          "case": "dodge_body_check",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/screenshot.png"
+        },
+        {
+          "case": "hit_leap_shield",
+          "passed": false,
+          "failed_checks": [
+            "correct_damage",
+            "damaged_once",
+            "correct_contact_source",
+            "no_duplicate_contact"
+          ],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_leap_shield/screenshot.png"
+        },
+        {
+          "case": "dodge_leap_shield",
+          "passed": false,
+          "failed_checks": [
+            "paired_hit_control_passed"
+          ],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_leap_shield/screenshot.png"
+        },
+        {
+          "case": "natural_charge",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/screenshot.png"
+        },
+        {
+          "case": "loop",
+          "passed": false,
+          "failed_checks": [
+            "boss_continued"
+          ],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/loop/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/loop/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/loop/engine.log",
+          "screenshot": null
+        }
+      ]
+    },
+    {
+      "run_id": "20260911-004856-0a7caa28",
+      "report": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/test-results.json",
+      "status": "complete",
+      "aggregate_passed": false,
+      "source_fingerprint_recorded": false,
+      "eligible_as_final_six_move_acceptance": false,
+      "results": [
+        {
+          "case": "hit_leap_shield",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/screenshot.png"
+        },
+        {
+          "case": "dodge_leap_shield",
+          "passed": true,
+          "failed_checks": [],
+          "error": null,
+          "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/result.json",
+          "probe": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/probe.json",
+          "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/engine.log",
+          "screenshot": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/screenshot.png"
+        },
+        {
+          "case": "loop",
+          "passed": false,
+          "failed_checks": [],
+          "error": "No fresh completed fixture within 90 seconds.",
+          "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/loop/result.json",
+          "probe": null,
+          "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/loop/engine.log",
+          "screenshot": null
+        }
+      ]
+    }
+  ],
+  "latest_historical_by_case": {
+    "light": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "light",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/light/screenshot.png"
+    },
+    "heavy": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "heavy",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/heavy/screenshot.png"
+    },
+    "hit_sweep": {
+      "run_id": "20260911-002603-0160a49d",
+      "case": "hit_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/screenshot.png"
+    },
+    "hit_overhead": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "hit_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/screenshot.png"
+    },
+    "hit_charge": {
+      "run_id": "20260911-004436-c0210b43",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/screenshot.png"
+    },
+    "hit_shield": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "hit_shield",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_shield/screenshot.png"
+    },
+    "hit_rear": {
+      "run_id": "20260911-002603-0160a49d",
+      "case": "hit_rear",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/screenshot.png"
+    },
+    "miss": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "miss",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/miss/screenshot.png"
+    },
+    "body": {
+      "run_id": "20260911-001817-23c88ebe",
+      "case": "body",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/body/screenshot.png"
+    },
+    "dodge_sweep": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "dodge_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/screenshot.png"
+    },
+    "dodge_overhead": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "dodge_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/screenshot.png"
+    },
+    "dodge_charge": {
+      "run_id": "20260911-004436-c0210b43",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/screenshot.png"
+    },
+    "dodge_shield": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "dodge_shield",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_shield/screenshot.png"
+    },
+    "dodge_rear": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "dodge_rear",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/screenshot.png"
+    },
+    "movement": {
+      "run_id": "20260911-004008-369e7435",
+      "case": "movement",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/movement/screenshot.png"
+    },
+    "camera": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "camera",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/screenshot.png"
+    },
+    "disengage": {
+      "run_id": "20260911-001817-23c88ebe",
+      "case": "disengage",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/screenshot.png"
+    },
+    "phase": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "phase",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/phase/screenshot.png"
+    },
+    "victory": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "victory",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/screenshot.png"
+    },
+    "retry": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/screenshot.png"
+    },
+    "input": {
+      "run_id": "20260911-000557-259053c6",
+      "case": "input",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-000557-259053c6/input/screenshot.png"
+    },
+    "natural_charge": {
+      "run_id": "20260911-004436-c0210b43",
+      "case": "natural_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/natural_charge/screenshot.png"
+    },
+    "death": {
+      "run_id": "20260911-001817-23c88ebe",
+      "case": "death",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/screenshot.png"
+    },
+    "hit_body_check": {
+      "run_id": "20260911-004436-c0210b43",
+      "case": "hit_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/screenshot.png"
+    },
+    "dodge_body_check": {
+      "run_id": "20260911-004436-c0210b43",
+      "case": "dodge_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/screenshot.png"
+    },
+    "hit_leap_shield": {
+      "run_id": "20260911-004856-0a7caa28",
+      "case": "hit_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/screenshot.png"
+    },
+    "dodge_leap_shield": {
+      "run_id": "20260911-004856-0a7caa28",
+      "case": "dodge_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/screenshot.png"
+    },
+    "cleanup": {
+      "run_id": "20260911-004008-369e7435",
+      "case": "cleanup",
+      "passed": true,
+      "failed_checks": [],
+      "result": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/result.json",
+      "probe": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/probe.json",
+      "engine_log": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/engine.log",
+      "screenshot": "Saved/MountedBoss/runs/20260911-004008-369e7435/cleanup/screenshot.png"
+    },
+    "loop": {
+      "run_id": "20260911-004856-0a7caa28",
+      "case": "loop",
+      "passed": false,
+      "failed_checks": [],
+      "error": "No fresh completed fixture within 90 seconds.",
+      "result": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/loop/result.json",
+      "probe": null,
+      "engine_log": "Saved/MountedBoss/runs/20260911-004856-0a7caa28/loop/engine.log",
+      "screenshot": null
+    }
+  },
+  "requirements": [
+    {
+      "id": "build",
+      "description_zh": "最终六招及Debug源码的同一构建通过",
+      "method": "build_log",
+      "status": "passed_current_build",
+      "limits": [
+        "An older successful build does not certify later source edits."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/build.log",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/system-and-source.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821"
+    },
+    {
+      "id": "hit_sweep",
+      "description_zh": "真实接触并只受一次正确来源伤害：近身长戟横扫",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_sweep/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "dodge_sweep",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：近身长戟横扫",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_sweep/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated",
+      "observed_evasion": "spatial_avoidance_no_contact",
+      "observed_evaded_contacts": 0
+    },
+    {
+      "id": "miss_sweep",
+      "description_zh": "攻击路径外或有效窗外不应受伤：近身长戟横扫",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_sweep",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：近身长戟横扫",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "punish_sweep",
+      "description_zh": "完整恢复允许步战玩家反击：近身长戟横扫",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "hit_overhead",
+      "description_zh": "真实接触并只受一次正确来源伤害：过顶下劈",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/hit_overhead/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_overhead/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_overhead/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "dodge_overhead",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：过顶下劈",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_overhead/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated",
+      "observed_evasion": "spatial_avoidance_no_contact",
+      "observed_evaded_contacts": 0
+    },
+    {
+      "id": "miss_overhead",
+      "description_zh": "攻击路径外或有效窗外不应受伤：过顶下劈",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_overhead",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：过顶下劈",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_overhead/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_overhead/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "punish_overhead",
+      "description_zh": "完整恢复允许步战玩家反击：过顶下劈",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "hit_charge",
+      "description_zh": "真实接触并只受一次正确来源伤害：冲锋横扫",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_charge/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_charge/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_charge/probe.json"
+      ]
+    },
+    {
+      "id": "dodge_charge",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：冲锋横扫",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_charge/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_charge/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "observed_evasion": "spatial_avoidance_no_contact",
+      "observed_evaded_contacts": 0,
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_charge/probe.json"
+      ]
+    },
+    {
+      "id": "miss_charge",
+      "description_zh": "攻击路径外或有效窗外不应受伤：冲锋横扫",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_charge",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：冲锋横扫",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_charge/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_charge/probe.json"
+      ]
+    },
+    {
+      "id": "punish_charge",
+      "description_zh": "完整恢复允许步战玩家反击：冲锋横扫",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "hit_body_check",
+      "description_zh": "真实接触并只受一次正确来源伤害：近身马体肩撞",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004436-c0210b43/hit_body_check/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/probe.json"
+      ]
+    },
+    {
+      "id": "dodge_body_check",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：近身马体肩撞",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004436-c0210b43/dodge_body_check/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_body_check/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "observed_evasion": "spatial_avoidance_no_contact",
+      "observed_evaded_contacts": 0,
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/probe.json"
+      ]
+    },
+    {
+      "id": "miss_body_check",
+      "description_zh": "攻击路径外或有效窗外不应受伤：近身马体肩撞",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_body_check",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：近身马体肩撞",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/probe.json"
+      ]
+    },
+    {
+      "id": "punish_body_check",
+      "description_zh": "完整恢复允许步战玩家反击：近身马体肩撞",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "hit_rear",
+      "description_zh": "真实接触并只受一次正确来源伤害：扬前蹄落地",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-002603-0160a49d/hit_rear/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_rear/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_rear/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "dodge_rear",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：扬前蹄落地",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/dodge_rear/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_rear/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_rear/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated",
+      "observed_evasion": "damage_contact_rejected_during_iframe",
+      "observed_evaded_contacts": 1
+    },
+    {
+      "id": "miss_rear",
+      "description_zh": "攻击路径外或有效窗外不应受伤：扬前蹄落地",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_rear",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：扬前蹄落地",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_rear/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_rear/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "punish_rear",
+      "description_zh": "完整恢复允许步战玩家反击：扬前蹄落地",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "hit_leap_shield",
+      "description_zh": "真实接触并只受一次正确来源伤害：跃起盾砸",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004856-0a7caa28/hit_leap_shield/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json"
+      ]
+    },
+    {
+      "id": "dodge_leap_shield",
+      "description_zh": "对照会命中的攻击，合法翻滚或位移可靠躲过：跃起盾砸",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Previous-build evidence retained only; rerun against final six-move source.",
+        "A no-contact dodge demonstrates leaving the damage volume; it does not prove invulnerability rejected damage."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-004856-0a7caa28/dodge_leap_shield/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_leap_shield/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "observed_evasion": "spatial_avoidance_no_contact",
+      "observed_evaded_contacts": 0,
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/probe.json"
+      ]
+    },
+    {
+      "id": "miss_leap_shield",
+      "description_zh": "攻击路径外或有效窗外不应受伤：跃起盾砸",
+      "method": "rendered_fixture",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "heading_leap_shield",
+      "description_zh": "朝向锁定后目标横移不能继续追踪：跃起盾砸",
+      "method": "rendered_fixture_and_video",
+      "status": "passed_sampled_yaw_drift_static_fixture",
+      "limits": [
+        "Fixture target stays placed until an optional scripted dodge; no full adversarial pre/post-commit moving-target boundary matrix."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json"
+      ]
+    },
+    {
+      "id": "punish_leap_shield",
+      "description_zh": "完整恢复允许步战玩家反击：跃起盾砸",
+      "method": "rendered_fixture_and_video",
+      "status": "not_tested_current_build",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "passive_body",
+      "description_zh": "普通马体接触只阻挡，无持续伤害",
+      "method": "rendered_collision_fixture",
+      "status": "passed_front_approach_fixture",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/body/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/body/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "body_check_dedup",
+      "description_zh": "肩撞只在有效窗造成一次伤害",
+      "method": "rendered_collision_fixture",
+      "status": "passed_single_body_contact_fixture",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_body_check/probe.json"
+      ]
+    },
+    {
+      "id": "leap_airborne",
+      "description_zh": "跃盾根位置真实离地、存在腾空阶段",
+      "method": "root_height_telemetry_and_video",
+      "status": "passed_actual_actor_height_sample",
+      "limits": [
+        "maximum_leap_height_cm records the requested parabola. Require sampled actual trace.boss.z or observed world root, plus visual frames."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/probe.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/evidence-summary.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/evidence-summary.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/debug/20260910T165434Z-32359111.jsonl"
+      ],
+      "sampled_actual_actor_height_cm": 141.49891662597656
+    },
+    {
+      "id": "leap_landing_sync",
+      "description_zh": "盾/马落地/伤害/落地音共享时钟",
+      "method": "slow_review_and_normal_speed_video",
+      "status": "passed_sampled_ground_gate_visual_detail_pending",
+      "limits": [
+        "Actual implementation gates one area by actor landing and shield bottom proxy; no independent shield contact sweep.",
+        "New images reviewed by assets agent show descending/landing shield near ground and no obvious hand or saddle pop, but dark hand detail is not verified."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/probe.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/evidence-summary.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/evidence-summary.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json"
+      ],
+      "sampled_contact": {
+        "active_time_seconds": 0.6870425343513489,
+        "actor_z_cm": 0,
+        "shield_bottom_proxy_gap_cm": 7.9999979248214
+      }
+    },
+    {
+      "id": "leap_damage_dedup",
+      "description_zh": "跃盾接触与范围不得双重满额伤害",
+      "method": "rendered_collision_fixture",
+      "status": "passed_single_area_fixture",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/result.json"
+      ]
+    },
+    {
+      "id": "natural_ai",
+      "description_zh": "无固定站位/无强制单招的自然AI实战",
+      "method": "unedited_native_video",
+      "status": "partial_scripted_loop_death_verified",
+      "limits": [
+        "natural_charge and loop force the opening charge; only later loop decisions are natural.",
+        "The loop player is a scripted action strategy, not a human playtest.",
+        "Fixed-Boss victory verifies HP depletion and terminal flow, not a natural AI victory."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/loop/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/loop/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/loop/probe.json",
+        "Docs/Verification/MountedBoss/final-runtime/loop/result.json"
+      ]
+    },
+    {
+      "id": "combo_phase",
+      "description_zh": "阶段阈值、过渡、有限连招与恢复",
+      "method": "rendered_fixture_and_unedited_video",
+      "status": "phase_passed_combo_not_independently_verified",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/phase/probe.json",
+        "Docs/Verification/MountedBoss/final-runtime/loop/probe.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/loop/probe.json"
+      ],
+      "version_scope": "phase_confirmed_in_current_loop_combo_not_independently_verified"
+    },
+    {
+      "id": "disengage",
+      "description_zh": "西侧脱战后收手、减速返回、状态/血量复位",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-001817-23c88ebe/disengage/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/disengage/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/disengage/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "death",
+      "description_zh": "玩家死亡后停止伤害与追击",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-001817-23c88ebe/death/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/death/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/death/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "victory",
+      "description_zh": "玩家击杀后Boss死亡/胜利/关闭伤害",
+      "method": "rendered_fixture_and_unedited_video",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Scripted fixtures are not human play or learning evidence."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/victory/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/victory/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/victory/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "retry",
+      "description_zh": "实际关卡重载后新实例完整复位",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/retry/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/retry/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/retry/probe.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/retry/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/retry/probe.json"
+      ]
+    },
+    {
+      "id": "input",
+      "description_zh": "攻击承诺、晚后摇缓冲、过期与体力不足",
+      "method": "rendered_fixture",
+      "status": "passed_automated_fixture",
+      "limits": [
+        "Scripted fixtures are not human play or learning evidence."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/input/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/input/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/input/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "shift_input",
+      "description_zh": "点按/长按Shift、冲刺跳跃、锁定侧向冲刺、耗尽恢复",
+      "method": "rendered_input_fixture_and_human_check",
+      "status": "not_tested_current_build",
+      "limits": [
+        "CUA cannot issue held modifier-only Shift input in this session; shift+w chord is not a reliable short-tap versus long-hold timing test.",
+        "Do not claim a full physical-key sprint/dodge boundary matrix from direct action fixtures."
+      ],
+      "historical_evidence": [],
+      "evidence": [],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "camera",
+      "description_zh": "近身两侧、冲锋擦身、跃盾、场边玩家与武器可见",
+      "method": "native_video_and_projection",
+      "status": "passed_target_projection_environment_overlap_only",
+      "limits": [
+        "Projection in frame is not proof of unobstructed visibility."
+      ],
+      "historical_evidence": [
+        "Saved/MountedBoss/runs/20260911-000557-259053c6/camera/probe.json"
+      ],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/camera/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "gait",
+      "description_zh": "侧面直行/变速/左右转/停步无明显滑步",
+      "method": "native_video_plus_support_foot_metrics",
+      "status": "visual_requirement_not_passed",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/movement/probe.json"
+      ],
+      "observed_support_drift_cm_s": 80.92142486572266,
+      "observed_support_sample_seconds": 10.225335121154785,
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "rider_sync",
+      "description_zh": "骨盆-鞍座/手-柄/脚-马镫与六招同步",
+      "method": "native_close_video",
+      "status": "partial_asset_and_leap_frame_review_other_moves_unverified",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "SourceAssets/MountedBoss/seated-legs-verification.json",
+        "SourceAssets/MountedBoss/mounted-rider-preservation.json",
+        "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "audio_sync",
+      "description_zh": "蹄声/挥动/命中/落地声音与可见动作一致",
+      "method": "listened_native_video",
+      "status": "new_master_audio_recording_unverified_screen_locked",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/recording-initial-failure/evidence-summary.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "art",
+      "description_zh": "可信材质、克制曝光、明暗层次、完整室外场地",
+      "method": "native_visual_review",
+      "status": "visual_requirement_not_passed",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/screenshot.png"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "debug",
+      "description_zh": "F1/F2/F3/F4/F5与1-6单招/暂停/慢速/恢复自然AI",
+      "method": "manual_debug_checklist",
+      "status": "passed_current_real_ui_log_checks",
+      "limits": [
+        "Pixel viewmode observed by parent in CUA; no heldShift timing control. This log verifier is not whole-battle visual approval."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/debug-ui-fixed/evidence-summary.json",
+        "Docs/Verification/MountedBoss/debug-ui-fixed/verification.json"
+      ],
+      "observed_failures": [
+        "F1-F8 changed engine view modes via PlayerInput.DebugExecBindings",
+        "Pause could advance state time by approximately0.008s in the same frame"
+      ],
+      "version_scope": "new_ui_fix_version",
+      "observed_pause_real_seconds": 13.498800624161959,
+      "observed_boss_clock_drift_seconds": 0,
+      "observed_world_clock_drift_seconds": 0
+    },
+    {
+      "id": "performance",
+      "description_zh": "真实完整交锋帧时、1%low和卡顿记录",
+      "method": "frame_times_and_gpu_cpu_profile",
+      "status": "short_fixture_frame_intervals_recorded_full_benchmark_missing",
+      "limits": [
+        "Config t.MaxFPS60 does not prove runtime cap. Actual session_end raw frame count and timing must be cited.",
+        "1000 divided by p99 frame interval is not a measured 1% low FPS; no sustained thermal or GPU/CPU cost trace yet."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/evidence-summary.json",
+        "Docs/Verification/MountedBoss/final-runtime/system-and-source.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/evidence-summary.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/system-and-source.json"
+      ],
+      "version_scope": "separate_short_samples_pre_ui_fix_and_current_locked_desktop_not_aggregated"
+    },
+    {
+      "id": "warden_baseline",
+      "description_zh": "原入口守井者仍可玩，核心旧文件hash保持",
+      "method": "hash_and_native_regression",
+      "status": "passed_two_existing_warden_fixtures_final_module",
+      "limits": [],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/evidence-summary.json"
+      ],
+      "version_scope": "current_ui_and_recorder_fix_module"
+    },
+    {
+      "id": "unedited_video",
+      "description_zh": "交付未经剪辑的人类实际交锋/失败/学习/胜利录像",
+      "method": "media_artifact",
+      "status": "old_recording_rejected_new_recorder_compiled_runtime_blocked",
+      "limits": [
+        "Scripted fixtures are not human play or learning evidence.",
+        "Mac lock screen requires user unlock before normal-window F8 recording; do not treat a build or fixture screenshot as completed video/audio delivery."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Verification/MountedBoss/recording-initial-failure/evidence-summary.json"
+      ],
+      "version_scope": "pre_ui_fix_27_case_snapshot_unless_explicitly_updated"
+    },
+    {
+      "id": "commit",
+      "description_zh": "记录本轮独立提交或明确仍未提交",
+      "method": "git_state",
+      "status": "completed_grouped_source_assets_and_tools_commits",
+      "limits": [
+        "Documentation is recorded by the following documentation commit. This does not close gameplay/video acceptance."
+      ],
+      "historical_evidence": [],
+      "evidence": [
+        "Docs/Implementation/MountedBoss/version_control_handoff.json"
+      ],
+      "version_scope": "main commits 0c6eae1 / 4c293f8 / b481620"
+    },
+    {
+      "id": "cleanup",
+      "description_zh": "暂停关闭伤害、空中调试取消、空中死亡后落地、同一玩家攻击ID去重与重置清理",
+      "method": "automated_fixture",
+      "status": "passed_automated_fixture",
+      "evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/cleanup/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/cleanup/probe.json"
+      ],
+      "limits": [
+        "DebugCancel instant ground placement is intentional debug behavior.",
+        "Natural non-Active fall uses swept descent550cm/s; fixture covers death, not every possible interruption timing."
+      ],
+      "version_scope": "current_ui_and_recorder_fix_20260911-012503-a147e821",
+      "pre_ui_fix_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/cleanup/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/cleanup/probe.json"
+      ]
+    }
+  ],
+  "baseline_preservation": {
+    "manifest": "Saved/MountedBoss/before-manifest.json",
+    "backup": "Saved/MountedBoss/before-mounted-20260910-233144.zip",
+    "backup_contains_maps": false,
+    "backup_scope": "42 source/config/launch-script entries; not a full project backup",
+    "files": [
+      {
+        "path": "Source/AshWell/AshWellWarden.cpp",
+        "before_sha256": "de37126df17e546d7231241a9111bbeec259f66f5f0beb705dc1fc4b7c9570ce",
+        "current_sha256": "de37126df17e546d7231241a9111bbeec259f66f5f0beb705dc1fc4b7c9570ce",
+        "unchanged": true
+      },
+      {
+        "path": "Source/AshWell/AshWellWarden.h",
+        "before_sha256": "ee8e0c963abf3b5c79e0394b78208358ddeee811d208add91537ebf4b5d28c1c",
+        "current_sha256": "ee8e0c963abf3b5c79e0394b78208358ddeee811d208add91537ebf4b5d28c1c",
+        "unchanged": true
+      },
+      {
+        "path": "Source/AshWell/AshWellWardenVisual.cpp",
+        "before_sha256": "26d4679fc30eeb76474b5d1a514384e44a1633b73aea28ed6605c48868216215",
+        "current_sha256": "26d4679fc30eeb76474b5d1a514384e44a1633b73aea28ed6605c48868216215",
+        "unchanged": true
+      },
+      {
+        "path": "Source/AshWell/AshWellCombatArena.cpp",
+        "before_sha256": "a185112ce8c4a134b020724774ebe648617ff44c51444218ac3aa71bbf4ebf14",
+        "current_sha256": "a185112ce8c4a134b020724774ebe648617ff44c51444218ac3aa71bbf4ebf14",
+        "unchanged": true
+      },
+      {
+        "path": "Source/AshWell/AshWellCombatArena.h",
+        "before_sha256": "f72d146944a5f6ce3414434c53c58eda6c853c3c19ddc0b08e3a6dcf8dc14a3b",
+        "current_sha256": "f72d146944a5f6ce3414434c53c58eda6c853c3c19ddc0b08e3a6dcf8dc14a3b",
+        "unchanged": true
+      },
+      {
+        "path": "Scripts/launch_station_gate.command",
+        "before_sha256": "3ef5ec28cacd7a9273c6032b9cc9e552a91d03be81d7e3f5fb8d7a1deec63714",
+        "current_sha256": "3ef5ec28cacd7a9273c6032b9cc9e552a91d03be81d7e3f5fb8d7a1deec63714",
+        "unchanged": true
+      },
+      {
+        "path": "Config/DefaultInput.ini",
+        "before_sha256": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+        "current_sha256": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+        "unchanged": true
+      }
+    ]
+  },
+  "limitations": [
+    "Historical reports span multiple source versions; never combine them into a same-build full-suite pass.",
+    "No prior report currently records a source fingerprint that can prove it matches the final six-move source.",
+    "Static or scripted checks do not approve animation, lighting, audio or human combat quality.",
+    "Source foot-drift proxies are diagnostics, not a visual pass or original-game measurements.",
+    "natural_charge and loop use ForceAttack(charge) for the opening; only later loop decisions are natural AI.",
+    "F4 resets the encounter and F5 restores AI while preserving the current debug speed; use F3 to return to1x.",
+    "Leap damage is one area gated by actor ground and shield-bottom proxy, not two independent damage sources.",
+    "Same-build27 fixtures passed; overall visual/manual/full-target acceptance remains false.",
+    "Final movement support drift proxy80.92cm/s over10.23sample-seconds remains a visible-motion risk.",
+    "Loop ends in player death after15hits/1dodge/4Bossstrikes and observed phase2; not a natural full-target victory.",
+    "Current9-case targeted report is separate from prior27-case full suite. The extra recording/tool integration was compiled, but new recorder runtime remains unverified until screen unlock."
+  ],
+  "final_unedited_video": null,
+  "final_commit": null,
+  "automated_suite_passed": true,
+  "automated_suite_case_count": 27,
+  "final_baseline_report": "Docs/Verification/MountedBoss/baseline-runtime-ui-fix/evidence-summary.json",
+  "pre_ui_fix_source_sha256": {
+    "AshWell.uproject": "a60210cb3c5cdb3e61c40df825445e6f1e819618f7c537593a0ae87cd0cecdee",
+    "Config/DefaultEngine.ini": "315fc4765628688b19462781ff0f2804483f2d9283287c8c5b81d35d30365f34",
+    "Config/DefaultInput.ini": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+    "Scripts/collect_mounted_evidence.py": "cb9bea013bd6e422b3c43f9ce0b807db1a4f07b105132eea2e0a7dc9ee5b1a7b",
+    "Scripts/launch_mounted_boss.command": "572bf8afae9f47e1b9ac78f72f63d49582587424e32ff20a5beeac590bf1180a",
+    "Scripts/test_mounted_runtime.py": "6b1244fdece7091d39d7c2cb968092e2e68644d2d2aefecc58fe47e4d8dd3dfb",
+    "Source/AshWell/AshWell.Build.cs": "9eb6073d520ea0ef28577e9994a647b01a398ec548ad958d1b2abfe83a1f99cb",
+    "Source/AshWell/AshWellBattleFX.cpp": "66ee91e2bfb733c314fe5d92c51fe4bcf1c57435de9ae76651ebaff3a0257ade",
+    "Source/AshWell/AshWellBattleFX.h": "7a0f47a41d96e8c56a45d97dbe9b27d3af3785d5464e2102d035ad1c083ea5a8",
+    "Source/AshWell/AshWellCombatCharacter.cpp": "61ad9ce3353f09f3ae6c1baf7bdcb7f96627a335cbfa940b8c30a0c90ebdad87",
+    "Source/AshWell/AshWellCombatCharacter.h": "bea4f9a2c2050f301e1739493a1dc688b4be0e2510f86a891894c44cb1a4de3a",
+    "Source/AshWell/AshWellIntroCharacter.cpp": "c8f7a6030ae240bd81ac543ec9dd10ddb825cf930cdfe05542940cf4fa79ae10",
+    "Source/AshWell/AshWellIntroGameMode.cpp": "33cf8ef61950ee3565ccf974e7d2be73dcb13f676def8ccf97d667ab13981c51",
+    "Source/AshWell/AshWellIntroHUD.cpp": "572009a11ae7d1577a0e1da424fa3ad1eb4e1333df344e40c21ccb431642e661",
+    "Source/AshWell/AshWellMountedBoss.cpp": "fe0a2ccc29c40a04708eb3e68346059b68b4447d0ff9f6a138a58c952e848a75",
+    "Source/AshWell/AshWellMountedBoss.h": "758e7eabe335de7a427196fd6e34fd569a88021c848aa03b3c81020befae2ba8",
+    "Source/AshWell/AshWellMountedBossVisual.cpp": "3901d593ede15cf222f1592791d9705491e06ec25a1d8218c62dea76bedc2a5f",
+    "Source/AshWell/AshWellMountedDebug.cpp": "66927e272baee8428cba9b1b85942a4b63b733c75e0560f6bf13b9c6d58d3258",
+    "Source/AshWell/AshWellMountedPlayer.cpp": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+    "Source/AshWell/MountedGallopDistance.inl": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60"
+  },
+  "final_source_sha256": {
+    "AshWell.uproject": "a60210cb3c5cdb3e61c40df825445e6f1e819618f7c537593a0ae87cd0cecdee",
+    "Config/DefaultEngine.ini": "315fc4765628688b19462781ff0f2804483f2d9283287c8c5b81d35d30365f34",
+    "Config/DefaultInput.ini": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+    "Scripts/collect_mounted_evidence.py": "cb9bea013bd6e422b3c43f9ce0b807db1a4f07b105132eea2e0a7dc9ee5b1a7b",
+    "Scripts/launch_mounted_boss.command": "572bf8afae9f47e1b9ac78f72f63d49582587424e32ff20a5beeac590bf1180a",
+    "Scripts/test_mounted_runtime.py": "6b1244fdece7091d39d7c2cb968092e2e68644d2d2aefecc58fe47e4d8dd3dfb",
+    "Source/AshWell/AshWell.Build.cs": "e792794651f77432e3281f977faa1b616acc91e1bba1c05de5f2ccbf2d4de591",
+    "Source/AshWell/AshWellBattleFX.cpp": "66ee91e2bfb733c314fe5d92c51fe4bcf1c57435de9ae76651ebaff3a0257ade",
+    "Source/AshWell/AshWellBattleFX.h": "7a0f47a41d96e8c56a45d97dbe9b27d3af3785d5464e2102d035ad1c083ea5a8",
+    "Source/AshWell/AshWellCombatCharacter.cpp": "e9c22e7c7f864a50a0e1216ce20fc112cacaf1d4d6587745c0611a4c7b876025",
+    "Source/AshWell/AshWellCombatCharacter.h": "b04aee877254dc4403a15cfe0af91cb0742e70c05bc44f7d06a05ec1ff420eaf",
+    "Source/AshWell/AshWellIntroCharacter.cpp": "c8f7a6030ae240bd81ac543ec9dd10ddb825cf930cdfe05542940cf4fa79ae10",
+    "Source/AshWell/AshWellIntroGameMode.cpp": "33cf8ef61950ee3565ccf974e7d2be73dcb13f676def8ccf97d667ab13981c51",
+    "Source/AshWell/AshWellIntroHUD.cpp": "572009a11ae7d1577a0e1da424fa3ad1eb4e1333df344e40c21ccb431642e661",
+    "Source/AshWell/AshWellMountedBoss.cpp": "c3afd7e79f3b2fba7134541c66651b755e25a17d372219bc5adf6b27a7c72438",
+    "Source/AshWell/AshWellMountedBoss.h": "758e7eabe335de7a427196fd6e34fd569a88021c848aa03b3c81020befae2ba8",
+    "Source/AshWell/AshWellMountedBossVisual.cpp": "3901d593ede15cf222f1592791d9705491e06ec25a1d8218c62dea76bedc2a5f",
+    "Source/AshWell/AshWellMountedDebug.cpp": "8784f3dc932a0869b93e4c2fb659b724596d49ae21966984a601a39a26b8bf49",
+    "Source/AshWell/AshWellMountedPlayer.cpp": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+    "Source/AshWell/MountedGallopDistance.inl": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60"
+  },
+  "pre_ui_fix_build_report": "Docs/Verification/MountedBoss/final-runtime/build.log",
+  "final_build_report": "Docs/Verification/MountedBoss/final-runtime-ui-fix/build.log",
+  "pre_ui_fix_runtime_report": "Docs/Verification/MountedBoss/final-runtime/test-results.json",
+  "final_runtime_report": "Docs/Verification/MountedBoss/final-runtime-ui-fix/test-results.json",
+  "pre_ui_fix_system_report": "Docs/Verification/MountedBoss/final-runtime/system-and-source.json",
+  "final_system_report": "Docs/Verification/MountedBoss/final-runtime-ui-fix/system-and-source.json",
+  "current_source_delta": {
+    "description": "Real UI binding/pause fixes plus F8 FrameGrabber/asyncPNG recorder lifecycle/audio-path fix after the27-case suite",
+    "files": [
+      "Source/AshWell/AshWellMountedDebug.cpp",
+      "Source/AshWell/AshWellMountedBoss.cpp",
+      "Source/AshWell/AshWellCombatCharacter.cpp",
+      "Source/AshWell/AshWellCombatCharacter.h",
+      "Source/AshWell/AshWell.Build.cs"
+    ],
+    "verification_status": "compiled_targeted9_passed_prior_real_ui13_passed_recording_not_runtime_verified",
+    "attack_timing_ai_damage_parameters_changed": false,
+    "planned_affected_cases": [
+      "hit_charge",
+      "dodge_charge",
+      "hit_body_check",
+      "dodge_body_check",
+      "hit_leap_shield",
+      "dodge_leap_shield",
+      "cleanup",
+      "retry",
+      "loop"
+    ],
+    "recording_plan": {
+      "capture": "presented viewport FFrameGrabber",
+      "resolution": [
+        1280,
+        720
+      ],
+      "target_fps": 24,
+      "png_encoding": "thread pool",
+      "record_real_gaps": true,
+      "end_play_closes_segment": true,
+      "audio": "master submix WAV",
+      "validation": "not_runtime_tested_blocked_by_macos_lock_screen_user_unlock_required"
+    }
+  },
+  "automated_suite_version": "pre_ui_fix_20260911-005158-f321083f",
+  "pre_ui_fix_evidence_summary": "Docs/Verification/MountedBoss/final-runtime/evidence-summary.json",
+  "final_evidence_summary": "Docs/Verification/MountedBoss/final-runtime-ui-fix/evidence-summary.json",
+  "debug_ui_initial_failure": "Docs/Verification/MountedBoss/debug-ui-initial-failure/evidence-summary.json",
+  "debug_ui_fixed_report": "Docs/Verification/MountedBoss/debug-ui-fixed/verification.json",
+  "new_recording_initial_failure": "Docs/Verification/MountedBoss/recording-initial-failure/evidence-summary.json",
+  "current_regression_environment_note": "Final targeted9 passed using UE rendered fixtures during macOS lock screen; no simultaneous normal-window user operation or fresh recorder run.",
+  "final_targeted_suite_passed": true,
+  "final_targeted_suite_case_count": 9,
+  "prior_baseline_report": "Docs/Verification/MountedBoss/baseline-runtime/evidence-summary.json",
+  "documents_frozen_utc": "2026-09-10T17:31:44.364344+00:00",
+  "session_stop": {
+    "date": "2026-09-11",
+    "reason": "User asked to stop production today, split commits and create a remote repository.",
+    "production_status": "paused_by_user",
+    "recording": "deferred; revised recorder compiled but not runtime-verified"
+  },
+  "version_control": {
+    "branch": "main",
+    "remote": "https://github.com/jane-uske/ash-well-ue",
+    "visibility": "private",
+    "commits": [
+      {
+        "scope": "existing_project_checkpoint",
+        "sha": "0c6eae1003ea90569aa4b96d5cf1f846db8b988d"
+      },
+      {
+        "scope": "mounted_runtime_and_assets",
+        "sha": "4c293f83df6efcd92f500acb868b86e2857a4097"
+      },
+      {
+        "scope": "mounted_tools",
+        "sha": "b48162031b30a99b2795a0a71809bfc172275fcc"
+      }
+    ],
+    "report": "Docs/Implementation/MountedBoss/version_control_handoff.json"
+  }
+}

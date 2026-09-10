@@ -1,0 +1,22 @@
+{
+  "status": "failed_before_ui_fix",
+  "logged_checks": {
+    "passed": 12,
+    "failed": 1
+  },
+  "pause_drift_seconds": 0.007973875850439072,
+  "files": [
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T170216Z-27D83655.jsonl",
+      "archive": "Docs/Verification/MountedBoss/debug-ui-initial-failure/20260910T170216Z-27D83655.jsonl",
+      "sha256": "6f070d2b2f3ceffa803ecb371a3e5ad842790eedd518ef52779bc3ff218f3149"
+    },
+    {
+      "source": "Saved/MountedBoss/debug-ui-initial.json",
+      "archive": "Docs/Verification/MountedBoss/debug-ui-initial-failure/debug-ui-initial.json",
+      "sha256": "7d04d10f6a5eccd8f4455b37b22c5e32bc4d1ceb6f8f2832f839fe7b9430cc54"
+    }
+  ],
+  "viewmode_observation": "Parent agent observed physical F1-F8 also changing engine Development view mode in the actual game window. This JSONL verifies clocks, not pixel view mode.",
+  "scope": "Preserve actual UI failure after the earlier27-case automated suite; do not discard due to later fix."
+}

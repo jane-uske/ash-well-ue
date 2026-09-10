@@ -1,0 +1,49 @@
+{
+  "reference": "https://www.bilibili.com/video/BV1cw411M7xw/",
+  "title": "这真的是出门第一个杂兵吗",
+  "review_date": "2026-09-10",
+  "local_video": "/Users/rare/dev/ash-well-ue/Saved/MountedReference/BV1cw411M7xw-video.m4s",
+  "sha256": "1a008fd450126fb3c9afc0f9ded8eed0154398381deefca57690b309626ac6b6",
+  "bytes": 123001201,
+  "source_duration_seconds": 280.026,
+  "source_start_time_seconds": 0.057,
+  "sample_note": "Time labels are nominal 1 fps / 4 fps resampling times, approximately +/- 0.5 s / +/- 0.125 s, not original game frame timestamps. No gameplay timing measured from these sheets.",
+  "segments": [
+    {
+      "name": "charge",
+      "start": 19,
+      "duration": 4,
+      "fps": 4
+    },
+    {
+      "name": "close_sweep",
+      "start": 35,
+      "duration": 4,
+      "fps": 4
+    },
+    {
+      "name": "overhead",
+      "start": 44,
+      "duration": 4,
+      "fps": 4
+    },
+    {
+      "name": "leap_slam",
+      "start": 84,
+      "duration": 4,
+      "fps": 4
+    },
+    {
+      "name": "shield",
+      "start": 96,
+      "duration": 4,
+      "fps": 4
+    },
+    {
+      "name": "rear",
+      "start": 119,
+      "duration": 5,
+      "fps": 4
+    }
+  ]
+}

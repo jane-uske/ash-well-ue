@@ -1,0 +1,1160 @@
+{
+  "schema_version": 1,
+  "document_status": "six_move_baseline27_passed_current_priority_moves9_passed_visual_incomplete",
+  "generated_at_utc": "2026-09-10T16:55:26.062089+00:00",
+  "source_snapshot_sha256": {
+    "AshWell.uproject": "a60210cb3c5cdb3e61c40df825445e6f1e819618f7c537593a0ae87cd0cecdee",
+    "Config/DefaultEngine.ini": "315fc4765628688b19462781ff0f2804483f2d9283287c8c5b81d35d30365f34",
+    "Config/DefaultInput.ini": "6c0317c4cbc9ffd1cfc19acfd7ed752b28428de621d0c3a36245971ee4a0b1fb",
+    "Scripts/collect_mounted_evidence.py": "cb9bea013bd6e422b3c43f9ce0b807db1a4f07b105132eea2e0a7dc9ee5b1a7b",
+    "Scripts/launch_mounted_boss.command": "572bf8afae9f47e1b9ac78f72f63d49582587424e32ff20a5beeac590bf1180a",
+    "Scripts/test_mounted_runtime.py": "6b1244fdece7091d39d7c2cb968092e2e68644d2d2aefecc58fe47e4d8dd3dfb",
+    "Source/AshWell/AshWell.Build.cs": "e792794651f77432e3281f977faa1b616acc91e1bba1c05de5f2ccbf2d4de591",
+    "Source/AshWell/AshWellBattleFX.cpp": "66ee91e2bfb733c314fe5d92c51fe4bcf1c57435de9ae76651ebaff3a0257ade",
+    "Source/AshWell/AshWellBattleFX.h": "7a0f47a41d96e8c56a45d97dbe9b27d3af3785d5464e2102d035ad1c083ea5a8",
+    "Source/AshWell/AshWellCombatCharacter.cpp": "e9c22e7c7f864a50a0e1216ce20fc112cacaf1d4d6587745c0611a4c7b876025",
+    "Source/AshWell/AshWellCombatCharacter.h": "b04aee877254dc4403a15cfe0af91cb0742e70c05bc44f7d06a05ec1ff420eaf",
+    "Source/AshWell/AshWellIntroCharacter.cpp": "c8f7a6030ae240bd81ac543ec9dd10ddb825cf930cdfe05542940cf4fa79ae10",
+    "Source/AshWell/AshWellIntroGameMode.cpp": "33cf8ef61950ee3565ccf974e7d2be73dcb13f676def8ccf97d667ab13981c51",
+    "Source/AshWell/AshWellIntroHUD.cpp": "572009a11ae7d1577a0e1da424fa3ad1eb4e1333df344e40c21ccb431642e661",
+    "Source/AshWell/AshWellMountedBoss.cpp": "c3afd7e79f3b2fba7134541c66651b755e25a17d372219bc5adf6b27a7c72438",
+    "Source/AshWell/AshWellMountedBoss.h": "758e7eabe335de7a427196fd6e34fd569a88021c848aa03b3c81020befae2ba8",
+    "Source/AshWell/AshWellMountedBossVisual.cpp": "3901d593ede15cf222f1592791d9705491e06ec25a1d8218c62dea76bedc2a5f",
+    "Source/AshWell/AshWellMountedDebug.cpp": "8784f3dc932a0869b93e4c2fb659b724596d49ae21966984a601a39a26b8bf49",
+    "Source/AshWell/AshWellMountedPlayer.cpp": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+    "Source/AshWell/MountedGallopDistance.inl": "90d52d32ef246748dee715cf2a8f6eeaec591cd9ef451875c0138f8c8a9d3e60"
+  },
+  "scope": {
+    "first_build_attack_count": 6,
+    "priority_samples": [
+      "charge",
+      "body_check",
+      "leap_shield"
+    ],
+    "complete_target_retained": true,
+    "full_original_movelist_verified": false,
+    "not_in_scope": [
+      "Draconic Tree Sentinel fire/lightning kit",
+      "Player mounted combat",
+      "World expansion",
+      "Inventory/NPC/story systems"
+    ]
+  },
+  "reference": {
+    "url": "https://www.bilibili.com/video/BV1cw411M7xw/",
+    "title": "这真的是出门第一个杂兵吗",
+    "local_manifest": "Docs/Verification/MountedReference/manifest.json",
+    "review_method": "Full video reviewed at 1 fps, six segments at 4 fps; not a complete frame-by-frame movelist audit.",
+    "original_timing_values_known": false,
+    "original_attack_ids_known": false,
+    "catalog_is_exhaustive_original_movelist": false
+  },
+  "moves": [
+    {
+      "id": "sweep",
+      "name_zh": "近身长戟横扫",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_prior27_build_attack_parameters_unchanged_no_rerun_in_targeted9",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "observed_visual_family",
+        "time_windows_approx_s": [
+          [
+            35,
+            36.5
+          ]
+        ],
+        "evidence": [
+          "Docs/Verification/MountedReference/close_sweep-contact.jpg"
+        ],
+        "observation": "Visible side-to-front low sweep, followed by a separate high raise in this sequence.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "sweep",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 0.8,
+          "active_s": 0.32,
+          "recovery_s": 1,
+          "commit_s": 0.52,
+          "damage": 27,
+          "cooldown_s": 2,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "visible_blade_and_outer_edge_sweeps"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "selection_last_inspected": {
+          "distance_max_cm": 315,
+          "boss_relative_angle_degrees": [
+            -40,
+            110
+          ],
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ]
+        },
+        "weapon_path": "Right side to front-left; actor heading frozen while hand/weapon local pose changes."
+      },
+      "required_tests": [
+        "hit_sweep",
+        "dodge_sweep",
+        "miss_sweep",
+        "heading_sweep",
+        "punish_sweep",
+        "combo_sweep_overhead"
+      ],
+      "missing_or_unverified": [],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_sweep/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/result.json"
+      ]
+    },
+    {
+      "id": "overhead",
+      "name_zh": "过顶下劈",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_prior27_build_attack_parameters_unchanged_no_rerun_in_targeted9",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "observed_visual_family",
+        "time_windows_approx_s": [
+          [
+            36.75,
+            38.75
+          ],
+          [
+            44,
+            47.75
+          ]
+        ],
+        "evidence": [
+          "Docs/Verification/MountedReference/close_sweep-contact.jpg",
+          "Docs/Verification/MountedReference/overhead-contact.jpg"
+        ],
+        "observation": "Raised weapon silhouette followed by a downward stroke; hidden damage frames are not visible.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "overhead",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 1.05,
+          "active_s": 0.25,
+          "recovery_s": 1.2,
+          "commit_s": 0.73,
+          "damage": 34,
+          "cooldown_s": 3.6,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "visible_blade_and_outer_edge_sweeps"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "selection_last_inspected": {
+          "distance_max_cm": 310,
+          "absolute_angle_max_degrees": 50,
+          "selection_count_modulo_2": 1,
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ]
+        },
+        "translation_last_inspected": {
+          "active_target_speed_cm_s": 180
+        }
+      },
+      "required_tests": [
+        "hit_overhead",
+        "dodge_overhead",
+        "miss_overhead",
+        "heading_overhead",
+        "punish_overhead"
+      ],
+      "missing_or_unverified": [],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_overhead/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/result.json"
+      ]
+    },
+    {
+      "id": "charge",
+      "name_zh": "冲锋横扫",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_current_ui_recorder_fix_build_visual_acceptance_incomplete",
+      "first_round_priority_sample": true,
+      "reference": {
+        "confirmation": "observed_visual_family",
+        "time_windows_approx_s": [
+          [
+            19,
+            22.75
+          ]
+        ],
+        "evidence": [
+          "Docs/Verification/MountedReference/charge-contact.jpg"
+        ],
+        "observation": "Approach, lean, weapon passes the player, horse travels through and turns afterward. Our new requirement is an explicit sweep during the charge.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "charge",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 1.15,
+          "active_s": 1.05,
+          "recovery_s": 1.35,
+          "commit_s": 0.85,
+          "damage": 32,
+          "cooldown_s": 7,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "visible_blade_and_outer_edge_sweeps"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "selection_last_inspected": {
+          "distance_min_cm": 570,
+          "distance_max_cm": 900,
+          "absolute_angle_max_degrees": 20,
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ]
+        },
+        "translation_last_inspected": {
+          "active_target_speed_cm_s": 850,
+          "acceleration_cm_s2": 1300,
+          "precommit_lateral_path_offset_cm": 105,
+          "recovery_deceleration_cm_s2": 700
+        },
+        "damage_window_relative_to_active_s": [
+          0.16,
+          1.05
+        ],
+        "weapon_path": "During Active, local yaw sweeps +65 toward -45 degrees using SmoothStep(0.42,1.05,normalized_active_progress); actor yaw remains frozen. The start of contact eligibility is earlier than the lateral sweep."
+      },
+      "required_tests": [
+        "hit_charge",
+        "dodge_charge",
+        "miss_charge",
+        "natural_charge",
+        "heading_charge",
+        "charge_body_weapon_dedup",
+        "charge_camera",
+        "charge_brake"
+      ],
+      "missing_or_unverified": [
+        "Unedited footage must show passing route, visible blade arc, readable cue, rider/gallop synchronization and braking.",
+        "Forced natural_charge fixture does not certify AI selection from a natural opening."
+      ],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_charge/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_charge/result.json"
+      ]
+    },
+    {
+      "id": "body_check",
+      "name_zh": "近身马体肩撞",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_current_ui_recorder_fix_build_visual_acceptance_incomplete",
+      "first_round_priority_sample": true,
+      "reference": {
+        "confirmation": "user_required_adaptation_pending_precise_reference_match",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Required AshWell near-body structure. Exact corresponding ordinary Tree Sentinel source variant and timing remain to be isolated.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "body_check",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 0.7,
+          "active_s": 0.34,
+          "recovery_s": 0.95,
+          "commit_s": 0.42,
+          "damage": 19,
+          "cooldown_s": 4.2,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "the_same_horse_body_box_sweep_used_for_blocking_during_active_body_check"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "selection_last_inspected": {
+          "distance_max_cm": 215,
+          "absolute_angle_max_degrees": 55,
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ]
+        },
+        "translation_last_inspected": {
+          "active_target_speed_cm_s": 420,
+          "acceleration_cm_s2": 1000,
+          "recovery_deceleration_cm_s2": 700
+        },
+        "damage_window_relative_to_active_s": [
+          0,
+          0.34
+        ]
+      },
+      "required_tests": [
+        "hit_body_check",
+        "dodge_body_check",
+        "miss_body_check",
+        "heading_body_check",
+        "passive_body",
+        "body_check_dedup",
+        "punish_body_check"
+      ],
+      "missing_or_unverified": [
+        "Body collision corresponds to simplified central box, not full visible horse contour.",
+        "Pose currently uses rider lean and shield guarding; a dedicated shoulder animation is missing.",
+        "Historical shield results are not body-check evidence."
+      ],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_body_check/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_body_check/result.json"
+      ]
+    },
+    {
+      "id": "rear",
+      "name_zh": "扬前蹄落地",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_prior27_build_attack_parameters_unchanged_no_rerun_in_targeted9",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "observed_visual_family",
+        "time_windows_approx_s": [
+          [
+            122,
+            123.75
+          ]
+        ],
+        "evidence": [
+          "Docs/Verification/MountedReference/rear-contact.jpg"
+        ],
+        "observation": "Horse forequarters visibly rise; visible footage does not prove an independent spherical stomp hitbox.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "rear",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 1.4,
+          "active_s": 0.24,
+          "recovery_s": 1.45,
+          "commit_s": 0.75,
+          "damage": 36,
+          "cooldown_s": 9,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "one_ground_impact_area"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "area_last_inspected": {
+          "center_forward_cm": 85,
+          "radius_cm": 275,
+          "max_vertical_difference_cm": 155,
+          "active_start_s": 0.075,
+          "occlusion_check": true
+        },
+        "animation_adapter": "Procedural horse rear around rear-hoof pivot; no dedicated rear clip is loaded.",
+        "selection_last_inspected": {
+          "distance_max_cm": 340,
+          "phase_two_or_absolute_angle_above_degrees": 100,
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ],
+          "phase_description": "Allowed in phase two; also allowed in either phase against targets behind (absolute angle >100 degrees)."
+        }
+      },
+      "required_tests": [
+        "hit_rear",
+        "dodge_rear",
+        "miss_rear",
+        "heading_rear",
+        "rear_height_boundary",
+        "rear_wall_occlusion",
+        "punish_rear"
+      ],
+      "missing_or_unverified": [
+        "No dedicated rear clip; procedural lift requires continuous visual review.",
+        "Rear area is centered 85 cm forward; rear target selection does not guarantee coverage at every allowed distance.",
+        "Jumping the impact needs a height boundary test."
+      ],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime/hit_rear/result.json",
+        "Docs/Verification/MountedBoss/final-runtime/dodge_rear/result.json"
+      ]
+    },
+    {
+      "id": "leap_shield",
+      "name_zh": "跃起盾砸",
+      "target_scope": "normal_tree_sentinel_reference",
+      "implementation_state": "implemented_current_source_visual_acceptance_pending",
+      "current_build_validation": "paired_hit_dodge_passed_current_ui_recorder_fix_build_visual_acceptance_incomplete",
+      "first_round_priority_sample": true,
+      "reference": {
+        "confirmation": "observed_visual_family",
+        "time_windows_approx_s": [
+          [
+            84.5,
+            86.5
+          ],
+          [
+            96,
+            98
+          ]
+        ],
+        "evidence": [
+          "Docs/Verification/MountedReference/leap_slam-contact.jpg",
+          "Docs/Verification/MountedReference/shield-contact.jpg"
+        ],
+        "observation": "Horse becomes airborne, rider/raised shield changes silhouette, then impact and dust appear. Collision source and exact frame timing cannot be inferred.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "leap_shield",
+        "parameters_status": "current_source_experiment_values_not_original_game",
+        "last_inspected_design_values": {
+          "windup_s": 1.1,
+          "active_s": 0.9,
+          "recovery_s": 1.6,
+          "commit_s": 0.75,
+          "damage": 38,
+          "cooldown_s": 11,
+          "units": "UE centimetres and seconds; not original-game data"
+        },
+        "damage_sources": [
+          "single_landing_area_gated_by_actor_grounding_and_shield_bottom_proxy"
+        ],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted.",
+        "selection_last_inspected": {
+          "distance_min_cm": 320,
+          "distance_max_cm": 600,
+          "absolute_angle_max_degrees": 30,
+          "phase_two_only": true,
+          "cooldown_required": true,
+          "strict_inequalities": true,
+          "priority_order": [
+            "leap_shield",
+            "rear",
+            "body_check",
+            "charge",
+            "overhead",
+            "sweep"
+          ]
+        },
+        "translation_last_inspected": {
+          "active_target_speed_cm_s": 240,
+          "flight_s": 0.68,
+          "nominal_root_apex_cm": 150,
+          "root_curve": "150 * 4 * t * (1 - t), t=clamp(active_time/0.68,0,1)",
+          "root_displacement_owner": "actor collision sweep",
+          "non_active_descent_cm_s": 550
+        },
+        "area_last_inspected": {
+          "center": "actual solved ShieldPoint XY at Home.Z",
+          "radius_cm": 260,
+          "max_vertical_difference_cm": 155,
+          "occlusion_check": true,
+          "gate": "actor landed and ShieldPoint.Z - 90 <= Home.Z +25",
+          "single_contact_consumed_even_if_dodged": true
+        },
+        "independent_shield_contact_sweep_implemented": false,
+        "animation_adapter": "Horse Jump time mapped to shared attack phases; common torso lift stripped so actor is sole vertical displacement source; procedural rider leans to shield-side gripping target.",
+        "rider_landing_pose_design": {
+          "torso_pitch_degrees": -40,
+          "torso_roll_degrees": -35,
+          "shield_hand_target_actor_local_cm": [
+            38,
+            -78,
+            153
+          ]
+        }
+      },
+      "required_tests": [
+        "hit_leap_shield",
+        "dodge_leap_shield",
+        "miss_leap_shield",
+        "heading_leap_shield",
+        "leap_airborne",
+        "leap_landing_sync",
+        "leap_damage_dedup",
+        "leap_wall_occlusion",
+        "leap_camera",
+        "punish_leap_shield"
+      ],
+      "missing_or_unverified": [
+        "Ground gate uses shield-center minus 90 cm as proxy, not oriented shield-ground geometric sweep.",
+        "Old damage pass with floating shield is rejected as visual evidence. New pose must be visually checked.",
+        "No independent shield-contact damage branch; single grounded area prevents double damage but is a simplified adaptation."
+      ],
+      "current_runtime_evidence": [
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/hit_leap_shield/result.json",
+        "Docs/Verification/MountedBoss/final-runtime-ui-fix/dodge_leap_shield/result.json"
+      ]
+    },
+    {
+      "id": "reverse_sweep_candidate",
+      "name_zh": "反向回扫候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Confirm whether reverse/return sweep is a distinct normal Tree Sentinel attack or merely the recovery of an observed stroke.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "reverse_sweep_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_reverse_sweep_candidate",
+        "design_reverse_sweep_candidate",
+        "implement_and_test_reverse_sweep_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "low_to_high_candidate",
+      "name_zh": "低位上挑候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Identify a complete lead-in, rising weapon path and finish before adding an independent move; not yet verified in the source review.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "low_to_high_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_low_to_high_candidate",
+        "design_low_to_high_candidate",
+        "implement_and_test_low_to_high_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "forward_thrust_candidate",
+      "name_zh": "直线突刺候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Inventory requested coverage of narrow forward reach; original normal-enemy presence and identity are not confirmed.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "forward_thrust_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_forward_thrust_candidate",
+        "design_forward_thrust_candidate",
+        "implement_and_test_forward_thrust_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "turning_rear_side_candidate",
+      "name_zh": "转身/侧后方武器覆盖候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Audit response when the player stays at the flank or rear. Do not fill the gap with a guessed teleporting 180-degree attack.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "turning_rear_side_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_turning_rear_side_candidate",
+        "design_turning_rear_side_candidate",
+        "implement_and_test_turning_rear_side_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "grounded_shield_slam_candidate",
+      "name_zh": "原地盾砸候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Separate grounded shield attack, rising shield attack and leap slam only after observing complete cycles; do not count animation poses as separate moves.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "grounded_shield_slam_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_grounded_shield_slam_candidate",
+        "design_grounded_shield_slam_candidate",
+        "implement_and_test_grounded_shield_slam_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "short_shield_bash_candidate",
+      "name_zh": "短盾击候选",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Original shield-family motion exists in review, but a distinct short grounded bash has not been isolated. Old AshWell shield was an adaptation, replaced by body_check in the first six.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "short_shield_bash_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_short_shield_bash_candidate",
+        "design_short_shield_bash_candidate",
+        "implement_and_test_short_shield_bash_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "horse_hind_kick_candidate",
+      "name_zh": "后蹄反制核查项",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "not_observed_in_current_reference_review",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "The asset pack has a kick clip; that does not establish a normal Tree Sentinel rear kick. Keep as an audit candidate, not canon or authorized expansion.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "horse_hind_kick_candidate",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_horse_hind_kick_candidate",
+        "design_horse_hind_kick_candidate",
+        "implement_and_test_horse_hind_kick_candidate"
+      ],
+      "missing_or_unverified": [],
+      "must_confirm_before_implementation": true
+    },
+    {
+      "id": "magic_counter",
+      "name_zh": "盾牌魔法反制",
+      "target_scope": "full_target_reference_audit_backlog",
+      "implementation_state": "not_implemented",
+      "current_build_validation": "not_implemented_reference_confirmation_pending",
+      "first_round_priority_sample": false,
+      "reference": {
+        "confirmation": "full_target_requirement_mechanics_unverified",
+        "time_windows_approx_s": [],
+        "evidence": [],
+        "observation": "Normal Tree Sentinel full-target counter behavior must be observed with a spell/projectile. The supplied melee-focused video does not establish trigger, trajectory or damage rules.",
+        "original_values": {
+          "windup_s": null,
+          "active_s": null,
+          "recovery_s": null,
+          "commit_s": null,
+          "damage": null,
+          "range_cm": null,
+          "root_motion": null,
+          "invulnerability_s": null
+        }
+      },
+      "ashwell": {
+        "source_file": "Source/AshWell/AshWellMountedBoss.cpp",
+        "visual_source_file": "Source/AshWell/AshWellMountedBossVisual.cpp",
+        "enum_or_planned_label": "magic_counter",
+        "parameters_status": "in_progress_or_not_implemented",
+        "last_inspected_design_values": null,
+        "damage_sources": [],
+        "heading_rule": "Stop target-based actor steering at explicit commit time; no active-frame homing.",
+        "safe_response": "Must be established with visible trajectory, paired hit/dodge control and punish attempt; no universal safe side asserted."
+      },
+      "required_tests": [
+        "reference_confirm_magic_counter",
+        "design_magic_counter",
+        "implement_and_test_magic_counter"
+      ],
+      "missing_or_unverified": [
+        "No player spell system or reflection implementation in current slice.",
+        "Do not invent original damage, resistance, reflection multiplier, detection range or frame window."
+      ],
+      "must_confirm_before_implementation": true,
+      "dependencies": [
+        "Read-only inspection of projectile/spell examples",
+        "Projectile ownership/filtering rules",
+        "Counter cue, commit, miss/failure and recovery states"
+      ]
+    }
+  ],
+  "locomotion_and_support_actions": [
+    {
+      "id": "idle",
+      "name_zh": "待机",
+      "state": "loaded_and_runtime_observed",
+      "adapter": "A_Horse_Idle",
+      "visual_approved": false
+    },
+    {
+      "id": "walk",
+      "name_zh": "步行",
+      "state": "loaded_with_known_slip_risk",
+      "adapter": "A_Horse_Walk; distance-driven phase",
+      "visual_approved": false
+    },
+    {
+      "id": "trot",
+      "name_zh": "独立小跑",
+      "state": "missing_dedicated_state",
+      "adapter": "Current setup blends by selecting walk or gallop; no separate trot state",
+      "visual_approved": false
+    },
+    {
+      "id": "gallop",
+      "name_zh": "奔跑",
+      "state": "loaded_with_known_slip_risk",
+      "adapter": "A_Horse_Gallop; actual travel through phase-distanceLUT. Final movement support drift proxy80.92cm/s over10.23sample-seconds; no visual approval.",
+      "visual_approved": false
+    },
+    {
+      "id": "turn_left",
+      "name_zh": "左转",
+      "state": "procedural_needs_visual_review",
+      "adapter": "Speed-limited actor steering plus walk stepping",
+      "visual_approved": false
+    },
+    {
+      "id": "turn_right",
+      "name_zh": "右转",
+      "state": "procedural_needs_visual_review",
+      "adapter": "Speed-limited actor steering plus walk stepping",
+      "visual_approved": false
+    },
+    {
+      "id": "start_accelerate",
+      "name_zh": "起步/加速",
+      "state": "code_implemented_visual_pending",
+      "adapter": "Code acceleration; no dedicated start clip",
+      "visual_approved": false
+    },
+    {
+      "id": "decelerate_stop",
+      "name_zh": "制动/停止",
+      "state": "code_implemented_visual_pending",
+      "adapter": "Code deceleration; no dedicated stop clip",
+      "visual_approved": false
+    },
+    {
+      "id": "face_target",
+      "name_zh": "低速整向",
+      "state": "code_implemented_visual_pending",
+      "adapter": "Overlap-checked bounded yaw",
+      "visual_approved": false
+    },
+    {
+      "id": "rider_guard",
+      "name_zh": "骑手戒备",
+      "state": "procedural_needs_visual_review",
+      "adapter": "PoseableMesh and two-bone solutions",
+      "visual_approved": false
+    },
+    {
+      "id": "recovery",
+      "name_zh": "各攻击恢复",
+      "state": "code_implemented_visual_pending",
+      "adapter": "Per-move recovery timer and pose interpolation",
+      "visual_approved": false
+    },
+    {
+      "id": "horse_hit",
+      "name_zh": "马受击",
+      "state": "clips_imported_not_integrated_as_reaction",
+      "adapter": "A_Horse_HitLeft/HitRight imported",
+      "visual_approved": false
+    },
+    {
+      "id": "rider_hit",
+      "name_zh": "骑手受击",
+      "state": "procedural_needs_visual_review",
+      "adapter": "Small additive lean/flash; attacks retain armour",
+      "visual_approved": false
+    },
+    {
+      "id": "stagger",
+      "name_zh": "姿态破坏",
+      "state": "missing",
+      "adapter": "No independent posture meter or authored stagger",
+      "visual_approved": false
+    },
+    {
+      "id": "phase_transition",
+      "name_zh": "阶段转换",
+      "state": "current_runtime_fixture_passed_visual_scope_limited",
+      "adapter": "Pending phase enters after recovery, or immediately from Approach; 1.65 s transition then 0.40 s decision delay",
+      "visual_approved": false
+    },
+    {
+      "id": "leap_takeoff",
+      "name_zh": "跃起起跳",
+      "state": "current_actual_root_and_ground_gate_verified_visual_detail_pending",
+      "adapter": "A_Horse_Jump mapped to windup; actor parabola is sole root elevation",
+      "visual_approved": false
+    },
+    {
+      "id": "leap_air",
+      "name_zh": "跃起空中",
+      "state": "current_actual_root_and_ground_gate_verified_visual_detail_pending",
+      "adapter": "Shared active clock maps Jump 0.35–1.35 s; rider/shield follow evaluated seat bone",
+      "visual_approved": false
+    },
+    {
+      "id": "leap_landing",
+      "name_zh": "跃起落地",
+      "state": "current_actual_root_and_ground_gate_verified_visual_detail_pending",
+      "adapter": "Actor ground plus shield-bottom gate triggers one area; recovery or interruption descends at 550 cm/s if still elevated",
+      "visual_approved": false
+    },
+    {
+      "id": "leash_return",
+      "name_zh": "脱战返回",
+      "state": "current_runtime_fixture_passed_visual_scope_limited",
+      "adapter": "Slow arrival, resting yaw then reset",
+      "visual_approved": false
+    },
+    {
+      "id": "player_death_stop",
+      "name_zh": "玩家死亡后收手",
+      "state": "current_runtime_fixture_passed_visual_scope_limited",
+      "adapter": "Return state cancels attack",
+      "visual_approved": false
+    },
+    {
+      "id": "boss_death",
+      "name_zh": "Boss死亡",
+      "state": "loaded_with_procedural_rider",
+      "adapter": "Horse Death clip plus procedural rider fall",
+      "visual_approved": false
+    },
+    {
+      "id": "reset",
+      "name_zh": "重试复位",
+      "state": "current_runtime_fixture_passed_visual_scope_limited",
+      "adapter": "OpenLevel new instance; all six and debug state need current retest",
+      "visual_approved": false
+    }
+  ],
+  "retired_first_pass_moves": [
+    {
+      "id": "shield",
+      "name_zh": "短盾击旧实验",
+      "state": "retained_as_historical_evidence_only",
+      "replacement": "body_check",
+      "reason": "Keep six initial attacks while satisfying a true close horse-body attack.",
+      "previous_values": {
+        "windup_s": 0.7,
+        "active_s": 0.24,
+        "recovery_s": 0.95,
+        "commit_s": 0.42,
+        "damage": 19,
+        "cooldown_s": 4.2,
+        "units": "UE centimetres and seconds; not original-game data"
+      }
+    }
+  ],
+  "phase_plan": {
+    "current_threshold_hp_fraction": 0.5,
+    "current_transition_s": 1.65,
+    "current_combo": "Limited sweep to overhead after full recovery",
+    "full_reference_phase_changes": "Must audit original variants and magic counter; no original timing asserted",
+    "six_move_version_verified": false,
+    "entry_rule": "At <=450 HP, set pending; finish current full recovery or enter directly from Approach. PhaseChange lasts1.65 s; no transition damage.",
+    "six_move_hit_dodge_version_verified": true,
+    "verification_limit": "All six paired hit/dodge fixtures pass. Natural selection of all six, full combo coverage and complete reference target remain unverified."
+  },
+  "final_runtime_report": "Docs/Verification/MountedBoss/final-runtime-ui-fix/test-results.json",
+  "source_snapshot_scope": "Current UI/recorder-fix source. Current9-case report covers three priority move pairs, cleanup,retry,loop; other move pair evidence remains prior27-case run with unchanged attack parameters.",
+  "tuning_surface": {
+    "property": "AAshWellMountedBoss.AttackTuning",
+    "declaration": "UPROPERTY(Config,EditAnywhere,Category=\"Mounted Combat\") TArray<FMountedAttackSpec>",
+    "config_class_section": "/Script/AshWell.AshWellMountedBoss",
+    "config_file": "Config/DefaultGame.ini",
+    "required_array_order": [
+      "Sweep",
+      "Overhead",
+      "Charge",
+      "BodyCheck",
+      "Rear",
+      "LeapShield"
+    ],
+    "required_array_length": 6,
+    "supported_values": [
+      "Windup",
+      "Active",
+      "Recovery",
+      "CommitLead",
+      "Damage",
+      "Cooldown"
+    ],
+    "editing_validation": "Current defaults inspected and tested. Keep all6 elements and order; editing arbitrary config values has not been tested."
+  }
+}

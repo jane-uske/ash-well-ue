@@ -1,0 +1,40 @@
+{
+  "case": "camera",
+  "passed": true,
+  "elapsed_seconds": 25.86,
+  "evidence_directory": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260911-005158-f321083f/camera",
+  "probe_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/probe-camera.json",
+  "process": {
+    "pid": 63975,
+    "terminated_by_harness": true,
+    "killed_after_grace": false,
+    "exit_code": 0
+  },
+  "checks": {
+    "completed": true,
+    "correct_probe": true,
+    "correct_map": true,
+    "hero_v02_loaded": true,
+    "horse_visual_loaded": true,
+    "rider_visual_loaded": true,
+    "finite_health": true,
+    "finite_stamina": true,
+    "stamina_never_negative": true,
+    "fixture_assertions_passed": true,
+    "no_global_slowdown": true,
+    "no_fatal_error": true,
+    "no_hero_load_error": true,
+    "hero_material_compiles": true,
+    "cloth_scale_valid": true,
+    "at_least_five_positions": true,
+    "no_environment_penetration": true,
+    "sampled": true,
+    "target_in_frame": true,
+    "engine_log_present": true,
+    "owned_process_stopped": true
+  },
+  "failed_checks": [],
+  "health": 100,
+  "boss_health": 900,
+  "screenshot_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260911-005158-f321083f/camera/screenshot.png"
+}

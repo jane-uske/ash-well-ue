@@ -1,0 +1,3080 @@
+{
+  "schema_version": 1,
+  "run_id": "20260911-005158-f321083f",
+  "source_run": "Saved/MountedBoss/runs/20260911-005158-f321083f",
+  "started_utc": "2026-09-10T16:51:58.182556+00:00",
+  "finished_utc": "2026-09-10T17:00:41.730696+00:00",
+  "automated_suite_passed": true,
+  "case_count": 27,
+  "passed_case_count": 27,
+  "visual_acceptance_passed": false,
+  "human_playtest_certified": false,
+  "cases": [
+    {
+      "case": "light",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/light/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/light/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/light/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/light/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/light/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:51:58.182945+00:00",
+        "exclusive_end": "2026-09-10T16:52:14.438616+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/light/debug/20260910T165207Z-25642315.jsonl",
+          "session_id": "20260910T165207Z-25642315",
+          "session_start_utc": "2026-09-10T16:52:07.033Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 698,
+            "mean_frame_ms": 9.8864181899068,
+            "p50_frame_ms": 8.215333938598633,
+            "p95_frame_ms": 9.309123992919922,
+            "p99_frame_ms": 10.516461372375488,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 1,
+        "player_attacks": 1,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 860,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "heavy",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/heavy/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/heavy/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/heavy/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/heavy/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/heavy/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:52:14.438616+00:00",
+        "exclusive_end": "2026-09-10T16:52:30.225516+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/heavy/debug/20260910T165222Z-C4A914AB.jsonl",
+          "session_id": "20260910T165222Z-C4A914AB",
+          "session_start_utc": "2026-09-10T16:52:22.861Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 703,
+            "mean_frame_ms": 9.839764297602017,
+            "p50_frame_ms": 8.147790908813477,
+            "p95_frame_ms": 9.145543098449707,
+            "p99_frame_ms": 9.401876449584961,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 1,
+        "player_attacks": 1,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 845,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "miss",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/miss/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/miss/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/miss/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/miss/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/miss/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:52:30.225516+00:00",
+        "exclusive_end": "2026-09-10T16:52:45.901201+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/miss/debug/20260910T165238Z-4F38F4FF.jsonl",
+          "session_id": "20260910T165238Z-4F38F4FF",
+          "session_start_utc": "2026-09-10T16:52:38.347Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 704,
+            "mean_frame_ms": 9.949591041627256,
+            "p50_frame_ms": 8.182793617248535,
+            "p95_frame_ms": 9.135998725891113,
+            "p99_frame_ms": 10.473876953125,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 1,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "body",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/body/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/body/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/body/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/body/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/body/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:52:45.901201+00:00",
+        "exclusive_end": "2026-09-10T16:53:03.884553+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/body/debug/20260910T165256Z-4351619D.jsonl",
+          "session_id": "20260910T165256Z-4351619D",
+          "session_start_utc": "2026-09-10T16:52:56.502Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 697,
+            "mean_frame_ms": 9.879752201192519,
+            "p50_frame_ms": 8.240752220153809,
+            "p95_frame_ms": 9.068917274475098,
+            "p99_frame_ms": 9.311664581298828,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:53:03.884553+00:00",
+        "exclusive_end": "2026-09-10T16:53:19.810079+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/debug/20260910T165312Z-769F4A61.jsonl",
+          "session_id": "20260910T165312Z-769F4A61",
+          "session_start_utc": "2026-09-10T16:53:12.327Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 18,
+              "utc": "2026-09-10T16:53:14.427Z",
+              "event": "damage_applied",
+              "attack": "sweep",
+              "active_time_s": 0.1457691639661789,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 77.72371677810344,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 706,
+            "mean_frame_ms": 9.89205301415819,
+            "p50_frame_ms": 8.174497604370117,
+            "p95_frame_ms": 9.177543640136719,
+            "p99_frame_ms": 9.412750244140625,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 73,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:53:19.810079+00:00",
+        "exclusive_end": "2026-09-10T16:53:38.113377+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/debug/20260910T165330Z-A271212E.jsonl",
+          "session_id": "20260910T165330Z-A271212E",
+          "session_start_utc": "2026-09-10T16:53:30.677Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 19,
+              "utc": "2026-09-10T16:53:33.004Z",
+              "event": "damage_applied",
+              "attack": "overhead",
+              "active_time_s": 0.12093400955200195,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 77.90733919268013,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 701,
+            "mean_frame_ms": 9.896072515917572,
+            "p50_frame_ms": 8.180000305175781,
+            "p95_frame_ms": 9.150833129882812,
+            "p99_frame_ms": 9.495999336242676,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 66,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_charge/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_charge/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_charge/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_charge/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_charge/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:53:38.113377+00:00",
+        "exclusive_end": "2026-09-10T16:53:54.275723+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_charge/debug/20260910T165346Z-91F0D3A2.jsonl",
+          "session_id": "20260910T165346Z-91F0D3A2",
+          "session_start_utc": "2026-09-10T16:53:46.784Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 22,
+              "utc": "2026-09-10T16:53:49.839Z",
+              "event": "damage_applied",
+              "attack": "charge",
+              "active_time_s": 0.7376763820648193,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 80.33594635633716,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 708,
+            "mean_frame_ms": 9.872612470960886,
+            "p50_frame_ms": 8.097249984741211,
+            "p95_frame_ms": 9.130083084106445,
+            "p99_frame_ms": 9.371708869934082,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 68,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:53:54.275723+00:00",
+        "exclusive_end": "2026-09-10T16:54:10.226493+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/debug/20260910T165402Z-DE017C7B.jsonl",
+          "session_id": "20260910T165402Z-DE017C7B",
+          "session_start_utc": "2026-09-10T16:54:02.574Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 18,
+              "utc": "2026-09-10T16:54:04.665Z",
+              "event": "damage_applied",
+              "attack": "body_check",
+              "active_time_s": 0.23752012848854065,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 55.86017538173289,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 709,
+            "mean_frame_ms": 10.080278912787714,
+            "p50_frame_ms": 8.145332336425781,
+            "p95_frame_ms": 9.166252136230469,
+            "p99_frame_ms": 9.434000015258789,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 81,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_rear",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_rear/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_rear/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_rear/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_rear/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_rear/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:54:10.226493+00:00",
+        "exclusive_end": "2026-09-10T16:54:26.331561+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_rear/debug/20260910T165418Z-ABDB7617.jsonl",
+          "session_id": "20260910T165418Z-ABDB7617",
+          "session_start_utc": "2026-09-10T16:54:18.818Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 20,
+              "utc": "2026-09-10T16:54:21.450Z",
+              "event": "damage_applied",
+              "attack": "rear",
+              "active_time_s": 0.0753692090511322,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 84.35754933564306,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 700,
+            "mean_frame_ms": 9.934191269533974,
+            "p50_frame_ms": 8.141167640686035,
+            "p95_frame_ms": 9.188708305358887,
+            "p99_frame_ms": 9.475164413452148,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 64,
+        "boss_health": 900,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "hit_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:54:26.331561+00:00",
+        "exclusive_end": "2026-09-10T16:54:42.285159+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/debug/20260910T165434Z-32359111.jsonl",
+          "session_id": "20260910T165434Z-32359111",
+          "session_start_utc": "2026-09-10T16:54:34.827Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 4,
+            "sampled_max_actual_height_cm": 145.37673950195312,
+            "actual_height_observed": true,
+            "peak_line": 20,
+            "peak_utc": "2026-09-10T16:54:37.484Z",
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 22,
+              "utc": "2026-09-10T16:54:37.767Z",
+              "event": "damage_applied",
+              "attack": "leap_shield",
+              "active_time_s": 0.6826477646827698,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 7.9999985061585335,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 700,
+            "mean_frame_ms": 9.918758162770953,
+            "p50_frame_ms": 8.169584274291992,
+            "p95_frame_ms": 9.143792152404785,
+            "p99_frame_ms": 9.436163902282715,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 62,
+        "boss_health": 900,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:54:42.285159+00:00",
+        "exclusive_end": "2026-09-10T16:54:58.157786+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/debug/20260910T165450Z-638EAA1E.jsonl",
+          "session_id": "20260910T165450Z-638EAA1E",
+          "session_start_utc": "2026-09-10T16:54:50.595Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 707,
+            "mean_frame_ms": 9.908879675993319,
+            "p50_frame_ms": 8.230000495910645,
+            "p95_frame_ms": 9.329665184020996,
+            "p99_frame_ms": 9.590372085571289,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:54:58.157786+00:00",
+        "exclusive_end": "2026-09-10T16:55:14.540339+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/debug/20260910T165506Z-9360EE2F.jsonl",
+          "session_id": "20260910T165506Z-9360EE2F",
+          "session_start_utc": "2026-09-10T16:55:06.906Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 698,
+            "mean_frame_ms": 10.127094887389154,
+            "p50_frame_ms": 8.21954345703125,
+            "p95_frame_ms": 9.260955810546875,
+            "p99_frame_ms": 9.529415130615234,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:55:14.540339+00:00",
+        "exclusive_end": "2026-09-10T16:55:30.637318+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/debug/20260910T165523Z-18273519.jsonl",
+          "session_id": "20260910T165523Z-18273519",
+          "session_start_utc": "2026-09-10T16:55:23.097Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 700,
+            "mean_frame_ms": 9.995773225511824,
+            "p50_frame_ms": 8.238710403442383,
+            "p95_frame_ms": 9.257253646850586,
+            "p99_frame_ms": 9.449999809265137,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:55:30.637318+00:00",
+        "exclusive_end": "2026-09-10T16:55:46.747047+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/debug/20260910T165539Z-6260E2BD.jsonl",
+          "session_id": "20260910T165539Z-6260E2BD",
+          "session_start_utc": "2026-09-10T16:55:39.367Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 703,
+            "mean_frame_ms": 9.847096233924116,
+            "p50_frame_ms": 8.331582069396973,
+            "p95_frame_ms": 8.47962474822998,
+            "p99_frame_ms": 8.60704517364502,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_rear",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:55:46.747047+00:00",
+        "exclusive_end": "2026-09-10T16:56:02.582861+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/debug/20260910T165555Z-3E761AC2.jsonl",
+          "session_id": "20260910T165555Z-3E761AC2",
+          "session_start_utc": "2026-09-10T16:55:55.084Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 22,
+              "utc": "2026-09-10T16:55:57.715Z",
+              "event": "contact_counts",
+              "attack": "rear",
+              "active_time_s": 0.07508408278226852,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 84.45701286587882,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 709,
+            "mean_frame_ms": 9.864458082425074,
+            "p50_frame_ms": 8.33133602142334,
+            "p95_frame_ms": 8.525707244873047,
+            "p99_frame_ms": 9.05624771118164,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "dodge_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:56:02.582861+00:00",
+        "exclusive_end": "2026-09-10T16:56:18.280578+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/debug/20260910T165610Z-DD86159A.jsonl",
+          "session_id": "20260910T165610Z-DD86159A",
+          "session_start_utc": "2026-09-10T16:56:10.638Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 5,
+            "sampled_max_actual_height_cm": 143.91673278808594,
+            "actual_height_observed": true,
+            "peak_line": 20,
+            "peak_utc": "2026-09-10T16:56:13.299Z",
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 708,
+            "mean_frame_ms": 9.996946842320222,
+            "p50_frame_ms": 8.329168319702148,
+            "p95_frame_ms": 8.496377944946289,
+            "p99_frame_ms": 9.304165840148926,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "movement",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/movement/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/movement/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/movement/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/movement/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/movement/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:56:18.280578+00:00",
+        "exclusive_end": "2026-09-10T16:56:44.918663+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/movement/debug/20260910T165627Z-D558ADCB.jsonl",
+          "session_id": "20260910T165627Z-D558ADCB",
+          "session_start_utc": "2026-09-10T16:56:27.365Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 1900,
+            "mean_frame_ms": 8.915672683966788,
+            "p50_frame_ms": 8.33304214477539,
+            "p95_frame_ms": 8.491084098815918,
+            "p99_frame_ms": 8.58454418182373,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 2,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "camera",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/camera/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/camera/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/camera/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/camera/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/camera/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:56:44.918663+00:00",
+        "exclusive_end": "2026-09-10T16:57:10.781436+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/camera/debug/20260910T165653Z-7EC42D59.jsonl",
+          "session_id": "20260910T165653Z-7EC42D59",
+          "session_start_utc": "2026-09-10T16:56:53.190Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 1907,
+            "mean_frame_ms": 8.93186004660676,
+            "p50_frame_ms": 8.331541061401367,
+            "p95_frame_ms": 8.489169120788574,
+            "p99_frame_ms": 8.579582214355469,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "disengage",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/disengage/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/disengage/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/disengage/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/disengage/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/disengage/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:57:10.781436+00:00",
+        "exclusive_end": "2026-09-10T16:57:40.821388+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/disengage/debug/20260910T165719Z-591E4375.jsonl",
+          "session_id": "20260910T165719Z-591E4375",
+          "session_start_utc": "2026-09-10T16:57:19.105Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 2391,
+            "mean_frame_ms": 8.846765812048599,
+            "p50_frame_ms": 8.33258056640625,
+            "p95_frame_ms": 8.482627868652344,
+            "p99_frame_ms": 8.5565824508667,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "phase",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/phase/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/phase/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/phase/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/phase/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/phase/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:57:40.821388+00:00",
+        "exclusive_end": "2026-09-10T16:57:56.441078+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/phase/debug/20260910T165748Z-47B51F61.jsonl",
+          "session_id": "20260910T165748Z-47B51F61",
+          "session_start_utc": "2026-09-10T16:57:48.994Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 704,
+            "mean_frame_ms": 9.862362407147884,
+            "p50_frame_ms": 8.331001281738281,
+            "p95_frame_ms": 8.497543334960938,
+            "p99_frame_ms": 8.62287712097168,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 440,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "victory",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/victory/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/victory/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/victory/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/victory/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/victory/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:57:56.441078+00:00",
+        "exclusive_end": "2026-09-10T16:58:33.793823+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/victory/debug/20260910T165804Z-E9EDDC88.jsonl",
+          "session_id": "20260910T165804Z-E9EDDC88",
+          "session_start_utc": "2026-09-10T16:58:04.689Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 3260,
+            "mean_frame_ms": 8.755896566543111,
+            "p50_frame_ms": 8.345373153686523,
+            "p95_frame_ms": 8.910040855407715,
+            "p99_frame_ms": 9.671375274658203,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 23,
+        "player_attacks": 23,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": true,
+        "player_health": 100,
+        "boss_health": 0,
+        "phase_observed": false,
+        "terminal": "victory",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/retry/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/retry/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/retry/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/retry/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/retry/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:58:33.793823+00:00",
+        "exclusive_end": "2026-09-10T16:58:46.336742+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/retry/debug/20260910T165842Z-429AE476.jsonl",
+          "session_id": "20260910T165842Z-429AE476",
+          "session_start_utc": "2026-09-10T16:58:42.003Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 216,
+            "mean_frame_ms": 9.272690642763067,
+            "p50_frame_ms": 8.344501495361328,
+            "p95_frame_ms": 8.505582809448242,
+            "p99_frame_ms": 9.670790672302246,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        },
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/retry/debug/20260910T165844Z-E31D8D97.jsonl",
+          "session_id": "20260910T165844Z-E31D8D97",
+          "session_start_utc": "2026-09-10T16:58:44.343Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 19,
+            "mean_frame_ms": 93.50262520187779,
+            "p50_frame_ms": 8.113794326782227,
+            "p95_frame_ms": 389.0886535644531,
+            "p99_frame_ms": 389.0886535644531,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "input",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/input/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/input/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/input/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/input/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/input/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:58:46.336742+00:00",
+        "exclusive_end": "2026-09-10T16:59:02.233898+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/input/debug/20260910T165854Z-477FC55C.jsonl",
+          "session_id": "20260910T165854Z-477FC55C",
+          "session_start_utc": "2026-09-10T16:58:54.766Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 706,
+            "mean_frame_ms": 9.929904149882178,
+            "p50_frame_ms": 8.32895565032959,
+            "p95_frame_ms": 8.799623489379883,
+            "p99_frame_ms": 9.920332908630371,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 1,
+        "player_dodges": 1,
+        "player_damage_count": 0,
+        "boss_strikes": 0,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "natural_charge",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/natural_charge/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/natural_charge/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/natural_charge/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/natural_charge/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/natural_charge/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:59:02.233898+00:00",
+        "exclusive_end": "2026-09-10T16:59:17.759339+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/natural_charge/debug/20260910T165910Z-2B9590A1.jsonl",
+          "session_id": "20260910T165910Z-2B9590A1",
+          "session_start_utc": "2026-09-10T16:59:10.444Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 22,
+              "utc": "2026-09-10T16:59:13.457Z",
+              "event": "damage_applied",
+              "attack": "charge",
+              "active_time_s": 0.7207674980163574,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 77.92351827159325,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 701,
+            "mean_frame_ms": 9.880282105460827,
+            "p50_frame_ms": 8.332707405090332,
+            "p95_frame_ms": 8.497957229614258,
+            "p99_frame_ms": 8.749000549316406,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 1,
+        "boss_strikes": 1,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 68,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "death",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/death/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/death/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/death/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/death/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/death/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:59:17.759339+00:00",
+        "exclusive_end": "2026-09-10T16:59:48.090475+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/death/debug/20260910T165926Z-325148D4.jsonl",
+          "session_id": "20260910T165926Z-325148D4",
+          "session_start_utc": "2026-09-10T16:59:26.589Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 19,
+              "utc": "2026-09-10T16:59:28.907Z",
+              "event": "damage_applied",
+              "attack": "sweep",
+              "active_time_s": 0.21244090795516968,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 78.97597675214917,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            },
+            {
+              "line": 39,
+              "utc": "2026-09-10T16:59:31.474Z",
+              "event": "damage_applied",
+              "attack": "overhead",
+              "active_time_s": 0.12072968482971191,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 77.26488353134079,
+              "contact_count": 2,
+              "player_health_at_event": 73,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            },
+            {
+              "line": 60,
+              "utc": "2026-09-10T16:59:34.107Z",
+              "event": "damage_applied",
+              "attack": "sweep",
+              "active_time_s": 0.2082926481962204,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 78.90545037941024,
+              "contact_count": 3,
+              "player_health_at_event": 39,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            },
+            {
+              "line": 81,
+              "utc": "2026-09-10T16:59:36.691Z",
+              "event": "damage_applied",
+              "attack": "overhead",
+              "active_time_s": 0.12084540724754333,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 77.41304380287471,
+              "contact_count": 4,
+              "player_health_at_event": 12,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 2385,
+            "mean_frame_ms": 8.780141246643707,
+            "p50_frame_ms": 8.33024787902832,
+            "p95_frame_ms": 8.487001419067383,
+            "p99_frame_ms": 8.566956520080566,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 4,
+        "boss_strikes": 4,
+        "player_dead": true,
+        "player_won": false,
+        "player_health": 0,
+        "boss_health": 900,
+        "phase_observed": false,
+        "terminal": "death",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "cleanup",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/cleanup/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/cleanup/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/cleanup/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/cleanup/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/cleanup/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T16:59:48.090475+00:00",
+        "exclusive_end": "2026-09-10T17:00:06.160657+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/cleanup/debug/20260910T165956Z-55D72D72.jsonl",
+          "session_id": "20260910T165956Z-55D72D72",
+          "session_start_utc": "2026-09-10T16:59:56.598Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 4,
+            "sampled_max_actual_height_cm": 137.48876953125,
+            "actual_height_observed": true,
+            "peak_line": 31,
+            "peak_utc": "2026-09-10T17:00:00.899Z",
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [],
+          "frame_performance": {
+            "frame_count": 948,
+            "mean_frame_ms": 9.550950505310976,
+            "p50_frame_ms": 8.327081680297852,
+            "p95_frame_ms": 8.503499984741211,
+            "p99_frame_ms": 8.649706840515137,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 0,
+        "player_attacks": 0,
+        "player_dodges": 0,
+        "player_damage_count": 0,
+        "boss_strikes": 2,
+        "player_dead": false,
+        "player_won": false,
+        "player_health": 100,
+        "boss_health": 900,
+        "phase_observed": true,
+        "terminal": "fixture_end",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    },
+    {
+      "case": "loop",
+      "passed": true,
+      "failed_checks": [],
+      "error": null,
+      "files": {
+        "started.json": "Docs/Verification/MountedBoss/final-runtime/loop/started.json",
+        "result.json": "Docs/Verification/MountedBoss/final-runtime/loop/result.json",
+        "probe.json": "Docs/Verification/MountedBoss/final-runtime/loop/probe.json",
+        "engine.log": "Docs/Verification/MountedBoss/final-runtime/loop/engine.log",
+        "screenshot.png": "Docs/Verification/MountedBoss/final-runtime/loop/screenshot.png"
+      },
+      "missing_files": [],
+      "debug_matching_interval_utc": {
+        "inclusive_start": "2026-09-10T17:00:06.160657+00:00",
+        "exclusive_end": "2026-09-10T17:00:41.730696+00:00"
+      },
+      "debug_sessions": [
+        {
+          "log": "Docs/Verification/MountedBoss/final-runtime/loop/debug/20260910T170014Z-DF066BF2.jsonl",
+          "session_id": "20260910T170014Z-DF066BF2",
+          "session_start_utc": "2026-09-10T17:00:14.247Z",
+          "session_end_present": true,
+          "parse_errors": [],
+          "engine": "5.8.2-56702186+++UE5+Release-5.8",
+          "cpu": "Apple M5 Max",
+          "platform": "MacEditor",
+          "viewport": [
+            1600,
+            900
+          ],
+          "actual_leap_height_observation": {
+            "method": "trace event boss.z minus session_start boss.z; actual actor locations, not desired parabola",
+            "ground_baseline_z_cm": 0,
+            "trace_samples_during_active_leap": 0,
+            "sampled_max_actual_height_cm": null,
+            "actual_height_observed": null,
+            "peak_line": null,
+            "peak_utc": null,
+            "limits": "0.2 s trace sampling gives a sampled lower bound on peak, not exact apex or visual quality. maximum_leap_height_cm is deliberately excluded."
+          },
+          "contact_observations": [
+            {
+              "line": 52,
+              "utc": "2026-09-10T17:00:21.091Z",
+              "event": "damage_applied",
+              "attack": "rear",
+              "active_time_s": 0.07506611943244934,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 84.4193986493417,
+              "contact_count": 1,
+              "player_health_at_event": 100,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            },
+            {
+              "line": 132,
+              "utc": "2026-09-10T17:00:30.124Z",
+              "event": "damage_applied",
+              "attack": "rear",
+              "active_time_s": 0.07920371741056442,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 83.00486081061328,
+              "contact_count": 2,
+              "player_health_at_event": 64,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            },
+            {
+              "line": 215,
+              "utc": "2026-09-10T17:00:39.266Z",
+              "event": "damage_applied",
+              "attack": "rear",
+              "active_time_s": 0.07502566277980804,
+              "actual_actor_z_cm": 0,
+              "shield_bottom_proxy_gap_cm": 84.43145848351051,
+              "contact_count": 3,
+              "player_health_at_event": 28,
+              "health_timing_note": "damage_applied event is emitted before Health subtraction; use the next trace or final probe for resulting HP."
+            }
+          ],
+          "frame_performance": {
+            "frame_count": 3108,
+            "mean_frame_ms": 8.689291069022783,
+            "p50_frame_ms": 8.334580421447754,
+            "p95_frame_ms": 8.493206977844238,
+            "p99_frame_ms": 8.567831993103027,
+            "capture_enabled": false
+          },
+          "performance_limits": "Session frame interval statistics include fixture/logging/rendering overhead; not GPU timing, 1% low FPS or sustained full-fight benchmark."
+        }
+      ],
+      "loop_or_fixture_outcome": {
+        "player_hits": 15,
+        "player_attacks": 15,
+        "player_dodges": 1,
+        "player_damage_count": 3,
+        "boss_strikes": 4,
+        "player_dead": true,
+        "player_won": false,
+        "player_health": 0,
+        "boss_health": 300,
+        "phase_observed": true,
+        "terminal": "death",
+        "provenance": "Automated fixture; loop uses forced charge opening followed by natural Boss decisions and scripted real player action interfaces."
+      }
+    }
+  ],
+  "copied_files": [
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/test-results.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/test-results.json",
+      "bytes": 42184,
+      "sha256": "fb55b53fb32478dbbf19ad4e6fd7eed267603d5581517e16162249dc717c707e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/light/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/started.json",
+      "bytes": 130,
+      "sha256": "bb4f65e87185b01e5ef0e79f6a58e6c71ce6df101d6469bf291e449ba50428ce"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/light/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/result.json",
+      "bytes": 1252,
+      "sha256": "b271e48f310090a59bdd04b595954450312c1031cd9286d38d97532caac77231"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/light/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/probe.json",
+      "bytes": 3005,
+      "sha256": "81e6e005c0899ef24f87e010b953ef286305ebb472f8c881284635ba7034f126"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/light/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/engine.log",
+      "bytes": 185640,
+      "sha256": "f2b090f3fbe1b93010f64a4c00d2cd5711002bf27a6d0c51980579f9ab3e2866"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/light/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/screenshot.png",
+      "bytes": 1655865,
+      "sha256": "7500e883efeb56b2bd017beb3a152227294df9564ccaebd237e444907b732f9f"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165207Z-25642315.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/light/debug/20260910T165207Z-25642315.jsonl",
+      "bytes": 103806,
+      "sha256": "8b9936d626174ab33466a7421d8116d39065837508b3604188c7d6c366860f75"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/heavy/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/started.json",
+      "bytes": 130,
+      "sha256": "4f8a9b95e1154b55d235a5a4e625f3e25846c6c54ea3c017b26c089f95109f30"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/heavy/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/result.json",
+      "bytes": 1252,
+      "sha256": "96aed2a5fc22cb891b1f7d43c798fe7d6fbb99246e02c617e0bf0cfe1441249e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/heavy/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/probe.json",
+      "bytes": 3005,
+      "sha256": "df27e4141b1634393c289169251501a0ddbe4d53c17619d9a53f9ea57d7799a0"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/heavy/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/engine.log",
+      "bytes": 186107,
+      "sha256": "c3c33bb130d83d36127a7ce788cd0b6d009a4ecc994f6498c32caaf33bdf3c7f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/heavy/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/screenshot.png",
+      "bytes": 1657470,
+      "sha256": "63338f62c3aada044ca27b5ad86b154fe2959d46d7bf48b03df982847b7bdf46"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165222Z-C4A914AB.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/heavy/debug/20260910T165222Z-C4A914AB.jsonl",
+      "bytes": 103786,
+      "sha256": "975eba548e842d9c39a6a431be075e0744f916edf9b99870104a8bcc9db7a3a4"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/miss/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/started.json",
+      "bytes": 129,
+      "sha256": "1e288c6220efc47e6dddb39a6da13102dc09d05f50b616d4467f15e6568ec2d1"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/miss/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/result.json",
+      "bytes": 1251,
+      "sha256": "b086ec10bc6d60c0e4f7edae88271efee3e9d6f608171f7a43f628ca4fc2ae85"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/miss/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/probe.json",
+      "bytes": 3005,
+      "sha256": "0c39923fce09926e58198f624630776dc529dae502f3070333e2e965b3d5cce3"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/miss/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/engine.log",
+      "bytes": 185447,
+      "sha256": "adb5e607baa18aaaa986c1ece497c1461fad0ec8e9ff213068fbe3e72da1be1e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/miss/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/screenshot.png",
+      "bytes": 1611541,
+      "sha256": "666bd4feda7395a503a72e5e988f87bab4ddf6ee02e1979893604cc73492ee13"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165238Z-4F38F4FF.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/miss/debug/20260910T165238Z-4F38F4FF.jsonl",
+      "bytes": 101076,
+      "sha256": "67388b6d82b4a583dae841a947d82db00e20a755c0dae8942df5cb846bd91219"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/body/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/started.json",
+      "bytes": 129,
+      "sha256": "ad2c2b07f09d1344e8dd72a95ca41429e376916a377f3a2e6932854222f7760f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/body/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/result.json",
+      "bytes": 1272,
+      "sha256": "beac225732a0dfeabc0980ae1b14fab240ce9eac27cf92b99542736ed9e05095"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/body/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/probe.json",
+      "bytes": 3028,
+      "sha256": "7663f2209d570c8053b42d13429e31280b1324f9510c3a3de1ff51bfe8b44f00"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/body/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/engine.log",
+      "bytes": 185790,
+      "sha256": "1dc15327098ca573fbe9b52796dd2671737fb89f6a11d259da135e9d960a685e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/body/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/screenshot.png",
+      "bytes": 1577579,
+      "sha256": "ab69aab5ecaf77826c035cdcb33b13b437ca620b9ea9701ccfcf121cbd15da52"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165256Z-4351619D.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/body/debug/20260910T165256Z-4351619D.jsonl",
+      "bytes": 93387,
+      "sha256": "9db3c5b2c908657e276772b99562fc582142d8a0ad781bd8c88631ae1d56cc49"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_sweep/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/started.json",
+      "bytes": 134,
+      "sha256": "9c3bfad8ca87fde99602fe0f940ef067ff0928fac5cf139a8e614630d6b9da0c"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_sweep/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/result.json",
+      "bytes": 1444,
+      "sha256": "b5ca636a738d8f4c3c8b0803b9defafc838c148aecc5f17b55052af7d88e8898"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_sweep/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/probe.json",
+      "bytes": 3001,
+      "sha256": "f783c517aba8f79fee5cb606dca51989e163cf737895bdb6640536a7b0e8c7c3"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_sweep/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/engine.log",
+      "bytes": 185993,
+      "sha256": "6181941c964987858acc3244b58244a10ae8ecc1de9ee6f7f60beeef43efdba9"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_sweep/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/screenshot.png",
+      "bytes": 1627148,
+      "sha256": "41d9be6ebdf7c6f24f234aedd1f889ed5e70149b0ec3f0a602997ccc5d54144c"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165312Z-769F4A61.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_sweep/debug/20260910T165312Z-769F4A61.jsonl",
+      "bytes": 114060,
+      "sha256": "ac5aac5301b4e9f4b4e13a71f7584070ea0d176b95eb5b885ae4f37e67f6dabb"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_overhead/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/started.json",
+      "bytes": 137,
+      "sha256": "4682660dd64a1ec347eb154af3043af6ad80db5bddf351618f080a9ec0e0c246"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_overhead/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/result.json",
+      "bytes": 1455,
+      "sha256": "c525b9a5c4adc358361e70e910fb2e78c50a0d577721e042aa81693a603b83b7"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_overhead/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/probe.json",
+      "bytes": 3095,
+      "sha256": "37eaf00e771f07f22a0ef8f8a2c28fa2627a5a350f4c0521c9c6245487a9c710"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_overhead/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/engine.log",
+      "bytes": 186173,
+      "sha256": "3b91814e1f70aec093873231357d4d8a10a8aa360230acf17af4f510dbcb7324"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_overhead/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/screenshot.png",
+      "bytes": 1578129,
+      "sha256": "858c7ffe755d9fcae49a1d83fe863f38bbaf1afa55baeb7230450b00cbd2cc2f"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165330Z-A271212E.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_overhead/debug/20260910T165330Z-A271212E.jsonl",
+      "bytes": 116279,
+      "sha256": "de0550cd5236510325facb80fead99ab6294bfee57ae3becc6c0838fb248ea40"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_charge/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/started.json",
+      "bytes": 135,
+      "sha256": "2a53f0ef1b7728e1c10130b96a7d1007b9d9d348dc867578a04c45d1f3aa437f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_charge/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/result.json",
+      "bytes": 1448,
+      "sha256": "789b33c520d3f47021507e70146f74d1d304ca8fd7d3d969555f61fcb9b0e9e9"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_charge/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/probe.json",
+      "bytes": 3097,
+      "sha256": "8bb2661e83d1e05e6a358bb79af2ba016a5ec9d7213c8ccdfd8b7e935a4d11db"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_charge/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/engine.log",
+      "bytes": 186003,
+      "sha256": "f4270fb91336ba1f53acb3a5f2e4e40cd722cabc015b3e0858c0d2b309e7875b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_charge/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/screenshot.png",
+      "bytes": 1624989,
+      "sha256": "aac38cdd8a70fb4da40f551a0d415222abef9649ba1075731febedf9b936474f"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165346Z-91F0D3A2.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_charge/debug/20260910T165346Z-91F0D3A2.jsonl",
+      "bytes": 116887,
+      "sha256": "21e6cc72bb40d9f9224bbff0f3c0ec84d66ca4cf6fc13fc7083d196385663ffa"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_body_check/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/started.json",
+      "bytes": 139,
+      "sha256": "3f0f71716c0f42ea168e97213c8754e709550b766bc7827c508439c481a7a79f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_body_check/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/result.json",
+      "bytes": 1464,
+      "sha256": "9c6cb4f0aa243a436c31f5b89170988a09bd5d8e460410fcf743af604ea92c81"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_body_check/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/probe.json",
+      "bytes": 3103,
+      "sha256": "d1aee3e7082211b7b49b68e88fd33a37f68fe8b41a49c1429f54e1880de30192"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_body_check/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/engine.log",
+      "bytes": 186035,
+      "sha256": "08dd3e461220cc4033b29af67eb3183ba386dcae59e6ac29077b3dde4999d8f5"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_body_check/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/screenshot.png",
+      "bytes": 1593607,
+      "sha256": "eda6cd81317eae34c2e9988ff0932575e765266a09382e1a4400f946b7a29374"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165402Z-DE017C7B.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_body_check/debug/20260910T165402Z-DE017C7B.jsonl",
+      "bytes": 117242,
+      "sha256": "d7d5f94e0cfb961efa125ceccfbe8d60d1da292288d498b94c58914216f9efc8"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_rear/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/started.json",
+      "bytes": 133,
+      "sha256": "b4937a94b6fd5085909070f8666e5b7691bc6c2213a665fbe2457740a8c8c8b1"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_rear/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/result.json",
+      "bytes": 1439,
+      "sha256": "f349a81b8bde6110c12a55558ff666fbe59fecf4d743aa1c1a654b0f2d5d6909"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_rear/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/probe.json",
+      "bytes": 2999,
+      "sha256": "b71a12d39c7a0b66977e5e8c84e1b301661501bc38b06ca35d7168ee6d827b36"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_rear/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/engine.log",
+      "bytes": 185985,
+      "sha256": "6615df95787b24431dcf49ceff3905bb1f728dbfa7074880e55fa4ef57a8a2b5"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_rear/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/screenshot.png",
+      "bytes": 1629831,
+      "sha256": "4de1091859ba6e292f57cb9efb12262644714ba617bc42e97493bff46943f021"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165418Z-ABDB7617.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_rear/debug/20260910T165418Z-ABDB7617.jsonl",
+      "bytes": 113989,
+      "sha256": "1c1583ff124498e77c8524bea13bd47e4e314516994fb78284b26da50fea66bc"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_leap_shield/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/started.json",
+      "bytes": 140,
+      "sha256": "d15d8513105e534474064d5850709aa4473863d9cb345cc640ddd2146c30841e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_leap_shield/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/result.json",
+      "bytes": 1518,
+      "sha256": "d6c6130b2cc66bc702d496a7cfb249a1df3cf83c7e0e91ffa281e0c63855ba8d"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_leap_shield/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/probe.json",
+      "bytes": 3079,
+      "sha256": "b1091603566ea96a0fb63d20ae174201ddae56ca0f580144a3289728cdeedb7e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_leap_shield/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/engine.log",
+      "bytes": 186041,
+      "sha256": "3e3194c9e4688e070a3dc983ce2b4d464607b20b70437390e689edd676574f4f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/hit_leap_shield/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/screenshot.png",
+      "bytes": 1596903,
+      "sha256": "6f0ba18c5d7ca35c77f42874884cafbe2e8c67f00bb1166f4a3051544933480a"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165434Z-32359111.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/hit_leap_shield/debug/20260910T165434Z-32359111.jsonl",
+      "bytes": 116303,
+      "sha256": "db2d94bf19b25eb8681964034045602abe2c01d0565e87625a0e90180a08d482"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_sweep/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/started.json",
+      "bytes": 136,
+      "sha256": "0df25a57b55540541dd50455f8fe5651463ea179ed220bf593b7a0fb87562be0"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_sweep/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/result.json",
+      "bytes": 1441,
+      "sha256": "47443d6ec27b2fbfc5f19c886276b9372450972774578eb3c4fb149c85bc074f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_sweep/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/probe.json",
+      "bytes": 3032,
+      "sha256": "f6e0e37348a282747d92d9fc26cc2040eab716f15b670c1ad11e2c756c68d8e3"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_sweep/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/engine.log",
+      "bytes": 185901,
+      "sha256": "0b2b825c320be08762fc28a776fb60ede0ee6567a535b48abc6b1b2ddd7d48d7"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_sweep/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/screenshot.png",
+      "bytes": 1616777,
+      "sha256": "b8822ac48ebbb664c636c58e929c75a57262a32b335eb060c7b5d7db60ab951c"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165450Z-638EAA1E.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_sweep/debug/20260910T165450Z-638EAA1E.jsonl",
+      "bytes": 112420,
+      "sha256": "fb2aaa80bc116ec6ba8a0cba22e281a21432bf006e4a36415eda0770da3b76c9"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_overhead/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/started.json",
+      "bytes": 139,
+      "sha256": "528128b959fcb35a2aa17c380ee05e30792b6db9d43fe7fbf21f63c93fc5cecf"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_overhead/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/result.json",
+      "bytes": 1453,
+      "sha256": "5289e89f87fb913c9218c2ed80b259286c2368865faf6e73c5b5d6041897fafa"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_overhead/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/probe.json",
+      "bytes": 3134,
+      "sha256": "b442195d1f66ab480daae4dd51973520fb7b6b3d6a97f3047577b9e5060159eb"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_overhead/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/engine.log",
+      "bytes": 185922,
+      "sha256": "d21308968a7e4511091bb36717d496b24049b4710007a70274170adbb0f099b9"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_overhead/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/screenshot.png",
+      "bytes": 1589537,
+      "sha256": "f038ac77765e1e797f1a9fe65d7fb87aa99808a7abbeacf586040a05e37a6058"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165506Z-9360EE2F.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_overhead/debug/20260910T165506Z-9360EE2F.jsonl",
+      "bytes": 114364,
+      "sha256": "40268e84fba8ab68135f2d8d5a31911b2d81662158dc9a038a3ac5951f7fa2fd"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_charge/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/started.json",
+      "bytes": 137,
+      "sha256": "f790dd8932752f0c7260124c1842747850d184407a6939b665f0ca982e1a0a71"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_charge/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/result.json",
+      "bytes": 1445,
+      "sha256": "a1dc30615bff7f65d3c410a3ea65d7740cf994b2733bc8c2f10762ef8e19c967"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_charge/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/probe.json",
+      "bytes": 3136,
+      "sha256": "ce652dceb03551b7e504521755b561552d6bda17bb32fe59a3df8fc1e69bc76c"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_charge/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/engine.log",
+      "bytes": 186374,
+      "sha256": "c251169fa3ae2fac989f3775bf6a1f5d5f876b89b4df1de389fa601ddcdcdca1"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_charge/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/screenshot.png",
+      "bytes": 1670385,
+      "sha256": "9c9f4aac0ad43d5ea55ad4be9ba29dda942b58ec2c6b5b937ddc3308a089b395"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165523Z-18273519.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_charge/debug/20260910T165523Z-18273519.jsonl",
+      "bytes": 115093,
+      "sha256": "ecf4471fe75e5a962d38072c87eb66fdef6b9b8ccc56209b24eeadfe81c5263b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_body_check/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/started.json",
+      "bytes": 141,
+      "sha256": "cccf25b274202d9ae0f748975df243a8e76ed21ea2a64a608288cefccb8e2610"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_body_check/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/result.json",
+      "bytes": 1461,
+      "sha256": "6876b57a3768eb402154b2114406de79e88ef0631fa6fdc4ced5835d1b61cd82"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_body_check/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/probe.json",
+      "bytes": 3143,
+      "sha256": "7b9be6dc47de69eeccb38ec26c9bf720448d674255d00be536d4debce8e7ee13"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_body_check/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/engine.log",
+      "bytes": 185934,
+      "sha256": "7760463263d73037fb21f9fe92bdee33d14b75b2feb0cb52881f3caa09bb6cae"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_body_check/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/screenshot.png",
+      "bytes": 1589719,
+      "sha256": "1da699c0d24cf554815170bc0bc4830b41fe9e4f5a57db2ae613e101ad5b57ad"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165539Z-6260E2BD.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_body_check/debug/20260910T165539Z-6260E2BD.jsonl",
+      "bytes": 115496,
+      "sha256": "497ac2d13ed5e1b5e550ec190f193939fe10f10bc8600bb71944da8aaae769b5"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_rear/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/started.json",
+      "bytes": 135,
+      "sha256": "4cb06de53db9b1432229ddd4d49ae1e7e35c51e60a15df19f79500099db1490b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_rear/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/result.json",
+      "bytes": 1437,
+      "sha256": "caa02cec95e2d95c081cf67be3357eb022519f8d5d3174230e679a4686e3e398"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_rear/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/probe.json",
+      "bytes": 3035,
+      "sha256": "43c9c7d032e515ec63cbf34a257d881ee102019a5ca25beb144a59ecdafeec19"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_rear/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/engine.log",
+      "bytes": 185995,
+      "sha256": "32366068e9f1fbfa876f9064a7d63393a3a8fc176f4e592c38f40eadf27fc740"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_rear/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/screenshot.png",
+      "bytes": 1615384,
+      "sha256": "7b07b8b67e837ab2531321a1a9114dfeeb66e9e039103f06491f239f43be1822"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165555Z-3E761AC2.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_rear/debug/20260910T165555Z-3E761AC2.jsonl",
+      "bytes": 114894,
+      "sha256": "16ec78b61caf3b78374e943dece49adf0d125fb37df435e8a41cee6930ca059a"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_leap_shield/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/started.json",
+      "bytes": 142,
+      "sha256": "0a7fbb4dd33f5c4fcda101c53b85f86420f2ba79159fd2a0677e892a2f159909"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_leap_shield/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/result.json",
+      "bytes": 1515,
+      "sha256": "23e3855f2f15561c30e205e9f7b3a9955e2392cccf6ffa88982ca840341b0fe6"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_leap_shield/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/probe.json",
+      "bytes": 3111,
+      "sha256": "1656951fbd8e9a00faac855f9b24d5b7b02e7be8bc796418531078804a0e7bdc"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_leap_shield/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/engine.log",
+      "bytes": 185941,
+      "sha256": "ad8fb675c60408900933204f8efc76b968f9a3de84ec315702545f87b465cafa"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/dodge_leap_shield/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/screenshot.png",
+      "bytes": 1594694,
+      "sha256": "4e225ccf036a7925d455aab0ddd2c2a34d705c38d295acc3e9b928a4334c2e9b"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165610Z-DD86159A.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/dodge_leap_shield/debug/20260910T165610Z-DD86159A.jsonl",
+      "bytes": 114508,
+      "sha256": "8d68d98ca537ee4cb7b692964bf29d86b8934ce1a4eec7280723b04be60d0784"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/movement/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/started.json",
+      "bytes": 133,
+      "sha256": "76601d8cb9fb14ea91b92fb44da6302226bf136e778d76b5f87a7485a67c2481"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/movement/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/result.json",
+      "bytes": 1343,
+      "sha256": "c68c24aca432e9b0439662a45f1671ee2ef95749778fc6983387577a086f052b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/movement/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/probe.json",
+      "bytes": 3225,
+      "sha256": "3628d679303ffa8910a1ee4cf5d3b0f772a1b27b6c57a9400b0d1dddd119c953"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/movement/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/engine.log",
+      "bytes": 186588,
+      "sha256": "f8059add0801ae5860af8eb9c03402176272d2b1efa285563b6c9619759b74ba"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/movement/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/screenshot.png",
+      "bytes": 1459281,
+      "sha256": "9e868d2ea422f9e91cf467f46db1e23a16be09dbbb8db246ab2366d9aa1e528f"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165627Z-D558ADCB.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/movement/debug/20260910T165627Z-D558ADCB.jsonl",
+      "bytes": 251849,
+      "sha256": "d3ce748ca116c33a27e2a328cbbf15409fc7960a99503884d493414dbc868410"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/camera/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/started.json",
+      "bytes": 131,
+      "sha256": "fed57d44e24048724e3f7e36a2ed9e4e184d5ff4dcf226a1c7b6e5424fcf41a0"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/camera/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/result.json",
+      "bytes": 1242,
+      "sha256": "3da9102484f733f2aa6338a61861fb9b4bd2b57f7e3ee79d6f880140fd169822"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/camera/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/probe.json",
+      "bytes": 2989,
+      "sha256": "a01e23f16e086c84a15525331986cc8828eb7b80141c44a16c4cd21ff28892d0"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/camera/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/engine.log",
+      "bytes": 185646,
+      "sha256": "01f5a87d646ff042628e4229c2018acde469b5f3290ab18efd01fdcd4e4a083f"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/camera/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/screenshot.png",
+      "bytes": 1611505,
+      "sha256": "5a043b7b9f5960d5bc782c39d10d15ecc5cc128b535aef075b1fde2ef4ca4a5f"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165653Z-7EC42D59.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/camera/debug/20260910T165653Z-7EC42D59.jsonl",
+      "bytes": 215856,
+      "sha256": "1b62b745dec363f9688cfb5e2c2f074c2dc79ec6e84259e34313ce05fe7515b5"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/disengage/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/started.json",
+      "bytes": 134,
+      "sha256": "7800833e978f6f5028d8563e172fcc1ef662bbd3e78fa2a9578ce4e30df4cb90"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/disengage/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/result.json",
+      "bytes": 1294,
+      "sha256": "4029376d3e3da10d49293571e92fd907046179849e4fc005203200c13db7c63d"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/disengage/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/probe.json",
+      "bytes": 3059,
+      "sha256": "b8869339f19ead202a2ccaacaac5a6001da336f4cbdd187b9bc9f848d3e56396"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/disengage/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/engine.log",
+      "bytes": 185735,
+      "sha256": "12a80410607f7ca890c9dbbefd47139a4741e69b8d6622141697c71b5f0203b1"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/disengage/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/screenshot.png",
+      "bytes": 1588400,
+      "sha256": "cd4b55c5856ba40aa6b1897421a551b8545f13b75acb54118255a72b6236bdf7"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165719Z-591E4375.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/disengage/debug/20260910T165719Z-591E4375.jsonl",
+      "bytes": 283172,
+      "sha256": "ebc2ee16cb82d5d38895f86f00282a162276972f59decb4869b1f287a75d349b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/phase/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/started.json",
+      "bytes": 130,
+      "sha256": "7e796ee6c7963af26b6db4bdf7fe12f5c619b1acd648cce0377d1b05cc2e0be8"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/phase/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/result.json",
+      "bytes": 1280,
+      "sha256": "174348ce43625e987f3f65e328d8ebe0b091ef1fdd23a3fb5864223cc67da7ec"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/phase/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/probe.json",
+      "bytes": 2991,
+      "sha256": "0337ba4b7cf39a7f367ee1669a53a998d42d0d7631d33502b800ac731c132851"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/phase/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/engine.log",
+      "bytes": 185679,
+      "sha256": "63f21f6a06a361e25631d2c996d7835d37550b89aa1aad705d8113a124b1e9e2"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/phase/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/screenshot.png",
+      "bytes": 1598091,
+      "sha256": "a9de2501d89363d3e7ea9419784a2dfd34c9dd5d5f761680f674e63147e3a859"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165748Z-47B51F61.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/phase/debug/20260910T165748Z-47B51F61.jsonl",
+      "bytes": 105699,
+      "sha256": "a91d5d5e156feb37121c2fd106a5985bcdda369be20fd45cd1fd7811db41fa47"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/victory/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/started.json",
+      "bytes": 132,
+      "sha256": "cfcff060179d6f4c71a15800928a46073bf2eb1202529c2268eccc825ac6354e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/victory/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/result.json",
+      "bytes": 1249,
+      "sha256": "261aabd12c6aed24fb846e631a84abab06bfb54bd5f40270c052b3de496c2fd1"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/victory/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/probe.json",
+      "bytes": 3047,
+      "sha256": "be3a3a0c429ec3a47ef5212a1ec9dfe9b0d21d4c6505d1524bf00dcff90ef0c2"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/victory/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/engine.log",
+      "bytes": 185651,
+      "sha256": "7058eb274818aba5facdc4e1513ff6c9ae0a2faaacded541c823a9eb78a23695"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/victory/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/screenshot.png",
+      "bytes": 1550287,
+      "sha256": "194a495457b4aabb154727de9388cf43cc192f93dddd6e49dcced95c859c9344"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165804Z-E9EDDC88.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/victory/debug/20260910T165804Z-E9EDDC88.jsonl",
+      "bytes": 2674438,
+      "sha256": "a40099eab41467dd0a89d2cf28761f9f318c0388ea7ca9eac9f30b306b3382e4"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/retry/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/started.json",
+      "bytes": 130,
+      "sha256": "a77b0213b668f103abfc35d1a0e812a90f82087cc8acc276438a69ee3e07a4ed"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/retry/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/result.json",
+      "bytes": 1263,
+      "sha256": "cdfd9b7b3de8e3d1a1f98c8731daf17595eea5c4ab007e1aa8fd1e0344794a60"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/retry/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/probe.json",
+      "bytes": 2983,
+      "sha256": "e46a66269c5d3b9d01bbe55137236de08fb8fd3b6ffdd9e83844abcdfb5b80d7"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/retry/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/engine.log",
+      "bytes": 191901,
+      "sha256": "eb34e8de9f5d21fc39ea2dd8695df097fdca65768ace6fa1b6b8fb1f372a15fe"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/retry/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/screenshot.png",
+      "bytes": 1379276,
+      "sha256": "c6578626642e2675965ad6459a9e1656c5978de266c40804c8912a31a70a6136"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165842Z-429AE476.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/debug/20260910T165842Z-429AE476.jsonl",
+      "bytes": 50361,
+      "sha256": "08c8f1a37a75684dda147acdf00c2700233bbede3c84246fce792327a267f5f6"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165844Z-E31D8D97.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/retry/debug/20260910T165844Z-E31D8D97.jsonl",
+      "bytes": 18520,
+      "sha256": "07de4f9fb9f7717d6921afde6610d5e36f03a1b20a323030abd9048fae295c41"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/input/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/started.json",
+      "bytes": 130,
+      "sha256": "d4941668a4817ee29b2d2a199bd2992ac52c6b950813f97e3945c14cacc5ab0e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/input/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/result.json",
+      "bytes": 1246,
+      "sha256": "bd9df35f6f5f1812d3628f965444970ee2f65b5dd09d77d2eff6d878a2c5156e"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/input/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/probe.json",
+      "bytes": 3023,
+      "sha256": "36aa7a43ef6139cd6e9efd54345e972b5a24352f88976879bc5f71c093c3e479"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/input/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/engine.log",
+      "bytes": 186107,
+      "sha256": "dee90857c6fe7192d42b4d191d33066fe8c1d08f443c2b94fb81a66e33d2f009"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/input/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/screenshot.png",
+      "bytes": 1563443,
+      "sha256": "415c00734be06e0960f9cb09577e490389077b2f66526c1c502e1a1e45fb5ab0"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165854Z-477FC55C.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/input/debug/20260910T165854Z-477FC55C.jsonl",
+      "bytes": 121901,
+      "sha256": "e7a5bae81192575d2d9a266844a366b899ab03df08e251762f2176bd365b8241"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/natural_charge/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/started.json",
+      "bytes": 139,
+      "sha256": "f5ee48643d8ac57b722fbd7db8ade1617aa1d8bd57b18f7fb88cc4e69e9318b2"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/natural_charge/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/result.json",
+      "bytes": 1464,
+      "sha256": "78ecbafc8aed5cb09f1c08f1eb56060a6706f3f518a0a2268aec09680871fcfe"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/natural_charge/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/probe.json",
+      "bytes": 3166,
+      "sha256": "b670b8d36121dcd9430c6f927db912304f54f348d69b8c19dafeec809364e781"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/natural_charge/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/engine.log",
+      "bytes": 186024,
+      "sha256": "10fb03ab02e69dccae38907626e1741910dace57cd10cf103dd1bd6bcde6813b"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/natural_charge/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/screenshot.png",
+      "bytes": 1680637,
+      "sha256": "1c4312eeab5003a69219c6d12eacf60b7ec33650ecd32de3472911e1bbf89886"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165910Z-2B9590A1.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/natural_charge/debug/20260910T165910Z-2B9590A1.jsonl",
+      "bytes": 119834,
+      "sha256": "b00024dafd9791fd947bd713441acddd3f06544fd09c0977487fc44d81677b64"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/death/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/started.json",
+      "bytes": 130,
+      "sha256": "d1655f6349e3f6deefe3536ea5b042c9562919c7044b7c6d072fee48b14399bb"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/death/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/result.json",
+      "bytes": 1195,
+      "sha256": "6135cda3a9da96cf75d8f286ed2833a6930eef05275ecb01b2d0b3cce8b6f401"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/death/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/probe.json",
+      "bytes": 3159,
+      "sha256": "b1faa76b95fba4833c380f0bffbf47526fc0490b8181fe46af0f1178ea212a1c"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/death/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/engine.log",
+      "bytes": 187463,
+      "sha256": "e300ba32345ba00261d3244a08380574e3ef214704ca949ee5580859c35e9539"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/death/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/screenshot.png",
+      "bytes": 1565438,
+      "sha256": "dde67ecb782653c56f67f776f75ffe3abbd0a53cb38d0b80927bdc9fa5185867"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165926Z-325148D4.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/death/debug/20260910T165926Z-325148D4.jsonl",
+      "bytes": 365743,
+      "sha256": "c7b9ad766a2aa49f2ce5b9a32530990d14df2dfacbc94f7dd95be71bd7ed105c"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/cleanup/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/started.json",
+      "bytes": 132,
+      "sha256": "1c4a087a68aadf9d79312cf3d93530c5c43f3b69aa3cc7d9925352ae359f2254"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/cleanup/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/result.json",
+      "bytes": 1279,
+      "sha256": "7fd0a50dc0d6cd5bf51de9bff55dd0679848d482fc764a4ce0a6f6103a061898"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/cleanup/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/probe.json",
+      "bytes": 3058,
+      "sha256": "70af9d15029c173080359d740670afb0c38ebc611012dc2708f9eec5406c087c"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/cleanup/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/engine.log",
+      "bytes": 186279,
+      "sha256": "2fd22950b6453c9ca7ea60e90e486566af8f5c2bb6fb194ffb3cfb6225e65fd6"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/cleanup/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/screenshot.png",
+      "bytes": 1597915,
+      "sha256": "497ab4633ebfca834e1aa0fc507fc1b591605b8cee5ecceeb21cec5bcb642a6a"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T165956Z-55D72D72.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/cleanup/debug/20260910T165956Z-55D72D72.jsonl",
+      "bytes": 136842,
+      "sha256": "ec8dfd5cd9dc0147f495b184f7ddf08699da834f9d303830ddbf695baf18454a"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/loop/started.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/started.json",
+      "bytes": 129,
+      "sha256": "4bc3e4b4f1d84f3d5aff61a5d28c009705e19fc05068f015b1b05c96f41ed2f0"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/loop/result.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/result.json",
+      "bytes": 1221,
+      "sha256": "f5ac6f55c7018a45aa17b7c0fbb1818d250342d103173c7a48fd2e531af7f4bb"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/loop/probe.json",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/probe.json",
+      "bytes": 3244,
+      "sha256": "5e615cb8eec0b0d6bf7c0747a1cff562ebfc3aad9c52683921888c81258a2260"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/loop/engine.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/engine.log",
+      "bytes": 186867,
+      "sha256": "e1866a040b0d72e6bab0e4613962009c418b337fec320b77cb0b2232a4291070"
+    },
+    {
+      "source": "Saved/MountedBoss/runs/20260911-005158-f321083f/loop/screenshot.png",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/screenshot.png",
+      "bytes": 1585785,
+      "sha256": "e7dbc521f4964df26a1e1fe2d8c67b3fcc5573ae3c1b930e298d96673a1d9336"
+    },
+    {
+      "source": "Saved/MountedBoss/Debug/20260910T170014Z-DF066BF2.jsonl",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/loop/debug/20260910T170014Z-DF066BF2.jsonl",
+      "bytes": 622278,
+      "sha256": "25d7ee8fb3969f35847a5f5f4ba669258de95c314208f074c37a18a904b1c054"
+    },
+    {
+      "source": "Saved/MountedBoss/build.log",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/build.log",
+      "bytes": 2815,
+      "sha256": "a7ed1740b0be342a2fa36f0209030160a62024dca7c21bd50ec096322f4fb9aa"
+    },
+    {
+      "source": "/Users/Shared/Epic Games/UE_5.8/Engine/Build/Build.version",
+      "archived": "Docs/Verification/MountedBoss/final-runtime/UE-Build.version.json",
+      "bytes": 215,
+      "sha256": "ff99fc3dd98e7c7fd2f5700334bc792dfb7baced3828cdee32940bb69581a6a4"
+    }
+  ],
+  "unmatched_debug_files_without_session_start": [],
+  "limits": [
+    "Only one completed run is collected. Failed assertions remain failures.",
+    "UTC interval matching assumes no unrelated mounted session ran during a case interval; session count and raw files are retained for inspection.",
+    "Missing screenshots or session logs are recorded, not treated as success.",
+    "Actual airborne evidence uses sampled actor z, never maximum_leap_height_cm desired trajectory.",
+    "Camera projection, input fixture and fixed-Boss victory are narrower than visual, physical-key and human-combat acceptance."
+  ]
+}
