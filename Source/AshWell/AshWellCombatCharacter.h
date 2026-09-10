@@ -5,6 +5,7 @@
 
 class AAshWellCombatArena;
 class AAshWellWarden;
+class AAshWellMountedBoss;
 class AAshWellBattleFX;
 class UStaticMeshComponent;
 class UWindDirectionalSourceComponent;
@@ -16,6 +17,7 @@ class ASHWELL_API AAshWellCombatCharacter : public AAshWellIntroCharacter
 public:
     AAshWellCombatCharacter();
     virtual void BeginPlay() override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
     virtual void Tick(float DeltaSeconds) override;
     virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
     virtual float TakeDamage(float Damage,const FDamageEvent& Event,AController* Instigator,AActor* Causer) override;
@@ -34,6 +36,11 @@ public:
     FString GetCombatState() const;
     FString GetPrompt() const;
     AAshWellWarden* GetWarden() const { return Warden; }
+    bool IsMountedExperiment() const { return bMountedExperiment; }
+    AActor* GetCombatEnemy() const;
+    FVector GetCombatAimPoint() const;
+    float GetCombatEnemyHealthFraction() const;
+    FString GetCombatEnemyName() const;
     void Attack();
     void HeavyAttack();
     void Dodge();
@@ -46,13 +53,20 @@ public:
     bool IsRecordVisible() const { return RecordTime>0; }
     bool HasFinishedSlice() const;
     FString GetStorySubtitle() const;
+    void InitializeMountedDebugInput(UInputComponent* Input);
+    void TickMountedDebug(float DeltaSeconds);
+    void RecordMountedDebugEvent(const FString& Event,const FString& Detail=FString());
+    bool IsMountedDebugEnabled() const { return bMountedDebugEnabled; }
+    bool IsMountedDebugVisible() const { return bMountedDebugEnabled&&bMountedDebugVisible; }
+    bool IsMountedDebugPauseActive() const { return bMountedDebugEnabled&&bMountedDebugOwnedPause; }
+    TArray<FString> GetMountedDebugLines() const;
 protected:
     virtual void PlayCharacterAnimation(UAnimSequence* Animation,bool bLoop) override;
     virtual bool ShouldUpdateLocomotion() const override;
-    virtual bool ShouldFaceMovement() const override { return !bLockedOn && ActionState==EAction::Idle; }
+    virtual bool ShouldFaceMovement() const override { return (!bLockedOn||bSprint) && ActionState==EAction::Idle; }
     virtual UAnimSequence* SelectLocomotionAnimation(float Speed) const override;
     virtual float GetLocomotionReferenceSpeed() const override;
-    virtual float GetFootstepSpacing() const override { return bHeroComplete&&!bSprint&&!IsSwordReady()?(bSlow?72.f:103.f):bSwordPass?(bSprint&&!bLockedOn?67.f:IsSwordReady()||bSlow?57.f:142.f):(bCombatWalkLoaded?72.0f:36.0f); }
+    virtual float GetFootstepSpacing() const override { return bHeroComplete&&!bSprint&&!IsSwordReady()?(bSlow?72.f:103.f):bSwordPass?(bSprint?67.f:IsSwordReady()||bSlow?57.f:142.f):(bCombatWalkLoaded?72.0f:36.0f); }
 private:
     friend class AAshWellChapterDirector;
     enum class EAction : uint8 { Idle,Attack,Heavy,Dodge,Hit,Dead };
@@ -72,6 +86,32 @@ private:
     void WriteCombatSnapshot();
     void RunCombatQA(float DeltaSeconds);
     void RunPolishProbe(float DeltaSeconds);
+    void TickMountedEncounter(float DeltaSeconds);
+    void RunMountedQA(float DeltaSeconds);
+    void WriteMountedSnapshot(bool Complete=false);
+    FString MountedProbe;
+    bool bMountedExperiment=false,bMountedQAComplete=false;
+    float MountedQATime=0,MountedMinStamina=100,MountedMinDilation=1,MountedCameraOverlap=0;
+    int32 MountedQAStep=0,MountedQAFailures=0,MountedCameraSamples=0,MountedCameraVisible=0;
+    bool bMountedPhaseObserved=false;
+    void ToggleMountedDebugPanel();
+    void ToggleMountedDebugPause();
+    void ToggleMountedDebugSlow();
+    void ResetMountedDebugEncounter();
+    void ResumeMountedDebugAI();
+    void StartMountedDebugFixture(int32 Index);
+    TArray<float> MountedDebugFrameMs;
+    bool bMountedRecordingObserved=false;
+    void ToggleMountedRecording();
+    void InitializeMountedDebugLog();
+    bool bMountedDebugEnabled=false,bMountedDebugVisible=false,bMountedDebugInputBound=false;
+    bool bMountedDebugSingle=false,bMountedDebugLogReady=false,bMountedDebugOwnedPause=false,bMountedDebugOwnedSlow=false;
+    bool bMountedDebugLogFailed=false;
+    int32 MountedDebugFixture=0,MountedDebugLastSerial=-1,MountedDebugLastContacts=0,MountedDebugLastDamage=0,MountedDebugLastHits=0;
+    double MountedDebugStartReal=0,MountedDebugNextTrace=0;
+    FString MountedDebugSessionId,MountedDebugLogPath,MountedDebugLastBossState,MountedDebugLastAttack,MountedDebugLastPlayerState;
+    float MountedBodyPenetration=0,MountedMinBodyGap=100000;
+    UPROPERTY(Transient) TObjectPtr<AAshWellMountedBoss> MountedBoss;
     FString QAProbe;
     int32 ProbeStep=0;
     float ProbeYaw=0;
@@ -85,6 +125,9 @@ private:
     UPROPERTY(Transient) TObjectPtr<AAshWellBattleFX> BattleFX;
     bool bBattlePolish=false;
     bool bSwordPass=false,bSprint=false,bTravellerVisual=false,bHeroComplete=false;
+    bool bSprintHeld=false,bSprintExhausted=false;
+    double SprintPressedAt=0;
+    static constexpr double SprintHoldThreshold=.20;
     int32 ClothProbeVertex=INDEX_NONE;
     UPROPERTY(Transient) TObjectPtr<UWindDirectionalSourceComponent> HeroWind;
     float ClothMotion=0;
@@ -101,6 +144,13 @@ private:
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> SwordCombatWalk;
     int32 HeavyCount=0;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> JumpAnimation;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> JumpAirAnimation;
+    UPROPERTY(Transient) TObjectPtr<UAnimSequence> JumpLandAnimation;
+    void UpdateJumpVisual(float DeltaSeconds);
+    uint8 JumpVisualPhase=0; // grounded, takeoff, airborne, landing
+    float JumpVisualAge=0;
+    double JumpVisualStartedAt=0;
+    uint8 JumpPhasesSeen=0;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> DodgeAnimation;
     int32 JumpCount=0;
     float JumpStartHeight=0,JumpPeakHeight=0;

@@ -1,0 +1,78 @@
+{
+  "units": "centimetres",
+  "forward": "+X",
+  "polearm_grip": [
+    0,
+    0,
+    0
+  ],
+  "polearm_tip": [
+    195,
+    0,
+    0
+  ],
+  "polearm_butt": [
+    -85,
+    0,
+    0
+  ],
+  "polearm_blade_outer": [
+    144,
+    0,
+    51
+  ],
+  "saddle_origin": "seat centre; attach near horse back, z=175 cm world",
+  "materials": {
+    "M_MountedSteel": {
+      "base_color": [
+        0.11999999731779099,
+        0.15000000596046448,
+        0.1599999964237213,
+        1.0
+      ],
+      "metallic": 0.8199999928474426,
+      "roughness": 0.3499999940395355
+    },
+    "M_MountedEdge": {
+      "base_color": [
+        0.3100000023841858,
+        0.3400000035762787,
+        0.3400000035762787,
+        1.0
+      ],
+      "metallic": 0.8799999952316284,
+      "roughness": 0.27000001072883606
+    },
+    "M_MountedWood": {
+      "base_color": [
+        0.07000000029802322,
+        0.027000000700354576,
+        0.012000000104308128,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.699999988079071
+    },
+    "M_MountedLeather": {
+      "base_color": [
+        0.03200000151991844,
+        0.014999999664723873,
+        0.008999999612569809,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.7599999904632568
+    },
+    "M_MountedBrass": {
+      "base_color": [
+        0.20000000298023224,
+        0.10999999940395355,
+        0.032999999821186066,
+        1.0
+      ],
+      "metallic": 0.7200000286102295,
+      "roughness": 0.4300000071525574
+    }
+  },
+  "status": "Experiment geometry; no paid generation"
+}

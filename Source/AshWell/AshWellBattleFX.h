@@ -16,6 +16,7 @@ public:
     virtual void EndPlay(const EEndPlayReason::Type Reason) override;
     static AAshWellBattleFX* Find(UWorld* W);
     void Burst(FVector P,float Power,bool Hit=false,bool Finisher=false);
+    void ClearMountedEffects();
     void Trail(FVector A,FVector B);
     float Shake() const {return ShakeAmount;}
     bool IsSlowing() const {return SlowRemaining>0;}

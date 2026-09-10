@@ -21,6 +21,8 @@ for case in cases:
   if case=='battle_miss':c.update(no_damage=d['enemy_health']==800,no_hit=d['hits']==0,no_slowdown=d['minimum_dilation']==1)
   if case in ['battle_slam','battle_kick','battle_charge']:c.update(damage=d['health']=={'battle_slam':65,'battle_kick':80,'battle_charge':70}[case],once=d['damage_taken_count']==1,kind=d['enemy_attack']==case[7:],heading=d['committed_yaw_drift']<.1)
   if case.startswith('battle_dodge_'):c.update(unharmed=d['health']==100,dodged=d['dodges']==1,heading=d['committed_yaw_drift']<.1)
+  if case=='jump_phases':c.update(phase_assets=d['jump_phases_loaded'],all_phases=(d['jump_phases_seen'] & 14)==14,no_air_cycle=d['probe_failures']==0,returned_to_ground=d['jump_visual_phase']==0 and d['grounded'],one_jump=d['jumps']==1)
+  if case=='hero_sprint':c.update(all_phases=d['probe_step']==9,input_rules=d['probe_failures']==0,only_tap_rolled=d['dodges']==1,sprint_jump=d['jumps']==1,exhaustion=d['sprint_exhausted'],released=not d['sprint_held'] and not d['sprinting'],landed=d['grounded'])
   if case=='hero_cloth':c.update(render_mapping=d['cloth_render_mappings']>0,solver_output=d['cloth_data_count']>0,wind_motion=d['cloth_motion_cm']>.05,stable=d['cloth_motion_cm']<20,free_hem=d['cloth_free_vertices']>100)
   if case=='hero_jump':c.update(jumped_once=d['jumps']==1,real_height=d['jump_peak_cm']>65,landed=d['grounded'],dodge_after_landing=d['dodges']==1,action_rules=d['probe_failures']==0,new_hero=d['hero_complete_assets'],jump_clip=d['jump_animation_loaded'],unit_scale=abs(d['hand_bone_scale']-1)<.01,cloth_solver=d['cloth_simulations']>0)
   if case=='battle_camera':c.update(five_positions=d['probe_step']==5,no_camera_penetration=d['camera_overlap_seconds']==0)

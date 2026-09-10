@@ -39,8 +39,15 @@ void AAshWellBattleFX::Trail(FVector A,FVector B)
 }
 void AAshWellBattleFX::Tick(float Dt)
 {
- Super::Tick(Dt);const float RealDt=FMath::Clamp(float(FApp::GetDeltaTime()),0.f,.1f);Cooldown=FMath::Max(0.f,Cooldown-RealDt);ShakeAmount=FMath::Max(0.f,ShakeAmount-RealDt*3.2f);FlashAge+=RealDt;if(FlashAge>.055f)Flash->SetIntensity(FMath::Max(0.f,Flash->Intensity-RealDt*90000));
+ Super::Tick(Dt);if(UGameplayStatics::IsGamePaused(this))return;const float RealDt=FMath::Clamp(float(FApp::GetDeltaTime()),0.f,.1f);Cooldown=FMath::Max(0.f,Cooldown-RealDt);ShakeAmount=FMath::Max(0.f,ShakeAmount-RealDt*3.2f);FlashAge+=RealDt;if(FlashAge>.055f)Flash->SetIntensity(FMath::Max(0.f,Flash->Intensity-RealDt*90000));
  if(SlowRemaining>0){SlowRemaining-=RealDt;if(SlowRemaining<=0)UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1.f);}
  for(int I=0;I<States.Num();++I){auto& S=States[I];if(S.Age>=S.Life)continue;S.Age+=Dt;const float A=FMath::Clamp(1-S.Age/S.Life,0.f,1.f);if(S.Ring)Bits[I]->SetWorldScale3D(FVector(S.Size*(1+6*(1-A))));else {S.Velocity.Z-=700*Dt;Bits[I]->AddWorldOffset(S.Velocity*Dt);Bits[I]->SetWorldScale3D(FVector(S.Size*A,S.Size*A,S.Size*2*A));}if(Materials[I])Materials[I]->SetScalarParameterValue(TEXT("Alpha"),A);if(A<=0)Bits[I]->SetVisibility(false);}
 }
 void AAshWellBattleFX::EndPlay(const EEndPlayReason::Type Reason){if(SlowRemaining>0)UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1.f);Super::EndPlay(Reason);}
+
+// Called only by the independent mounted encounter during cancel/death/reset.
+void AAshWellBattleFX::ClearMountedEffects()
+{
+    for(int I=0;I<States.Num();++I){States[I].Age=States[I].Life;Bits[I]->SetVisibility(false);}
+    if(Flash)Flash->SetIntensity(0);ShakeAmount=0;FlashAge=1;SlowRemaining=0;
+}

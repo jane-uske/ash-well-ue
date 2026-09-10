@@ -144,7 +144,8 @@ void AAshWellIntroHUD::DrawHUD()
     const float Width = Canvas->ClipX;
     const float Height = Canvas->ClipY;
     const float Scale = FMath::Clamp(FMath::Min(Width / 1920.0f, Height / 1080.0f), 0.65f, 1.6f);
-    if (UGameplayStatics::IsGamePaused(this))
+    const auto* DebugPlayer=Cast<AAshWellCombatCharacter>(GetOwningPawn());
+    if (UGameplayStatics::IsGamePaused(this)&&!(DebugPlayer&&DebugPlayer->IsMountedDebugPauseActive()))
     {
         DrawRect(FLinearColor(.015,.019,.022,.88),0,0,Width,Height);
         DrawCaption(TEXT("检修站  /  暂停"),FVector2D(Width*.5,Height*.28),28*Scale,FLinearColor(.87,.81,.68,1),true);
@@ -214,8 +215,8 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
     DrawCaption(TEXT("体力"),FVector2D(X,Y+25*Scale),12*Scale,Ink,false);
     Bar(X+44*Scale,Y+29*Scale,225*Scale,7*Scale,Player->GetStaminaFraction(),FLinearColor(.35f,.43f,.24f,.95f));
     auto* Chapter=AAshWellChapterDirector::Find(GetWorld());
-    DrawCaption(Chapter?Chapter->Zone():TEXT("灰烬深井 / 检修站"),FVector2D(Width-170*Scale,40*Scale),14*Scale,Ink,true);
-    DrawCaption(TEXT("WASD 跑动 · Ctrl 慢走   ·   空格 跳跃 · Shift 闪避   ·   左键 横斩 · 右键 重击   ·   Tab 锁定   ·   R 重来"),
+    DrawCaption(Player->IsMountedExperiment()?TEXT("骑卫试炼 / 黄昏庭院"):Chapter?Chapter->Zone():TEXT("灰烬深井 / 检修站"),FVector2D(Width-170*Scale,40*Scale),14*Scale,Ink,true);
+    DrawCaption(TEXT("WASD 跑动 · Ctrl 慢走   ·   空格 跳跃 · Shift 点按闪避/按住冲刺   ·   左键 横斩 · 右键 重击   ·   Tab 锁定   ·   R 重来"),
         FVector2D(Width*.5f,Height-32*Scale),12*Scale,FLinearColor(.8f,.79f,.74f,.78f),true);
     DrawCaption(Player->GetPrompt(),FVector2D(Width*.5f,Height-76*Scale),16*Scale,Ink,true);
     auto* Session=Cast<UAshWellSession>(GetGameInstance());
@@ -229,7 +230,7 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
         DrawCaption(TEXT("警告：断电后残存意识可能恢复。禁止擅自停机。"),FVector2D(Width*.5,Height*.51),17*Scale,FLinearColor(.76,.47,.36,1),true);
     }
     AAshWellWarden* Enemy=Player->GetWarden();
-    if(!Player->HasPower()&&(!Chapter||Chapter->IsAtStation()))
+    if(!Player->IsMountedExperiment()&&!Player->HasPower()&&(!Chapter||Chapter->IsAtStation()))
     {
         FVector2D Marker;
         if(GetOwningPlayerController()->ProjectWorldLocationToScreen((Player->IsEntryClosed()?Player->GetEntryPoint():Player->GetConsolePoint())+FVector(0,0,75),Marker))
@@ -239,15 +240,15 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
             DrawCaption(Player->IsEntryClosed()?TEXT("开启铁门  [E]"):TEXT("供电闸  [E]"),Marker,15*Scale,FLinearColor(.94f,.71f,.36f,1),true);
         }
     }
-    if(Enemy&&Player->IsEncounterActive()&&!Player->HasWon())
+    if(Player->GetCombatEnemy()&&Player->IsEncounterActive()&&!Player->HasWon())
     {
         const float BW=Width*.46f;
-        DrawCaption(Enemy->IsPhaseTwo()?TEXT("七号守井者 · 过载"):TEXT("七号守井者"),FVector2D(Width*.5f,Height-172*Scale),16*Scale,Ink,true);
-        Bar((Width-BW)*.5f,Height-130*Scale,BW,9*Scale,Enemy->GetHealthFraction(),FLinearColor(.45f,.075f,.045f,.95f));
+        DrawCaption(Player->GetCombatEnemyName(),FVector2D(Width*.5f,Height-172*Scale),16*Scale,Ink,true);
+        Bar((Width-BW)*.5f,Height-130*Scale,BW,9*Scale,Player->GetCombatEnemyHealthFraction(),FLinearColor(.45f,.075f,.045f,.95f));
         if(Player->IsLockedOn())
         {
             FVector2D Screen;
-            if(GetOwningPlayerController()->ProjectWorldLocationToScreen(Enemy->GetAimPoint(),Screen))
+            if(GetOwningPlayerController()->ProjectWorldLocationToScreen(Player->GetCombatAimPoint(),Screen))
             {
                 const float R=5*Scale;
                 DrawLine(Screen.X-R,Screen.Y,Screen.X,Screen.Y-R,Ink,1.5f);
@@ -266,8 +267,22 @@ void AAshWellIntroHUD::DrawCombatHUD(AAshWellCombatCharacter* Player)
     if(Player->IsDead()||(Player->HasWon()&&Player->GetEndingTime()<2.f))
     {
         DrawRect(FLinearColor(.015f,.017f,.02f,.55f),0,Height*.40f,Width,Height*.15f);
-        DrawCaption(Player->IsDead()?TEXT("你倒下了"):TEXT("守井者已停机"),FVector2D(Width*.5f,Height*.445f),30*Scale,
+        DrawCaption(Player->IsDead()?TEXT("你倒下了"):Player->IsMountedExperiment()?TEXT("骑卫已倒下"):TEXT("守井者已停机"),FVector2D(Width*.5f,Height*.445f),30*Scale,
             Player->IsDead()?FLinearColor(.63f,.18f,.12f,1):FLinearColor(.78f,.66f,.40f,1),true);
+    }
+    if(Player->IsMountedExperiment()&&Player->IsMountedDebugEnabled())
+    {
+        if(!Player->IsMountedDebugVisible())DrawCaption(TEXT("F1 战斗调试"),FVector2D(42*Scale,102*Scale),12*Scale,FLinearColor(.68,.72,.65,.8),false);
+        else
+        {
+            const TArray<FString> Lines=Player->GetMountedDebugLines();
+            const float PX=32*Scale,PY=102*Scale,PW=FMath::Min(650*Scale,Width-64*Scale),PH=(54+24*Lines.Num())*Scale;
+            DrawRect(FLinearColor(.018,.024,.024,.94),PX,PY,PW,PH);
+            DrawRect(FLinearColor(.48,.57,.37,.90),PX,PY,3*Scale,PH);
+            DrawCaption(TEXT("骑卫战斗调试"),FVector2D(PX+15*Scale,PY+12*Scale),17*Scale,FLinearColor(.87,.86,.70,1),false);
+            for(int32 I=0;I<Lines.Num();++I)
+                DrawCaption(Lines[I],FVector2D(PX+15*Scale,PY+(43+24*I)*Scale),13.5f*Scale,I==2?FLinearColor(.94,.72,.40,1):FLinearColor(.79,.83,.78,1),false);
+        }
     }
 }
 

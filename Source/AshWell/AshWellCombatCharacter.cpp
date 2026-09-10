@@ -1,6 +1,7 @@
 #include "AshWellCombatCharacter.h"
 #include "AshWellCombatArena.h"
 #include "AshWellWarden.h"
+#include "AshWellMountedBoss.h"
 #include "AshWellBattleFX.h"
 #include "AshWellIntroGameMode.h"
 #include "AshWellIntroDirector.h"
@@ -69,7 +70,8 @@ void AAshWellCombatCharacter::BeginPlay()
             {Actor->SetActorHiddenInGame(true);Actor->SetActorEnableCollision(false);}
         }
     }
-    Arena=GetWorld()->SpawnActor<AAshWellCombatArena>();
+    bMountedExperiment=UGameplayStatics::GetCurrentLevelName(this,true).Contains(TEXT("MountedCourtyard"));
+    if(!bMountedExperiment)Arena=GetWorld()->SpawnActor<AAshWellCombatArena>();
     if(Arena)
     {
         SetActorLocation(Arena->GetPlayerStart(),false,nullptr,ETeleportType::TeleportPhysics);
@@ -93,6 +95,16 @@ void AAshWellCombatCharacter::BeginPlay()
         Arena->AddInstanceComponent(Light);Light->SetupAttachment(CombatCompanion,TEXT("lamp_light_L"));
         Light->IntensityUnits=ELightUnits::Lumens;Light->SetIntensity(120);Light->SetAttenuationRadius(420);
         Light->SetLightColor(FLinearColor(1,.43,.12));Light->SetCastShadows(false);Light->RegisterComponent();
+    }
+    if(bMountedExperiment)
+    {
+        UGameplayStatics::DeactivateReverbEffect(this,TEXT("FirstDescentWell"));
+        SetActorLocation(FVector(-2050,0,88),false,nullptr,ETeleportType::TeleportPhysics);
+        SetActorRotation(FRotator::ZeroRotator);
+        FActorSpawnParameters Spawn;Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+        MountedBoss=GetWorld()->SpawnActor<AAshWellMountedBoss>(FVector(600,0,0),FRotator(0,180,0),Spawn);
+        if(MountedBoss)MountedBoss->SetArenaBounds(FVector::ZeroVector,FVector2D(2400,1900));
+        FParse::Value(FCommandLine::Get(),TEXT("MountedProbe="),MountedProbe);
     }
     auto LoadAnimation=[](const TCHAR* Suffix)
     {
@@ -177,6 +189,12 @@ void AAshWellCombatCharacter::BeginPlay()
             Wind->SetAbsolute(false,true,false);Wind->SetWorldRotation(FRotator(0,155,0));Wind->SetStrength(.6f);Wind->SetSpeed(1.8f);Wind->RegisterComponent();
         }
     }
+    if(bHeroComplete)
+    {
+        auto LoadJump=[](const TCHAR* S){const FString N=FString(TEXT("A_Hero_Jump"))+S;return LoadObject<UAnimSequence>(nullptr,*(FString(TEXT("/Game/AshWell/Combat/JumpPolish/"))+N+TEXT(".")+N));};
+        auto* Takeoff=LoadJump(TEXT("Takeoff"));auto* Air=LoadJump(TEXT("Air"));auto* Land=LoadJump(TEXT("Land"));
+        if(Takeoff&&Air&&Land){JumpAnimation=Takeoff;JumpAirAnimation=Air;JumpLandAnimation=Land;}
+    }
     GetCharacterMovement()->bEnablePhysicsInteraction=false;
     GetCharacterMovement()->MaxWalkSpeed=240;
     GetCharacterMovement()->JumpZVelocity=420;
@@ -214,11 +232,12 @@ void AAshWellCombatCharacter::BeginPlay()
         }
 #endif
     }
-    WriteCombatSnapshot();
+    if(bMountedExperiment)WriteMountedSnapshot();else WriteCombatSnapshot();
 }
 
 void AAshWellCombatCharacter::SetupPlayerInputComponent(UInputComponent* Input)
 {
+    InitializeMountedDebugInput(Input);
     if(FParse::Param(FCommandLine::Get(),TEXT("CombatQA"))||FParse::Param(FCommandLine::Get(),TEXT("ChapterQA")))return;
     // Own bindings avoid the exploration controller overriding committed actions.
     Input->BindAxis("MoveForward",this,&AAshWellCombatCharacter::MoveForwardCombat);
@@ -233,7 +252,8 @@ void AAshWellCombatCharacter::SetupPlayerInputComponent(UInputComponent* Input)
     Input->BindKey(EKeys::E,IE_Pressed,this,&AAshWellCombatCharacter::Interact);
     Input->BindKey(EKeys::LeftControl,IE_Pressed,this,&AAshWellCombatCharacter::SlowDown);
     Input->BindKey(EKeys::LeftControl,IE_Released,this,&AAshWellCombatCharacter::SlowUp);
-    Input->BindKey(EKeys::LeftShift,IE_Pressed,this,&AAshWellCombatCharacter::Dodge);
+    Input->BindKey(EKeys::LeftShift,IE_Pressed,this,&AAshWellCombatCharacter::SprintDown);
+    Input->BindKey(EKeys::LeftShift,IE_Released,this,&AAshWellCombatCharacter::SprintUp);
 }
 
 FVector AAshWellCombatCharacter::InputDirection() const
@@ -256,21 +276,32 @@ void AAshWellCombatCharacter::LookYawCombat(float Value){if(!bLockedOn&&!IsDead(
 void AAshWellCombatCharacter::LookPitchCombat(float Value){if(!bLockedOn&&!IsDead()){auto* S=Cast<UAshWellSession>(GetGameInstance());AddControllerPitchInput(Value*1.1f*(S?S->MouseSensitivity:1.f));}}
 void AAshWellCombatCharacter::SlowDown(){bSlow=true;GetCharacterMovement()->MaxWalkSpeed=140;}
 void AAshWellCombatCharacter::SlowUp(){bSlow=false;GetCharacterMovement()->MaxWalkSpeed=240;}
-void AAshWellCombatCharacter::SprintDown(){bSprint=true;}
-void AAshWellCombatCharacter::SprintUp(){bSprint=false;}
+void AAshWellCombatCharacter::SprintDown()
+{
+    if(bSprintHeld||IsDead())return;
+    bSprintHeld=true;bSprintExhausted=false;SprintPressedAt=GetWorld()->GetRealTimeSeconds();
+}
+void AAshWellCombatCharacter::SprintUp()
+{
+    if(!bSprintHeld)return;
+    const double HeldFor=GetWorld()->GetRealTimeSeconds()-SprintPressedAt;
+    bSprintHeld=false;bSprint=false;
+    // Resolve taps on release. Releasing a sprint must never enqueue a roll.
+    if(HeldFor<SprintHoldThreshold)Dodge();
+}
 bool AAshWellCombatCharacter::IsSwordReady() const {return bLockedOn||(bEncounterActive&&!HasWon())||SwordReadyTime>0;}
 UAnimSequence* AAshWellCombatCharacter::SelectLocomotionAnimation(float Speed) const
 {
     if(!bSwordPass)return Super::SelectLocomotionAnimation(Speed);
     if(Speed<=5)return IsSwordReady()?SwordGuard.Get():SwordIdle.Get();
-    if(bSprint&&!bLockedOn&&!bSlow)return SwordSprint;
+    if(bSprint&&!bSlow)return SwordSprint;
     if(IsSwordReady())return SwordCombatWalk;
     return bSlow?SwordWalk.Get():SwordRun.Get();
 }
 float AAshWellCombatCharacter::GetLocomotionReferenceSpeed() const
 {
     if(!bSwordPass)return bCombatWalkLoaded?240.f:51.4f;
-    if(bSprint&&!bLockedOn&&!bSlow)return 200.f;
+    if(bSprint&&!bSlow)return 200.f;
     if(IsSwordReady())return 86.f;
     if(bHeroComplete&&bSlow)return 140.f;
     if(bSlow)return 86.f;
@@ -280,17 +311,18 @@ FVector AAshWellCombatCharacter::SwordPoint(float Distance) const
 {
     return WeaponHandle->GetComponentTransform().TransformPosition(FVector(Distance,0,0));
 }
-bool AAshWellCombatCharacter::ShouldUpdateLocomotion() const {return ActionState==EAction::Idle&&!GetCharacterMovement()->IsFalling();}
+bool AAshWellCombatCharacter::ShouldUpdateLocomotion() const {return ActionState==EAction::Idle&&!GetCharacterMovement()->IsFalling()&&JumpVisualPhase!=3;}
 bool AAshWellCombatCharacter::IsDead() const {return ActionState==EAction::Dead;}
-bool AAshWellCombatCharacter::HasWon() const {return Warden&&Warden->IsDead();}
-bool AAshWellCombatCharacter::HasPower() const {return Arena&&Arena->IsPowered();}
-FVector AAshWellCombatCharacter::GetConsolePoint() const {return Arena?Arena->GetConsoleLocation():GetActorLocation();}
+bool AAshWellCombatCharacter::HasWon() const {return MountedBoss?MountedBoss->IsDead():Warden&&Warden->IsDead();}
+bool AAshWellCombatCharacter::HasPower() const {return bMountedExperiment?bEncounterActive||HasWon():Arena&&Arena->IsPowered();}
+FVector AAshWellCombatCharacter::GetConsolePoint() const {return bMountedExperiment?FVector(-1750,0,0):Arena?Arena->GetConsoleLocation():GetActorLocation();}
 FVector AAshWellCombatCharacter::GetEntryPoint() const {return Arena?Arena->GetEntryPoint():GetActorLocation();}
 bool AAshWellCombatCharacter::IsEntryClosed() const {return Arena&&!Arena->IsEntryOpen();}
 bool AAshWellCombatCharacter::IsInvulnerable() const {return ActionState==EAction::Dodge&&StateTime>=.07f&&StateTime<=.37f;}
 
 void AAshWellCombatCharacter::SetAction(EAction NewAction)
 {
+    if(NewAction!=EAction::Idle)JumpVisualPhase=0;
     ActionState=NewAction;StateTime=0;bSwingAudioPlayed=false;
     UAnimSequence* Animation=nullptr;
     switch(NewAction)
@@ -320,31 +352,38 @@ void AAshWellCombatCharacter::PlayCharacterAnimation(UAnimSequence* Animation,bo
 
 void AAshWellCombatCharacter::Attack()
 {
+    RecordMountedDebugEvent(TEXT("attack_request"));
     if(IsDead()||HasWon()||GetCharacterMovement()->IsFalling())return;
     if(ActionState!=EAction::Idle)
     {
         if(ActionState==EAction::Attack&&StateTime>.68f)AttackBuffer=.18f;
         return;
     }
-    if(!bSwordPass)
+    if(bMountedExperiment)
+    {
+        if(Stamina<12){Feedback=TEXT("体力不足，先恢复再出剑");FeedbackTime=1;return;}
+        Stamina-=12;RegenDelay=.65f;
+    }
+    else if(!bSwordPass)
     {
         if(Stamina<24){Feedback=TEXT("体力不足，拉开距离");FeedbackTime=1;return;}
         Stamina-=24;RegenDelay=.9f;
     }
     SwordReadyTime=4.f;++AttackCount;bAttackConnected=false;
     ActionDirection=GetActorForwardVector();
-    if(bLockedOn&&Warden)ActionDirection=(Warden->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();
+    if(bLockedOn&&GetCombatEnemy())ActionDirection=(GetCombatEnemy()->GetActorLocation()-GetActorLocation()).GetSafeNormal2D();
     SetActorRotation(ActionDirection.Rotation());
     SetAction(EAction::Attack);
     if(AttackSound&&!bBattlePolish)UGameplayStatics::PlaySoundAtLocation(this,AttackSound,GetActorLocation(),.55f);
 }
 void AAshWellCombatCharacter::HeavyAttack()
 {
+    RecordMountedDebugEvent(TEXT("heavy_request"));
     if(!bBattlePolish){Attack();return;}
     if(IsDead()||HasWon()||ActionState!=EAction::Idle||GetCharacterMovement()->IsFalling())return;
     if(Stamina<34){Feedback=TEXT("体力不足，无法重砸");FeedbackTime=1;return;}
     Stamina-=34;RegenDelay=1.f;++AttackCount;++HeavyCount;bAttackConnected=false;
-    ActionDirection=bLockedOn&&Warden?(Warden->GetActorLocation()-GetActorLocation()).GetSafeNormal2D():GetActorForwardVector();
+    ActionDirection=bLockedOn&&GetCombatEnemy()?(GetCombatEnemy()->GetActorLocation()-GetActorLocation()).GetSafeNormal2D():GetActorForwardVector();
     SetActorRotation(ActionDirection.Rotation());SetAction(EAction::Heavy);
 
 }
@@ -357,15 +396,40 @@ void AAshWellCombatCharacter::OnJumped_Implementation()
 {
     Super::OnJumped_Implementation();
     ++JumpCount;JumpStartHeight=GetActorLocation().Z;JumpPeakHeight=0;
+    JumpVisualPhase=1;JumpVisualAge=0;JumpVisualStartedAt=GetWorld()->GetTimeSeconds();
     if(JumpAnimation)PlayCharacterAnimation(JumpAnimation,false);
 }
 void AAshWellCombatCharacter::Landed(const FHitResult& Hit)
 {
     Super::Landed(Hit);StopJumping();
-    if(ActionState==EAction::Idle)PlayCharacterAnimation(SelectLocomotionAnimation(GetVelocity().Size2D()),true);
+    if(ActionState==EAction::Idle)
+    {
+        if(JumpLandAnimation){JumpVisualPhase=3;JumpVisualAge=0;JumpVisualStartedAt=GetWorld()->GetTimeSeconds();PlayCharacterAnimation(JumpLandAnimation,false);}
+        else{JumpVisualPhase=0;PlayCharacterAnimation(SelectLocomotionAnimation(GetVelocity().Size2D()),true);}
+    }
+}
+void AAshWellCombatCharacter::UpdateJumpVisual(float Dt)
+{
+    if(!JumpAirAnimation||!JumpLandAnimation)return;
+    if(ActionState!=EAction::Idle){JumpVisualPhase=0;return;}
+    JumpVisualAge=GetWorld()->GetTimeSeconds()-JumpVisualStartedAt;
+    if(GetCharacterMovement()->IsFalling())
+    {
+        if(JumpVisualPhase==0||JumpVisualPhase==3||(JumpVisualPhase==1&&JumpVisualAge>=JumpAnimation->GetPlayLength()))
+        {JumpVisualPhase=2;JumpVisualAge=0;JumpVisualStartedAt=GetWorld()->GetTimeSeconds();PlayCharacterAnimation(JumpAirAnimation,false);}
+        if(JumpVisualPhase==2)if(auto* I=Cast<UAnimSingleNodeInstance>(GetMesh()->GetAnimInstance()))
+        {
+            // Hold the tuck through ascent/apex; extend once with downward velocity.
+            // A long fall must not replay takeoff or a running-leg cycle.
+            const float Descent=FMath::Clamp(-GetVelocity().Z/420.f,0.f,1.f);
+            I->SetPosition(Descent*JumpAirAnimation->GetPlayLength(),false);I->SetPlaying(false);
+        }
+    }
+    else if(JumpVisualPhase==3&&JumpVisualAge>=JumpLandAnimation->GetPlayLength())JumpVisualPhase=0;
 }
 void AAshWellCombatCharacter::Dodge()
 {
+    RecordMountedDebugEvent(TEXT("dodge_request"));
     if(IsDead()||!GetCharacterMovement()->IsMovingOnGround())return;
     if(ActionState!=EAction::Idle)
     {
@@ -378,15 +442,24 @@ void AAshWellCombatCharacter::Dodge()
     if(ActionDirection.IsNearlyZero())ActionDirection=-GetActorForwardVector();
     ActionDirection.Normalize();
     SetAction(EAction::Dodge);
-    if(DodgeSound)UGameplayStatics::PlaySoundAtLocation(this,DodgeSound,GetActorLocation(),.5f);
+    if(DodgeSound){if(bMountedExperiment&&MountedBoss)MountedBoss->PlayEncounterSound(DodgeSound,GetActorLocation(),.5f);else UGameplayStatics::PlaySoundAtLocation(this,DodgeSound,GetActorLocation(),.5f);}
 }
 void AAshWellCombatCharacter::ToggleLock()
 {
-    if(!IsDead()&&Warden&&!Warden->IsDead())bLockedOn=!bLockedOn;
+    if(!IsDead()&&GetCombatEnemy()&&!HasWon())bLockedOn=!bLockedOn;
 }
 void AAshWellCombatCharacter::Interact()
 {
     if(IsDead())return;
+    if(bMountedExperiment)
+    {
+        if(MountedBoss&&!HasWon()&&!bEncounterActive&&!MountedBoss->IsReturning())
+        {
+            if(GetActorLocation().X<-1650)SetActorLocation(FVector(-1450,0,88),false,nullptr,ETeleportType::TeleportPhysics);
+            bEncounterActive=true;MountedBoss->ActivateEncounter(this);Feedback=TEXT("骑卫已发现你；观察肩臂与马头的起势");FeedbackTime=3;
+        }
+        return;
+    }
     if(Arena&&Arena->OpenEntry(GetActorLocation()))return;
     if(auto* Chapter=AAshWellChapterDirector::Find(GetWorld()))if(Chapter->HandleInteract(this))return;
     if(HasWon()&&Arena)
@@ -411,8 +484,8 @@ void AAshWellCombatCharacter::Interact()
 void AAshWellCombatCharacter::UpdateAttack()
 {
     const bool Heavy=ActionState==EAction::Heavy;
-    if(StateTime<(Heavy?.55f:.30f)||StateTime>(Heavy?.73f:.45f)||bAttackConnected||!Warden)return;
-    if(bBattlePolish&&!bSwingAudioPlayed){bSwingAudioPlayed=true;if(AttackSound)UGameplayStatics::PlaySoundAtLocation(this,AttackSound,GetActorLocation(),Heavy?.32f:.30f,Heavy?.78f:1.f);}
+    if(StateTime<(Heavy?.55f:.30f)||StateTime>(Heavy?.73f:.45f)||bAttackConnected||!GetCombatEnemy())return;
+    if(bBattlePolish&&!bSwingAudioPlayed){bSwingAudioPlayed=true;if(AttackSound){if(bMountedExperiment&&MountedBoss)MountedBoss->PlayEncounterSound(AttackSound,GetActorLocation(),Heavy?.32f:.30f,Heavy?.78f:1.f);else UGameplayStatics::PlaySoundAtLocation(this,AttackSound,GetActorLocation(),Heavy?.32f:.30f,Heavy?.78f:1.f);}}
     if(BattleFX)BattleFX->Trail(PreviousWeaponPosition,WeaponHead->GetComponentLocation());
     // Sweep the visible hammer head; FBX bone scaling must not enlarge its reach.
     const FVector Start=PreviousWeaponPosition;
@@ -427,24 +500,24 @@ void AAshWellCombatCharacter::UpdateAttack()
             const float A=I/6.f;
             const FVector From=FMath::Lerp(PreviousSwordBase,PreviousWeaponPosition,A);
             const FVector To=FMath::Lerp(SwordPoint(14),SwordPoint(101),A);
-            Contact=GetWorld()->SweepSingleByChannel(Hit,From,To,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(7),Query)&&Hit.GetActor()==Warden;
+            Contact=GetWorld()->SweepSingleByChannel(Hit,From,To,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(7),Query)&&Hit.GetActor()==GetCombatEnemy();
         }
     }
-    else Contact=GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(24),Query)&&Hit.GetActor()==Warden;
+    else Contact=GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(24),Query)&&Hit.GetActor()==GetCombatEnemy();
     if(Contact)
     {
         if(!bEncounterActive)
         {
             if(Arena&&!Arena->IsPowered())Arena->PowerOn();
             if(CombatCompanion&&CompanionStopAnimation)CombatCompanion->PlayAnimation(CompanionStopAnimation,false);
-            bEncounterActive=true;Warden->ActivateEncounter(this);
+            bEncounterActive=true;if(MountedBoss)MountedBoss->ActivateEncounter(this);else if(Warden)Warden->ActivateEncounter(this);
         }
-        bAttackConnected=Warden->ReceiveMeleeHit(Heavy?55.f:40.f,GetActorLocation());
+        bAttackConnected=MountedBoss?MountedBoss->ReceiveMeleeHit(Heavy?55.f:40.f,GetActorLocation(),AttackCount):Warden->ReceiveMeleeHit(Heavy?55.f:40.f,GetActorLocation());
         if(bAttackConnected)
         {
             ++HitCount;
-            if(ImpactSound)UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,Hit.ImpactPoint,bBattlePolish?1.25f:.75f);
-            if(BattleFX)BattleFX->Burst(Hit.ImpactPoint,Heavy?1.8f:1.f,true,HasWon());
+            if(ImpactSound){if(bMountedExperiment&&MountedBoss)MountedBoss->PlayEncounterSound(ImpactSound,Hit.ImpactPoint,bBattlePolish?1.25f:.75f);else UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,Hit.ImpactPoint,bBattlePolish?1.25f:.75f);}
+            if(BattleFX)BattleFX->Burst(Hit.ImpactPoint,bMountedExperiment?(Heavy?.70f:.45f):(Heavy?1.8f:1.f),!bMountedExperiment,HasWon()&&!bMountedExperiment);
         }
     }
 }
@@ -453,8 +526,15 @@ float AAshWellCombatCharacter::TakeDamage(float Damage,const FDamageEvent& Event
 {
     if(IsDead()||HasWon()||!bEncounterActive||Damage<=0)return 0;
     if(IsInvulnerable()){++EvadedHits;return 0;}
+    if(bMountedExperiment&&MountedBoss)
+    {
+        static const TCHAR* Names[]={TEXT("横扫"),TEXT("下劈"),TEXT("冲锋横扫"),TEXT("马肩撞"),TEXT("前蹄震地"),TEXT("跃起盾砸")};
+        const FString Reason=ActionState==EAction::Dodge?(StateTime<.07f?TEXT("；翻滚无敌尚未开始"):TEXT("；翻滚无敌已结束")):ActionState==EAction::Attack||ActionState==EAction::Heavy?TEXT("；出剑承诺期无法取消"):TEXT("");
+        Feedback=FString::Printf(TEXT("%s命中 −%.0f%s"),Names[static_cast<int32>(MountedBoss->GetAttackKind())],Damage,*Reason);FeedbackTime=3.f;
+        RecordMountedDebugEvent(TEXT("damage_applied"),Feedback);
+    }
     Health=FMath::Max(0.f,Health-Damage);DamageFlash=1;++DamageTakenCount;
-    if(ImpactSound)UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,GetActorLocation(),.6f,.7f);
+    if(ImpactSound){if(bMountedExperiment&&MountedBoss)MountedBoss->PlayEncounterSound(ImpactSound,GetActorLocation(),.6f,.7f);else UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,GetActorLocation(),.6f,.7f);}
     AttackBuffer=DodgeBuffer=0;RegenDelay=1;
     SetAction(Health<=0?EAction::Dead:EAction::Hit);
     if(BattleFX&&!IsDead())BattleFX->Burst(GetActorLocation(),.65f);
@@ -464,6 +544,27 @@ float AAshWellCombatCharacter::TakeDamage(float Damage,const FDamageEvent& Event
 
 void AAshWellCombatCharacter::UpdateCamera(float Dt)
 {
+    if(bMountedExperiment)
+    {
+        if(HasWon()||IsDead())bLockedOn=false;
+        if(bLockedOn&&MountedBoss&&Controller)
+        {
+            const FVector Direction=MountedBoss->GetAimPoint()-GetActorLocation();
+            if(Direction.Size2D()>4200)bLockedOn=false;
+            const FRotator Current=Controller->GetControlRotation();
+            const float Yaw=FMath::FixedTurn(Current.Yaw,Direction.Rotation().Yaw,105.f*Dt);
+            Controller->SetControlRotation(FRotator(FMath::FInterpTo(FRotator::NormalizeAxis(Current.Pitch),-10.f,Dt,4),Yaw,0));
+            if(ActionState==EAction::Idle&&!bSprint)SetActorRotation(FMath::RInterpTo(GetActorRotation(),FRotator(0,Direction.Rotation().Yaw,0),Dt,9));
+        }
+        const float D=MountedBoss?FVector::Dist2D(GetActorLocation(),MountedBoss->GetActorLocation()):800;
+        const float Length=bLockedOn?FMath::GetMappedRangeValueClamped(FVector2D(180,1500),FVector2D(650,800),D):540;
+        CameraBoom->TargetArmLength=FMath::FInterpTo(CameraBoom->TargetArmLength,Length,Dt,3);
+        CameraBoom->TargetOffset.Z=115;
+        CameraBoom->SocketOffset=FMath::VInterpTo(CameraBoom->SocketOffset,FVector(0,bLockedOn?25:55,25),Dt,5);
+        CameraBoom->SocketOffset.Z=25+(BattleFX?BattleFX->Shake()*FMath::Sin(GetWorld()->GetRealTimeSeconds()*65)*1.6f:0)+DamageFlash*FMath::Sin(StateTime*65)*.6f;
+        FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?80.f:76.f,Dt,3);
+        return;
+    }
     if(IsEntryClosed())bLockedOn=false;
     if(auto* Chapter=AAshWellChapterDirector::Find(GetWorld()))if(!Chapter->IsAtStation())bLockedOn=false;
     if(bLockedOn&&Warden&&!Warden->IsDead()&&Controller)
@@ -471,7 +572,7 @@ void AAshWellCombatCharacter::UpdateCamera(float Dt)
         const FVector Direction=Warden->GetAimPoint()-GetActorLocation();
         FRotator Wanted(Warden->GetActorScale3D().X>1.1f?-8.f:-13.f,Direction.Rotation().Yaw,0);
         Controller->SetControlRotation(FMath::RInterpTo(Controller->GetControlRotation(),Wanted,Dt,7));
-        if(ActionState==EAction::Idle)SetActorRotation(FMath::RInterpTo(GetActorRotation(),FRotator(0,Wanted.Yaw,0),Dt,12));
+        if(ActionState==EAction::Idle&&!bSprint)SetActorRotation(FMath::RInterpTo(GetActorRotation(),FRotator(0,Wanted.Yaw,0),Dt,12));
     }
     if(HasWon())bLockedOn=false;
     const float Distance=Warden?FVector::Dist2D(GetActorLocation(),Warden->GetActorLocation()):350.f;
@@ -484,6 +585,9 @@ void AAshWellCombatCharacter::UpdateCamera(float Dt)
 
 void AAshWellCombatCharacter::Tick(float Dt)
 {
+    if(bMountedExperiment&&UGameplayStatics::IsGamePaused(this))return;
+    if(bSprintHeld)bSprint=GetWorld()->GetRealTimeSeconds()-SprintPressedAt>=SprintHoldThreshold&&!bSprintExhausted&&ActionState==EAction::Idle;
+    UpdateJumpVisual(Dt);
     Super::Tick(Dt);
     if(GetCharacterMovement()->IsFalling())JumpPeakHeight=FMath::Max(JumpPeakHeight,GetActorLocation().Z-JumpStartHeight);
     // Imported bones can carry a unit-conversion scale. Use their location and
@@ -529,7 +633,12 @@ void AAshWellCombatCharacter::Tick(float Dt)
         WeaponHandle->SetWorldLocationAndRotation(InHand?(Hand.GetLocation()+Hand.GetRotation().RotateVector(FVector(0,6,0))):Back,InHand?(Hand.GetRotation()*FQuat(FVector::RightVector,-PI/2)):BackRotation);WeaponHandle->SetWorldScale3D(FVector::OneVector);
         WeaponHead->SetWorldLocation(SwordPoint(101));
         SwordReadyTime=FMath::Max(0.f,SwordReadyTime-Dt);
-        GetCharacterMovement()->MaxWalkSpeed=bSlow?140.f:(bSprint&&!bLockedOn?360.f:IsSwordReady()?155.f:280.f);
+        GetCharacterMovement()->MaxWalkSpeed=bSlow?140.f:(bSprint?360.f:IsSwordReady()?(bMountedExperiment?225.f:155.f):280.f);
+    }
+    if(bSprint&&!bSlow&&bEncounterActive&&!HasWon()&&GetVelocity().Size2D()>5&&GetCharacterMovement()->IsMovingOnGround())
+    {
+        Stamina=FMath::Max(0.f,Stamina-12.f*Dt);RegenDelay=.35f;
+        if(Stamina<=0){bSprint=false;bSprintExhausted=true;Feedback=TEXT("体力耗尽");FeedbackTime=.8f;}
     }
     if(RegenDelay<=0&&ActionState==EAction::Idle)Stamina=FMath::Min(100.f,Stamina+26*Dt);
     if(Arena&&Arena->IsPowered()&&!bEncounterActive)
@@ -572,13 +681,15 @@ void AAshWellCombatCharacter::Tick(float Dt)
         else if(AttackBuffer>0){AttackBuffer=0;Attack();}
     }
     AttackBuffer=FMath::Max(0.f,AttackBuffer-Dt);DodgeBuffer=FMath::Max(0.f,DodgeBuffer-Dt);
+    if(bMountedExperiment){TickMountedEncounter(Dt);TickMountedDebug(Dt);}
     UpdateCamera(Dt);
     PreviousWeaponPosition=WeaponHead->GetComponentLocation();
     PreviousSwordBase=bSwordPass?SwordPoint(14):PreviousWeaponPosition;
-    if(bQA&&!bQAComplete)RunCombatQA(Dt);
+    if(bMountedExperiment&&!MountedProbe.IsEmpty()&&!bMountedQAComplete)RunMountedQA(Dt);
+    if(bQA&&!bQAComplete&&!bMountedExperiment)RunCombatQA(Dt);
     if(bQA)if(auto* S=Cast<UAshWellSession>(GetGameInstance()))S->RecordFrame(Dt,GetWorld());
     SnapshotTimer+=Dt;
-    if(SnapshotTimer>=.25f){SnapshotTimer=0;WriteCombatSnapshot();}
+    if(SnapshotTimer>=.25f){SnapshotTimer=0;if(bMountedExperiment)WriteMountedSnapshot();else WriteCombatSnapshot();}
 }
 
 FString AAshWellCombatCharacter::GetCombatState() const
@@ -587,7 +698,16 @@ FString AAshWellCombatCharacter::GetCombatState() const
 }
 FString AAshWellCombatCharacter::GetPrompt() const
 {
-    if(IsDead())return TEXT("R 重新挑战");
+    if(IsDead())return bMountedExperiment?Feedback+TEXT(" · R 重新挑战"):TEXT("R 重新挑战");
+    if(bMountedExperiment)
+    {
+        if(HasWon())return TEXT("骑卫已倒下  ·  R 再次挑战");
+        if(FeedbackTime>0)return Feedback;
+        if(MountedBoss&&MountedBoss->IsReturning())return TEXT("骑卫正在退回巡逻点，战斗将重置");
+        if(!bEncounterActive)return TEXT("E 进入战斗  ·  战斗中退回西侧石门可脱战");
+        if(MountedBoss&&MountedBoss->IsComboPending())return TEXT("它还会接一刀——等骑手收回武器");
+        return TEXT("看肩臂起手，避开刃口；收招后反击  ·  保留闪避体力");
+    }
     if(Arena&&Arena->IsGrandEncounter()&&!Arena->IsEntryOpen()&&AAshWellChapterDirector::Find(GetWorld())->IsAtStation())return TEXT("靠近七号检修站铁门按 E  ·  开门后进入供电大厅");
     if(auto* Chapter=AAshWellChapterDirector::Find(GetWorld()))
     {
@@ -613,6 +733,7 @@ FString AAshWellCombatCharacter::GetPrompt() const
 bool AAshWellCombatCharacter::HasFinishedSlice() const { return Arena&&Arena->HasDeparted(); }
 FString AAshWellCombatCharacter::GetStorySubtitle() const
 {
+    if(bMountedExperiment)return FString();
     if(auto* Chapter=AAshWellChapterDirector::Find(GetWorld()))
     {if(HasWon()&&EndingTime>=2.f&&EndingTime<7.f)return TEXT("守井者：别……再送电了。");return Chapter->Subtitle();}
     if(HasWon()&&EndingTime>=2.f&&EndingTime<7.f)return TEXT("守井者：别……再送电了。");
@@ -736,10 +857,16 @@ void AAshWellCombatCharacter::WriteCombatSnapshot()
     O->SetBoolField(TEXT("invulnerable"),IsInvulnerable());O->SetBoolField(TEXT("locked"),bLockedOn);
     O->SetBoolField(TEXT("powered"),Arena&&Arena->IsPowered());O->SetBoolField(TEXT("encounter_active"),bEncounterActive);
     O->SetBoolField(TEXT("animation_blend_instance"),Cast<UAshWellAnimInstance>(GetMesh()->GetAnimInstance())!=nullptr);
+    O->SetBoolField(TEXT("sprinting"),bSprint);O->SetBoolField(TEXT("sprint_held"),bSprintHeld);O->SetBoolField(TEXT("sprint_exhausted"),bSprintExhausted);
+    O->SetStringField(TEXT("sprint_key"),TEXT("LeftShift hold"));O->SetNumberField(TEXT("sprint_hold_threshold"),SprintHoldThreshold);
     O->SetNumberField(TEXT("jumps"),JumpCount);
     O->SetNumberField(TEXT("jump_peak_cm"),JumpPeakHeight);
     O->SetStringField(TEXT("jump_key"),TEXT("SpaceBar"));O->SetStringField(TEXT("dodge_key"),TEXT("LeftShift"));
     O->SetBoolField(TEXT("jump_animation_loaded"),JumpAnimation!=nullptr);
+    O->SetBoolField(TEXT("jump_phases_loaded"),JumpAirAnimation&&JumpLandAnimation);
+    O->SetNumberField(TEXT("jump_visual_phase"),JumpVisualPhase);
+    O->SetNumberField(TEXT("jump_phases_seen"),JumpPhasesSeen);
+    O->SetNumberField(TEXT("vertical_velocity"),GetVelocity().Z);
     O->SetBoolField(TEXT("grounded"),GetCharacterMovement()->IsMovingOnGround());
     O->SetNumberField(TEXT("x"),GetActorLocation().X);O->SetNumberField(TEXT("y"),GetActorLocation().Y);O->SetNumberField(TEXT("z"),GetActorLocation().Z);
     O->SetNumberField(TEXT("attacks"),AttackCount);O->SetNumberField(TEXT("hits"),HitCount);O->SetNumberField(TEXT("dodges"),DodgeCount);

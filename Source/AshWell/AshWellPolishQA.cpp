@@ -34,6 +34,85 @@ void AAshWellCombatCharacter::RunPolishProbe(float Dt)
         UE_LOG(LogTemp,Display,TEXT("AW_PROBE_COMPLETE %s"),*QAProbe);
     };
     if(QAElapsed>90){Finish();return;}
+    if(QAProbe==TEXT("jump_phases"))
+    {
+        if(!Warden||!Arena||QAElapsed<1)return;
+        Warden->ChangeState(EWellWardenState::Dormant);bLockedOn=false;bEncounterActive=false;
+        if(ProbeStep==0&&GetCharacterMovement()->IsMovingOnGround())
+        {
+            SetActorLocation(Arena->GetArenaCenter()+FVector(-500,0,90),false,nullptr,ETeleportType::TeleportPhysics);
+            GetCharacterMovement()->StopMovementImmediately();SetActorRotation(FRotator::ZeroRotator);Controller->SetControlRotation(FRotator(-8,100,0));
+            Jump();++ProbeStep;
+        }
+        JumpPhasesSeen|=1<<JumpVisualPhase;
+        if(auto* I=Cast<UAnimSingleNodeInstance>(GetMesh()->GetAnimInstance()))
+        {
+            static float LastAirTime=-1;
+            if(JumpVisualPhase==2)
+            {
+                if(I->GetCurrentAsset()!=JumpAirAnimation||I->IsLooping()||I->GetCurrentTime()+.005f<LastAirTime)++ProbeYawDrift;
+                LastAirTime=I->GetCurrentTime();
+            }
+        }
+        static TSet<FString> Captured;
+        FString Stage;
+        if(JumpVisualPhase==1)Stage=TEXT("takeoff");
+        if(JumpVisualPhase==2&&FMath::Abs(GetVelocity().Z)<100)Stage=TEXT("apex");
+        if(JumpVisualPhase==2&&GetVelocity().Z<-230)Stage=TEXT("descent");
+        if(JumpVisualPhase==3&&JumpVisualAge>.07f)Stage=TEXT("landing");
+        if(!Stage.IsEmpty()&&!Captured.Contains(Stage))
+        {
+            Captured.Add(Stage);WriteCombatSnapshot();
+            const FString D=FPaths::ProjectSavedDir()/TEXT("JumpPolish/");
+            IFileManager::Get().Copy(*(D+Stage+TEXT(".json")),*(FPaths::ProjectSavedDir()/TEXT("Automation/combat-runtime.json")));
+            FScreenshotRequest::RequestScreenshot(D+Stage+TEXT(".png"),true,false);
+        }
+        if(ProbeStep==1&&JumpCount==1&&JumpVisualPhase==0&&GetCharacterMovement()->IsMovingOnGround()&&QAElapsed>2.5f)
+        {if((JumpPhasesSeen&14)!=14)++ProbeYawDrift;++ProbeStep;Finish();}
+        return;
+    }
+    if(QAProbe==TEXT("hero_sprint"))
+    {
+        if(!Warden||!Arena||QAElapsed<1)return;
+        Warden->ChangeState(EWellWardenState::Dormant);
+        const double RealTime=GetWorld()->GetRealTimeSeconds();
+        if(ProbeStep==0&&GetCharacterMovement()->IsMovingOnGround())
+        {
+            SetActorLocation(Arena->GetArenaCenter()+FVector(-650,-400,90),false,nullptr,ETeleportType::TeleportPhysics);
+            GetCharacterMovement()->StopMovementImmediately();SetActorRotation(FRotator::ZeroRotator);Controller->SetControlRotation(FRotator(-8,0,0));
+            bLockedOn=false;bEncounterActive=false;Stamina=100;ForwardInput=1;RightInput=0;
+            SprintDown();if(bSprint||DodgeCount)++ProbeYawDrift;++ProbeStep;
+        }
+        else if(ProbeStep==1&&RealTime-SprintPressedAt>.065)
+        {
+            SprintUp();if(ActionState!=EAction::Dodge||DodgeCount!=1)++ProbeYawDrift;++ProbeStep;
+        }
+        else if(ProbeStep==2&&ActionState==EAction::Idle){SprintDown();++ProbeStep;}
+        else if(ProbeStep==3)
+        {
+            AddMovementInput(FVector::ForwardVector,1);
+            if(RealTime-SprintPressedAt>.25&&GetVelocity().Size2D()>350)
+            {if(!bSprint||DodgeCount!=1)++ProbeYawDrift;Jump();++ProbeStep;}
+        }
+        else if(ProbeStep==4&&GetCharacterMovement()->IsFalling())
+        {SprintUp();if(bSprint||DodgeCount!=1||JumpCount!=1)++ProbeYawDrift;++ProbeStep;}
+        else if(ProbeStep==5&&GetCharacterMovement()->IsMovingOnGround())
+        {bLockedOn=true;SprintDown();++ProbeStep;}
+        else if(ProbeStep==6)
+        {
+            AddMovementInput(FVector::ForwardVector,1);
+            if(RealTime-SprintPressedAt>.25&&GetVelocity().Size2D()>350)
+            {if(!bSprint||!bLockedOn)++ProbeYawDrift;Stamina=1;bEncounterActive=true;++ProbeStep;}
+        }
+        else if(ProbeStep==7)
+        {
+            AddMovementInput(FVector::ForwardVector,1);
+            if(bSprintExhausted){if(bSprint||Stamina>.01f)++ProbeYawDrift;ProbeYaw=RealTime;++ProbeStep;}
+        }
+        else if(ProbeStep==8&&RealTime-ProbeYaw>.5)
+        {if(bSprint)++ProbeYawDrift;SprintUp();if(DodgeCount!=1)++ProbeYawDrift;bEncounterActive=false;++ProbeStep;Finish();}
+        return;
+    }
     if(QAProbe==TEXT("hero_cloth"))
     {
         if(!Warden||!Arena||QAElapsed<1)return;
