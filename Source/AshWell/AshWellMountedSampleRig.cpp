@@ -18,7 +18,9 @@ AAshWellMountedSampleRig::AAshWellMountedSampleRig()
     auto* Root=CreateDefaultSubobject<USceneComponent>(TEXT("SampleRoot"));SetRootComponent(Root);
     ReviewCamera=CreateDefaultSubobject<UCameraComponent>(TEXT("AssetInspectionCamera"));ReviewCamera->SetupAttachment(Root);ReviewCamera->FieldOfView=65;
     Horse=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SampleHorse"));Horse->SetupAttachment(Root);Horse->SetRelativeScale3D(FVector(1.3f));Horse->SetRelativeRotation(FRotator(0,90,0));
-    Rider=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SampleRider"));Rider->SetupAttachment(Root);Rider->SetRelativeScale3D(FVector(1.35f));
+    // The prepared knight is 170 cm tall. This candidate gives the rider a
+    // 272 cm standing silhouette while keeping the horse and combat body fixed.
+    Rider=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SampleRider"));Rider->SetupAttachment(Root);Rider->SetRelativeScale3D(FVector(1.6f));
     Poleaxe=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SamplePoleaxe"));Poleaxe->SetupAttachment(Rider,TEXT("SampleWeaponGrip"));Poleaxe->SetAbsolute(false,false,true);
     Shield=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SampleShield"));Shield->SetupAttachment(Rider,TEXT("SampleShieldGrip"));Shield->SetAbsolute(false,false,true);
     // Match the retained combat reach with visible geometry (196 cm grip-to-tip),
@@ -83,9 +85,13 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
     // +90 degree yaw restores the boss +X convention; contacts use imported space.
     const FVector Seat=Bone.TransformPosition(SeatRest.InverseTransformPosition(FVector(0,10,128)));
     const FQuat SeatWorldRotation=Horse->GetComponentQuat()*Delta;
-    Rider->SetWorldLocationAndRotation(Horse->GetComponentTransform().TransformPosition(Seat)-SeatWorldRotation.RotateVector(FVector(-.733457,-2.028657,89.98887)*1.35f),SeatWorldRotation);
-    const FVector LeftTarget=Horse->GetSocketLocation(TEXT("SampleStirrupLeft"))+SeatWorldRotation.RotateVector(FVector(0,0,13.4f));
-    const FVector RightTarget=Horse->GetSocketLocation(TEXT("SampleStirrupRight"))+SeatWorldRotation.RotateVector(FVector(0,0,13.4f));
+    const FVector RiderScale=Rider->GetComponentScale();
+    Rider->SetWorldLocationAndRotation(Horse->GetComponentTransform().TransformPosition(Seat)-SeatWorldRotation.RotateVector(FVector(-.733457,-2.028657,89.98887)*RiderScale),SeatWorldRotation);
+    // Keep the pelvis on the saddle and the boot soles on the stirrups when
+    // changing rider size; the native AnimBP still solves the legs.
+    const FVector AnkleOffset=SeatWorldRotation.RotateVector(FVector(0,0,13.4f*RiderScale.Z/1.35f));
+    const FVector LeftTarget=Horse->GetSocketLocation(TEXT("SampleStirrupLeft"))+AnkleOffset;
+    const FVector RightTarget=Horse->GetSocketLocation(TEXT("SampleStirrupRight"))+AnkleOffset;
     if(auto* A=RiderAnimation())
     {
         A->RiderContactAlpha=FMath::FInterpConstantTo(A->RiderContactAlpha,bDeathPose?0.f:1.f,Dt,5.f);

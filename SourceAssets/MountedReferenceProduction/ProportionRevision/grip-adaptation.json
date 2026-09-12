@@ -1,0 +1,11 @@
+{
+  "source": "Animation/RiderAuthored.blend",
+  "source_rider_scale": 1.35,
+  "target_rider_scale": 1.6,
+  "frames": 349,
+  "seconds": 5.8,
+  "method": "Blender native two-bone IK and Copy Rotation, visually baked to FBX for existing UE Montage",
+  "maximum_grip_world_error_cm": 8.59924487524742e-05,
+  "weapon_size_or_sweep_radius_changed": false,
+  "scope": "charge right arm only; original animation and model files untouched"
+}

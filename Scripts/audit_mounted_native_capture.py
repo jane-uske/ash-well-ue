@@ -3,7 +3,15 @@ import argparse,csv,json,subprocess
 from pathlib import Path
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('video',type=Path);a=p.parse_args();video=a.video.resolve()
 meta=json.loads(video.with_suffix('.capture.json').read_text())
-rows=list(csv.DictReader(video.with_suffix('.samples.csv').open()));result={'scope':__doc__,'capture':meta,'streams':{}}
+fields=['type','pts_value','pts_timescale','host_seconds','appended']
+raw=list(csv.reader(video.with_suffix('.samples.csv').open()))
+header_present=bool(raw and raw[0]==fields)
+# The first unlocked capture opened FileHandle at offset zero and overwrote its
+# header. Read that known five-column schema without changing the original log.
+data=raw[1:] if header_present else raw
+assert all(len(r)==len(fields) and r[0] in ('video','audio') and r[4] in ('true','false') for r in data),'Invalid capture sample schema'
+rows=[dict(zip(fields,r)) for r in data]
+result={'scope':__doc__,'capture':meta,'samples_header_present':header_present,'streams':{}}
 for kind in ['video','audio']:
     samples=[r for r in rows if r['type']==kind and r['appended']=='true'];assert len(samples)>1,kind+' has no completed source samples'
     pts=[int(s['pts_value'])/int(s['pts_timescale']) for s in samples];host=[float(s['host_seconds']) for s in samples]

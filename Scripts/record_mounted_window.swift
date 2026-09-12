@@ -32,6 +32,7 @@ final class Capture: NSObject, SCStreamOutput, SCStreamDelegate {
         let p = url.deletingPathExtension().appendingPathExtension("samples.csv")
         FileManager.default.createFile(atPath: p.path, contents: Data("type,pts_value,pts_timescale,host_seconds,appended\n".utf8))
         ptsFile = try FileHandle(forWritingTo: p)
+        try ptsFile.seekToEnd()
         super.init()
     }
     func stream(_ stream: SCStream, didStopWithError error: Error) { self.error = error }
