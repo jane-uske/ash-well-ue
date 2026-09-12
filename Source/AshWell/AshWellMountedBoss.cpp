@@ -112,6 +112,9 @@ void AAshWellMountedBoss::ResetEncounter()
 {
     ClearAttackTransient();ReceivedAttackIds.Reset();LeapHeight=0;
     Health=MaximumHealth;bPhaseTwo=bPhasePending=bComboPending=bFollowup=false;
+    // Re-prime world-space hoof samples after a reset/teleport. An old pose is
+    // neither a landing event nor a valid support-drift measurement.
+    bHoofPrimed=false;SupportDriftDistance=SupportSampleTime=0;HoofContacts=0;
     bHeadingCommitted=bDamageConsumed=bImpactPlayed=false;LeashTime=Speed=FightTime=HitReaction=0;
     for(float& C:Cooldowns)C=0;
     BodyCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);

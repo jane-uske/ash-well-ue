@@ -202,7 +202,10 @@ void AAshWellMountedBoss::UpdateSampleHoofContacts(float Dt)
     {
         if(SampleRig->Horse->GetBoneIndex(Bones[I])==INDEX_NONE){bHoofBonesValid=false;continue;}
         const FVector P=SampleRig->Horse->GetSocketLocation(Bones[I]);
-        const bool Ground=P.Z-GroundHeightAt(P)<(bHoofGrounded[I]?8.f:6.f);
+        // These pivots sit above the visible sole. The calibrated marker
+        // clearance must scale with the assembly, just like that sole offset.
+        const float MarkerScale=GetActorScale3D().Z;
+        const bool Ground=P.Z-GroundHeightAt(P)<(bHoofGrounded[I]?8.f:6.f)*MarkerScale;
         if(bHoofPrimed&&SampleRig->UsesFootPlacement()&&FParse::Param(FCommandLine::Get(),TEXT("MountedFootAudit"))&&ActualSpeed>30)
         {
             static const FName FK[]={TEXT("Bone_053"),TEXT("Bone_047"),TEXT("Bone_032"),TEXT("Bone_026")};
