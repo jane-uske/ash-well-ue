@@ -1,0 +1,42 @@
+{
+  "case": "body",
+  "passed": true,
+  "elapsed_seconds": 16.0,
+  "evidence_directory": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260912-192202-f699755b/body",
+  "probe_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/probe-body.json",
+  "process": {
+    "pid": 78856,
+    "terminated_by_harness": true,
+    "killed_after_grace": false,
+    "exit_code": 0
+  },
+  "checks": {
+    "completed": true,
+    "correct_probe": true,
+    "correct_map": true,
+    "hero_v02_loaded": true,
+    "horse_visual_loaded": true,
+    "rider_visual_loaded": true,
+    "finite_health": true,
+    "finite_stamina": true,
+    "stamina_never_negative": true,
+    "fixture_assertions_passed": true,
+    "no_global_slowdown": true,
+    "no_fatal_error": true,
+    "no_hero_load_error": true,
+    "hero_material_compiles": true,
+    "cloth_scale_valid": true,
+    "no_passive_body_damage": true,
+    "boss_unharmed": true,
+    "body_did_not_overlap": true,
+    "actually_approached_body": true,
+    "no_weapon_strike": true,
+    "standard_sample_loaded": true,
+    "engine_log_present": true,
+    "owned_process_stopped": true
+  },
+  "failed_checks": [],
+  "health": 100,
+  "boss_health": 900,
+  "screenshot_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260912-192202-f699755b/body/screenshot.png"
+}

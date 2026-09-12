@@ -1,0 +1,468 @@
+NATIVE_WINDOW_FRAME (68.0, 78.0, 1920.0, 1112.0) display_frames=["(0.0, 0.0, 2056.0, 1329.0) size=2056x1329"]
+NATIVE_RECORDING_WINDOW pid=70112 pixels=1920x1112 microphone=false
+NATIVE_SAMPLE type=0 valid=true ready=true attachments=Optional(<__NSSingleObjectArrayI 0x7b351213d0>(
+{
+    SCStreamMetricCaptureLatencyTime = "170050.7193190833";
+    SCStreamUpdateFrameBoundingRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentScale = "0.5";
+    SCStreamUpdateFrameDirtyRect =     (
+                {
+            Height = 0;
+            Width = 0;
+            X = 0;
+            Y = 0;
+        }
+    );
+    SCStreamUpdateFrameDisplayResolution = 2;
+    SCStreamUpdateFrameDisplayTime = 4081217180782;
+    SCStreamUpdateFramePresenterOverlayContentRect =     {
+        Height = 0;
+        Width = 0;
+        X = inf;
+        Y = inf;
+    };
+    SCStreamUpdateFrameScreenRect =     {
+        Height = 1112;
+        Width = 1920;
+        X = 68;
+        Y = 78;
+    };
+    SCStreamUpdateFrameStatus = 0;
+    SCStreamUpdateStreamID = "91772241-4A5F-4054-A15E-291E25341044";
+}
+)
+)
+NATIVE_RECORDING_STARTED 2026-09-12T11:12:10.146Z
+NATIVE_SAMPLE type=0 valid=true ready=true attachments=Optional(<__NSSingleObjectArrayI 0x7b35121590>(
+{
+    SCStreamMetricCaptureLatencyTime = "170050.735737";
+    SCStreamUpdateFrameBoundingRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentScale = "0.5";
+    SCStreamUpdateFrameDirtyRect =     (
+                {
+            Height = 5;
+            Width = 25;
+            X = 0;
+            Y = 0;
+        },
+                {
+            Height = 5;
+            Width = 25;
+            X = 1895;
+            Y = 0;
+        },
+                {
+            Height = 20;
+            Width = 27;
+            X = 0;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 28;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 51;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 25;
+            X = 1895;
+            Y = 5;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 5;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 28;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 51;
+            Y = 25;
+        },
+                {
+            Height = 1;
+            Width = 1;
+            X = 936;
+            Y = 758;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 0;
+            Y = 1087;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 1895;
+            Y = 1087;
+        }
+    );
+    SCStreamUpdateFrameDisplayResolution = 2;
+    SCStreamUpdateFrameDisplayTime = 4081217780777;
+    SCStreamUpdateFramePresenterOverlayContentRect =     {
+        Height = 0;
+        Width = 0;
+        X = inf;
+        Y = inf;
+    };
+    SCStreamUpdateFrameScreenRect =     {
+        Height = 1112;
+        Width = 1920;
+        X = 68;
+        Y = 78;
+    };
+    SCStreamUpdateFrameStatus = 0;
+    SCStreamUpdateStreamID = "91772241-4A5F-4054-A15E-291E25341044";
+}
+)
+)
+NATIVE_SAMPLE type=1 valid=true ready=true attachments=nil
+NATIVE_SAMPLE type=0 valid=true ready=true attachments=Optional(<__NSSingleObjectArrayI 0x7b351215e0>(
+{
+    SCStreamMetricCaptureLatencyTime = "170050.7523298333";
+    SCStreamUpdateFrameBoundingRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentScale = "0.5";
+    SCStreamUpdateFrameDirtyRect =     (
+                {
+            Height = 5;
+            Width = 25;
+            X = 0;
+            Y = 0;
+        },
+                {
+            Height = 5;
+            Width = 25;
+            X = 1895;
+            Y = 0;
+        },
+                {
+            Height = 20;
+            Width = 27;
+            X = 0;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 28;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 51;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 25;
+            X = 1895;
+            Y = 5;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 5;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 28;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 51;
+            Y = 25;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 0;
+            Y = 1087;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 1895;
+            Y = 1087;
+        }
+    );
+    SCStreamUpdateFrameDisplayResolution = 2;
+    SCStreamUpdateFrameDisplayTime = 4081218180774;
+    SCStreamUpdateFramePresenterOverlayContentRect =     {
+        Height = 0;
+        Width = 0;
+        X = inf;
+        Y = inf;
+    };
+    SCStreamUpdateFrameScreenRect =     {
+        Height = 1112;
+        Width = 1920;
+        X = 68;
+        Y = 78;
+    };
+    SCStreamUpdateFrameStatus = 0;
+    SCStreamUpdateStreamID = "91772241-4A5F-4054-A15E-291E25341044";
+}
+)
+)
+NATIVE_SAMPLE type=1 valid=true ready=true attachments=nil
+NATIVE_SAMPLE type=0 valid=true ready=true attachments=Optional(<__NSSingleObjectArrayI 0x7b35121600>(
+{
+    SCStreamMetricCaptureLatencyTime = "170050.7701987916";
+    SCStreamUpdateFrameBoundingRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentScale = "0.5";
+    SCStreamUpdateFrameDirtyRect =     (
+                {
+            Height = 5;
+            Width = 25;
+            X = 0;
+            Y = 0;
+        },
+                {
+            Height = 5;
+            Width = 25;
+            X = 1895;
+            Y = 0;
+        },
+                {
+            Height = 20;
+            Width = 27;
+            X = 0;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 28;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 51;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 25;
+            X = 1895;
+            Y = 5;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 5;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 28;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 51;
+            Y = 25;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 0;
+            Y = 1087;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 1895;
+            Y = 1087;
+        }
+    );
+    SCStreamUpdateFrameDisplayResolution = 2;
+    SCStreamUpdateFrameDisplayTime = 4081218580774;
+    SCStreamUpdateFramePresenterOverlayContentRect =     {
+        Height = 0;
+        Width = 0;
+        X = inf;
+        Y = inf;
+    };
+    SCStreamUpdateFrameScreenRect =     {
+        Height = 1112;
+        Width = 1920;
+        X = 68;
+        Y = 78;
+    };
+    SCStreamUpdateFrameStatus = 0;
+    SCStreamUpdateStreamID = "91772241-4A5F-4054-A15E-291E25341044";
+}
+)
+)
+NATIVE_SAMPLE type=1 valid=true ready=true attachments=nil
+NATIVE_SAMPLE type=0 valid=true ready=true attachments=Optional(<__NSSingleObjectArrayI 0x7b35121470>(
+{
+    SCStreamMetricCaptureLatencyTime = "170050.7881872916";
+    SCStreamUpdateFrameBoundingRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentRect =     {
+        Height = 556;
+        Width = 960;
+        X = 0;
+        Y = 0;
+    };
+    SCStreamUpdateFrameContentScale = "0.5";
+    SCStreamUpdateFrameDirtyRect =     (
+                {
+            Height = 5;
+            Width = 25;
+            X = 0;
+            Y = 0;
+        },
+                {
+            Height = 5;
+            Width = 25;
+            X = 1895;
+            Y = 0;
+        },
+                {
+            Height = 20;
+            Width = 27;
+            X = 0;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 28;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 22;
+            X = 51;
+            Y = 5;
+        },
+                {
+            Height = 20;
+            Width = 25;
+            X = 1895;
+            Y = 5;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 5;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 28;
+            Y = 25;
+        },
+                {
+            Height = 2;
+            Width = 22;
+            X = 51;
+            Y = 25;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 0;
+            Y = 1087;
+        },
+                {
+            Height = 25;
+            Width = 25;
+            X = 1895;
+            Y = 1087;
+        }
+    );
+    SCStreamUpdateFrameDisplayResolution = 2;
+    SCStreamUpdateFrameDisplayTime = 4081218980772;
+    SCStreamUpdateFramePresenterOverlayContentRect =     {
+        Height = 0;
+        Width = 0;
+        X = inf;
+        Y = inf;
+    };
+    SCStreamUpdateFrameScreenRect =     {
+        Height = 1112;
+        Width = 1920;
+        X = 68;
+        Y = 78;
+    };
+    SCStreamUpdateFrameStatus = 0;
+    SCStreamUpdateStreamID = "91772241-4A5F-4054-A15E-291E25341044";
+}
+)
+)
+NATIVE_RECORDING_FINISHED frames=1732 audio=1501

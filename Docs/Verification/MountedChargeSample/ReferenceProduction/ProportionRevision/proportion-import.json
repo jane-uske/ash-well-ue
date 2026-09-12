@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "clip": "/Game/AshWell/Combat/MountedChargeSample/ReferenceProduction/A_ReferenceRider_ChargeSweep.A_ReferenceRider_ChargeSweep",
+  "seconds": 5.800000190734863,
+  "scope": "Only charge rider sequence reimported; existing native Montage, Notify, horse sequence, and other attacks retained. Needs fresh runtime validation."
+}

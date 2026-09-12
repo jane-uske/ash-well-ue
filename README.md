@@ -1,13 +1,14 @@
 # Ash Well — Unreal
 
-## 当前进度（2026-09-11）
+## 当前进度（2026-09-12）
 
-当前制作阶段为骑战 Boss 的“冲锋横扫”质量样本。新资产、AnimBP、Montage、Notify 与 UE 原生马匹 IK 重定向已实际运行，保留原六招入口。当前 A/B 连续实机录像已交付为待验收候选；C 普通输入尝试受操作工具限制，未通过。详见 [样本状态、录像与启动/回退](Docs/Implementation/MountedBoss/ChargeSample/STATUS.md)。本轮不扩世界、剧情或背包。
+当前制作目标是以选定原片为参考的骑战 Boss“冲锋横扫”质量样本。**六招都保留，只有冲锋正在按新流程精修；其余五招有实现，尚非同等美术/动画完成度。** 人马独立骨架，AnimBP、Montage、Notify 与原生接触约束已实际运行。本轮允许按参考重排冲锋时序和调整地形后重新验证碰撞；不扩世界、剧情或背包。
 
-- 骑战入口：`Scripts/launch_mounted_boss.command`。六招、阶段变化、死亡/胜利和重试已实现；马步滑移、完整自然交锋与美术仍待打磨。
-- 守井者入口：`Scripts/launch_station_gate.command`。保留现有主角 v02、长剑与原战斗基线。
-- 验证：样本战斗实现版本 27/27 必要回归（含原六招与守井者）；后续录制/盾朝向修正的最新二进制 5/5 针对性回归。版本 hash 与覆盖范围见样本状态，不能作为视觉验收。旧阶段测试保留在 [验收矩阵](Docs/Implementation/MountedBoss/qa_matrix.json)。
-- 私有远程仓库：[jane-uske/ash-well-ue](https://github.com/jane-uske/ash-well-ue)。旧网页原型仓库独立保留。
+- 运行入口：`Scripts/launch_mounted_charge_sample.command`。用户已暂停精修和继续放大，先做[招式与打击反馈调研](Docs/Implementation/MountedBoss/TREE_SENTINEL_RESEARCH_20260912.md)。A需返修、B待验收；真人C初测、最终验收均未完成。
+- 制作接续、精确版本与已知问题：[原片复刻状态](Docs/Implementation/MountedBoss/ChargeSample/REFERENCE_PRODUCTION.md)，[交付索引](Docs/Verification/MountedChargeSample/ReferenceProduction/DELIVERY_STATUS.json)。状态文件优先于下方历史记录。
+- 守井者入口：`Scripts/launch_station_gate.command`。原六招、主角、长剑、死亡重试和战斗基线保留。
+- 专项录像使用显式A/B检查场景，不能当成普通输入完整Boss实战；功能回归不能代替视觉验收或真人C初测。每次比例/挂点修改需要新版本判定复测。
+- 工作分支`codex/mounted-charge-standard`，私有远程[jane-uske/ash-well-ue](https://github.com/jane-uske/ash-well-ue)；不合并main。旧网页原型仓库独立保留。
 
 ## 既有方向与文档入口（2026-09-10）
 

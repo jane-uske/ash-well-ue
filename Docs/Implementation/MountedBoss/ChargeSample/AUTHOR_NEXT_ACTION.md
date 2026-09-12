@@ -9,3 +9,8 @@
 5. 先验证两条Montage进度、可见接触/判定、位移、恢复/中断/死亡/重试，再录制正常速度A/B候选。未经动态验收不迁移第二招。C始终使用自然AI、正式输入和完整血量。
 
 当前A/B候选未获动态验收，本文件是可接续接口说明，不是推广批准。
+
+
+## 2026-09-12 骑士比例派生步骤
+
+当前骑士运行缩放为1.60，原冲锋源握柄轨迹按1.35制作。重导基础动画后必须先运行 `adapt_mounted_rider_proportions.py`（Blender），再在UE编辑器执行 `import_mounted_rider_proportions.py`。它用Blender原生两骨IK及Copy Rotation生成独立派生FBX，保持放大后的手臂长度与原世界握柄/刃向，重导既有冲锋AnimSequence；原生Montage、Notify与马匹序列保持。可编辑约束源位于`SourceAssets/MountedReferenceProduction/ProportionRevision/RiderGripConstraints.blend`。不要以扩大Sweep半径代替动画适配。任何再次改变骑士缩放都要更新这份适配并复测平地/坡地命中与闪避。这不是第二招制作授权。

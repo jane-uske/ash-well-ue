@@ -1,0 +1,14 @@
+{
+  "scope": "Native window recording of explicit A/B fixture, not human C",
+  "mode": "charge",
+  "pid": 81299,
+  "module_and_assets": "version.json",
+  "video_seconds": 30.15,
+  "audio_seconds": 30.120437,
+  "duration_gap_seconds": 0.029562999999999562,
+  "av_duration_gate_passed": true,
+  "cuts": 0,
+  "speed": 1,
+  "interpolation": false,
+  "directory": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/ReferenceProduction/Native-charge-192959"
+}

@@ -1,0 +1,21 @@
+{
+  "audio_buffers" : 1506,
+  "dropped_audio_buffers" : 0,
+  "dropped_video_buffers" : 0,
+  "height" : 1112,
+  "interpolation" : false,
+  "microphone" : false,
+  "pid" : 81299,
+  "requested_fps" : 60,
+  "requested_seconds" : 30,
+  "retiming" : false,
+  "source" : "SCStream includes only selected owned window; AVAssetWriter receives original CMSampleBuffer PTS",
+  "started_utc" : "2026-09-12T11:30:07.594Z",
+  "stop_requested" : false,
+  "stream_error" : "",
+  "video_frames" : 1736,
+  "wall_seconds" : 30.219014048576355,
+  "width" : 1920,
+  "window_title" : "AshWell (64-bit Development SF_METAL_SM6) ",
+  "writer_status" : 2
+}

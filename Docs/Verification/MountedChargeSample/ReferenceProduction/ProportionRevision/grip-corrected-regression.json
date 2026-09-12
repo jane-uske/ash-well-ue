@@ -1,0 +1,51 @@
+[
+  {
+    "path": "GripCorrectedRegression/20260912-194334-d35ebf82/test-results.json",
+    "terrain": "default",
+    "passed": true,
+    "cases": [
+      "hit_charge",
+      "dodge_charge",
+      "sample_pre_cancel",
+      "sample_cleanup",
+      "retry",
+      "loop"
+    ]
+  },
+  {
+    "path": "GripCorrectedRegression/20260912-194117-19e18753/test-results.json",
+    "terrain": "downhill",
+    "passed": true,
+    "cases": [
+      "hit_charge",
+      "dodge_charge"
+    ]
+  },
+  {
+    "path": "GripCorrectedRegression/20260912-194225-dc036851/test-results.json",
+    "terrain": "cross",
+    "passed": true,
+    "cases": [
+      "hit_charge",
+      "dodge_charge"
+    ]
+  },
+  {
+    "path": "GripCorrectedRegression/20260912-194259-ee8c5c7e/test-results.json",
+    "terrain": "rock_edge",
+    "passed": true,
+    "cases": [
+      "hit_charge",
+      "dodge_charge"
+    ]
+  },
+  {
+    "path": "GripCorrectedRegression/20260912-194150-c015411e/test-results.json",
+    "terrain": "uphill",
+    "passed": true,
+    "cases": [
+      "hit_charge",
+      "dodge_charge"
+    ]
+  }
+]

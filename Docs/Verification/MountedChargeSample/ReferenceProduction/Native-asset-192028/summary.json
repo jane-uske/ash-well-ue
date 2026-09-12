@@ -1,0 +1,14 @@
+{
+  "scope": "Native window recording of explicit A/B fixture, not human C",
+  "mode": "asset",
+  "pid": 74723,
+  "module_and_assets": "version.json",
+  "video_seconds": 30.083333,
+  "audio_seconds": 30.023833,
+  "duration_gap_seconds": 0.059499999999999886,
+  "av_duration_gate_passed": true,
+  "cuts": 0,
+  "speed": 1,
+  "interpolation": false,
+  "directory": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/ReferenceProduction/Native-asset-192028"
+}
