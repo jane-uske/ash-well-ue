@@ -55,6 +55,8 @@ public:
     float GetHealthFraction() const { return Health / MaximumHealth; }
     float GetHealth() const { return Health; }
     bool HasSampleRig() const {return SampleRig!=nullptr;}
+    float GetGroundHeight() const {return GroundHeight;}
+    float GroundHeightAt(const FVector& Point) const;
     FVector GetAimPoint() const;
     bool IsDead() const { return State == EMountedBossState::Dead; }
     bool IsAttacking() const { return State == EMountedBossState::Windup || State == EMountedBossState::Active; }
@@ -65,6 +67,7 @@ public:
     FString GetStateLabel() const;
     FString GetAttackLabel() const;
     float GetStateTime() const { return StateTime; }
+    float GetAttackDuration() const {return Spec().Windup+Spec().Active+Spec().Recovery;}
     float GetAttackProgress() const;
     float GetSpeed() const { return Speed; }
     float GetCommittedYawDrift() const { return MaximumCommittedYawDrift; }
@@ -97,6 +100,8 @@ private:
     void StepCombat(float Dt);
     void StepMovement(float Dt, const FVector& Goal, float DesiredSpeed, bool bAllowTurning);
     void MoveSwept(const FVector& Delta);
+    bool QueryGround(const FVector& Point,FHitResult& Hit) const;
+    void RefreshGroundSupport(float DeltaSeconds);
     void SelectAttack();
     void TryDamage();
     void CacheWeaponSweepPose();
@@ -113,9 +118,14 @@ private:
     EMountedBossState State = EMountedBossState::Idle;
     EMountedBossAttack AttackKind = EMountedBossAttack::Sweep;
     FVector Home = FVector::ZeroVector, ArenaCenter = FVector::ZeroVector;
+    float GroundHeight=0;
+    bool bGroundSupported=false;
+    FVector GroundNormal=FVector::UpVector;
+    FQuat GroundTilt=FQuat::Identity;
     FVector2D ArenaHalfExtents = FVector2D(2400,1900);
     float Health = MaximumHealth, StateTime = 0, FightTime = 0;
     float Speed = 0, ActualSpeed = 0, DistanceTravelled = 0, GaitPhase = 0, LeashTime = 0;
+    float AuthoredFrameSpeed=0;
     float CommittedYaw = 0, MaximumCommittedYawDrift = 0, DecisionDelay = .7f;
     float LastHitTime = -10, HitReaction = 0, HoofDistance = 0, LastTravel = 0;
     float Cooldowns[6] = {0,0,0,0,0,0};

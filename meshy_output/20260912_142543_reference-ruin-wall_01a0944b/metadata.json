@@ -1,0 +1,24 @@
+{
+  "project_name": "image-to-3d",
+  "folder": "20260912_142543_reference-ruin-wall_01a0944b",
+  "root_task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+  "created_at": "2026-09-12T14:29:31.913438",
+  "updated_at": "2026-09-12T14:29:31.913446",
+  "tasks": [
+    {
+      "task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+      "task_type": "image-to-3d",
+      "stage": "downloaded",
+      "files": [
+        "model.glb",
+        "reference.png",
+        "thumbnail.png",
+        "texture_0_base_color.png",
+        "texture_0_metallic.png",
+        "texture_0_roughness.png",
+        "texture_0_normal.png"
+      ],
+      "created_at": "2026-09-12T14:29:31.913446"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "reference-flat-rock",
+  "dimensions_cm": [
+    330,
+    210,
+    65
+  ],
+  "status": "downloaded",
+  "reserved_credits": 35,
+  "reference_sha256": "c5d212844791888c51364c52360532043754499fd58175407d8579dfa2c798b6",
+  "submitted_utc": "2026-09-12T06:26:14.614587+00:00",
+  "task_id": "01a0944b-94b6-747e-b29d-354deba59a24",
+  "project_dir": "meshy_output/20260912_142619_reference-flat-rock_01a0944b",
+  "consumed_credits": 35,
+  "balance_after": 2259,
+  "files": {
+    "model.glb": {
+      "bytes": 34075676,
+      "sha256": "9de293cf007ab524ba27faf4181b646a425db294d72a4b12b4fcc5d0ea5c0d46"
+    },
+    "reference.png": {
+      "bytes": 2694480,
+      "sha256": "c5d212844791888c51364c52360532043754499fd58175407d8579dfa2c798b6"
+    },
+    "thumbnail.png": {
+      "bytes": 101121,
+      "sha256": "2fb938a93b6703143238683a7565d500a1e4a4dfe651aef4d081d02197263427"
+    },
+    "texture_0_base_color.png": {
+      "bytes": 28721469,
+      "sha256": "c56e2f82ed2d44b5c312b74231638b48011dae2a622b5c9207b826df8fb78824"
+    },
+    "texture_0_metallic.png": {
+      "bytes": 20819,
+      "sha256": "743b020c03d7d150d45258089f8a6e13d3769f6725be142daf7a79352525007b"
+    },
+    "texture_0_roughness.png": {
+      "bytes": 1601721,
+      "sha256": "1ec6606193effb7fe611a76afc3382f9fe13cdf4378255bc47ddd7a41726dd29"
+    },
+    "texture_0_normal.png": {
+      "bytes": 27671583,
+      "sha256": "2df2907122b56e90f94bc34ac4378574b91b1c0b8e2362b90180c9dbb3d31b8e"
+    }
+  }
+}

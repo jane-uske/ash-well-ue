@@ -103,9 +103,14 @@ void AAshWellCombatCharacter::BeginPlay()
         SetActorRotation(FRotator::ZeroRotator);
         FActorSpawnParameters Spawn;Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
         MountedBoss=GetWorld()->SpawnActor<AAshWellMountedBoss>(FVector(600,0,0),FRotator(0,180,0),Spawn);
-        if(MountedBoss)MountedBoss->SetArenaBounds(FVector::ZeroVector,FVector2D(2400,1900));
+        if(MountedBoss)
+        {
+            MountedBoss->SetArenaBounds(FVector::ZeroVector,FVector2D(2400,1900));
+            FVector Start=GetActorLocation();Start.Z=MountedBoss->GroundHeightAt(Start)+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2;
+            SetActorLocation(Start,false,nullptr,ETeleportType::TeleportPhysics);
+        }
         if(FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview")))
-        {SetActorLocation(FVector(180,-200,88),false,nullptr,ETeleportType::TeleportPhysics);bLockedOn=true;}
+        {SetActorLocation(FVector(180,-200,MountedBoss?MountedBoss->GroundHeightAt(FVector(180,-200,0))+90:88),false,nullptr,ETeleportType::TeleportPhysics);bLockedOn=true;}
         FParse::Value(FCommandLine::Get(),TEXT("MountedProbe="),MountedProbe);
     }
     auto LoadAnimation=[](const TCHAR* Suffix)
@@ -160,7 +165,7 @@ void AAshWellCombatCharacter::BeginPlay()
             auto* Cloak=LoadObject<USkeletalMesh>(nullptr,TEXT("/Game/AshWell/Combat/SwordPass/SK_TravellerCloak.SK_TravellerCloak"));
             if(Cloak)
             {
-                TravellerCloak=NewObject<USkeletalMeshComponent>(this,TEXT("TravellerCloak"));AddInstanceComponent(TravellerCloak);TravellerCloak->SetupAttachment(GetMesh());TravellerCloak->SetSkeletalMesh(Cloak);TravellerCloak->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/AshWell/Combat/SwordPass/M_TravellerCloak.M_TravellerCloak")));TravellerCloak->SetMaterial(1,TravellerCloak->GetMaterial(0));TravellerCloak->SetCollisionEnabled(ECollisionEnabled::NoCollision);TravellerCloak->RegisterComponent();TravellerCloak->SetLeaderPoseComponent(GetMesh());
+                TravellerCloak=NewObject<USkeletalMeshComponent>(this,TEXT("TravellerCloak"));AddInstanceComponent(TravellerCloak);TravellerCloak->SetupAttachment(GetMesh());TravellerCloak->SetSkeletalMesh(Cloak);TravellerCloak->SetMaterial(0,LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/AshWell/Combat/SwordPass/M_TravellerCloak.M_TravellerCloak")));TravellerCloak->SetMaterial(1,TravellerCloak->GetMaterial(0));TravellerCloak->SetCollisionEnabled(ECollisionEnabled::NoCollision);TravellerCloak->SetLeaderPoseComponent(GetMesh());
             }
         }
         SwordScabbard=NewObject<UStaticMeshComponent>(this,TEXT("TravellerScabbard"));AddInstanceComponent(SwordScabbard);SwordScabbard->SetupAttachment(RootComponent);SwordScabbard->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Game/AshWell/Combat/SwordPass/SM_TravellerScabbard.SM_TravellerScabbard")));SwordScabbard->SetCollisionEnabled(ECollisionEnabled::NoCollision);SwordScabbard->RegisterComponent();
@@ -197,6 +202,10 @@ void AAshWellCombatCharacter::BeginPlay()
         auto* Takeoff=LoadJump(TEXT("Takeoff"));auto* Air=LoadJump(TEXT("Air"));auto* Land=LoadJump(TEXT("Land"));
         if(Takeoff&&Air&&Land){JumpAnimation=Takeoff;JumpAirAnimation=Air;JumpLandAnimation=Land;}
     }
+    // Register only the final mesh/animation combination. Earlier registration
+    // exposed a transient cloak render state while HeroComplete replaced its skin.
+    if(TravellerCloak&&!TravellerCloak->IsRegistered())
+    {TravellerCloak->RegisterComponent();TravellerCloak->ForceClothNextUpdateTeleportAndReset();}
     GetCharacterMovement()->bEnablePhysicsInteraction=false;
     GetCharacterMovement()->MaxWalkSpeed=240;
     GetCharacterMovement()->JumpZVelocity=420;
@@ -317,7 +326,7 @@ bool AAshWellCombatCharacter::ShouldUpdateLocomotion() const {return ActionState
 bool AAshWellCombatCharacter::IsDead() const {return ActionState==EAction::Dead;}
 bool AAshWellCombatCharacter::HasWon() const {return MountedBoss?MountedBoss->IsDead():Warden&&Warden->IsDead();}
 bool AAshWellCombatCharacter::HasPower() const {return bMountedExperiment?bEncounterActive||HasWon():Arena&&Arena->IsPowered();}
-FVector AAshWellCombatCharacter::GetConsolePoint() const {return bMountedExperiment?FVector(-1750,0,0):Arena?Arena->GetConsoleLocation():GetActorLocation();}
+FVector AAshWellCombatCharacter::GetConsolePoint() const {return bMountedExperiment?FVector(-1750,0,MountedBoss?MountedBoss->GroundHeightAt(FVector(-1750,0,0)):0):Arena?Arena->GetConsoleLocation():GetActorLocation();}
 FVector AAshWellCombatCharacter::GetEntryPoint() const {return Arena?Arena->GetEntryPoint():GetActorLocation();}
 bool AAshWellCombatCharacter::IsEntryClosed() const {return Arena&&!Arena->IsEntryOpen();}
 bool AAshWellCombatCharacter::IsInvulnerable() const {return ActionState==EAction::Dodge&&StateTime>=.07f&&StateTime<=.37f;}
@@ -457,7 +466,7 @@ void AAshWellCombatCharacter::Interact()
     {
         if(MountedBoss&&!HasWon()&&!bEncounterActive&&!MountedBoss->IsReturning())
         {
-            if(GetActorLocation().X<-1650)SetActorLocation(FVector(-1450,0,88),false,nullptr,ETeleportType::TeleportPhysics);
+            if(GetActorLocation().X<-1650)SetActorLocation(FVector(-1450,0,MountedBoss->GroundHeightAt(FVector(-1450,0,0))+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2),false,nullptr,ETeleportType::TeleportPhysics);
             bEncounterActive=true;MountedBoss->ActivateEncounter(this);Feedback=TEXT("骑卫已发现你；观察肩臂与马头的起势");FeedbackTime=3;
         }
         return;
@@ -562,13 +571,13 @@ void AAshWellCombatCharacter::UpdateCamera(float Dt)
         const bool SampleCamera=MountedBoss&&MountedBoss->HasSampleRig();
         // Readable rider/weapon framing for the large mounted sample. Collision
         // probing and the retained Warden / original mounted cameras are unchanged.
-        const FVector2D CameraRange=SampleCamera?FVector2D(570,720):FVector2D(650,800);
+        const FVector2D CameraRange=SampleCamera?FVector2D(460,540):FVector2D(650,800);
         const float Length=bLockedOn?FMath::GetMappedRangeValueClamped(FVector2D(180,1500),CameraRange,D):540;
         CameraBoom->TargetArmLength=FMath::FInterpTo(CameraBoom->TargetArmLength,Length,Dt,3);
         CameraBoom->TargetOffset.Z=115;
         CameraBoom->SocketOffset=FMath::VInterpTo(CameraBoom->SocketOffset,FVector(0,bLockedOn?25:55,25),Dt,5);
         CameraBoom->SocketOffset.Z=25+(BattleFX?BattleFX->Shake()*FMath::Sin(GetWorld()->GetRealTimeSeconds()*65)*1.6f:0)+DamageFlash*FMath::Sin(StateTime*65)*.6f;
-        FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?(SampleCamera?74.f:80.f):76.f,Dt,3);
+        FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?(SampleCamera?65.f:80.f):76.f,Dt,3);
         return;
     }
     if(IsEntryClosed())bLockedOn=false;

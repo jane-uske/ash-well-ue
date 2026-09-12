@@ -82,11 +82,14 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
     const bool HitCase=MountedProbe.StartsWith(TEXT("hit_"));
     const bool DodgeCase=MountedProbe.StartsWith(TEXT("dodge_"));
     const FString AttackName=(HitCase||DodgeCase)?MountedProbe.RightChop(HitCase?4:6):TEXT("");
+    float QAX=0,QAY=0,QAYaw=0;
+    FParse::Value(FCommandLine::Get(),TEXT("MountedQAX="),QAX);FParse::Value(FCommandLine::Get(),TEXT("MountedQAY="),QAY);FParse::Value(FCommandLine::Get(),TEXT("MountedQAYaw="),QAYaw);
+    const FTransform QAFrame(FRotator(0,QAYaw,0),FVector(QAX,QAY,0));
     auto Place=[&](FVector P, float Yaw)
-    {SetActorLocation(P,false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,Yaw,0));GetCharacterMovement()->StopMovementImmediately();};
+    {P=QAFrame.TransformPosition(P);Yaw+=QAYaw;P.Z=MountedBoss->GroundHeightAt(P)+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2;SetActorLocation(P,false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,Yaw,0));GetCharacterMovement()->StopMovementImmediately();};
     if(MountedQAStep==0&&MountedQATime>.7f)
     {
-        Interact();bLockedOn=true;MountedBoss->SetQAStationary(true);MountedBoss->SetActorLocation(FVector::ZeroVector);MountedBoss->SetActorRotation(FRotator::ZeroRotator);
+        Interact();bLockedOn=true;MountedBoss->SetQAStationary(true);MountedBoss->SetActorLocation(FVector(QAX,QAY,MountedBoss->GroundHeightAt(FVector(QAX,QAY,0))));MountedBoss->SetActorRotation(FRotator(0,QAYaw,0));
         MountedQAStep=1;
         if(MountedProbe==TEXT("scene")){Place(FVector(-700,500,88),-25);if(Controller)Controller->SetControlRotation(FRotator(-10,-25,0));}
         else if(MountedProbe==TEXT("light")||MountedProbe==TEXT("heavy")||MountedProbe==TEXT("victory"))Place(FVector(0,150,88),-90);
@@ -145,7 +148,7 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         else if(MountedQAStep==4&&InCancelWindow){MountedBoss->SetQAHealth(0);MountedQAStep=5;}
         if(MountedQAStep==5&&MountedQATime>6)
         {
-            if(!MountedBoss->IsDead()||MountedBoss->GetActorLocation().Z>.5f||MountedBoss->IsHitWindowOpen())++MountedQAFailures;
+            if(!MountedBoss->IsDead()||MountedBoss->GetActorLocation().Z-MountedBoss->GetGroundHeight()>.5f||MountedBoss->IsHitWindowOpen())++MountedQAFailures;
             MountedBoss->ResetEncounter();MountedBoss->ReceiveMeleeHit(1,GetActorLocation(),987654);if(MountedBoss->ReceiveMeleeHit(1,GetActorLocation(),987654))++MountedQAFailures;MountedBoss->ResetEncounter();MountedQAStep=6;
         }
         if(MountedQAStep==6&&MountedQATime>7){if(MountedBoss->IsHitWindowOpen()||MountedBoss->GetTelemetry()->GetNumberField(TEXT("active_audio_components"))>0)++MountedQAFailures;MountedQAStep=7;}
@@ -168,7 +171,16 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
     if(MountedProbe==TEXT("body")&&MountedQATime>1.2f&&MountedQATime<4.5f)
     {
         AddMovementInput(FVector(-1,0,0),1);const float Separation=FVector::Dist2D(GetActorLocation(),MountedBoss->GetActorLocation());ProbeMinimumSeparation=FMath::Min(ProbeMinimumSeparation,Separation);
-        MountedMinBodyGap=FMath::Min(MountedMinBodyGap,Separation-float(MountedBoss->BodyCollision->GetScaledBoxExtent().X)-GetCapsuleComponent()->GetScaledCapsuleRadius());
+        // A pitched body no longer has a flat X-distance clearance. Query its
+        // native collision shape against the capsule axis, retaining the separate
+        // actual-overlap assertion below.
+        const float Radius=GetCapsuleComponent()->GetScaledCapsuleRadius();
+        const float HalfAxis=GetCapsuleComponent()->GetScaledCapsuleHalfHeight()-Radius;
+        auto AxisDistance=[&](float T)
+        {FVector Closest;return MountedBoss->BodyCollision->GetClosestPointOnCollision(GetActorLocation()+FVector(0,0,(2*T-1)*HalfAxis),Closest);};
+        float Low=0,High=1;
+        for(int I=0;I<24;++I){const float A=Low+(High-Low)/3,B=High-(High-Low)/3;if(AxisDistance(A)<AxisDistance(B))High=B;else Low=A;}
+        MountedMinBodyGap=FMath::Min(MountedMinBodyGap,AxisDistance((Low+High)/2)-Radius);
         FCollisionQueryParams BodyQuery(SCENE_QUERY_STAT(MountedBodyQA),false,this);
         if(GetWorld()->OverlapBlockingTestByChannel(GetActorLocation(),GetActorQuat(),ECC_Pawn,FCollisionShape::MakeCapsule(GetCapsuleComponent()->GetScaledCapsuleRadius()-.25f,GetCapsuleComponent()->GetScaledCapsuleHalfHeight()-.25f),BodyQuery))MountedBodyPenetration+=Dt;
     }
@@ -196,7 +208,8 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         if(MountedQAStep==2&&ActionState==EAction::Attack&&StateTime>.71f){Dodge();MountedQAStep=3;}
         if(MountedQAStep==3&&DodgeCount==1&&ActionState==EAction::Idle){if(AttackCount!=1)++MountedQAFailures;Stamina=0;Attack();HeavyAttack();Dodge();if(AttackCount!=1||DodgeCount!=1)++MountedQAFailures;MountedQAStep=4;}
     }
-    const float Duration=Cleanup?8.f:MountedProbe==TEXT("loop")?90.f:(MountedProbe==TEXT("movement")||MountedProbe==TEXT("camera"))?16.f:(MountedProbe==TEXT("disengage")||MountedProbe==TEXT("death"))?20.f:MountedProbe==TEXT("victory")?35.f:6.f;
+    const bool CompleteCharge=(HitCase||DodgeCase)&&AttackName==TEXT("charge");
+    const float Duration=Cleanup?8.f:MountedProbe==TEXT("loop")?90.f:(MountedProbe==TEXT("movement")||MountedProbe==TEXT("camera"))?16.f:(MountedProbe==TEXT("disengage")||MountedProbe==TEXT("death"))?20.f:MountedProbe==TEXT("victory")?35.f:(CompleteCharge||NaturalCharge)?FMath::Max(6.f,1.5f+MountedBoss->GetAttackDuration()):6.f;
     if(MountedProbe==TEXT("victory")&&HasWon()&&EndingTime>.8f){Finish();return;}
     if(MountedProbe==TEXT("loop")&&((IsDead()&&StateTime>1.f)||(HasWon()&&EndingTime>1.f))){Finish();return;}
     if(MountedQATime>Duration)Finish();

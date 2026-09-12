@@ -1,0 +1,66 @@
+{
+  "SM_ReferenceGrassTall": {
+    "source_object": "grass_medium_01_geonodes_tall_a_LOD0",
+    "triangles_before": 290,
+    "triangles": 290,
+    "materials": [
+      "grass_medium_01"
+    ],
+    "faces_per_material": {
+      "0": 147
+    },
+    "wind_weight": "vertex alpha, rooted quadratic height"
+  },
+  "SM_ReferenceGrassMid": {
+    "source_object": "grass_medium_01_geonodes_mid_b_LOD2",
+    "triangles_before": 334,
+    "triangles": 334,
+    "materials": [
+      "grass_medium_01"
+    ],
+    "faces_per_material": {
+      "0": 177
+    },
+    "wind_weight": "vertex alpha, rooted quadratic height"
+  },
+  "SM_ReferenceGrassDense": {
+    "source_object": "grass_medium_01_geonodes_large_a_LOD2",
+    "triangles_before": 1011,
+    "triangles": 1011,
+    "materials": [
+      "grass_medium_01"
+    ],
+    "faces_per_material": {
+      "0": 527
+    },
+    "wind_weight": "vertex alpha, rooted quadratic height"
+  },
+  "SM_ReferenceBroadleaf": {
+    "source_object": "jacaranda_tree_LOD1",
+    "triangles_before": 1845603,
+    "triangles": 199862,
+    "materials": [
+      "jacaranda_tree_trunk",
+      "jacaranda_tree_branches",
+      "jacaranda_tree_leaves"
+    ],
+    "faces_per_material": {
+      "0": 489,
+      "1": 71980,
+      "2": 127393
+    },
+    "wind_weight": "vertex alpha, rooted quadratic height"
+  },
+  "SM_ReferenceBareTree": {
+    "source_object": "jacaranda_tree_geometry_nodes.001",
+    "triangles_before": 282836,
+    "triangles": 66357,
+    "materials": [
+      "jacaranda_tree_branches"
+    ],
+    "faces_per_material": {
+      "0": 66357
+    },
+    "wind_weight": "vertex alpha, rooted quadratic height"
+  }
+}

@@ -112,7 +112,7 @@ def check_fixture(case: str, data: dict, engine_log: str, expected_hp: float = 9
                 no_duplicate_contact=boss.get("contacts") == 1,
             )
     elif case in ("cleanup","sample_cleanup"):
-        checks.update(cancelled=boss.get("cancelled_attacks",0)>=1, no_late_damage=data.get("damage_count")==0, no_open_window=boss.get("hit_window_open") is False, duplicate_rejected=boss.get("duplicate_receive_rejected",0)>=1, grounded=near(boss.get("z"),0), cleanup_steps=data.get("step",0)>=5)
+        checks.update(cancelled=boss.get("cancelled_attacks",0)>=1, no_late_damage=data.get("damage_count")==0, no_open_window=boss.get("hit_window_open") is False, duplicate_rejected=boss.get("duplicate_receive_rejected",0)>=1, grounded=near(boss.get("ground_clearance_cm"),0) and boss.get("ground_supported") is True, cleanup_steps=data.get("step",0)>=5)
         if case=='sample_cleanup':checks.update(notify_windows_exercised=boss.get('window_begins',0)>=2, montage_stopped=boss.get('montage_playing') is False, notify_cleared=boss.get('notify_window') is False)
     elif case=='sample_pre_cancel':
         checks.update(cancelled_before_window=data.get('step')==4 and boss.get('cancelled_attacks',0)>=1,no_late_notify=boss.get('window_begins')==0,window_closed=boss.get('notify_window') is False,montage_stopped=boss.get('montage_playing') is False,no_late_damage=data.get('damage_count')==0)
@@ -125,7 +125,7 @@ def check_fixture(case: str, data: dict, engine_log: str, expected_hp: float = 9
             travelled=finite(boss.get("distance_travelled_cm")) and boss["distance_travelled_cm"] > 800,
             walk_clip_loaded=boss.get("walk_loaded") is True,
             run_clip_loaded=boss.get("run_loaded") is True,
-            grounded=finite(boss.get("z")) and abs(boss["z"]) < 10,
+            grounded=finite(boss.get("ground_clearance_cm")) and abs(boss["ground_clearance_cm"]) < 10 and boss.get("ground_supported") is True,
             stayed_in_arena=(finite(boss.get("x")) and finite(boss.get("y"))
                              and abs(boss["x"]) < 2400 and abs(boss["y"]) < 1900),
             remained_alive=data.get("dead") is False and boss.get("state") != "dead",
@@ -208,7 +208,7 @@ def stop_owned_process(process: subprocess.Popen) -> dict:
     return result
 
 
-def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False, sample: bool = False, foot_placement: bool = False) -> dict:
+def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False, sample: bool = False, foot_placement: bool = False, terrain: str = "default", foot_audit: bool = False) -> dict:
     case_dir = run_dir / case
     case_dir.mkdir(parents=True)
     probe_file = OUTPUT / f"probe-{case}.json"
@@ -225,6 +225,10 @@ def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, captu
                f"-MountedQARun={run_token}", f"-abslog={case_dir / 'engine.log'}"]
     if sample:command.append('-MountedChargeSample')
     if foot_placement:command.append('-MountedFootPlacement')
+    if foot_audit:command.append('-MountedFootAudit')
+    origins={'default':(0,0,0),'uphill':(0,800,-90),'downhill':(0,-800,90),'cross':(-800,0,0),'rock_edge':(-1450,650,0)}
+    ox,oy,yaw=origins[terrain]
+    command.extend([f'-MountedQAX={ox}',f'-MountedQAY={oy}',f'-MountedQAYaw={yaw}'])
     if capture:
         command.append("-MountedCapture")
         capture_dir=OUTPUT / "Capture" / case
@@ -283,10 +287,12 @@ def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, captu
             checks['standard_sample_loaded']=data.get('boss',{}).get('standard_sample') is True
             if case in ('hit_charge','dodge_charge'):
                 boss=data.get('boss',{})
-                checks['montage_finished_and_returned']=boss.get('state')=='approach' and near(boss.get('montage_time'),3.55)
+                expected_seconds=json.loads((ROOT/'SourceAssets/MountedReferenceProduction/charge-timing.json').read_text())['phase_seconds']['end']
+                checks['montage_finished_and_returned']=boss.get('state')=='approach' and near(boss.get('montage_time'),expected_seconds)
                 checks['one_window_closed']=boss.get('window_begins')==1 and boss.get('window_ends')==1 and boss.get('notify_window') is False
                 checks['six_beats_observed']=boss.get('phase_notifies')==6
-                checks['horse_passed_player']=boss.get('x',0)>800
+                checks['horse_passed_player']=(boss.get('x',0)-ox)*math.cos(math.radians(yaw))+(boss.get('y',0)-oy)*math.sin(math.radians(yaw))>800
+                checks['grounded_on_terrain']=boss.get('ground_supported') is True and near(boss.get('ground_clearance_cm'),0,.5)
         checks["engine_log_present"] = bool(engine_log)
         checks["owned_process_stopped"] = cleanup.get("exit_code") is not None
         result.update(checks=checks, passed=all(checks.values()), failed_checks=[k for k, v in checks.items() if not v])
@@ -315,6 +321,8 @@ def main() -> int:
     parser.add_argument("--capture", action="store_true", help="Save timed native game frames for visual review.")
     parser.add_argument("--sample", action="store_true", help="Run unchanged fixtures against the opt-in standard-animation sample, with additional charge checks.")
     parser.add_argument("--foot-placement", action="store_true", help="Exercise the opt-in native four-limb Foot Placement candidate (requires --sample).")
+    parser.add_argument("--foot-audit",action="store_true")
+    parser.add_argument("--terrain",choices=["default","uphill","downhill","cross","rock_edge"],default="default")
     parser.add_argument("--list", action="store_true", help="List cases without starting UE.")
     args = parser.parse_args()
     if args.foot_placement and not args.sample:parser.error("--foot-placement requires --sample")
@@ -344,12 +352,12 @@ def main() -> int:
     run_dir = OUTPUT / "runs" / run_id
     run_dir.mkdir(parents=True)
     report = {"run_id": run_id, "started_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
-              "expected_boss_health": args.boss_health, "requested_cases": cases, "results": [],
+              "terrain":args.terrain,"expected_boss_health": args.boss_health, "requested_cases": cases, "results": [],
               "status": "running", "passed": False,
               "scope_note": "Runtime checks do not certify horse foot sliding, rider quality or camera occlusion."}
     try:
         for case in cases:
-            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture,args.sample,args.foot_placement)
+            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture,args.sample,args.foot_placement,args.terrain,args.foot_audit)
             if case.startswith("dodge_") and "checks" in result:
                 control = next((item for item in report["results"] if item["case"] == "hit_" + case[6:]), None)
                 result["checks"]["paired_hit_control_passed"] = bool(control and control["passed"])

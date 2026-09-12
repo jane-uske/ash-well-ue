@@ -3,6 +3,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Animation/AnimMontage.h"
+#include "Curves/CurveFloat.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/SkeletalMeshSocket.h"
@@ -56,6 +57,7 @@ UAshWellMountedSampleAnimInstance* AAshWellMountedSampleRig::RiderAnimation() co
 void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse)
 {
     if(!bReady)return;
+    if(Dt>0)PreviousChargeElapsed=ChargeElapsed;
     const FQuat Tilt=FRotator(LegacyPitch,0,0).Quaternion();
     Horse->SetRelativeRotation(Tilt*FRotator(0,90,0).Quaternion());
     Horse->SetRelativeLocation(FVector(-79,0,0)-Tilt.RotateVector(FVector(-79,0,0)));
@@ -65,7 +67,7 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
         // Individual BlendSpace samples carry their calibrated cadence. A second
         // speed multiplier here made the idle/walk transition slow down twice.
         A->StrideRate=1.f;
-        A->HorseContactAlpha=GetActorLocation().Z<3.f&&FMath::Abs(LegacyPitch)<1.f?1.f:0.f;
+        A->HorseContactAlpha=bGroundContactEnabled&&!bDeathPose&&FMath::Abs(LegacyPitch)<1.f?1.f:0.f;
     }
     if(DeferHorse)PendingHorseDelta+=Dt;
     else
@@ -86,6 +88,7 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
     const FVector RightTarget=Horse->GetSocketLocation(TEXT("SampleStirrupRight"))+SeatWorldRotation.RotateVector(FVector(0,0,13.4f));
     if(auto* A=RiderAnimation())
     {
+        A->RiderContactAlpha=FMath::FInterpConstantTo(A->RiderContactAlpha,bDeathPose?0.f:1.f,Dt,5.f);
         A->LeftFootTarget=Rider->GetComponentTransform().InverseTransformPosition(LeftTarget);A->RightFootTarget=Rider->GetComponentTransform().InverseTransformPosition(RightTarget);
         A->LegacyAlpha=FMath::FInterpConstantTo(A->LegacyAlpha,bLegacyPose&&!bChargeStarted?1.f:0.f,Dt,8.f);
         A->LegacyRightHand=Rider->GetComponentTransform().InverseTransformPosition(LegacyGrip);
@@ -100,21 +103,29 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
     }
     Rider->TickAnimation(Dt,false);Rider->RefreshBoneTransforms();
     if(bChargeStarted)
-    {auto* A=RiderAnimation();ChargeElapsed=A->Montage_IsActive(Charge)?FMath::Max(ChargeElapsed,A->Montage_GetPosition(Charge)):Charge->GetPlayLength();}
+    {
+        auto* A=RiderAnimation();const float End=Charge->GetPlayLength();
+        ChargeElapsed=A->Montage_IsActive(Charge)?FMath::Max(ChargeElapsed,A->Montage_GetPosition(Charge)):End;
+        // A held native Montage stops just short of the final sample. Canonicalize
+        // only its sub-millisecond endpoint, never the earlier blend-out interval.
+        if(!A->Montage_IsPlaying(Charge)&&ChargeElapsed>=End-.0001f)ChargeElapsed=End;
+    }
     Poleaxe->UpdateComponentToWorld();Shield->UpdateComponentToWorld();
     if(FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview"))&&FParse::Param(FCommandLine::Get(),TEXT("MountedReviewOrbit")))
     {
         // A-only inspection fixture: camera moves, animation remains at real time.
         ReviewTime+=Dt;const float Angle=ReviewTime*PI/10.f;
-        const FVector Focus=GetActorLocation()+FVector(0,0,210);
+        const FVector Focus=GetActorLocation()+FVector(0,0,bDeathPose?90:210);
         const FVector Eye=Focus+FVector(FMath::Cos(Angle)*740,FMath::Sin(Angle)*740,65);
         ReviewCamera->SetWorldLocationAndRotation(Eye,(Focus-Eye).Rotation());
         if(auto* PC=GetWorld()->GetFirstPlayerController())PC->SetViewTarget(this);
     }
     ReportTime+=Dt;
-    if(ReportTime>1.f)
+    if(ReportTime>1.f&&!DeferHorse)
     {
         ReportTime=0;auto* A=RiderAnimation();
+        if(bChargeStarted&&HorseCharge)
+        {auto* H=Horse->GetAnimInstance();UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_PAIR rider=%.4f horse=%.4f drift=%.4f"),GetChargeTime(),H->Montage_GetPosition(HorseCharge),FMath::Abs(GetChargeTime()-H->Montage_GetPosition(HorseCharge)));}
         const FVector L=Rider->GetSocketTransform(TEXT("LeftFoot"),RTS_Component).GetLocation();const FVector R=Rider->GetSocketTransform(TEXT("RightFoot"),RTS_Component).GetLocation();
         UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_POSE speed=%.1f montage=%.3f window=%d footL=%s footR=%s contactL=%.3f contactR=%.3f phase=%s"),Speed,GetChargeTime(),A->bWeaponWindow,*L.ToCompactString(),*R.ToCompactString(),FVector::Distance(Rider->GetSocketLocation(TEXT("LeftFoot")),LeftTarget),FVector::Distance(Rider->GetSocketLocation(TEXT("RightFoot")),RightTarget),*A->ActionPhase.ToString());
     }
@@ -122,14 +133,42 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
 void AAshWellMountedSampleRig::SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float Pitch,bool Enabled,FVector PelvisOffset)
 {LegacyGrip=Grip;LegacyDirection=Direction;LegacyShieldHand=ShieldHand;LegacyTorso=Torso;LegacyPitch=Pitch;bLegacyPose=Enabled;LegacyPelvisOffset=PelvisOffset;}
 bool AAshWellMountedSampleRig::HasAuthoredAction(FName Action) const{return ActionSet&&IsValid(ActionSet->Montages.FindRef(Action));}
+const FMountedAuthoredAction* AAshWellMountedSampleRig::GetActionDefinition(FName Action) const
+{return ActionSet?ActionSet->AuthoredActions.Find(Action):nullptr;}
+float AAshWellMountedSampleRig::GetAuthoredFrameSpeed(float Dt) const
+{
+    const auto* Definition=GetActionDefinition(ActiveAction);
+    if(!bChargeStarted||!Definition||!Definition->ForwardDistance||Dt<=SMALL_NUMBER)return 0;
+    return FMath::Max(0.f,(Definition->ForwardDistance->GetFloatValue(ChargeElapsed)-Definition->ForwardDistance->GetFloatValue(PreviousChargeElapsed))/Dt);
+}
 bool AAshWellMountedSampleRig::PlayCharge(){return PlayAction(TEXT("charge"));}
+bool AAshWellMountedSampleRig::PlayDeath()
+{
+    StopCharge();
+    auto* A=RiderAnimation();auto* H=Horse->GetAnimInstance();
+    if(!A||!H||!ActionSet||!ActionSet->RiderDeath||!ActionSet->HorseDeath)
+    {UE_LOG(LogTemp,Error,TEXT("AW_SAMPLE_DEATH_BLOCKED missing paired death assets"));return false;}
+    Charge=ActionSet->RiderDeath;HorseCharge=ActionSet->HorseDeath;ActiveAction=TEXT("death");
+    bDeathPose=true;ChargeElapsed=PreviousChargeElapsed=0;
+    bChargeStarted=A->Montage_Play(Charge,1.f)>0&&H->Montage_Play(HorseCharge,1.f)>0;
+    UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_DEATH ready=%d"),bChargeStarted);return bChargeStarted;
+}
 bool AAshWellMountedSampleRig::PlayAction(FName Action)
 {
     auto* A=RiderAnimation();if(!A||!HasAuthoredAction(Action))return false;
     StopCharge();Charge=ActionSet->Montages.FindRef(Action);A->ClearActionState();A->bActionNotifiesEnabled=true;
-    ChargeElapsed=0;bChargeStarted=A->Montage_Play(Charge,1.f)>0;return bChargeStarted;
+    ChargeElapsed=PreviousChargeElapsed=0;ActiveAction=Action;
+    bChargeStarted=A->Montage_Play(Charge,1.f)>0;
+    if(const auto* D=GetActionDefinition(Action))
+    {
+        HorseCharge=D->HorseMontage;
+        auto* H=Horse->GetAnimInstance();
+        if(!HorseCharge||!D->ForwardDistance||!H||H->Montage_Play(HorseCharge,1.f)<=0)
+        {UE_LOG(LogTemp,Error,TEXT("AW_SAMPLE_BLOCKED missing paired horse montage or displacement curve"));StopCharge();return false;}
+    }
+    return bChargeStarted;
 }
-void AAshWellMountedSampleRig::StopCharge(){bChargeStarted=false;if(auto* A=RiderAnimation()){A->Montage_Stop(.15f,Charge);A->ClearActionState();}}
+void AAshWellMountedSampleRig::StopCharge(){bChargeStarted=bDeathPose=false;if(auto* H=Horse->GetAnimInstance())if(HorseCharge)H->Montage_Stop(.15f,HorseCharge);HorseCharge=nullptr;ActiveAction=NAME_None;if(auto* A=RiderAnimation()){A->Montage_Stop(.15f,Charge);A->ClearActionState();}}
 float AAshWellMountedSampleRig::GetChargeTime() const {return ChargeElapsed;}
 bool AAshWellMountedSampleRig::IsChargePlaying() const {auto* A=RiderAnimation();return A&&Charge&&A->Montage_IsPlaying(Charge);}
 bool AAshWellMountedSampleRig::HasWeaponWindow() const {auto* A=RiderAnimation();return A&&A->bWeaponWindow;}

@@ -63,9 +63,9 @@ def main():
     debug_root = ROOT / 'Saved/MountedBoss/Debug'
     old_logs = set(debug_root.glob('*.jsonl'))
     command = [str(ENGINE), str(PROJECT), '/Game/AshWell/MountedBoss/L_MountedCourtyard',
-               '-game', '-windowed', '-ResX=1600', '-ResY=900', '-NoSplash',
+               '-game', '-windowed', '-ResX=1920', '-ResY=1080', '-NoSplash',
                '-CombatPrototype', '-MountedExperiment', '-MountedChargeSample',
-               '-MountedDebug', '-DisablePlugins=AllToolsets,ModelContextProtocol',
+               '-MountedDebug', '-MountedFootPlacement', '-DisablePlugins=AllToolsets,ModelContextProtocol',
                f'-abslog={folder}/engine.log']
     report = {'scope': 'human C initial test; not final acceptance', 'status': 'running',
               'head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
@@ -79,6 +79,8 @@ def main():
         report['input_source']='none; no input injected'
     report['source_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                             for p in (ROOT/'Source').rglob('*') if p.is_file() and p.suffix in ('.cpp','.h','.cs','.inl')}
+    from mounted_candidate_version import snapshot
+    write(folder/'version.json',snapshot())
     report['runner_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     write(folder/'session.json', report)
     print(f'真人 C 初测日志：{folder}', flush=True)

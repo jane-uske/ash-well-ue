@@ -34,10 +34,18 @@ AAshWellMountedBoss::AAshWellMountedBoss()
 
 void AAshWellMountedBoss::BeginPlay()
 {
-    Super::BeginPlay();Home=GetActorLocation();Tags.AddUnique(TEXT("AshWellCombatEnemy"));Tags.AddUnique(TEXT("AshWellMountedBoss"));
+    Super::BeginPlay();Home=GetActorLocation();GroundHeight=Home.Z;
+    RefreshGroundSupport(0);Home.Z=GroundHeight;SetActorLocation(Home);
+    Tags.AddUnique(TEXT("AshWellCombatEnemy"));Tags.AddUnique(TEXT("AshWellMountedBoss"));
     auto Audio=[](const TCHAR* N){const FString S=FString(TEXT("AW_Battle_"))+N;return LoadObject<USoundBase>(nullptr,*(FString(TEXT("/Game/AshWell/Combat/BattlePolish/"))+S+TEXT(".")+S));};
     SwingSound=Audio(TEXT("Swing"));ImpactSound=Audio(TEXT("GroundSlam"));HoofSound=Audio(TEXT("Kick"));
     InitializeVisuals();UpdatePose(0);CacheWeaponSweepPose();
+    if(SampleRig)if(const auto* D=SampleRig->GetActionDefinition(TEXT("charge")))
+    {
+        auto& ChargeSpec=AttackTuning[static_cast<int32>(EMountedBossAttack::Charge)];
+        ChargeSpec.Windup=D->Launch;ChargeSpec.Active=D->Brake-D->Launch;
+        ChargeSpec.Recovery=D->End-D->Brake;ChargeSpec.CommitLead=D->Launch-D->Commit;
+    }
 }
 
 const FMountedAttackSpec& AAshWellMountedBoss::Spec() const
@@ -58,7 +66,7 @@ void AAshWellMountedBoss::DebugCancelAttack()
 {
     if(!IsQAEnabled())return;
     ++CancelledAttacks;ClearAttackTransient();Speed=ActualSpeed=0;
-    SetActorLocation(FVector(GetActorLocation().X,GetActorLocation().Y,Home.Z));LeapHeight=0;
+    RefreshGroundSupport(0);SetActorLocation(FVector(GetActorLocation().X,GetActorLocation().Y,GroundHeight));LeapHeight=0;
     ChangeState(Target.IsValid()?EMountedBossState::Approach:EMountedBossState::Idle);
     DecisionDelay=.5f;UpdatePose(0);CacheWeaponSweepPose();
 }
@@ -95,7 +103,7 @@ void AAshWellMountedBoss::ResetEncounter()
     bHeadingCommitted=bDamageConsumed=bImpactPlayed=false;LeashTime=Speed=FightTime=HitReaction=0;
     for(float& C:Cooldowns)C=0;
     BodyCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-    SetActorLocation(Home);SetActorRotation(FRotator(0,180,0));Target.Reset();++ResetCount;
+    SetActorLocation(Home);SetActorRotation(FRotator(0,180,0));RefreshGroundSupport(0);Target.Reset();++ResetCount;
     ChangeState(EMountedBossState::Idle);UpdatePose(0);CacheWeaponSweepPose();
     UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_RESET count=%d"),ResetCount);
 }
@@ -117,6 +125,7 @@ void AAshWellMountedBoss::ChangeState(EMountedBossState NewState)
     if(State==EMountedBossState::Dead)
     {
         Speed=0;bHeadingCommitted=false;bComboPending=false;BodyCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        if(SampleRig)SampleRig->PlayDeath();
         PlaySound(ImpactSound,GetActorLocation(),.50f,.70f);OnDefeated.Broadcast();
     }
 }
@@ -142,6 +151,7 @@ void AAshWellMountedBoss::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);
     const bool StandardFrame=SampleRig&&HorseMesh;
     if(StandardFrame)SampleRig->EvaluatePose(DeltaSeconds,FMath::Max(ActualSpeed,SampleRig->UsesFootPlacement()?FMath::Min(TurnSpeed,180.f):0.f),SampleRig->UsesFootPlacement());
+    AuthoredFrameSpeed=SampleRig?SampleRig->GetAuthoredFrameSpeed(DeltaSeconds):0;
     const int32 Steps=FMath::Clamp(FMath::CeilToInt(DeltaSeconds*120.f),1,240);
     for(int32 I=0;I<Steps;++I)StepCombat(DeltaSeconds/Steps);
     UpdateHorseAnimation(DeltaSeconds);
@@ -229,8 +239,8 @@ void AAshWellMountedBoss::StepCombat(float Dt)
                 // The actor is the sole root displacement source. All children follow.
                 const float Flight=.68f,T=FMath::Min(StateTime/Flight,1.f);
                 LeapHeight=150.f*4*T*(1-T);MaximumLeapHeight=FMath::Max(MaximumLeapHeight,LeapHeight);
-                MoveSwept(FVector(0,0,Home.Z+LeapHeight-GetActorLocation().Z));
-                if(StateTime>=Flight&&!bLeapLanded){MoveSwept(FVector(0,0,Home.Z-GetActorLocation().Z));bLeapLanded=GetActorLocation().Z<=Home.Z+.5f;LeapHeight=FMath::Max(0.f,float(GetActorLocation().Z-Home.Z));}
+                MoveSwept(FVector(0,0,GroundHeight+LeapHeight-GetActorLocation().Z));
+                if(StateTime>=Flight&&!bLeapLanded){MoveSwept(FVector(0,0,GroundHeight-GetActorLocation().Z));bLeapLanded=bGroundSupported&&GetActorLocation().Z<=GroundHeight+.5f;LeapHeight=FMath::Max(0.f,float(GetActorLocation().Z-GroundHeight));}
             }
             break;
         }
@@ -262,8 +272,8 @@ void AAshWellMountedBoss::StepCombat(float Dt)
         }
         default:StepMovement(Dt,Goal,0,false);break;
     }
-    if(State!=EMountedBossState::Active&&GetActorLocation().Z>Home.Z+.01f)
-    {MoveSwept(FVector(0,0,FMath::Max(Home.Z,GetActorLocation().Z-550.f*Dt)-GetActorLocation().Z));LeapHeight=FMath::Max(0.f,float(GetActorLocation().Z-Home.Z));}
+    if(State!=EMountedBossState::Active&&GetActorLocation().Z>GroundHeight+.01f)
+    {MoveSwept(FVector(0,0,FMath::Max(double(GroundHeight),GetActorLocation().Z-550.f*Dt)-GetActorLocation().Z));LeapHeight=FMath::Max(0.f,float(GetActorLocation().Z-GroundHeight));}
     if(bHeadingCommitted&&(State==EMountedBossState::Windup||State==EMountedBossState::Active))
         MaximumCommittedYawDrift=FMath::Max(MaximumCommittedYawDrift,FMath::Abs(FMath::FindDeltaAngleDegrees(CommittedYaw,GetActorRotation().Yaw)));
     if(SampleRig&&HorseMesh)
@@ -286,7 +296,9 @@ void AAshWellMountedBoss::StepMovement(float Dt,const FVector& Goal,float Desire
     const bool SampleLaunch=UsesAuthoredAnimation()&&SampleRig->RiderAnimation()&&SampleRig->RiderAnimation()->ActionPhase==FName(TEXT("Launch"));
     const float ChargeAccel=SampleLaunch?700.f:1300.f;
     const float Accel=State==EMountedBossState::Active?(AttackKind==EMountedBossAttack::Charge?ChargeAccel:AttackKind==EMountedBossAttack::BodyCheck?1000.f:380.f):380.f;
-    Speed=FMath::FInterpConstantTo(Speed,DesiredSpeed,Dt,DesiredSpeed>Speed?Accel:700.f);
+    const bool CurveMotion=UsesAuthoredAnimation()&&SampleRig->GetActionDefinition(FName(*GetAttackLabel()))
+        &&(State==EMountedBossState::Windup||State==EMountedBossState::Active||State==EMountedBossState::Recovery);
+    Speed=CurveMotion?AuthoredFrameSpeed:FMath::FInterpConstantTo(Speed,DesiredSpeed,Dt,DesiredSpeed>Speed?Accel:700.f);
     if(bAllowTurning)
     {
         const float Wanted=(Goal-GetActorLocation()).Rotation().Yaw;
@@ -295,10 +307,25 @@ void AAshWellMountedBoss::StepMovement(float Dt,const FVector& Goal,float Desire
         const float Degrees=FMath::Clamp(FMath::RadiansToDegrees(FMath::Max(Speed,130.f)/Radius),27.f,72.f);
         const FRotator Candidate(0,FMath::FixedTurn(GetActorRotation().Yaw,Wanted,Degrees*Dt),0);
         FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedBodyTurn),false,this);
-        if(!GetWorld()->OverlapBlockingTestByChannel(BodyCollision->GetComponentLocation(),Candidate.Quaternion(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params))SetActorRotation(Candidate);
+        if(!GetWorld()->OverlapBlockingTestByChannel(BodyCollision->GetComponentLocation(),Candidate.Quaternion()*BodyCollision->GetRelativeRotation().Quaternion(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params))SetActorRotation(Candidate);
         else ++BlockedTurnCount;
     }
-    const FVector Before=GetActorLocation();MoveSwept(GetActorForwardVector()*Speed*Dt);
+    const FVector Before=GetActorLocation();
+    FVector Travel=GetActorForwardVector()*Speed*Dt;
+    FHitResult Support;
+    const bool Airborne=LeapHeight>.01f||(State==EMountedBossState::Active&&AttackKind==EMountedBossAttack::LeapShield);
+    if(QueryGround(Before+Travel,Support))
+    {
+        const float Rise=Support.ImpactPoint.Z-Before.Z;
+        if(!Airborne)
+        {
+            // Reject a cliff or a tall prop instead of teleporting onto it.
+            if(FMath::Abs(Rise)>40.f){Travel=FVector::ZeroVector;Speed=0;}
+            else Travel.Z=Rise;
+        }
+    }
+    else if(!Airborne){Travel=FVector::ZeroVector;Speed=0;}
+    MoveSwept(Travel);RefreshGroundSupport(Dt);
     const float AngularTravel=FMath::Abs(FMath::DegreesToRadians(FMath::FindDeltaAngleDegrees(PreviousYaw,GetActorRotation().Yaw)))*65.f;
     TurnTravel+=AngularTravel;TurnSpeed=Dt>SMALL_NUMBER?AngularTravel/Dt:0;
     LastTravel=FVector::Dist2D(Before,GetActorLocation());ActualSpeed=Dt>SMALL_NUMBER?LastTravel/Dt:0;DistanceTravelled+=LastTravel;
@@ -321,10 +348,36 @@ void AAshWellMountedBoss::MoveSwept(const FVector& Delta)
     const FVector Destination=Position+Delta*Fraction;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedBodyMove),false,this);FHitResult Hit;
     const FVector Center=BodyCollision->GetComponentLocation();const FVector Move=Destination-GetActorLocation();
-    const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,Center,Center+Move,GetActorQuat(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params);
+    const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,Center,Center+Move,BodyCollision->GetComponentQuat(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params);
     SetActorLocation(GetActorLocation()+Move*(Blocked?FMath::Max(0.f,Hit.Time-.005f):1.f),false);
     if(Blocked&&Hit.GetActor()==Target.Get()&&State==EMountedBossState::Active&&AttackKind==EMountedBossAttack::BodyCheck)bBodyContactPending=true;
     if(Blocked&&Hit.Time<.05f)Speed=FMath::Max(0.f,Speed-30.f);
+}
+
+bool AAshWellMountedBoss::QueryGround(const FVector& Point,FHitResult& Hit) const
+{
+    FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedGround),true,this);
+    if(SampleRig)Params.AddIgnoredActor(SampleRig);
+    FCollisionObjectQueryParams Objects(ECC_WorldStatic);
+    return GetWorld()->LineTraceSingleByObjectType(Hit,Point+FVector(0,0,600),Point-FVector(0,0,1800),Objects,Params)
+        &&Hit.ImpactNormal.Z>=.72f;
+}
+
+float AAshWellMountedBoss::GroundHeightAt(const FVector& Point) const
+{FHitResult Hit;return QueryGround(Point,Hit)?float(Hit.ImpactPoint.Z):GroundHeight;}
+
+void AAshWellMountedBoss::RefreshGroundSupport(float Dt)
+{
+    FHitResult Hit;bGroundSupported=QueryGround(GetActorLocation(),Hit);
+    if(!bGroundSupported)return;
+    GroundHeight=Hit.ImpactPoint.Z;GroundNormal=Hit.ImpactNormal;
+    const FVector Forward=FVector::VectorPlaneProject(GetActorForwardVector(),GroundNormal).GetSafeNormal();
+    const FQuat Wanted=GetActorQuat().Inverse()*FRotationMatrix::MakeFromXZ(Forward,GroundNormal).ToQuat();
+    GroundTilt=Dt>0?FQuat::Slerp(GroundTilt,Wanted,FMath::Clamp(Dt*12.f,0.f,1.f)).GetNormalized():Wanted;
+    BodyCollision->SetRelativeRotation(GroundTilt);
+    BodyCollision->SetRelativeLocation(GroundTilt.RotateVector(FVector(0,0,102)));
+    if(SampleRig)
+    {SampleRig->SetActorRelativeRotation(GroundTilt);SampleRig->SetGroundContactEnabled(FMath::Abs(GetActorLocation().Z-GroundHeight)<3.f);}
 }
 
 void AAshWellMountedBoss::SelectAttack()
@@ -363,9 +416,9 @@ void AAshWellMountedBoss::TryDamage()
     {
         if(StateTime<.075f)return;
         const float ShieldBottom=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z:ShieldPoint.Z-90.f;
-        if(SampleRig&&AttackKind==EMountedBossAttack::LeapShield)MinimumSampleShieldGap=FMath::Min(MinimumSampleShieldGap,ShieldBottom-float(Home.Z));
-        if(AttackKind==EMountedBossAttack::LeapShield&&ShieldBottom>Home.Z+25.f)return;
-        const FVector Ground=AttackKind==EMountedBossAttack::LeapShield?FVector(ShieldPoint.X,ShieldPoint.Y,Home.Z):GetActorLocation()+GetActorForwardVector()*85.f;
+        if(SampleRig&&AttackKind==EMountedBossAttack::LeapShield)MinimumSampleShieldGap=FMath::Min(MinimumSampleShieldGap,ShieldBottom-GroundHeightAt(ShieldPoint));
+        if(AttackKind==EMountedBossAttack::LeapShield&&ShieldBottom>GroundHeightAt(ShieldPoint)+25.f)return;
+        const FVector Ground=AttackKind==EMountedBossAttack::LeapShield?FVector(ShieldPoint.X,ShieldPoint.Y,GroundHeightAt(ShieldPoint)):GetActorLocation()+GetActorForwardVector()*85.f;
         if(!bImpactPlayed)
         {bImpactPlayed=true;PlaySound(ImpactSound,Ground,.7f,.92f);if(auto* FX=AAshWellBattleFX::Find(GetWorld()))FX->Burst(Ground,.9f,false,false);}
         const FVector D=Target->GetActorLocation()-Ground;
@@ -489,15 +542,17 @@ TSharedRef<FJsonObject> AAshWellMountedBoss::GetTelemetry() const
 {
     auto O=MakeShared<FJsonObject>();
     O->SetBoolField(TEXT("standard_sample"),SampleRig!=nullptr);
+O->SetNumberField(TEXT("ground_height_cm"),GroundHeight);O->SetNumberField(TEXT("ground_clearance_cm"),GetActorLocation().Z-GroundHeight);O->SetBoolField(TEXT("ground_supported"),bGroundSupported);
     if(SampleRig)
     {
         auto* A=SampleRig->RiderAnimation();
+
         O->SetNumberField(TEXT("montage_time"),SampleRig->GetChargeTime());O->SetStringField(TEXT("notify_phase"),A?A->ActionPhase.ToString():TEXT("missing"));
         O->SetBoolField(TEXT("montage_playing"),SampleRig->IsChargePlaying());
         O->SetNumberField(TEXT("phase_notifies"),A?A->PhaseNotifyCount:0);O->SetNumberField(TEXT("window_begins"),A?A->WindowBeginCount:0);O->SetNumberField(TEXT("window_ends"),A?A->WindowEndCount:0);O->SetBoolField(TEXT("notify_window"),SampleRig->HasWeaponWindow());
     }
     O->SetBoolField(TEXT("hoof_bones_valid"),bHoofBonesValid);O->SetNumberField(TEXT("hoof_contacts"),HoofContacts);O->SetNumberField(TEXT("support_sample_seconds"),SupportSampleTime);O->SetNumberField(TEXT("support_drift_cm_s"),SupportSampleTime>0?SupportDriftDistance/SupportSampleTime:0);
-    const float ShieldGap=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z-Home.Z:ShieldPoint.Z-Home.Z-90.f;
+    const float ShieldGap=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z-GroundHeightAt(ShieldPoint):ShieldPoint.Z-GroundHeightAt(ShieldPoint)-90.f;
     O->SetNumberField(TEXT("shield_ground_gap_cm"),ShieldGap);
     if(MinimumSampleShieldGap<MAX_flt)O->SetNumberField(TEXT("minimum_active_shield_gap_cm"),MinimumSampleShieldGap);
     O->SetStringField(TEXT("hoof_measurement_source"),SampleRig?TEXT("visible_sample_mesh"):TEXT("original_horse_mesh"));

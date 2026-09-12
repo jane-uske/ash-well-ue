@@ -1,0 +1,146 @@
+{
+  "assets": {
+    "wall": {
+      "task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+      "source": "meshy_output/20260912_142543_reference-ruin-wall_01a0944b/model.glb",
+      "original_sha256": "468e2fa753d57415952b18ffc276cdc3bd5080d6b12406ead1e1a31807c78610",
+      "raw_dimensions_m": [
+        1.8989359140396118,
+        0.36037102341651917,
+        0.9499650001525879
+      ],
+      "dimensions_cm": [
+        400.0,
+        75.91009521484375,
+        200.10470581054688
+      ],
+      "triangles": 29672,
+      "split_boundary_edges_before_weld": 22278,
+      "nonmanifold_edges": 121,
+      "materials": 1,
+      "fbx": "SM_ReferenceRuinWall.fbx",
+      "uniform_scale": 210.64428611973474,
+      "uv_layers": 1,
+      "backside": "inferred by generation; not visible in source reference"
+    },
+    "rock": {
+      "task_id": "01a0944b-94b6-747e-b29d-354deba59a24",
+      "source": "meshy_output/20260912_142619_reference-flat-rock_01a0944b/model.glb",
+      "original_sha256": "9de293cf007ab524ba27faf4181b646a425db294d72a4b12b4fcc5d0ea5c0d46",
+      "raw_dimensions_m": [
+        1.9024109840393066,
+        1.3461639881134033,
+        0.3734510838985443
+      ],
+      "dimensions_cm": [
+        330.0,
+        233.51112365722656,
+        64.78034973144531
+      ],
+      "triangles": 30910,
+      "split_boundary_edges_before_weld": 18770,
+      "nonmanifold_edges": 77,
+      "materials": 1,
+      "fbx": "SM_ReferenceFlatRock.fbx",
+      "uniform_scale": 173.46409517638787,
+      "uv_layers": 1,
+      "backside": "inferred by generation; not visible in source reference"
+    },
+    "stake": {
+      "task_id": "01a0944b-a70a-70aa-81c5-00bd8d1d346e",
+      "source": "meshy_output/20260912_142623_reference-roadside-stake_01a0944b/model.glb",
+      "original_sha256": "f56de522f5e21052df97bb1a668829159ab091adfe240e5e415cd411a839200d",
+      "raw_dimensions_m": [
+        0.5744529962539673,
+        0.14891111850738525,
+        1.9045629501342773
+      ],
+      "dimensions_cm": [
+        120.64772033691406,
+        31.27459716796875,
+        400.0
+      ],
+      "triangles": 30220,
+      "split_boundary_edges_before_weld": 28398,
+      "nonmanifold_edges": 153,
+      "materials": 1,
+      "fbx": "SM_ReferenceRoadsideStake.fbx",
+      "uniform_scale": 210.02193046626064,
+      "uv_layers": 1,
+      "backside": "inferred by generation; not visible in source reference"
+    },
+    "castle": {
+      "task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+      "source": "meshy_output/20260912_165105_reference-distant-fortress_01a094d0/model.glb",
+      "original_sha256": "df086401badd72b43181dae9cb97bdc8b12a34c1079e29e483f68e458b27614b",
+      "raw_dimensions_m": [
+        1.8987040519714355,
+        1.1660041809082031,
+        0.9367339611053467
+      ],
+      "dimensions_cm": [
+        9000.0,
+        5526.947265625,
+        4440.189453125
+      ],
+      "triangles": 30510,
+      "split_boundary_edges_before_weld": 49572,
+      "nonmanifold_edges": 463,
+      "materials": 1,
+      "fbx": "SM_ReferenceDistantFortress.fbx",
+      "uniform_scale": 4740.075205851722,
+      "uv_layers": 1,
+      "backside": "inferred by generation; not visible in source reference"
+    }
+  },
+  "scope": "Offline geometry and export checks; UE acceptance remains pending.",
+  "terrain": {
+    "vertices": 57723,
+    "triangles": 114480,
+    "bounds_cm": [
+      -18000,
+      18000,
+      -14000,
+      14000
+    ],
+    "near_grid_spacing_cm": 50,
+    "home_height_cm": 0.0,
+    "samples_cm": [
+      {
+        "xy": [
+          0,
+          0
+        ],
+        "z": 0.0
+      },
+      {
+        "xy": [
+          -2050,
+          0
+        ],
+        "z": -132.94471362072628
+      },
+      {
+        "xy": [
+          850,
+          0
+        ],
+        "z": 64.17799548929676
+      },
+      {
+        "xy": [
+          0,
+          -1400
+        ],
+        "z": 221.51597575114897
+      },
+      {
+        "xy": [
+          0,
+          1400
+        ],
+        "z": -150.13238919148844
+      }
+    ]
+  }
+}

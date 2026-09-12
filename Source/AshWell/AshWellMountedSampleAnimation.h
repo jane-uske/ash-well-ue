@@ -12,6 +12,24 @@ class UAnimSequence;
 class UBlendSpace;
 class UAnimMontage;
 class USkeletalMesh;
+class UCurveFloat;
+
+/** One move's authoring contract. Times and displacement share the rider clock. */
+USTRUCT(BlueprintType)
+struct FMountedAuthoredAction
+{
+    GENERATED_BODY()
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) TObjectPtr<UAnimMontage> HorseMontage;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) TObjectPtr<UCurveFloat> ForwardDistance;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Launch=.9f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Strike=1.48f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Pass=1.98f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float ContactEnd=2.18f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Brake=3.5f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Recover=4.3f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float End=5.8f;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly) float Commit=.72f;
+};
 
 /** Authored action candidates are registered explicitly. Missing entries retain their
  * existing compatibility driver, so adding one move never migrates the others. */
@@ -21,6 +39,9 @@ class ASHWELL_API UAshWellMountedActionSet : public UDataAsset
     GENERATED_BODY()
 public:
     UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Mounted Actions") TMap<FName,TObjectPtr<UAnimMontage>> Montages;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Mounted Actions") TMap<FName,FMountedAuthoredAction> AuthoredActions;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Mounted Actions") TObjectPtr<UAnimMontage> RiderDeath;
+    UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Mounted Actions") TObjectPtr<UAnimMontage> HorseDeath;
 };
 
 /** Graph inputs and observable notify state. The AnimBP evaluates the pose. */
@@ -32,6 +53,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float GroundSpeed=0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float StrideRate=1;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float HorseContactAlpha=1;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float RiderContactAlpha=1;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector LeftFootTarget=FVector(-35,-12,35);
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector RightFootTarget=FVector(35,-12,35);
     // Compatibility inputs from the existing five action drivers. New authored
@@ -82,6 +104,10 @@ public:
     static bool ConfigureHorseBlendSpace(UBlendSpace* BlendSpace,UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Gallop);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
     static UAnimMontage* BuildChargeMontage(UAnimSequence* Sequence,const FString& PackagePath);
+    UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
+    static UAnimMontage* BuildReferenceMontage(UAnimSequence* Sequence,const FString& PackagePath,FMountedAuthoredAction Action,bool WeaponNotifies);
+    UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
+    static UCurveFloat* BuildDistanceCurve(const FString& PackagePath,const TArray<FVector2D>& Samples);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
     static bool ConfigureRiderSockets(USkeletalMesh* Mesh);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")

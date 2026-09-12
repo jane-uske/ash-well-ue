@@ -1,0 +1,193 @@
+{
+  "approved_total_cap": 964,
+  "first_batch_cap": 200,
+  "initial_balance": 2364,
+  "permanent_balance_floor": 1400,
+  "pricing_source": "https://help.meshy.ai/en/articles/16815622-how-many-credits-does-each-meshy-api-task-cost",
+  "assets": {
+    "wall": {
+      "name": "reference-ruin-wall",
+      "dimensions_cm": [
+        400,
+        65,
+        260
+      ],
+      "status": "downloaded",
+      "reserved_credits": 35,
+      "reference_sha256": "5af376844e7656d8f4e3ab0e8757c155ffc08f528bad4149046859da84b025f2",
+      "submitted_utc": "2026-09-12T06:25:35.342658+00:00",
+      "task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+      "project_dir": "meshy_output/20260912_142543_reference-ruin-wall_01a0944b",
+      "consumed_credits": 35,
+      "balance_after": 2259,
+      "files": {
+        "model.glb": {
+          "bytes": 33252964,
+          "sha256": "468e2fa753d57415952b18ffc276cdc3bd5080d6b12406ead1e1a31807c78610"
+        },
+        "reference.png": {
+          "bytes": 3347252,
+          "sha256": "5af376844e7656d8f4e3ab0e8757c155ffc08f528bad4149046859da84b025f2"
+        },
+        "thumbnail.png": {
+          "bytes": 171599,
+          "sha256": "67bde4fc19cb6a8a61ac2797cc0a1c398f5ed8e50b243d5d0f6e7902fc630ece"
+        },
+        "texture_0_base_color.png": {
+          "bytes": 25429791,
+          "sha256": "0e74f184896dc3c1dddd8096f7f8debb4fe6c44260dd6425f230b62134864da0"
+        },
+        "texture_0_metallic.png": {
+          "bytes": 31473,
+          "sha256": "85d757d2f711c8bfbd3d413e8011a70fb8193555e838d0af48ccd44dbc9d97a0"
+        },
+        "texture_0_roughness.png": {
+          "bytes": 1618283,
+          "sha256": "7762ba9a19e6d43e77558139770e69a350147f86ecb3812d96a96bebda858e7a"
+        },
+        "texture_0_normal.png": {
+          "bytes": 25287863,
+          "sha256": "8701036b8afe82f24e0b54e9891c6e058ba721895ead26294f3dafc78bd72656"
+        }
+      }
+    },
+    "rock": {
+      "name": "reference-flat-rock",
+      "dimensions_cm": [
+        330,
+        210,
+        65
+      ],
+      "status": "downloaded",
+      "reserved_credits": 35,
+      "reference_sha256": "c5d212844791888c51364c52360532043754499fd58175407d8579dfa2c798b6",
+      "submitted_utc": "2026-09-12T06:26:14.614587+00:00",
+      "task_id": "01a0944b-94b6-747e-b29d-354deba59a24",
+      "project_dir": "meshy_output/20260912_142619_reference-flat-rock_01a0944b",
+      "consumed_credits": 35,
+      "balance_after": 2259,
+      "files": {
+        "model.glb": {
+          "bytes": 34075676,
+          "sha256": "9de293cf007ab524ba27faf4181b646a425db294d72a4b12b4fcc5d0ea5c0d46"
+        },
+        "reference.png": {
+          "bytes": 2694480,
+          "sha256": "c5d212844791888c51364c52360532043754499fd58175407d8579dfa2c798b6"
+        },
+        "thumbnail.png": {
+          "bytes": 101121,
+          "sha256": "2fb938a93b6703143238683a7565d500a1e4a4dfe651aef4d081d02197263427"
+        },
+        "texture_0_base_color.png": {
+          "bytes": 28721469,
+          "sha256": "c56e2f82ed2d44b5c312b74231638b48011dae2a622b5c9207b826df8fb78824"
+        },
+        "texture_0_metallic.png": {
+          "bytes": 20819,
+          "sha256": "743b020c03d7d150d45258089f8a6e13d3769f6725be142daf7a79352525007b"
+        },
+        "texture_0_roughness.png": {
+          "bytes": 1601721,
+          "sha256": "1ec6606193effb7fe611a76afc3382f9fe13cdf4378255bc47ddd7a41726dd29"
+        },
+        "texture_0_normal.png": {
+          "bytes": 27671583,
+          "sha256": "2df2907122b56e90f94bc34ac4378574b91b1c0b8e2362b90180c9dbb3d31b8e"
+        }
+      }
+    },
+    "stake": {
+      "name": "reference-roadside-stake",
+      "dimensions_cm": [
+        140,
+        25,
+        400
+      ],
+      "status": "downloaded",
+      "reserved_credits": 35,
+      "reference_sha256": "ea212bd8e12408390c916120a97f3351d443efc72a75a33efa6b696803ce095d",
+      "submitted_utc": "2026-09-12T06:26:20.000935+00:00",
+      "task_id": "01a0944b-a70a-70aa-81c5-00bd8d1d346e",
+      "project_dir": "meshy_output/20260912_142623_reference-roadside-stake_01a0944b",
+      "consumed_credits": 35,
+      "balance_after": 2259,
+      "files": {
+        "model.glb": {
+          "bytes": 28042432,
+          "sha256": "f56de522f5e21052df97bb1a668829159ab091adfe240e5e415cd411a839200d"
+        },
+        "reference.png": {
+          "bytes": 1655896,
+          "sha256": "ea212bd8e12408390c916120a97f3351d443efc72a75a33efa6b696803ce095d"
+        },
+        "thumbnail.png": {
+          "bytes": 30437,
+          "sha256": "6d538f9d7795970e5ce6881e7f1d594c7f3cf5c4df346b5cc02311c8dca71a1f"
+        },
+        "texture_0_base_color.png": {
+          "bytes": 21384121,
+          "sha256": "5ca358cca6fec3fa127f889a89ed82d14a2b3104d51f3c0ab7ad7dce38eb40ee"
+        },
+        "texture_0_metallic.png": {
+          "bytes": 66629,
+          "sha256": "23bbb15dd98feec2df36ff72cbecbdd1452d6743fd5aa7d92c9a0f9407011490"
+        },
+        "texture_0_roughness.png": {
+          "bytes": 1239698,
+          "sha256": "0750ecbb9051effe34c51ccd08a25f38421d9c7f1349ccd24011236060716725"
+        },
+        "texture_0_normal.png": {
+          "bytes": 21248096,
+          "sha256": "0335dfd05e3b9b459331d54cb2794ade118147c737ed1a62549f3e9da2bde73c"
+        }
+      }
+    },
+    "castle": {
+      "name": "reference-distant-fortress",
+      "dimensions_cm": [
+        9000,
+        3000,
+        5500
+      ],
+      "status": "downloaded",
+      "reserved_credits": 35,
+      "reference_sha256": "12067cead1f8684fdc4100202463950839246cda16620c36427ce6e786850605",
+      "submitted_utc": "2026-09-12T08:51:02.146796+00:00",
+      "task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+      "project_dir": "meshy_output/20260912_165105_reference-distant-fortress_01a094d0",
+      "consumed_credits": 35,
+      "balance_after": 2224,
+      "files": {
+        "model.glb": {
+          "bytes": 26077180,
+          "sha256": "df086401badd72b43181dae9cb97bdc8b12a34c1079e29e483f68e458b27614b"
+        },
+        "reference.png": {
+          "bytes": 2070141,
+          "sha256": "12067cead1f8684fdc4100202463950839246cda16620c36427ce6e786850605"
+        },
+        "thumbnail.png": {
+          "bytes": 115286,
+          "sha256": "eeeb7a3c1a7325f439b3f0232e3ff8540db9ba9631b05a39bee155a92f862f55"
+        },
+        "texture_0_base_color.png": {
+          "bytes": 20295838,
+          "sha256": "7a59e1fdda9fd1b546ed14fac08ca57a9ef062c704665ceaf7240af003d4e86f"
+        },
+        "texture_0_metallic.png": {
+          "bytes": 47656,
+          "sha256": "e1d8615cab0d5020eb3ba71be2d78b152a09420a5247a512240e8799fbbe618b"
+        },
+        "texture_0_roughness.png": {
+          "bytes": 1547110,
+          "sha256": "f5e7b53cdf1cbb027302ea1dad1c90b2c5766c5dd82580dd1884606a487156eb"
+        },
+        "texture_0_normal.png": {
+          "bytes": 19685791,
+          "sha256": "318a66fb5b8e09ab2a67401baabbf11686e533ecad4f423c798c867f1982fcb2"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "reference-distant-fortress",
+  "dimensions_cm": [
+    9000,
+    3000,
+    5500
+  ],
+  "status": "downloaded",
+  "reserved_credits": 35,
+  "reference_sha256": "12067cead1f8684fdc4100202463950839246cda16620c36427ce6e786850605",
+  "submitted_utc": "2026-09-12T08:51:02.146796+00:00",
+  "task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+  "project_dir": "meshy_output/20260912_165105_reference-distant-fortress_01a094d0",
+  "consumed_credits": 35,
+  "balance_after": 2224,
+  "files": {
+    "model.glb": {
+      "bytes": 26077180,
+      "sha256": "df086401badd72b43181dae9cb97bdc8b12a34c1079e29e483f68e458b27614b"
+    },
+    "reference.png": {
+      "bytes": 2070141,
+      "sha256": "12067cead1f8684fdc4100202463950839246cda16620c36427ce6e786850605"
+    },
+    "thumbnail.png": {
+      "bytes": 115286,
+      "sha256": "eeeb7a3c1a7325f439b3f0232e3ff8540db9ba9631b05a39bee155a92f862f55"
+    },
+    "texture_0_base_color.png": {
+      "bytes": 20295838,
+      "sha256": "7a59e1fdda9fd1b546ed14fac08ca57a9ef062c704665ceaf7240af003d4e86f"
+    },
+    "texture_0_metallic.png": {
+      "bytes": 47656,
+      "sha256": "e1d8615cab0d5020eb3ba71be2d78b152a09420a5247a512240e8799fbbe618b"
+    },
+    "texture_0_roughness.png": {
+      "bytes": 1547110,
+      "sha256": "f5e7b53cdf1cbb027302ea1dad1c90b2c5766c5dd82580dd1884606a487156eb"
+    },
+    "texture_0_normal.png": {
+      "bytes": 19685791,
+      "sha256": "318a66fb5b8e09ab2a67401baabbf11686e533ecad4f423c798c867f1982fcb2"
+    }
+  }
+}

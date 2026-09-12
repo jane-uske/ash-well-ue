@@ -1,0 +1,46 @@
+{
+  "name": "reference-ruin-wall",
+  "dimensions_cm": [
+    400,
+    65,
+    260
+  ],
+  "status": "downloaded",
+  "reserved_credits": 35,
+  "reference_sha256": "5af376844e7656d8f4e3ab0e8757c155ffc08f528bad4149046859da84b025f2",
+  "submitted_utc": "2026-09-12T06:25:35.342658+00:00",
+  "task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+  "project_dir": "meshy_output/20260912_142543_reference-ruin-wall_01a0944b",
+  "consumed_credits": 35,
+  "balance_after": 2259,
+  "files": {
+    "model.glb": {
+      "bytes": 33252964,
+      "sha256": "468e2fa753d57415952b18ffc276cdc3bd5080d6b12406ead1e1a31807c78610"
+    },
+    "reference.png": {
+      "bytes": 3347252,
+      "sha256": "5af376844e7656d8f4e3ab0e8757c155ffc08f528bad4149046859da84b025f2"
+    },
+    "thumbnail.png": {
+      "bytes": 171599,
+      "sha256": "67bde4fc19cb6a8a61ac2797cc0a1c398f5ed8e50b243d5d0f6e7902fc630ece"
+    },
+    "texture_0_base_color.png": {
+      "bytes": 25429791,
+      "sha256": "0e74f184896dc3c1dddd8096f7f8debb4fe6c44260dd6425f230b62134864da0"
+    },
+    "texture_0_metallic.png": {
+      "bytes": 31473,
+      "sha256": "85d757d2f711c8bfbd3d413e8011a70fb8193555e838d0af48ccd44dbc9d97a0"
+    },
+    "texture_0_roughness.png": {
+      "bytes": 1618283,
+      "sha256": "7762ba9a19e6d43e77558139770e69a350147f86ecb3812d96a96bebda858e7a"
+    },
+    "texture_0_normal.png": {
+      "bytes": 25287863,
+      "sha256": "8701036b8afe82f24e0b54e9891c6e058ba721895ead26294f3dafc78bd72656"
+    }
+  }
+}

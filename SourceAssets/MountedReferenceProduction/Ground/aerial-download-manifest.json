@@ -1,0 +1,24 @@
+{
+  "source": "https://polyhaven.com/a/aerial_grass_rock",
+  "license": "CC0",
+  "files": [
+    {
+      "path": "SourceAssets/MountedReferenceProduction/Ground/aerial_grass_rock_diff_2k.png",
+      "size": 25184168,
+      "md5": "114960c35c481881102fa82ccad17030",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_diff_2k.png"
+    },
+    {
+      "path": "SourceAssets/MountedReferenceProduction/Ground/aerial_grass_rock_nor_gl_2k.png",
+      "size": 25610587,
+      "md5": "c1ec8a813ab388d208abc7805db7b501",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_nor_gl_2k.png"
+    },
+    {
+      "path": "SourceAssets/MountedReferenceProduction/Ground/aerial_grass_rock_rough_2k.png",
+      "size": 8915297,
+      "md5": "686615872c298accf915ff73d587a58a",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/aerial_grass_rock/aerial_grass_rock_rough_2k.png"
+    }
+  ]
+}

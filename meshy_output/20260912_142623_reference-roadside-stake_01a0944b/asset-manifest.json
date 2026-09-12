@@ -1,0 +1,46 @@
+{
+  "name": "reference-roadside-stake",
+  "dimensions_cm": [
+    140,
+    25,
+    400
+  ],
+  "status": "downloaded",
+  "reserved_credits": 35,
+  "reference_sha256": "ea212bd8e12408390c916120a97f3351d443efc72a75a33efa6b696803ce095d",
+  "submitted_utc": "2026-09-12T06:26:20.000935+00:00",
+  "task_id": "01a0944b-a70a-70aa-81c5-00bd8d1d346e",
+  "project_dir": "meshy_output/20260912_142623_reference-roadside-stake_01a0944b",
+  "consumed_credits": 35,
+  "balance_after": 2259,
+  "files": {
+    "model.glb": {
+      "bytes": 28042432,
+      "sha256": "f56de522f5e21052df97bb1a668829159ab091adfe240e5e415cd411a839200d"
+    },
+    "reference.png": {
+      "bytes": 1655896,
+      "sha256": "ea212bd8e12408390c916120a97f3351d443efc72a75a33efa6b696803ce095d"
+    },
+    "thumbnail.png": {
+      "bytes": 30437,
+      "sha256": "6d538f9d7795970e5ce6881e7f1d594c7f3cf5c4df346b5cc02311c8dca71a1f"
+    },
+    "texture_0_base_color.png": {
+      "bytes": 21384121,
+      "sha256": "5ca358cca6fec3fa127f889a89ed82d14a2b3104d51f3c0ab7ad7dce38eb40ee"
+    },
+    "texture_0_metallic.png": {
+      "bytes": 66629,
+      "sha256": "23bbb15dd98feec2df36ff72cbecbdd1452d6743fd5aa7d92c9a0f9407011490"
+    },
+    "texture_0_roughness.png": {
+      "bytes": 1239698,
+      "sha256": "0750ecbb9051effe34c51ccd08a25f38421d9c7f1349ccd24011236060716725"
+    },
+    "texture_0_normal.png": {
+      "bytes": 21248096,
+      "sha256": "0335dfd05e3b9b459331d54cb2794ade118147c737ed1a62549f3e9da2bde73c"
+    }
+  }
+}

@@ -8,6 +8,7 @@ class UAnimMontage;
 class UAshWellMountedSampleAnimInstance;
 class UCameraComponent;
 class UAshWellMountedActionSet;
+struct FMountedAuthoredAction;
 
 /** Independent skeletal rider/horse visual, evaluated through editable AnimBPs. */
 UCLASS()
@@ -21,7 +22,10 @@ public:
     void EvaluatePose(float DeltaSeconds,float GroundSpeed,bool DeferHorse=false);
     void SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float HorsePitch,bool Enabled,FVector PelvisOffset=FVector::ZeroVector);
     bool PlayCharge();
+    bool PlayDeath();
     bool HasAuthoredAction(FName Action) const;
+    const FMountedAuthoredAction* GetActionDefinition(FName Action) const;
+    float GetAuthoredFrameSpeed(float DeltaSeconds) const;
     bool PlayAction(FName Action);
     void StopCharge();
     float GetChargeTime() const;
@@ -29,6 +33,7 @@ public:
     bool HasWeaponWindow() const;
     bool IsReady() const{return bReady;}
     bool UsesFootPlacement() const{return bFootPlacementCandidate;}
+    void SetGroundContactEnabled(bool Enabled){bGroundContactEnabled=Enabled;}
     FVector GetGrip() const;
     FVector GetTip() const;
     UAshWellMountedSampleAnimInstance* RiderAnimation() const;
@@ -38,6 +43,7 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<UStaticMeshComponent> Shield;
 private:
     UPROPERTY(Transient) TObjectPtr<UAnimMontage> Charge;
+    UPROPERTY(Transient) TObjectPtr<UAnimMontage> HorseCharge;
     UPROPERTY(Transient) TObjectPtr<UAshWellMountedActionSet> ActionSet;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> ReviewCamera;
     float ReviewTime=0;
@@ -49,6 +55,10 @@ private:
     FTransform SeatRest;
     bool bReady=false;
     bool bFootPlacementCandidate=false;
+    bool bGroundContactEnabled=true;
+    bool bDeathPose=false;
     float PendingHorseDelta=0;
     float ReportTime=0;
+    float PreviousChargeElapsed=0;
+    FName ActiveAction;
 };

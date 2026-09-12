@@ -1,0 +1,85 @@
+{
+  "status": "saved_with_gaps",
+  "stop_reason": "F8_stop",
+  "duration_seconds": 25.001764081418514,
+  "frames_requested": 540,
+  "frames_written": 540,
+  "frame_write_failures": 0,
+  "uncaptured_requests_at_stop": 0,
+  "skipped_capture_slots": 61,
+  "nominal_capture_fps": 24,
+  "width": 1280,
+  "height": 720,
+  "audio_wav_complete": true,
+  "audio_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/Recordings/20260912T070525Z-8E6454AF/game-audio.wav",
+  "audio_duration_seconds": 25.002666666666666,
+  "audio_covers_wall_timeline": true,
+  "source": "presented UE viewport via FFrameGrabber; asynchronous PNG compression; master audio submix",
+  "timing": "Real frame-ready/request timestamps in frames.jsonl. Preserve gaps and full duration; no cuts or time compression.",
+  "reload_policy": "Every actor EndPlay closes this segment. Press F8 after R to start a new segment; loading gaps are not represented as captured footage.",
+  "review_fixture": "asset",
+  "input_source": "explicit asset/single-action review fixture; not ordinary-input combat",
+  "save_wait_seconds": 0.2577667497098446,
+  "requested_frames": 540,
+  "saved_frames": 540,
+  "missing_frames": 0,
+  "max_capture_gap_seconds": 0.1314295008778572,
+  "audio_present": true,
+  "video_only_preview": false,
+  "source_audio_complete": true,
+  "output": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/ReferenceProduction/A-First/current-asset-uncut.mp4",
+  "cuts": 0,
+  "speed": 1,
+  "known_limit": "Capture may reduce runtime performance; timestamp gaps hold the previous captured frame. Video-only previews do not meet a complete audiovisual combat handoff.",
+  "timeline_audit": {
+    "directory": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/Recordings/20260912T070525Z-8E6454AF",
+    "recording_seconds": 25.001764081418514,
+    "captured_frames": 540,
+    "requested_capture_fps": 24,
+    "observed_capture_fps": 21.598475941196956,
+    "mean_capture_interval_seconds": 0.04631191357997884,
+    "maximum_capture_gap_seconds": 0.1314295008778572,
+    "first_capture_seconds": 0.0024880804121494293,
+    "last_capture_seconds": 24.964609500020742,
+    "audio": {
+      "declared_samples": 1200128,
+      "readable_samples": 1200128,
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration_seconds": 25.002666666666666
+    },
+    "errors": [],
+    "av_duration_gate_passed": true,
+    "engine_fps": null,
+    "scope": "Capture/sample duration audit only. Does not prove lip/event sync or UE render/game frame rate."
+  },
+  "encoded_media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "180000/8321",
+        "start_time": "0.000000",
+        "duration": "24.963000",
+        "nb_frames": "540"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "start_time": "0.000000",
+        "duration": "25.000000",
+        "nb_frames": "1173"
+      }
+    ],
+    "format": {
+      "start_time": "0.000000",
+      "duration": "25.000000"
+    }
+  }
+}

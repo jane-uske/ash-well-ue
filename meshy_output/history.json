@@ -63,6 +63,42 @@
       "created_at": "2026-09-11T20:13:30.003448",
       "updated_at": "2026-09-11T20:13:30.003456",
       "task_count": 1
+    },
+    {
+      "folder": "20260912_142543_reference-ruin-wall_01a0944b",
+      "prompt": "",
+      "task_type": "image-to-3d",
+      "root_task_id": "01a0944b-00b7-7069-8b2f-dd2cb158e769",
+      "created_at": "2026-09-12T14:29:31.913438",
+      "updated_at": "2026-09-12T14:29:31.913446",
+      "task_count": 1
+    },
+    {
+      "folder": "20260912_142619_reference-flat-rock_01a0944b",
+      "prompt": "",
+      "task_type": "image-to-3d",
+      "root_task_id": "01a0944b-94b6-747e-b29d-354deba59a24",
+      "created_at": "2026-09-12T14:29:45.846650",
+      "updated_at": "2026-09-12T14:29:45.846657",
+      "task_count": 1
+    },
+    {
+      "folder": "20260912_142623_reference-roadside-stake_01a0944b",
+      "prompt": "",
+      "task_type": "image-to-3d",
+      "root_task_id": "01a0944b-a70a-70aa-81c5-00bd8d1d346e",
+      "created_at": "2026-09-12T14:29:56.508614",
+      "updated_at": "2026-09-12T14:29:56.508622",
+      "task_count": 1
+    },
+    {
+      "folder": "20260912_165105_reference-distant-fortress_01a094d0",
+      "prompt": "",
+      "task_type": "image-to-3d",
+      "root_task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+      "created_at": "2026-09-12T16:54:30.462690",
+      "updated_at": "2026-09-12T16:54:30.462699",
+      "task_count": 1
     }
   ]
 }

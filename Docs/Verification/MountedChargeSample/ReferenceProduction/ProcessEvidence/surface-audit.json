@@ -1,0 +1,41 @@
+{
+  "closest_fallback_vertices": [
+    [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    [
+      600.0,
+      3.6739403565851786e-14,
+      46.45795440673828
+    ],
+    [
+      -600.0,
+      -3.6739403565851786e-14,
+      -47.14445495605469
+    ],
+    [
+      -3.6739403565851786e-14,
+      600.0,
+      -68.70524597167969
+    ],
+    [
+      3.6739403565851786e-14,
+      -600.0,
+      88.64344787597656
+    ],
+    [
+      2000.0,
+      1000.0,
+      14.402466773986816
+    ],
+    [
+      -2000.0,
+      -1000.0,
+      -8.843244552612305
+    ]
+  ],
+  "settings": "<Struct 'MeshNaniteSettings' (0x89ea6dd7a10) {enabled: True, explicit_tangents: True, lerp_u_vs: True, separable: False, voxel_ndf: True, voxel_opacity: False, shape_preservation: None, position_precision: -2147483648, normal_precision: -1, tangent_precision: -1, bone_weight_precision: -1, keep_percent_triangles: 1.000000, trim_relative_error: 0.000000, generate_fallback: Enabled, fallback_target: PercentTriangles, fallback_percent_triangles: 1.000000, fallback_relative_error: 0.000000, max_edge_length_factor: 0.000000, num_rays: 64, voxel_level: 0, ray_back_up: 0.000000, displacement_uv_channel: 0}>",
+  "bounds": "<Struct 'BoxSphereBounds' (0x89e8029c840) {origin: {x: 0.000000, y: 0.000000, z: 1281.021790}, box_extent: {x: 14000.000000, y: 18000.000000, z: 2333.083923}, sphere_radius: 22922.549609}>"
+}

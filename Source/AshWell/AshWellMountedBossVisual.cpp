@@ -180,7 +180,7 @@ void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
     {
         if(HorseMesh->GetBoneIndex(HoofBones[I])==INDEX_NONE){bHoofBonesValid=false;continue;}
         const FVector P=HorseMesh->GetSocketLocation(HoofBones[I]);
-        const float Height=P.Z-Home.Z;
+        const float Height=P.Z-GroundHeightAt(P);
         const bool Ground=Height<(bHoofGrounded[I]?12.f:9.5f);
         if(bHoofPrimed&&!Changed&&!IsDead()&&!LeapPose&&(ActualSpeed>25.f||TurnSpeed>10.f)&&Ground&&!bHoofGrounded[I])
         {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
@@ -202,14 +202,14 @@ void AAshWellMountedBoss::UpdateSampleHoofContacts(float Dt)
     {
         if(SampleRig->Horse->GetBoneIndex(Bones[I])==INDEX_NONE){bHoofBonesValid=false;continue;}
         const FVector P=SampleRig->Horse->GetSocketLocation(Bones[I]);
-        const bool Ground=P.Z-Home.Z<(bHoofGrounded[I]?8.f:6.f);
+        const bool Ground=P.Z-GroundHeightAt(P)<(bHoofGrounded[I]?8.f:6.f);
         if(bHoofPrimed&&SampleRig->UsesFootPlacement()&&FParse::Param(FCommandLine::Get(),TEXT("MountedFootAudit"))&&ActualSpeed>30)
         {
             static const FName FK[]={TEXT("Bone_053"),TEXT("Bone_047"),TEXT("Bone_032"),TEXT("Bone_026")};
             static const FName IK[]={TEXT("VB SampleFL"),TEXT("VB SampleFR"),TEXT("VB SampleBL"),TEXT("VB SampleBR")};
             static const FName Gates[]={TEXT("ContactGateFL"),TEXT("ContactGateFR"),TEXT("ContactGateBL"),TEXT("ContactGateBR")};
             const float Gate=SampleRig->Horse->GetAnimInstance()->GetCurveValue(Gates[I]);
-            UE_LOG(LogTemp,Display,TEXT("AW_FOOT_AUDIT leg=%d speed=%.2f gate=%.2f z=%.2f drift=%.2f reach=%.2f"),I,ActualSpeed,Gate,P.Z-Home.Z,FVector::Dist2D(P,PreviousHoof[I])/Dt,FVector::Distance(SampleRig->Horse->GetSocketLocation(FK[I]),SampleRig->Horse->GetSocketLocation(IK[I])));
+            UE_LOG(LogTemp,Display,TEXT("AW_FOOT_AUDIT leg=%d speed=%.2f gate=%.2f z=%.2f drift=%.2f reach=%.2f"),I,ActualSpeed,Gate,P.Z-GroundHeightAt(P),FVector::Dist2D(P,PreviousHoof[I])/Dt,FVector::Distance(SampleRig->Horse->GetSocketLocation(FK[I]),SampleRig->Horse->GetSocketLocation(IK[I])));
         }
         if(bHoofPrimed&&!IsDead()&&!AirAction&&Ground&&!bHoofGrounded[I]&&(ActualSpeed>25||TurnSpeed>10))
         {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
@@ -344,6 +344,9 @@ void AAshWellMountedBoss::UpdateRiderPose(float Dt)
         // The smaller visible rim must reach the floor; damage tolerance is unchanged.
         const FVector NewShieldHand=Frame.TransformPosition(LGrip)-FVector(0,0,LeapShield?45.7f:0.f);
         FQuat SampleTorso=TorsoRotation;
+        // UE positive pitch leans an upright torso back. The overhead needs a
+        // forward follow-through so the native arm can reach its authored grip.
+        if(AttackKind==EMountedBossAttack::Overhead)SampleTorso=FRotator(-Lean,Twist,SideLean).Quaternion();
         FVector PelvisOffset=FVector::ZeroVector;
         if(LeapShield)
         {
@@ -355,7 +358,9 @@ void AAshWellMountedBoss::UpdateRiderPose(float Dt)
             SampleTorso=FRotator(Lean,Twist,SideLean-22.f*Drop*RecoveryAlpha).Quaternion();
             PelvisOffset=FVector(0,-12,-22)*Drop*RecoveryAlpha;
         }
-        SampleRig->SetLegacyPose(WeaponGrip,WorldDirection,NewShieldHand,SampleTorso,HorsePitch,AttackPose&&!UsesAuthoredAnimation(),PelvisOffset);
+        // Feed the canonical grip to native IK. Passing the old rig's already
+        // clamped wrist solved the same reach twice and shortened the overhead.
+        SampleRig->SetLegacyPose(GetActorTransform().TransformPosition(Grip),WorldDirection,NewShieldHand,SampleTorso,HorsePitch,AttackPose&&!UsesAuthoredAnimation(),PelvisOffset);
     }
 
     if(Shield)Shield->SetWorldLocationAndRotation(ShieldPoint,GetActorQuat()*FRotator(0,0,90).Quaternion());

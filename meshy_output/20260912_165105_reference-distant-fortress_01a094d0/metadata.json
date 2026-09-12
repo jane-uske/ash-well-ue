@@ -1,0 +1,24 @@
+{
+  "project_name": "image-to-3d",
+  "folder": "20260912_165105_reference-distant-fortress_01a094d0",
+  "root_task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+  "created_at": "2026-09-12T16:54:30.462690",
+  "updated_at": "2026-09-12T16:54:30.462699",
+  "tasks": [
+    {
+      "task_id": "01a094d0-20af-77f7-816e-5fc07cb79343",
+      "task_type": "image-to-3d",
+      "stage": "downloaded",
+      "files": [
+        "model.glb",
+        "reference.png",
+        "thumbnail.png",
+        "texture_0_base_color.png",
+        "texture_0_metallic.png",
+        "texture_0_roughness.png",
+        "texture_0_normal.png"
+      ],
+      "created_at": "2026-09-12T16:54:30.462698"
+    }
+  ]
+}

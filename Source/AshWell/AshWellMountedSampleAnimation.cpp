@@ -2,6 +2,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
 #include "Animation/AnimMontage.h"
+#include "Curves/CurveFloat.h"
 #include "Engine/SkeletalMesh.h"
 #include "Engine/SkeletalMeshSocket.h"
 #include "Animation/Skeleton.h"
@@ -104,24 +105,43 @@ bool UAshWellMountedSampleTools::ConfigureHorseSockets(USkeletalMesh* Mesh,FVect
 #endif
 }
 
-UAnimMontage* UAshWellMountedSampleTools::BuildChargeMontage(UAnimSequence* S,const FString& Path)
+UCurveFloat* UAshWellMountedSampleTools::BuildDistanceCurve(const FString& Path,const TArray<FVector2D>& Samples)
 {
 #if WITH_EDITOR
-    if(!S)return nullptr;
+    if(Samples.Num()<2)return nullptr;
+    auto* C=NewObject<UCurveFloat>(CreatePackage(*Path),FName(*FPaths::GetBaseFilename(Path)),RF_Public|RF_Standalone|RF_Transactional);
+    for(const auto& Point:Samples){const auto Key=C->FloatCurve.AddKey(Point.X,Point.Y);C->FloatCurve.SetKeyInterpMode(Key,RCIM_Linear);}
+    C->MarkPackageDirty();return C;
+#else
+    return nullptr;
+#endif
+}
+
+UAnimMontage* UAshWellMountedSampleTools::BuildChargeMontage(UAnimSequence* S,const FString& Path)
+{
+    FMountedAuthoredAction A;A.Launch=1.15f;A.Strike=1.73f;A.Pass=2.1f;A.ContactEnd=2.2f;A.Brake=2.2f;A.Recover=2.85f;A.End=3.55f;
+    return BuildReferenceMontage(S,Path,A,true);
+}
+UAnimMontage* UAshWellMountedSampleTools::BuildReferenceMontage(UAnimSequence* S,const FString& Path,FMountedAuthoredAction Action,bool WeaponNotifies)
+{
+#if WITH_EDITOR
+    if(!S||FMath::Abs(S->GetPlayLength()-Action.End)>.025f)return nullptr;
     UPackage* Package=CreatePackage(*Path);const FName Name(*FPaths::GetBaseFilename(Path));
     auto* M=NewObject<UAnimMontage>(Package,Name,RF_Public|RF_Standalone|RF_Transactional);
     M->SetSkeleton(S->GetSkeleton());M->SetCompositeLength(S->GetPlayLength());
     auto& Slot=M->SlotAnimTracks.AddDefaulted_GetRef();Slot.SlotName=TEXT("MountedFullBody");
     auto& Segment=Slot.AnimTrack.AnimSegments.AddDefaulted_GetRef();Segment.SetAnimReference(S,true);Segment.StartPos=0;Segment.AnimStartTime=0;Segment.AnimEndTime=S->GetPlayLength();Segment.AnimPlayRate=1;Segment.LoopingCount=1;
-    M->BlendIn.SetBlendTime(.16f);M->BlendOut.SetBlendTime(.18f);
-    const TPair<FName,float> Beats[]={{TEXT("Prepare"),0},{TEXT("Launch"),1.15f},{TEXT("Strike"),1.73f},{TEXT("Pass"),2.10f},{TEXT("Brake"),2.20f},{TEXT("Recover"),2.85f}};
+    M->BlendIn.SetBlendTime(.16f);M->BlendOut.SetBlendTime(.18f);M->bEnableAutoBlendOut=false;
+    const TPair<FName,float> Beats[]={{TEXT("Prepare"),0},{TEXT("Launch"),Action.Launch},{TEXT("Strike"),Action.Strike},{TEXT("Pass"),Action.Pass},{TEXT("Brake"),Action.Brake},{TEXT("Recover"),Action.Recover}};
     for(const auto& Beat:Beats)
     {
+        if(Beat.Value>=S->GetPlayLength())continue;
         M->AddAnimCompositeSection(Beat.Key,Beat.Value);
+        if(!WeaponNotifies)continue;
         auto* N=NewObject<UAshWellMountedPhaseNotify>(M);N->Phase=Beat.Key;
         auto& Event=M->Notifies.AddDefaulted_GetRef();Event.Notify=N;Event.NotifyName=Beat.Key;Event.Link(M,Beat.Value==0?.001f:Beat.Value);Event.TriggerTimeOffset=0;
     }
-    auto& W=M->Notifies.AddDefaulted_GetRef();W.NotifyStateClass=NewObject<UAshWellMountedWeaponNotifyState>(M);W.NotifyName=TEXT("Visible blade contact");W.Link(M,1.73f);W.SetDuration(.47f);W.EndLink.Link(M,2.20f);
+    if(WeaponNotifies){auto& W=M->Notifies.AddDefaulted_GetRef();W.NotifyStateClass=NewObject<UAshWellMountedWeaponNotifyState>(M);W.NotifyName=TEXT("Visible blade contact");W.Link(M,Action.Strike);W.SetDuration(Action.ContactEnd-Action.Strike);W.EndLink.Link(M,Action.ContactEnd);}
     M->PostEditChange();M->MarkPackageDirty();return M;
 #else
     return nullptr;
@@ -216,7 +236,7 @@ FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnim
             // its hooves on its owning Boss's body, without changing collisions.
             N->Node.TraceSettings.SimpleTraceChannel=UEngineTypes::ConvertToTraceType(ECC_Camera);
             N->Node.TraceSettings.ComplexTraceChannel=UEngineTypes::ConvertToTraceType(ECC_Camera);
-            for(int I=0;I<4;++I){auto& L=N->Node.LegDefinitions.AddDefaulted_GetRef();L.FKFootBone.BoneName=FK[I];L.IKFootBone.BoneName=IK[I];L.BallBone.BoneName=Ball[I];L.NumBonesInLimb=4;L.SpeedCurveName=Gates[I];}
+            for(int I=0;I<4;++I){auto& L=N->Node.LegDefinitions.AddDefaulted_GetRef();L.FKFootBone.BoneName=FK[I];L.IKFootBone.BoneName=IK[I];L.BallBone.BoneName=Ball[I];L.NumBonesInLimb=4;L.SpeedCurveName=Gates[I];L.DisableLockCurveName=TEXT("AuthoredFootLock");}
         });
         for(int I=0;I<Plant->ShowPinForProperties.Num();++I)if(Plant->ShowPinForProperties[I].PropertyName==FName(TEXT("Alpha")))Plant->SetPinVisibility(true,I);
         auto* Alpha=Create.template operator()<UK2Node_VariableGet>(1200,300,[](auto* N){N->VariableReference.SetSelfMember(TEXT("HorseContactAlpha"));});
@@ -262,7 +282,8 @@ FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnim
             auto* IK=Create.template operator()<UAnimGraphNode_TwoBoneIK>(-150+I*350,0,[&](auto* N)
             {N->Node.IKBone.BoneName=I==0?TEXT("LeftFoot"):TEXT("RightFoot");N->Node.EffectorLocationSpace=BCS_ComponentSpace;N->Node.JointTargetLocationSpace=BCS_ComponentSpace;
              N->Node.EffectorLocation=I==0?LeftFoot:RightFoot;N->Node.JointTargetLocation=N->Node.EffectorLocation+FVector(0,-70,55);N->Node.bMaintainEffectorRelRot=true;N->Node.bAllowStretching=false;});
-            Link(Source,IK);Source=IK;
+            for(int J=0;J<IK->ShowPinForProperties.Num();++J)if(IK->ShowPinForProperties[J].PropertyName==FName(TEXT("Alpha")))IK->SetPinVisibility(true,J);
+            Link(Source,IK);Source=IK;Input(IK,TEXT("Alpha"),TEXT("RiderContactAlpha"),-100);
             auto* Target=Create.template operator()<UK2Node_VariableGet>(-150+I*350,250,[&](auto* N){N->VariableReference.SetSelfMember(I==0?TEXT("LeftFootTarget"):TEXT("RightFootTarget"));});
             auto* In=IK->FindPin(TEXT("EffectorLocation"));auto* Out=Target->GetValuePin();LinksOK&=In&&Out&&Graph->GetSchema()->TryCreateConnection(Out,In);
         }

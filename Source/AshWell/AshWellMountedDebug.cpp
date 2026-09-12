@@ -1,4 +1,7 @@
 #include "AshWellCombatCharacter.h"
+#if WITH_EDITOR
+#include "ShaderCompiler.h"
+#endif
 #include "AshWellMountedBoss.h"
 #include "AshWellBattleFX.h"
 #include "Components/InputComponent.h"
@@ -363,18 +366,24 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
     // Explicit project-owned render export, usable without operating the desktop.
     // It is intentionally labelled a fixture and is never used to claim C.
     FString ReviewMode;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewRecord="),ReviewMode);
-    if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge"))
+    if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge")||ReviewMode==TEXT("death"))
     {
         if(MountedReviewOwner.Get()!=this){MountedReviewOwner=this;MountedReviewStarted=MountedReviewFixtureStarted=MountedReviewFinished=MountedReviewAIResumed=false;MountedReviewFirstCharge.Reset();}
-        if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>3)
+        bool AssetsReady=true;
+#if WITH_EDITOR
+        AssetsReady=!GShaderCompilingManager||!GShaderCompilingManager->IsCompiling();
+#endif
+        if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>3&&AssetsReady)
         {
-            MountedReviewStarted=true;if(ReviewMode==TEXT("asset")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
+            MountedReviewStarted=true;if(ReviewMode!=TEXT("charge")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
             ToggleMountedRecording();UE_LOG(LogTemp,Display,TEXT("AW_REVIEW_RECORD mode=%s path=%s"),*ReviewMode,*MountedRecordingPath);
             if(!MountedRecording){UE_LOG(LogTemp,Error,TEXT("AW_REVIEW_RECORD_BLOCKED no live viewport capture"));FPlatformMisc::RequestExit(false);}
         }
         if(MountedRecording&&!MountedReviewFinished)
         {
             const double Elapsed=Now-MountedRecordingStarted;
+            if(ReviewMode==TEXT("death")&&!MountedReviewFixtureStarted&&Elapsed>3)
+            {MountedReviewFixtureStarted=true;MountedBoss->SetQAHealth(0);}
             if(ReviewMode==TEXT("charge")&&!MountedReviewFixtureStarted&&Elapsed>.5)
             {MountedReviewFixtureStarted=true;StartMountedDebugFixture(2);bMountedDebugVisible=false;}
             if(ReviewMode==TEXT("charge")&&MountedReviewFixtureStarted&&!MountedReviewAIResumed&&Elapsed>5.2&&MountedBoss->GetCombatState()==EMountedBossState::Approach)
@@ -417,7 +426,7 @@ void AAshWellCombatCharacter::ResetMountedDebugEncounter()
     MountedBoss->SetDebugPaused(false);MountedBoss->DebugCancelAttack();MountedBoss->ResetEncounter();MountedBoss->SetQAStationary(false);
     if(BattleFX)BattleFX->ClearMountedEffects();
     GetCharacterMovement()->SetMovementMode(MOVE_Walking);GetCharacterMovement()->StopMovementImmediately();ConsumeMovementInputVector();StopJumping();
-    SetActorLocation(FVector(-2050,0,88),false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator::ZeroRotator);
+    SetActorLocation(FVector(-2050,0,MountedBoss->GroundHeightAt(FVector(-2050,0,0))+90),false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator::ZeroRotator);
     if(Controller)Controller->SetControlRotation(FRotator(-10,0,0));
     Health=Stamina=100;DamageFlash=RegenDelay=AttackBuffer=DodgeBuffer=0;ForwardInput=RightInput=0;
     bSprint=bSprintHeld=bSprintExhausted=false;bEncounterActive=bLockedOn=false;bMountedDebugSingle=false;
@@ -432,7 +441,7 @@ void AAshWellCombatCharacter::ResumeMountedDebugAI()
     if(IsDead()||HasWon())ResetMountedDebugEncounter();
     UGameplayStatics::SetGamePaused(this,false);bMountedDebugOwnedPause=false;MountedBoss->SetDebugPaused(false);
     MountedBoss->DebugCancelAttack();MountedBoss->SetQAStationary(false);bMountedDebugSingle=false;
-    if(GetActorLocation().X<-1400)SetActorLocation(FVector(-850,0,88),false,nullptr,ETeleportType::TeleportPhysics);
+    if(GetActorLocation().X<-1400)SetActorLocation(FVector(-850,0,MountedBoss->GroundHeightAt(FVector(-850,0,0))+90),false,nullptr,ETeleportType::TeleportPhysics);
     bEncounterActive=true;MountedBoss->ActivateEncounter(this);bLockedOn=true;
     Feedback=TEXT("自然 AI 已恢复");FeedbackTime=2;RecordMountedDebugEvent(TEXT("debug_natural_ai"));
 }
@@ -446,6 +455,7 @@ void AAshWellCombatCharacter::StartMountedDebugFixture(int32 Index)
     const FVector Positions[]={FVector(230,120,88),FVector(255,0,88),FVector(560,65,88),FVector(165,-55,88),FVector(185,130,88),FVector(380,-80,88)};
     FVector Position=Positions[Index];
     if(Index==2&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))Position.Y=105;
+    Position.Z=MountedBoss->GroundHeightAt(Position)+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2;
     SetActorLocation(Position,false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,(-Position).Rotation().Yaw,0));
     if(Controller)Controller->SetControlRotation(FRotator(-10,(-Positions[Index]).Rotation().Yaw,0));
     bEncounterActive=true;bLockedOn=true;MountedBoss->ActivateEncounter(this);
