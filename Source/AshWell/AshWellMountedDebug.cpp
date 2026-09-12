@@ -368,18 +368,28 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
     FString ReviewMode;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewRecord="),ReviewMode);
     if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge")||ReviewMode==TEXT("death"))
     {
+        const bool ExternalReview=FParse::Param(FCommandLine::Get(),TEXT("MountedReviewExternal"));
+        float StartDelay=3.f;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewStartDelay="),StartDelay);
         if(MountedReviewOwner.Get()!=this){MountedReviewOwner=this;MountedReviewStarted=MountedReviewFixtureStarted=MountedReviewFinished=MountedReviewAIResumed=false;MountedReviewFirstCharge.Reset();}
         bool AssetsReady=true;
 #if WITH_EDITOR
         AssetsReady=!GShaderCompilingManager||!GShaderCompilingManager->IsCompiling();
 #endif
-        if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>3&&AssetsReady)
+        if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>StartDelay&&AssetsReady)
         {
             MountedReviewStarted=true;if(ReviewMode!=TEXT("charge")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
-            ToggleMountedRecording();UE_LOG(LogTemp,Display,TEXT("AW_REVIEW_RECORD mode=%s path=%s"),*ReviewMode,*MountedRecordingPath);
-            if(!MountedRecording){UE_LOG(LogTemp,Error,TEXT("AW_REVIEW_RECORD_BLOCKED no live viewport capture"));FPlatformMisc::RequestExit(false);}
+            if(ExternalReview)
+            {
+                MountedRecordingStarted=Now;
+                MountedRecordingPath=FPaths::ProjectSavedDir()/TEXT("MountedBoss/ExternalReviews")/MountedDebugSessionId;
+                IFileManager::Get().MakeDirectory(*MountedRecordingPath,true);
+                RecordMountedDebugEvent(TEXT("external_review_start"),ReviewMode);
+            }
+            else ToggleMountedRecording();
+            UE_LOG(LogTemp,Display,TEXT("AW_REVIEW_RECORD mode=%s external=%d path=%s"),*ReviewMode,ExternalReview,*MountedRecordingPath);
+            if(!ExternalReview&&!MountedRecording){UE_LOG(LogTemp,Error,TEXT("AW_REVIEW_RECORD_BLOCKED no live viewport capture"));FPlatformMisc::RequestExit(false);}
         }
-        if(MountedRecording&&!MountedReviewFinished)
+        if((MountedRecording||(ExternalReview&&MountedReviewStarted))&&!MountedReviewFinished)
         {
             const double Elapsed=Now-MountedRecordingStarted;
             if(ReviewMode==TEXT("death")&&!MountedReviewFixtureStarted&&Elapsed>3)
@@ -393,7 +403,7 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
             {
                 MountedReviewFinished=true;auto Summary=MakeShared<FJsonObject>();Summary->SetObjectField(TEXT("boss"),MountedBoss->GetTelemetry());Summary->SetNumberField(TEXT("player_health"),Health);Summary->SetStringField(TEXT("mode"),ReviewMode);Summary->SetNumberField(TEXT("dilation"),UGameplayStatics::GetGlobalTimeDilation(this));
                 Summary->SetBoolField(TEXT("natural_ai_resumed"),MountedReviewAIResumed);if(MountedReviewFirstCharge)Summary->SetObjectField(TEXT("first_charge_complete"),MountedReviewFirstCharge.ToSharedRef());
-                WriteMountedRecordingJson(MountedRecordingPath/TEXT("review.json"),Summary);ToggleMountedRecording();FPlatformMisc::RequestExit(false);
+                WriteMountedRecordingJson(MountedRecordingPath/TEXT("review.json"),Summary);if(!ExternalReview)ToggleMountedRecording();FPlatformMisc::RequestExit(false);
             }
         }
     }

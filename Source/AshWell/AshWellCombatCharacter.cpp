@@ -574,7 +574,9 @@ void AAshWellCombatCharacter::UpdateCamera(float Dt)
         const FVector2D CameraRange=SampleCamera?FVector2D(460,540):FVector2D(650,800);
         const float Length=bLockedOn?FMath::GetMappedRangeValueClamped(FVector2D(180,1500),CameraRange,D):540;
         CameraBoom->TargetArmLength=FMath::FInterpTo(CameraBoom->TargetArmLength,Length,Dt,3);
-        CameraBoom->TargetOffset.Z=115;
+        // Keep the sample's camera near rider contact height rather than looking
+        // down from above the player. The original mounted camera keeps its offset.
+        CameraBoom->TargetOffset.Z=SampleCamera?45.f:115.f;
         CameraBoom->SocketOffset=FMath::VInterpTo(CameraBoom->SocketOffset,FVector(0,bLockedOn?25:55,25),Dt,5);
         CameraBoom->SocketOffset.Z=25+(BattleFX?BattleFX->Shake()*FMath::Sin(GetWorld()->GetRealTimeSeconds()*65)*1.6f:0)+DamageFlash*FMath::Sin(StateTime*65)*.6f;
         FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?(SampleCamera?65.f:80.f):76.f,Dt,3);

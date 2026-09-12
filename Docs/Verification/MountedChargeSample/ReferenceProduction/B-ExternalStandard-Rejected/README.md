@@ -1,0 +1,1 @@
+Rejected timing candidate. Native window1080p game area plus32px title bar; QuickRecorder Normal1x/H264/60fps request/one-minute timer. Video39.956667s3114frames vs audio60.232833s. No retiming/interpolation applied. Do not use this file as a normal-speed acceptance comparison until its source timing error is resolved.

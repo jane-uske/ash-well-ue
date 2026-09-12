@@ -1,0 +1,229 @@
+{
+  "scope": "Rendered automated fixture assertions, not visual or human-input acceptance",
+  "cases": [
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_body_check"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_charge"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_rear",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_rear"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_charge"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "body",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/body"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_rear",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_rear"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_sweep"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "miss",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/miss"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_leap_shield"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "light",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/light"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_sweep",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_sweep"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_overhead"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "heavy",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/heavy"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_overhead",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_overhead"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "dodge_body_check",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/dodge_body_check"
+    },
+    {
+      "run": "20260912-165133-3ea6961a",
+      "case": "hit_leap_shield",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165133-3ea6961a/hit_leap_shield"
+    },
+    {
+      "run": "20260912-165736-4c2d41d2",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165736-4c2d41d2/dodge_charge"
+    },
+    {
+      "run": "20260912-165736-4c2d41d2",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165736-4c2d41d2/retry"
+    },
+    {
+      "run": "20260912-165736-4c2d41d2",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165736-4c2d41d2/hit_charge"
+    },
+    {
+      "run": "20260912-165736-4c2d41d2",
+      "case": "sample_pre_cancel",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165736-4c2d41d2/sample_pre_cancel"
+    },
+    {
+      "run": "20260912-165837-15f5c579",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165837-15f5c579/dodge_charge"
+    },
+    {
+      "run": "20260912-165837-15f5c579",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165837-15f5c579/retry"
+    },
+    {
+      "run": "20260912-165837-15f5c579",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165837-15f5c579/hit_charge"
+    },
+    {
+      "run": "20260912-165837-15f5c579",
+      "case": "sample_pre_cancel",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165837-15f5c579/sample_pre_cancel"
+    },
+    {
+      "run": "20260912-165939-aa4f7bf4",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165939-aa4f7bf4/dodge_charge"
+    },
+    {
+      "run": "20260912-165939-aa4f7bf4",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165939-aa4f7bf4/retry"
+    },
+    {
+      "run": "20260912-165939-aa4f7bf4",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165939-aa4f7bf4/hit_charge"
+    },
+    {
+      "run": "20260912-165939-aa4f7bf4",
+      "case": "sample_pre_cancel",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-165939-aa4f7bf4/sample_pre_cancel"
+    },
+    {
+      "run": "20260912-170040-138b5f37",
+      "case": "dodge_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-170040-138b5f37/dodge_charge"
+    },
+    {
+      "run": "20260912-170040-138b5f37",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-170040-138b5f37/retry"
+    },
+    {
+      "run": "20260912-170040-138b5f37",
+      "case": "hit_charge",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-170040-138b5f37/hit_charge"
+    },
+    {
+      "run": "20260912-170040-138b5f37",
+      "case": "sample_pre_cancel",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-170040-138b5f37/sample_pre_cancel"
+    }
+  ]
+}

@@ -44,6 +44,16 @@ try:
     src=ED.load_asset(D+'/A_ReferenceSourceHorse_Death');assert src
     retarget=ED.load_asset(D+'/RTG_ReferenceHorse_Death') or ED.duplicate_asset(B+'/HorseRetargetConnected/RTG_SampleHorse',D+'/RTG_ReferenceHorse_Death');assert retarget
     controller=u.IKRetargeterController.get_controller(retarget)
+    # The gait rig's spine includes the pelvis. Its FK pass overwrites the global
+    # pelvis rotation, removing the source horse's sideways fall. Keep pelvis
+    # motion in its native op and begin the death-only FK spine at its child.
+    for label,start,side in [('Source','Torso',u.RetargetSourceOrTarget.SOURCE),('Target','Bone_001',u.RetargetSourceOrTarget.TARGET)]:
+        path=D+'/IK_ReferenceDeath'+label
+        rig=ED.load_asset(path) if ED.does_asset_exist(path) else ED.duplicate_asset(B+'/HorseRetargetConnected/IK_SampleHorse'+label,path)
+        rc=u.IKRigController.get_controller(rig);assert rc.set_retarget_chain_start_bone('Spine',start)
+        ED.save_loaded_asset(rig);controller.set_ik_rig(side,rig)
+    controller.remove_all_ops();controller.add_default_ops()
+    for name in ['Spine','Neck','Tail','FrontR','FrontL','BackR','BackL']:assert controller.set_source_chain(name,name)
     for i in range(controller.get_num_retarget_ops()):
         kind=controller.get_op_controller(i).get_class().get_name()
         if any(n in kind for n in ['FloorConstraint','RunIKRig','RootMotion']):controller.set_retarget_op_enabled(i,False)
@@ -51,6 +61,12 @@ try:
     args=u.IKRetargetBatchOperationInputs();args.assets_to_retarget=[ED.find_asset_data(src.get_path_name())];args.source_mesh=source_horse;args.target_mesh=horse;args.ik_retarget_asset=retarget;args.search='A_ReferenceSourceHorse_';args.replace='A_ReferenceHorse_';args.target_path=D;args.include_referenced_assets=False;args.overwrite_existing_files=True
     result=u.IKRetargetBatchOperation.run_batch_retarget(args);assert len(result)==1
     horse_death=result[0].get_asset();ED.save_loaded_asset(horse_death)
+    ends=[]
+    for t in [0.,horse_death.get_editor_property('sequence_length')]:
+        pose=u.AnimPoseExtensions.get_anim_pose_at_time(horse_death,t,u.AnimPoseEvaluationOptions())
+        ends.append(u.AnimPoseExtensions.get_bone_pose(pose,'Bone_000',u.AnimPoseSpaces.WORLD).translation.z)
+    report['death_pelvis_height_cm']=ends
+    assert ends[0]-ends[1]>50,'Death retarget lost the global fall; do not accept an upright dead horse.'
     death_definition=u.MountedAuthoredAction();death_definition.set_editor_property('end',horse_death.get_editor_property('sequence_length'))
     horse_dead_m=u.AshWellMountedSampleTools.build_reference_montage(horse_death,D+'/AM_ReferenceHorse_Death',death_definition,False);assert horse_dead_m;ED.save_loaded_asset(horse_dead_m)
     death_definition.set_editor_property('end',2.8)

@@ -1,0 +1,7 @@
+{
+  "status": "blocked_not_accepted",
+  "scope": "Recorder preparation attempt, no accepted A/B or C evidence",
+  "reason": "AppKit initialization assertion",
+  "follow_up": "Unlock Mac, then validate raw source PTS against host time before using any recording",
+  "video_accepted": false
+}

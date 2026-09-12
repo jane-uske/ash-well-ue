@@ -54,6 +54,13 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preflight',action='store_true',help='20-second launch/exit check without any gameplay input; never C evidence.')
     args=parser.parse_args()
+    if not args.preflight:
+        from mounted_capture_environment import require_unlocked
+        require_unlocked()
+        recorder=ROOT/'Saved/MountedReferenceProduction/record_mounted_window'
+        recorder_source=ROOT/'Scripts/record_mounted_window.swift'
+        if not recorder.exists() or recorder.stat().st_mtime<recorder_source.stat().st_mtime:
+            subprocess.run(['xcrun','swiftc','-parse-as-library','-swift-version','5','-O',str(recorder_source),'-o',str(recorder)],check=True)
     live = [pid for pid, _, cmd in processes() if str(ENGINE) in cmd and str(PROJECT) in cmd]
     if live:
         raise SystemExit(f'AshWell 已有运行实例 {live}。本入口不会关闭它；请先正常退出该实例。')
@@ -70,7 +77,7 @@ def main():
     report = {'scope': 'human C initial test; not final acceptance', 'status': 'running',
               'head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
               'module_sha256': hashlib.sha256((ROOT/'Binaries/Mac/libUnrealEditor-AshWell.dylib').read_bytes()).hexdigest(),
-              'command': command, 'video': None, 'video_status': 'awaiting external window recording',
+              'command': command, 'video': None, 'video_status': 'awaiting native window recording',
               'input_source': 'human keyboard/mouse only', 'forced_attack': False,
               'boss_health_override': False, 'ai_frozen': False, 'time_scale_override': False,
               'started_utc': dt.datetime.now(dt.timezone.utc).isoformat()}
@@ -84,10 +91,11 @@ def main():
     report['runner_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     write(folder/'session.json', report)
     print(f'真人 C 初测日志：{folder}', flush=True)
-    print('请用 QuickRecorder 录制 AshWell 窗口：应用音频开启、麦克风关闭。不要按 F8。', flush=True)
+    print('本入口会自动录制15分钟游戏窗口与游戏音频，麦克风关闭；请等“录像已开始”再按E。不要按F8。', flush=True)
     print('E 入战 / WASD 移动 / Tab 锁定 / 空格跳跃 / Shift 短按闪避、长按冲刺 / 左右键攻击 / R 重试。', flush=True)
     print('正常试玩 10–15 分钟后退出游戏；不使用数字选招和 F1–F8 调试键。', flush=True)
     started = time.monotonic()
+    capture_proc=None;capture_log=None
     with (folder/'console.log').open('w') as output:
         proc = subprocess.Popen(command,cwd=ROOT,env=dict(os.environ,DEVELOPER_DIR='/Applications/Xcode-beta.app/Contents/Developer'),stdout=output,stderr=subprocess.STDOUT)
         report['pid'] = proc.pid
@@ -97,13 +105,50 @@ def main():
                 try:code=proc.wait(timeout=20)
                 except subprocess.TimeoutExpired:
                     proc.terminate();code=proc.wait(timeout=10)
-            else:code = proc.wait()
+            else:
+                until=time.monotonic()+40
+                while time.monotonic()<until:
+                    log=(folder/'engine.log').read_text(errors='replace') if (folder/'engine.log').exists() else ''
+                    if 'AW_SAMPLE_RIG ready=1' in log:break
+                    if proc.poll() is not None:raise RuntimeError('游戏未完成启动；保留日志。')
+                    time.sleep(.25)
+                else:raise RuntimeError('等待游戏窗口超时。')
+                capture_log=(folder/'capture.log').open('w')
+                capture_proc=subprocess.Popen([str(recorder),str(proc.pid),str(folder/'human-window-uncut.mp4'),'900'],stdout=capture_log,stderr=subprocess.STDOUT)
+                until=time.monotonic()+20
+                while time.monotonic()<until:
+                    text=(folder/'capture.log').read_text(errors='replace')
+                    if 'NATIVE_RECORDING_STARTED' in text:break
+                    if capture_proc.poll() is not None:raise RuntimeError('原生录像未启动，不能把本次认定为C初测；详见capture.log。')
+                    time.sleep(.2)
+                else:raise RuntimeError('等待首个录像画面超时；本次C准备阻塞。')
+                report['video']=str(folder/'human-window-uncut.mp4');report['video_status']='recording_pending_audit'
+                report['recorder_sha256']=hashlib.sha256(recorder.read_bytes()).hexdigest();write(folder/'session.json',report)
+                print('录像已开始。现在可以按E，用正式按键试玩10–15分钟；结束后正常退出游戏。',flush=True)
+                code = proc.wait()
         except KeyboardInterrupt:
             proc.terminate()
             try:
                 code = proc.wait(timeout=10)
             except subprocess.TimeoutExpired:
                 proc.kill();code=proc.wait()
+        except Exception as error:
+            report['preparation_error']=str(error);report['video_status']='blocked';print(str(error),flush=True)
+            if proc.poll() is None:proc.terminate()
+            code=proc.wait(timeout=10)
+        finally:
+            if capture_proc and capture_proc.poll() is None:
+                capture_proc.terminate()
+                try:capture_proc.wait(timeout=25)
+                except subprocess.TimeoutExpired:capture_proc.kill();capture_proc.wait()
+            if capture_log:capture_log.close()
+            if capture_proc:
+                report['recorder_exit_code']=capture_proc.returncode
+                video=folder/'human-window-uncut.mp4'
+                if video.exists() and video.with_suffix('.capture.json').exists():
+                    audit=subprocess.run(['python3',str(ROOT/'Scripts/audit_mounted_native_capture.py'),str(video)],capture_output=True,text=True)
+                    (folder/'capture-audit.log').write_text(audit.stdout+audit.stderr)
+                    report['video_status']='audit_passed_pending_human_review' if audit.returncode==0 else 'audit_failed'
     report['elapsed_wall_seconds'] = time.monotonic()-started
     report['exit_code'] = code
     report['status'] = 'ended_review_pending'
@@ -120,7 +165,7 @@ def main():
     report['cleanup'] = cleanup_reporters(proc.pid,folder)
     write(folder/'session.json',report)
     print(f'初测记录已保存，等待录像和真人反馈：{folder}',flush=True)
-    return 0 if code == 0 and not report['fatal_or_ensure'] else 1
+    return 0 if code == 0 and not report['fatal_or_ensure'] and not report.get('preparation_error') else 1
 
 
 if __name__ == '__main__':

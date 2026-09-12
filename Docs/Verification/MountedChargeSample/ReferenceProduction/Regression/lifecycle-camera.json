@@ -1,0 +1,47 @@
+{
+  "scope": "Explicit rendered fixtures, not C. Includes counterattack loop, interrupted windows, death/victory/retry and lower-camera checks.",
+  "cases": [
+    {
+      "run": "20260912-172558-add65417",
+      "case": "retry",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/retry"
+    },
+    {
+      "run": "20260912-172558-add65417",
+      "case": "camera",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/camera"
+    },
+    {
+      "run": "20260912-172558-add65417",
+      "case": "movement",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/movement"
+    },
+    {
+      "run": "20260912-172558-add65417",
+      "case": "victory",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/victory"
+    },
+    {
+      "run": "20260912-172558-add65417",
+      "case": "loop",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/loop"
+    },
+    {
+      "run": "20260912-172558-add65417",
+      "case": "sample_cleanup",
+      "passed": true,
+      "failed_checks": [],
+      "evidence_directory": "Saved/MountedBoss/runs/20260912-172558-add65417/sample_cleanup"
+    }
+  ]
+}

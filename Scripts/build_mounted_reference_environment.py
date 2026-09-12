@@ -137,7 +137,7 @@ try:
     ground_dir=O/'Ground'
     earth=material('M_ReferenceEarth',tex(next(ground_dir.glob('aerial*diff*')),'T_ReferenceMeadowColor'),
         tex(next(ground_dir.glob('aerial*nor_gl*')),'T_ReferenceMeadowNormal',normal=True),
-        tex(next(ground_dir.glob('aerial*rough*')),'T_ReferenceMeadowRoughness',linear=True),tint=(.22,.29,.17),uv_scale=400/1500)
+        tex(next(ground_dir.glob('aerial*rough*')),'T_ReferenceMeadowRoughness',linear=True),tint=(.12,.15,.09),uv_scale=400/1500)
     field=mesh('SM_ReferenceField',earth)
     assert LE.load_level('/Game/AshWell/MountedBoss/L_MountedCourtyard')
     # Only the existing mounted set dressing is replaced; other maps and assets survive.
@@ -158,7 +158,10 @@ try:
     for i,(x,y) in enumerate([(1200,-2500),(2600,700),(3200,1600),(-2400,-1500),(-2500,3400),(4800,3200)]):
         prop('BareTree'+str(i),bare,x,y,.28+.04*(i%3),rng.uniform(0,360),-3,False)
     # Distant geometry is a silhouette interpretation: the source does not reveal its back.
-    if 'castle' in props:prop('DistantFortress',props['castle'],-11500,-4500,1.0,-30,-300,False)
+    if 'castle' in props:
+        # The wide model spans several terrain elevations. Sink the foundation
+        # below the near hillside; anchoring at only its centre left it floating.
+        prop('DistantFortress',props['castle'],-9000,-4500,1.0,-30,60-ground(-9000,-4500),False)
     for i in range(24):
         x=rng.uniform(-7500,-3100);y=rng.choice([-1,1])*rng.uniform(1900,4300)
         prop('BackgroundGrove'+str(i),tree,x,y,rng.uniform(.48,.78),rng.uniform(0,360),-3,False)
@@ -182,7 +185,7 @@ try:
         assert count==len(instances);report['instances'][str(i)]=count
     actor(u.PlayerStart,'PlayerStart',(-2050,0,ground(-2050,0)+100))
     sun=actor(u.DirectionalLight,'Sun',(0,0,1500),u.Rotator(pitch=-34,yaw=-42));light=sun.light_component
-    light.set_mobility(u.ComponentMobility.MOVABLE);light.set_intensity(3.2);light.set_light_color(u.LinearColor(1,.91,.72,1));light.set_editor_property('atmosphere_sun_light',True);light.set_editor_property('light_source_angle',8.0)
+    light.set_mobility(u.ComponentMobility.MOVABLE);light.set_intensity(1.8);light.set_light_color(u.LinearColor(1,.91,.78,1));light.set_editor_property('atmosphere_sun_light',True);light.set_editor_property('light_source_angle',12.0)
     actor(u.SkyAtmosphere,'Atmosphere',(0,0,-100))
     cloud=actor(u.VolumetricCloud,'CloudLayer');cloud_component=cloud.get_component_by_class(u.VolumetricCloudComponent)
     cloud_component.set_material(ED.load_asset('/Engine/EngineSky/VolumetricClouds/m_SimpleVolumetricCloud_Inst'))

@@ -1,4 +1,4 @@
-> 2026-09-12 本轮接续入口：`ChargeSample/REFERENCE_PRODUCTION.md`。原片复刻执行中，Meshy三件资产已用105积分接入；5.8秒独立人马Montage已实机运行。A/B均未验收，C尚未真人初测。接触候选仍在动态修正，请勿把离线数值或旧测试当成最新通过。
+> 2026-09-12 17:55 接续入口：`ChargeSample/REFERENCE_PRODUCTION.md`。Meshy累计140积分，四件构件已接入；独立人马原生Montage/Notify/坡地IK已实机运行，死亡已能侧倒。六招16项、坡地16项、生命周期相机6项、守井者/主角6项分版本通过。1080p预热后平均14.29ms、p95 18.47ms，未达稳定60fps。A/B未验收、C未执行；最新录屏受Mac锁屏阻塞，已请求解锁。最近推送b9c0860，后续修正待提交。
 
 # Mounted Boss 当前状态
 
@@ -6,7 +6,7 @@
 
 用户已批准并要求执行新的[原片复刻计划](ChargeSample/REFERENCE_PRODUCTION.md)：允许重排冲锋时序、建设参考中的起伏地形并重新验碰撞，所需模型优先 Meshy，首批 200 / 总计 964 积分。工作分支不变，制作前候选已提交为 `db1ee62`。旧文档“不改时序/地形”的限制已被本次授权替代；其他五招保留而不推广。当前 A/B 待验收、C 未完成，制作过程与版本证据以新文档接续。
 
-## 当前第二轮（2026-09-12，原片优先修正）
+## 历史第二轮（2026-09-12，原片优先修正）
 
 工作分支 `codex/mounted-charge-standard`，已推送基线 `bd791aa`；本轮新改动仍在原工程，未提交/推送，不合并 main。已按用户“直接在旧版上面改”“先参考原视频，再来制作”执行：重查普通大树守卫 19.3–25.1 秒，修正高位架柄、压身低扫、抬起收势，并让准备阶段保持有限推进。UE AnimBP / Montage / Notify 与原战斗规则保留；马蹄 Foot Placement 试验未采用，停止扩展。
 
@@ -16,7 +16,7 @@ A/B 仍待动态验收；新版有动作轮廓进展，马匹制动、身体重�
 
 本轮依据、详细新旧测试归属及回退方式见 [ChargeSample/ROUND2.md](ChargeSample/ROUND2.md)、[参考比较](ChargeSample/REFERENCE_COMPARISON.md) 和 `Docs/Verification/MountedChargeSample/Round2/progress.json`。历史段落以下保留，不能覆盖当前验收状态。
 
-## 当前阶段切换（2026-09-11，冲锋横扫目标样本）
+## 历史阶段切换（2026-09-11，冲锋横扫目标样本）
 
 用户已恢复制作，采用 UE 标准动画设施优先。当前新资产冲锋已实际运行 AnimBP、Montage、阶段/武器窗口 Notify、原生马匹 IK 重定向，并交付当前版本 A 绕拍与 B 正常速度完整冲锋录像。A/B 待动态验收；C 普通输入尝试已录下但受工具按键/连接限制，未形成合格交锋，明确未通过。原六招默认入口、守井者与原件保留，未推广第二招。详见 [ChargeSample/STATUS.md](ChargeSample/STATUS.md)；完整回归 27/27 与最后录制/盾朝向修改后针对性 5/5 分别存于 CurrentBuild / PostExportBuild。以下原暂停与测试记录是历史版本证据。
 

@@ -1,0 +1,2 @@
+NATIVE_RECORDING_BLOCKED: Error Domain=No complete video frame in ten seconds Code=5 "(null)"
+NATIVE_RECORDING_WINDOW pid=33028 pixels=1920x1112 microphone=false

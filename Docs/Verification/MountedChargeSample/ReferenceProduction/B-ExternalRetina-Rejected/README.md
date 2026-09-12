@@ -1,0 +1,1 @@
+Rejected external recording. QuickRecorder Retina auto output 3840x2224; video duration32.645s vs audio41.351s. Original PTS/audio retained. Not a 1080p60 or synchronized A/B acceptance clip. Current scene also showed the distant fortress foundation floating.

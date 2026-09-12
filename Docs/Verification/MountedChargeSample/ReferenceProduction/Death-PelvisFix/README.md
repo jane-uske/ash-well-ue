@@ -1,0 +1,1 @@
+Failed intermediate death candidate: altering only the FK chain start did not restore the fall. The subsequent Death-Repaired clip shows the working native retarget operation stack. Keep this as failed process evidence.

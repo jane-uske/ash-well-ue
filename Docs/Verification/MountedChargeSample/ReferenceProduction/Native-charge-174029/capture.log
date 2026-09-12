@@ -1,0 +1,3 @@
+NATIVE_RECORDING_WINDOW pid=30735 pixels=1920x1112 microphone=false
+NATIVE_RECORDING_STARTED 2026-09-12T09:40:40Z
+NATIVE_RECORDING_BLOCKED: Error Domain=com.apple.ReplayKit.RPRecordingErrorDomain Code=-5822 "Failed due to failure to process first sample buffer" UserInfo={NSLocalizedDescription=Failed due to failure to process first sample buffer}
