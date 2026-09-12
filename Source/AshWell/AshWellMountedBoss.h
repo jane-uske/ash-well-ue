@@ -74,6 +74,7 @@ public:
     int32 GetStrikeCount() const { return StrikeCount; }
     int32 GetContactCount() const { return ContactCount; }
     FVector GetWeaponTip() const { return WeaponTip; }
+    FVector GetShieldPoint() const {return ShieldPoint;}
     FVector GetAttackContact() const;
     EMountedBossState GetCombatState() const { return State; }
     EMountedBossAttack GetAttackKind() const { return AttackKind; }
@@ -88,6 +89,8 @@ public:
     FSimpleMulticastDelegate OnDefeated;
 
     void PlayEncounterSound(USoundBase* S,const FVector& P,float V=.5f,float Pitch=1.f){PlaySound(S,P,V,Pitch);}
+    void PlayAttackSwing();
+    bool ReceiveShieldContact(const FHitResult& Hit,uint64 AttackId);
     UPROPERTY(VisibleAnywhere) TObjectPtr<USceneComponent> SceneRoot;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UBoxComponent> BodyCollision;
 
@@ -174,4 +177,8 @@ private:
     UPROPERTY(Transient) TObjectPtr<USoundBase> SwingSound;
     UPROPERTY(Transient) TObjectPtr<USoundBase> ImpactSound;
     UPROPERTY(Transient) TObjectPtr<USoundBase> HoofSound;
+    UPROPERTY(Transient) TObjectPtr<USoundBase> WeaponHitSound;
+    UPROPERTY(Transient) TObjectPtr<USoundBase> BodyHitSound;
+    UPROPERTY(Transient) TObjectPtr<USoundBase> ShieldBlockSound;
+    int32 ShieldBlocks=0;
 };

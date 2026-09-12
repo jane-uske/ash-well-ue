@@ -147,6 +147,11 @@ void AAshWellCombatCharacter::BeginPlay()
         if(Slash&&Heavy&&Roll&&Reaction){AttackAnimation=Slash;HeavyAnimation=Heavy;DodgeAnimation=Roll;HitAnimation=Reaction;bBattlePolish=true;BattleFX=GetWorld()->SpawnActor<AAshWellBattleFX>();GetCapsuleComponent()->SetCapsuleRadius(34);}
         auto Sound=[](const TCHAR* Name){const FString N=FString(TEXT("AW_Battle_"))+Name;return LoadObject<USoundBase>(nullptr,*(FString(TEXT("/Game/AshWell/Combat/BattlePolish/"))+N+TEXT(".")+N));};
         if(auto* A=Sound(TEXT("Swing")))AttackSound=A;if(auto* A=Sound(TEXT("MetalHit")))ImpactSound=A;if(auto* A=Sound(TEXT("Roll")))DodgeSound=A;
+        if(bMountedExperiment)
+        {
+            if(auto* S=LoadObject<USoundBase>(nullptr,TEXT("/Game/AshWell/Combat/MountedChargeSample/Audio/SC_PlayerSwing.SC_PlayerSwing")))AttackSound=S;
+            if(auto* S=LoadObject<USoundBase>(nullptr,TEXT("/Game/AshWell/Combat/MountedChargeSample/Audio/SC_ArmourHit.SC_ArmourHit")))ImpactSound=S;
+        }
     }
     if(bBattlePolish&&!FParse::Param(FCommandLine::Get(),TEXT("SwordBaseline")))
     {
@@ -502,19 +507,30 @@ void AAshWellCombatCharacter::UpdateAttack()
     const FVector Start=PreviousWeaponPosition;
     const FVector End=WeaponHead->GetComponentLocation();
     FHitResult Hit;FCollisionQueryParams Query(SCENE_QUERY_STAT(CombatHammerHit),false,this);
-    bool Contact=false;
+    Query.bTraceComplex=bMountedExperiment;
+    bool Contact=false,ShieldBlocked=false;
     if(bSwordPass)
     {
         // Sample the visible blade along its length; nearby geometry blocks each sample.
-        for(int32 I=1;I<=6&&!Contact;++I)
+        for(int32 I=1;I<=6&&!Contact&&!ShieldBlocked;++I)
         {
             const float A=I/6.f;
             const FVector From=FMath::Lerp(PreviousSwordBase,PreviousWeaponPosition,A);
             const FVector To=FMath::Lerp(SwordPoint(14),SwordPoint(101),A);
-            Contact=GetWorld()->SweepSingleByChannel(Hit,From,To,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(7),Query)&&Hit.GetActor()==GetCombatEnemy();
+            const bool Blocking=GetWorld()->SweepSingleByChannel(Hit,From,To,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(7),Query);
+            ShieldBlocked=Blocking&&MountedBoss&&MountedBoss->ReceiveShieldContact(Hit,AttackCount);
+            Contact=Blocking&&Hit.GetActor()==GetCombatEnemy();
         }
     }
     else Contact=GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(24),Query)&&Hit.GetActor()==GetCombatEnemy();
+    if(ShieldBlocked)
+    {
+        bAttackConnected=true;
+        if(!bEncounterActive){bEncounterActive=true;MountedBoss->ActivateEncounter(this);}
+        Feedback=TEXT("剑刃被盾面挡住");FeedbackTime=1.5f;
+        if(BattleFX)BattleFX->Burst(Hit.ImpactPoint,.28f,false,false);
+        RecordMountedDebugEvent(TEXT("shield_block"));return;
+    }
     if(Contact)
     {
         if(!bEncounterActive)
@@ -545,7 +561,7 @@ float AAshWellCombatCharacter::TakeDamage(float Damage,const FDamageEvent& Event
         RecordMountedDebugEvent(TEXT("damage_applied"),Feedback);
     }
     Health=FMath::Max(0.f,Health-Damage);DamageFlash=1;++DamageTakenCount;
-    if(ImpactSound){if(bMountedExperiment&&MountedBoss)MountedBoss->PlayEncounterSound(ImpactSound,GetActorLocation(),.6f,.7f);else UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,GetActorLocation(),.6f,.7f);}
+    if(ImpactSound&&!bMountedExperiment)UGameplayStatics::PlaySoundAtLocation(this,ImpactSound,GetActorLocation(),.6f,.7f); // Mounted source emits its own material-specific hit once.
     AttackBuffer=DodgeBuffer=0;RegenDelay=1;
     SetAction(Health<=0?EAction::Dead:EAction::Hit);
     if(BattleFX&&!IsDead())BattleFX->Burst(GetActorLocation(),.65f);

@@ -44,7 +44,7 @@ void AAshWellMountedBoss::InitializeVisuals()
     {
         FActorSpawnParameters Params;Params.Owner=this;
         SampleRig=GetWorld()->SpawnActor<AAshWellMountedSampleRig>(GetActorLocation(),GetActorRotation(),Params);
-        if(SampleRig){SampleRig->AttachToActor(this,FAttachmentTransformRules::KeepWorldTransform);bHorseVisual=bRiderVisual=SampleRig->IsReady();}
+        if(SampleRig){SampleRig->AttachToActor(this,FAttachmentTransformRules::SnapToTargetIncludingScale);bHorseVisual=bRiderVisual=SampleRig->IsReady();}
         bQAStationary=true;return; // Explicit A review: normal speed, no AI attack acceptance implied.
     }
     auto* Dark=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/AshWell/Materials/M_DarkSteel.M_DarkSteel"));
@@ -117,7 +117,7 @@ void AAshWellMountedBoss::InitializeVisuals()
         SampleRig=GetWorld()->SpawnActor<AAshWellMountedSampleRig>(GetActorLocation(),GetActorRotation(),Params);
         if(SampleRig&&SampleRig->IsReady())
         {
-            SampleRig->AttachToActor(this,FAttachmentTransformRules::KeepWorldTransform);
+            SampleRig->AttachToActor(this,FAttachmentTransformRules::SnapToTargetIncludingScale);
             // Retain the five legacy drivers as compatibility sources. Only charge
             // changes to authored Montage timing; original assets are untouched.
             for(USceneComponent* C:{static_cast<USceneComponent*>(HorseMesh),RiderRoot.Get(),static_cast<USceneComponent*>(Weapon),static_cast<USceneComponent*>(Shield),static_cast<USceneComponent*>(Saddle)})if(C)C->SetVisibility(false,true);
@@ -183,7 +183,7 @@ void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
         const float Height=P.Z-GroundHeightAt(P);
         const bool Ground=Height<(bHoofGrounded[I]?12.f:9.5f);
         if(bHoofPrimed&&!Changed&&!IsDead()&&!LeapPose&&(ActualSpeed>25.f||TurnSpeed>10.f)&&Ground&&!bHoofGrounded[I])
-        {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
+        {++HoofContacts;PlaySound(HoofSound,P,.26f,I<2?1.18f:1.02f);}
         if(bHoofPrimed&&!Changed&&Ground&&bHoofGrounded[I]&&ActualSpeed>30.f&&TurnSpeed<10.f&&!RearPose&&!LeapPose&&Dt>0)
         {SupportDriftDistance+=FVector::Dist2D(P,PreviousHoof[I]);SupportSampleTime+=Dt;}
         bHoofGrounded[I]=Ground;PreviousHoof[I]=P;
@@ -212,7 +212,7 @@ void AAshWellMountedBoss::UpdateSampleHoofContacts(float Dt)
             UE_LOG(LogTemp,Display,TEXT("AW_FOOT_AUDIT leg=%d speed=%.2f gate=%.2f z=%.2f drift=%.2f reach=%.2f"),I,ActualSpeed,Gate,P.Z-GroundHeightAt(P),FVector::Dist2D(P,PreviousHoof[I])/Dt,FVector::Distance(SampleRig->Horse->GetSocketLocation(FK[I]),SampleRig->Horse->GetSocketLocation(IK[I])));
         }
         if(bHoofPrimed&&!IsDead()&&!AirAction&&Ground&&!bHoofGrounded[I]&&(ActualSpeed>25||TurnSpeed>10))
-        {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
+        {++HoofContacts;PlaySound(HoofSound,P,.26f,I<2?1.18f:1.02f);}
         if(bHoofPrimed&&!IsDead()&&!AirAction&&Ground&&bHoofGrounded[I]&&ActualSpeed>30&&TurnSpeed<10)
         {SupportDriftDistance+=FVector::Dist2D(P,PreviousHoof[I]);SupportSampleTime+=Dt;}
         bHoofGrounded[I]=Ground;PreviousHoof[I]=P;

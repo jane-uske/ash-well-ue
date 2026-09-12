@@ -1,4 +1,10 @@
 #include "AshWellMountedSampleAnimation.h"
+#include "AshWellMountedBoss.h"
+#include "Sound/SoundCue.h"
+#include "Sound/SoundNodeRandom.h"
+#include "Sound/SoundNodeModulator.h"
+#include "Sound/SoundNodeWavePlayer.h"
+#include "Sound/SoundWave.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
 #include "Animation/AnimMontage.h"
@@ -29,10 +35,43 @@
 #include "UObject/Package.h"
 #endif
 
+USoundCue* UAshWellMountedSampleTools::BuildCombatSoundCue(const FString& Path,const TArray<USoundWave*>& Variants,float Pitch)
+{
+#if WITH_EDITOR
+    if(Variants.IsEmpty()||Variants.Contains(nullptr))return nullptr;
+    auto* Cue=LoadObject<USoundCue>(nullptr,*(Path+TEXT(".")+FPaths::GetBaseFilename(Path)));
+    if(Cue){Cue->Modify();Cue->ResetGraph();}
+    else{Cue=NewObject<USoundCue>(CreatePackage(*Path),FName(*FPaths::GetBaseFilename(Path)),RF_Public|RF_Standalone|RF_Transactional);Cue->CreateGraph();}
+    Cue->VolumeMultiplier=1.f;Cue->bOverrideAttenuation=true;
+    Cue->AttenuationOverrides.bAttenuate=true;Cue->AttenuationOverrides.bSpatialize=true;
+    Cue->AttenuationOverrides.AttenuationShapeExtents=FVector(700.f,0,0);Cue->AttenuationOverrides.FalloffDistance=2800.f;
+    auto* Random=Cue->ConstructSoundNode<USoundNodeRandom>();Random->bRandomizeWithoutReplacement=true;
+    TArray<USoundNode*> Players;
+    for(auto* Wave:Variants){auto* P=Cue->ConstructSoundNode<USoundNodeWavePlayer>();P->SetSoundWave(Wave);Players.Add(P);}
+    Random->SetChildNodes(Players);Random->Weights.Init(1.f,Players.Num());Random->HasBeenUsed.Init(false,Players.Num());
+    auto* Mod=Cue->ConstructSoundNode<USoundNodeModulator>();Mod->PitchMin=Pitch*.97f;Mod->PitchMax=Pitch*1.03f;Mod->VolumeMin=.93f;Mod->VolumeMax=1.f;
+    TArray<USoundNode*> Child{Random};Mod->SetChildNodes(Child);Cue->FirstNode=Mod;
+    // SetChildNodes changes the runtime tree, not the existing editor pins.
+    // Reconstruct before linking; otherwise AudioEditor's invariant asserts.
+    for(const auto& Node:Cue->AllNodes)
+    {
+        auto* GraphNode=Node->GetGraphNode();if(!GraphNode)return nullptr;
+        GraphNode->ReconstructNode();int32 Inputs=0;
+        for(auto* Pin:GraphNode->Pins)if(Pin->Direction==EGPD_Input)++Inputs;
+        if(Inputs!=Node->ChildNodes.Num()){UE_LOG(LogTemp,Error,TEXT("AW_SOUND_GRAPH_BLOCKED input count mismatch"));return nullptr;}
+    }
+    Cue->LinkGraphNodesFromSoundNodes();Cue->PostEditChange();Cue->MarkPackageDirty();return Cue;
+#else
+    return nullptr;
+#endif
+}
+
 void UAshWellMountedPhaseNotify::Notify(USkeletalMeshComponent* Mesh,UAnimSequenceBase*,const FAnimNotifyEventReference&)
 {
     if(auto* A=Mesh?Cast<UAshWellMountedSampleAnimInstance>(Mesh->GetAnimInstance()):nullptr)
-    {if(!A->bActionNotifiesEnabled)return;A->ActionPhase=Phase;++A->PhaseNotifyCount;UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_NOTIFY phase=%s count=%d"),*Phase.ToString(),A->PhaseNotifyCount);}
+    {if(!A->bActionNotifiesEnabled)return;A->ActionPhase=Phase;++A->PhaseNotifyCount;UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_NOTIFY phase=%s count=%d"),*Phase.ToString(),A->PhaseNotifyCount);
+        if(Phase==FName(TEXT("Strike")))if(auto* Boss=Cast<AAshWellMountedBoss>(Mesh->GetOwner()->GetOwner()))Boss->PlayAttackSwing();
+    }
 }
 
 bool UAshWellMountedSampleTools::ConfigureHorseBlendSpace(UBlendSpace* B,UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Gallop)
@@ -109,7 +148,9 @@ UCurveFloat* UAshWellMountedSampleTools::BuildDistanceCurve(const FString& Path,
 {
 #if WITH_EDITOR
     if(Samples.Num()<2)return nullptr;
-    auto* C=NewObject<UCurveFloat>(CreatePackage(*Path),FName(*FPaths::GetBaseFilename(Path)),RF_Public|RF_Standalone|RF_Transactional);
+    auto* C=LoadObject<UCurveFloat>(nullptr,*(Path+TEXT(".")+FPaths::GetBaseFilename(Path)));
+    if(!C)C=NewObject<UCurveFloat>(CreatePackage(*Path),FName(*FPaths::GetBaseFilename(Path)),RF_Public|RF_Standalone|RF_Transactional);
+    C->Modify();C->FloatCurve.Reset();
     for(const auto& Point:Samples){const auto Key=C->FloatCurve.AddKey(Point.X,Point.Y);C->FloatCurve.SetKeyInterpMode(Key,RCIM_Linear);}
     C->MarkPackageDirty();return C;
 #else

@@ -95,13 +95,15 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         else if(MountedProbe==TEXT("light")||MountedProbe==TEXT("heavy")||MountedProbe==TEXT("victory"))Place(FVector(0,150,88),-90);
         else if(MountedProbe==TEXT("miss"))Place(FVector(-750,0,88),0);
         else if(MountedProbe==TEXT("body"))Place(FVector(430,0,88),180);
+        else if(MountedProbe==TEXT("shield_block"))
+        {const FVector Shield=QAFrame.InverseTransformPosition(MountedBoss->GetShieldPoint());Place(Shield+FVector(0,-115,0),90);}
         else if(NaturalCharge||MountedProbe==TEXT("loop")){Place(FVector(650,0,88),180);MountedBoss->SetQAStationary(false);}
         else if(HitCase||DodgeCase)
         {
             FVector P(230,120,88);
             if(AttackName==TEXT("overhead"))P=FVector(255,0,88);
             if(AttackName==TEXT("charge"))P=FVector(560,65,88);
-            if(AttackName==TEXT("charge")&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))P.Y=105;
+            if(AttackName==TEXT("charge")&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))P.Y=105*MountedBoss->GetActorScale3D().X;
             if(AttackName==TEXT("body_check"))P=FVector(170,-35,88);
             if(AttackName==TEXT("rear"))P=FVector(185,130,88);
             if(AttackName==TEXT("leap_shield"))P=FVector(380,-80,88);
@@ -114,7 +116,14 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
     if(MountedQAStep==1&&MountedQATime>1.2f)
     {
         if(MountedProbe==TEXT("light")||MountedProbe==TEXT("miss")||MountedProbe==TEXT("victory")){Attack();MountedQAStep=2;}
-        else if(MountedProbe==TEXT("heavy")){HeavyAttack();MountedQAStep=2;}
+        else if(MountedProbe==TEXT("heavy")||MountedProbe==TEXT("shield_block"))
+        {
+            // Wait for one evaluated pose after the fixture relocates the boss;
+            // the cached shield point still belongs to its old spawn on step 0.
+            if(MountedProbe==TEXT("shield_block"))
+            {const FVector Shield=QAFrame.InverseTransformPosition(MountedBoss->GetShieldPoint());Place(Shield+FVector(0,-115,0),90);}
+            HeavyAttack();MountedQAStep=2;
+        }
         else if(NaturalCharge||MountedProbe==TEXT("loop")){if(!MountedBoss->ForceAttack(TEXT("charge")))++MountedQAFailures;MountedQAStep=2;}
         else if(HitCase||DodgeCase){if(!MountedBoss->ForceAttack(AttackName))++MountedQAFailures;MountedQAStep=2;}
         else if(MountedProbe==TEXT("disengage")){MountedBoss->SetQAStationary(false);Place(FVector(-2070,0,88),0);MountedQAStep=2;}
@@ -130,7 +139,7 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
     if(DodgeCase&&MountedQAStep==2)
     {
         const bool RollNow=AttackName==TEXT("leap_shield")?(MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.49f):AttackName==TEXT("charge")?(MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.20f):(MountedBoss->GetCombatState()==EMountedBossState::Windup&&MountedBoss->GetStateTime()>MountedBoss->GetTelemetry()->GetNumberField(TEXT("windup_seconds"))-.13f);
-        if(RollNow){if(AttackName==TEXT("charge"))RightInput=1;Dodge();RightInput=0;MountedQAStep=3;}
+        if(RollNow){if(AttackName==TEXT("charge"))RightInput=FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample"))?-1.f:1.f;Dodge();RightInput=0;MountedQAStep=3;}
     }
     if(MountedProbe==TEXT("sample_pre_cancel"))
     {

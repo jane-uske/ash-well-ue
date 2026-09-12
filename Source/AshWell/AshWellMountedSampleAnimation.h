@@ -13,6 +13,8 @@ class UBlendSpace;
 class UAnimMontage;
 class USkeletalMesh;
 class UCurveFloat;
+class USoundCue;
+class USoundWave;
 
 /** One move's authoring contract. Times and displacement share the rider clock. */
 USTRUCT(BlueprintType)
@@ -98,6 +100,8 @@ class ASHWELL_API UAshWellMountedSampleTools : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
 public:
+    UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
+    static USoundCue* BuildCombatSoundCue(const FString& PackagePath,const TArray<USoundWave*>& Variants,float Pitch=1.f);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
     static FString BuildAnimationGraph(UAnimBlueprint* Blueprint,UAnimSequence* Idle,UBlendSpace* Locomotion,bool FeetIK,FVector LeftFoot,FVector RightFoot,bool HorsePlant=false);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")

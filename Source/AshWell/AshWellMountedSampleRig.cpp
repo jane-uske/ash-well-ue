@@ -18,8 +18,7 @@ AAshWellMountedSampleRig::AAshWellMountedSampleRig()
     auto* Root=CreateDefaultSubobject<USceneComponent>(TEXT("SampleRoot"));SetRootComponent(Root);
     ReviewCamera=CreateDefaultSubobject<UCameraComponent>(TEXT("AssetInspectionCamera"));ReviewCamera->SetupAttachment(Root);ReviewCamera->FieldOfView=65;
     Horse=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SampleHorse"));Horse->SetupAttachment(Root);Horse->SetRelativeScale3D(FVector(1.3f));Horse->SetRelativeRotation(FRotator(0,90,0));
-    // The prepared knight is 170 cm tall. This candidate gives the rider a
-    // 272 cm standing silhouette while keeping the horse and combat body fixed.
+    // Local rider/horse proportions; the owning boss scales the complete assembly.
     Rider=CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SampleRider"));Rider->SetupAttachment(Root);Rider->SetRelativeScale3D(FVector(1.6f));
     Poleaxe=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SamplePoleaxe"));Poleaxe->SetupAttachment(Rider,TEXT("SampleWeaponGrip"));Poleaxe->SetAbsolute(false,false,true);
     Shield=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SampleShield"));Shield->SetupAttachment(Rider,TEXT("SampleShieldGrip"));Shield->SetAbsolute(false,false,true);
@@ -42,6 +41,11 @@ void AAshWellMountedSampleRig::BeginPlay()
     Horse->SetAnimInstanceClass(LoadClass<UAnimInstance>(nullptr,*(Base+(ContactCandidate?TEXT("FootContactCandidate/ABP_SampleHorse_Planted.ABP_SampleHorse_Planted_C"):TEXT("ABP_SampleHorse.ABP_SampleHorse_C")))));
     Rider->SetAnimInstanceClass(LoadClass<UAnimInstance>(nullptr,*(Base+TEXT("ABP_SampleRider.ABP_SampleRider_C"))));
     Poleaxe->SetStaticMesh(Static(TEXT("SM_SamplePoleaxe")));Shield->SetStaticMesh(Static(TEXT("SM_SampleShield")));
+    // Only a player's complex blade trace sees the visible shield triangles.
+    // It never becomes another locomotion collider for the horse or player.
+    Shield->SetCollisionEnabled(ECollisionEnabled::QueryOnly);Shield->SetCollisionObjectType(ECC_WorldDynamic);
+    Shield->SetCollisionResponseToAllChannels(ECR_Ignore);Shield->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
+    Shield->SetCanEverAffectNavigation(false);
     ActionSet=LoadObject<UAshWellMountedActionSet>(nullptr,*(Base+TEXT("DA_MountedSampleActions.DA_MountedSampleActions")));
     if(ActionSet)Charge=ActionSet->Montages.FindRef(TEXT("charge"));
     Horse->SetComponentTickEnabled(false);Rider->SetComponentTickEnabled(false);
@@ -65,7 +69,7 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
     Horse->SetRelativeLocation(FVector(-79,0,0)-Tilt.RotateVector(FVector(-79,0,0)));
     if(auto* A=Cast<UAshWellMountedSampleAnimInstance>(Horse->GetAnimInstance()))
     {
-        A->GroundSpeed=Speed;
+        A->GroundSpeed=Speed/FMath::Max(.01f,float(GetActorScale3D().X));
         // Individual BlendSpace samples carry their calibrated cadence. A second
         // speed multiplier here made the idle/walk transition slow down twice.
         A->StrideRate=1.f;
@@ -116,13 +120,18 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse
         // only its sub-millisecond endpoint, never the earlier blend-out interval.
         if(!A->Montage_IsPlaying(Charge)&&ChargeElapsed>=End-.0001f)ChargeElapsed=End;
     }
+    // Grip sockets inherit scale; these props deliberately keep absolute scale
+    // so rider-only proportion edits do not silently resize them.
+    Poleaxe->SetWorldScale3D(GetActorScale3D()*(280.f/245.f));
+    Shield->SetWorldScale3D(GetActorScale3D()*(150.f/105.f));
     Poleaxe->UpdateComponentToWorld();Shield->UpdateComponentToWorld();
     if(FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview"))&&FParse::Param(FCommandLine::Get(),TEXT("MountedReviewOrbit")))
     {
         // A-only inspection fixture: camera moves, animation remains at real time.
         ReviewTime+=Dt;const float Angle=ReviewTime*PI/10.f;
-        const FVector Focus=GetActorLocation()+FVector(0,0,bDeathPose?90:210);
-        const FVector Eye=Focus+FVector(FMath::Cos(Angle)*740,FMath::Sin(Angle)*740,65);
+        const float Scale=GetActorScale3D().Z;
+        const FVector Focus=GetActorLocation()+FVector(0,0,(bDeathPose?90:210)*Scale);
+        const FVector Eye=Focus+FVector(FMath::Cos(Angle)*740*Scale,FMath::Sin(Angle)*740*Scale,65*Scale);
         ReviewCamera->SetWorldLocationAndRotation(Eye,(Focus-Eye).Rotation());
         if(auto* PC=GetWorld()->GetFirstPlayerController())PC->SetViewTarget(this);
     }

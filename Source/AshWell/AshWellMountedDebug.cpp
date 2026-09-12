@@ -366,7 +366,7 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
     // Explicit project-owned render export, usable without operating the desktop.
     // It is intentionally labelled a fixture and is never used to claim C.
     FString ReviewMode;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewRecord="),ReviewMode);
-    if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge")||ReviewMode==TEXT("death"))
+    if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge")||ReviewMode==TEXT("death")||ReviewMode==TEXT("size")||ReviewMode==TEXT("moves"))
     {
         const bool ExternalReview=FParse::Param(FCommandLine::Get(),TEXT("MountedReviewExternal"));
         float StartDelay=3.f;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewStartDelay="),StartDelay);
@@ -377,7 +377,13 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
 #endif
         if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>StartDelay&&AssetsReady)
         {
-            MountedReviewStarted=true;if(ReviewMode!=TEXT("charge")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
+            MountedReviewStarted=true;if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("death")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
+            if(ReviewMode==TEXT("size"))
+            {
+                FVector P=MountedBoss->GetActorLocation()+MountedBoss->GetActorRightVector()*300;
+                P.Z=MountedBoss->GroundHeightAt(P)+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2;
+                SetActorLocation(P,false,nullptr,ETeleportType::TeleportPhysics);
+            }
             if(ExternalReview)
             {
                 MountedRecordingStarted=Now;
@@ -392,6 +398,14 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
         if((MountedRecording||(ExternalReview&&MountedReviewStarted))&&!MountedReviewFinished)
         {
             const double Elapsed=Now-MountedRecordingStarted;
+            if(ReviewMode==TEXT("moves")&&Elapsed>.5&&Elapsed<42.5)
+            {
+                const int32 Index=FMath::Min(5,FMath::FloorToInt((Elapsed-.5)/7.));
+                if(!MountedReviewFixtureStarted||MountedDebugFixture!=Index)
+                {MountedReviewFixtureStarted=true;StartMountedDebugFixture(Index);bMountedDebugVisible=false;}
+            }
+            if(ReviewMode==TEXT("moves")&&Elapsed>42.5&&!MountedReviewAIResumed)
+            {ResumeMountedDebugAI();MountedReviewAIResumed=true;}
             if(ReviewMode==TEXT("death")&&!MountedReviewFixtureStarted&&Elapsed>3)
             {MountedReviewFixtureStarted=true;MountedBoss->SetQAHealth(0);}
             if(ReviewMode==TEXT("charge")&&!MountedReviewFixtureStarted&&Elapsed>.5)
@@ -464,7 +478,7 @@ void AAshWellCombatCharacter::StartMountedDebugFixture(int32 Index)
     MountedBoss->SetQAStationary(true);
     const FVector Positions[]={FVector(230,120,88),FVector(255,0,88),FVector(560,65,88),FVector(165,-55,88),FVector(185,130,88),FVector(380,-80,88)};
     FVector Position=Positions[Index];
-    if(Index==2&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))Position.Y=105;
+    if(Index==2&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))Position.Y=105*MountedBoss->GetActorScale3D().X;
     Position.Z=MountedBoss->GroundHeightAt(Position)+GetCapsuleComponent()->GetScaledCapsuleHalfHeight()+2;
     SetActorLocation(Position,false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,(-Position).Rotation().Yaw,0));
     if(Controller)Controller->SetControlRotation(FRotator(-10,(-Positions[Index]).Rotation().Yaw,0));

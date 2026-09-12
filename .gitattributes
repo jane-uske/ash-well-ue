@@ -18,3 +18,5 @@
 *.hdr filter=lfs diff=lfs merge=lfs -text
 *.psd filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+SourceAssets/MountedReferenceProduction/Audio/Originals/*.7z filter=lfs diff=lfs merge=lfs -text
+SourceAssets/MountedReferenceProduction/Audio/Originals/*.zip filter=lfs diff=lfs merge=lfs -text

@@ -66,6 +66,11 @@ def check_fixture(case: str, data: dict, engine_log: str, expected_hp: float = 9
             attack_cost_observed=finite(data.get("min_stamina")) and data["min_stamina"] <= 100 - cost + 0.5,
             player_unharmed=near(data.get("health"), 100) and data.get("damage_count") == 0,
         )
+    elif case == "shield_block":
+        checks.update(one_attack=data.get('attacks')==1,one_visible_shield_contact=boss.get('shield_blocks')==1,
+                      no_body_damage=near(boss.get('health'),expected_hp),no_body_hit=data.get('hits')==0,
+                      full_attack_cost=finite(data.get('min_stamina')) and data['min_stamina']<=66.5,
+                      shield_cue_started='AW_MOUNTED_AUDIO cue=SC_ShieldBlock' in engine_log)
     elif case == "miss":
         checks.update(
             attack_attempted=data.get("attacks", 0) >= 1,
@@ -111,6 +116,14 @@ def check_fixture(case: str, data: dict, engine_log: str, expected_hp: float = 9
                 correct_contact_source=boss.get(source) == 1,
                 no_duplicate_contact=boss.get("contacts") == 1,
             )
+        if case in ('hit_charge','dodge_charge') and boss.get('standard_sample') is True:
+            events=re.findall(r'AW_MOUNTED_AUDIO cue=SC_HalberdSwing[^\n]*clock=([0-9.]+)',engine_log)
+            expected=json.loads((ROOT/'SourceAssets/MountedReferenceProduction/charge-timing.json').read_text())['phase_seconds']['strike']
+            checks.update(single_swing_cue=len(events)==1,swing_at_strike=bool(events) and abs(float(events[0])-expected)<.06)
+            checks['contact_audio_once_or_absent']=engine_log.count('AW_MOUNTED_AUDIO cue=SC_WeaponHit ')==(0 if dodge else 1)
+        if boss.get('standard_sample') is True and attack in ('rear','leap_shield'):
+            checks['one_landing_sound']=engine_log.count('AW_MOUNTED_AUDIO cue=SC_Landing ')==1
+            checks['one_body_sound_on_hit_only']=engine_log.count('AW_MOUNTED_AUDIO cue=SC_BodyHit ')==(0 if dodge else 1)
     elif case in ("cleanup","sample_cleanup"):
         checks.update(cancelled=boss.get("cancelled_attacks",0)>=1, no_late_damage=data.get("damage_count")==0, no_open_window=boss.get("hit_window_open") is False, duplicate_rejected=boss.get("duplicate_receive_rejected",0)>=1, grounded=near(boss.get("ground_clearance_cm"),0) and boss.get("ground_supported") is True, cleanup_steps=data.get("step",0)>=5)
         if case=='sample_cleanup':checks.update(notify_windows_exercised=boss.get('window_begins',0)>=2, montage_stopped=boss.get('montage_playing') is False, notify_cleared=boss.get('notify_window') is False)
@@ -326,7 +339,7 @@ def main() -> int:
     parser.add_argument("--list", action="store_true", help="List cases without starting UE.")
     args = parser.parse_args()
     if args.foot_placement and not args.sample:parser.error("--foot-placement requires --sample")
-    available=ALL_CASES+(['sample_cleanup','sample_pre_cancel'] if args.sample else [])
+    available=ALL_CASES+(['sample_cleanup','sample_pre_cancel','shield_block'] if args.sample else [])
     if args.list:
         print("\n".join(available))
         return 0

@@ -1,3 +1,5 @@
+> **当前制作：声音、六招反馈、整体人马尺寸同步候选。** 用户已恢复制作，最新决定/验收入口见 [SIZE_SOUND_MOVES_SYNC_20260912.md](Docs/Implementation/MountedBoss/SIZE_SOUND_MOVES_SYNC_20260912.md)。原作完整动作仍有缺口，A/B待新版本验收、C未初测；下方暂停说明仅为历史。
+
 # Ash Well — Unreal
 
 ## 当前进度（2026-09-12）

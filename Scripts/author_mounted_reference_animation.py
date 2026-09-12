@@ -1,13 +1,14 @@
 """Author editable source actions and bake FBX sequences for UE AnimBP/Montage.
 No runtime procedural pose is substituted for the engine animation graph.
 """
-import bpy,json,math
+import bpy,json,math,os
 from pathlib import Path
 from mathutils import Matrix,Vector,Quaternion
 
 R=Path(__file__).resolve().parents[1];O=R/'SourceAssets/MountedChargeSample'
-BASE=O;O=R/'SourceAssets/MountedReferenceProduction/Animation';O.mkdir(parents=True,exist_ok=True)
-REPORT={}
+BASE=O;ASSEMBLY_SCALE=float(os.environ.get('ASHWELL_ASSEMBLY_SCALE','1'));HORSE_SCALE=1.3*ASSEMBLY_SCALE
+O=R/'SourceAssets/MountedReferenceProduction'/('AssemblyRevision' if ASSEMBLY_SCALE!=1 else 'Animation');O.mkdir(parents=True,exist_ok=True)
+REPORT={'assembly_scale':ASSEMBLY_SCALE,'horse_world_scale':HORSE_SCALE}
 def export(rig,name,frames):
     s=bpy.context.scene;s.frame_start=0;s.frame_end=frames-1;s.render.fps=60
     bpy.ops.object.select_all(action='DESELECT');rig.select_set(True);bpy.context.view_layer.objects.active=rig
@@ -175,8 +176,8 @@ def clip_pose(label,phase):
 walk_phase=gallop_phase=0.;horse_poses=[];last_distance=0
 for f,(t,distance) in enumerate(timing['distance_samples_cm']):
     travel=distance-last_distance;last_distance=distance
-    walk_phase+=travel/(140.25174*1.1666667);gallop_phase+=travel/(562.19050*.6)
-    speed=travel*60 if f else timing['speed_keys_cm_s'][0][1]
+    walk_phase+=travel/(140.25174*1.1666667*ASSEMBLY_SCALE);gallop_phase+=travel/(562.19050*.6*ASSEMBLY_SCALE)
+    speed=(travel*60 if f else timing['speed_keys_cm_s'][0][1])/ASSEMBLY_SCALE
     walk=clip_pose('Walk',walk_phase);gallop=clip_pose('Gallop',gallop_phase);idle=clip_pose('Idle',t/3.3333333)
     running=max(0,min(1,(speed-180)/290));moving=max(0,min(1,speed/100))
     local={k:blend_matrix(idle[k],blend_matrix(walk[k],gallop[k],running),moving) for k in idle}
@@ -213,7 +214,7 @@ for frame,(t,distance) in enumerate(timing['distance_samples_cm']):
     bpy.context.scene.frame_set(frame)
     for n,(pb,constraint) in zip(foot_names,constraints):
         is_contact=contacts[n][frame];point=source_positions[n][frame]
-        root_offset=Vector((distance/1.3,0,0))
+        root_offset=Vector((distance/HORSE_SCALE,0,0))
         if is_contact and (frame==0 or not contacts[n][frame-1]):
             anchors[n]=point+root_offset;anchors[n].z=max(anchors[n].z,5.)
         # Short release blend avoids a velocity discontinuity at lift-off.
@@ -235,7 +236,7 @@ for frame,(t,distance) in enumerate(timing['distance_samples_cm']):
         targets[n].keyframe_insert('location',frame=frame);constraint.keyframe_insert('influence',frame=frame)
     bpy.context.view_layer.update();wanted={p.name:p.matrix.copy() for p in rig.pose.bones};evaluated.append(wanted)
     for n in foot_names:
-        before=source_positions[n][frame]*1.3+Vector((distance,0,0));after=wanted[n].translation*1.3+Vector((distance,0,0))
+        before=source_positions[n][frame]*HORSE_SCALE+Vector((distance,0,0));after=wanted[n].translation*HORSE_SCALE+Vector((distance,0,0))
         if frame and contacts[n][frame] and contacts[n][frame-1] and frame<270:
             drift_before+=(before-previous[n][0]).xy.length;drift_after+=(after-previous[n][1]).xy.length;contact_dt+=1/60
         previous[n]=(before,after)

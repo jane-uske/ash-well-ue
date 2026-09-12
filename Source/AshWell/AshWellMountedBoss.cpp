@@ -35,10 +35,22 @@ AAshWellMountedBoss::AAshWellMountedBoss()
 void AAshWellMountedBoss::BeginPlay()
 {
     Super::BeginPlay();Home=GetActorLocation();GroundHeight=Home.Z;
+    if(FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample"))||FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview")))
+    {
+        // A whole-assembly candidate, not an assertion of original-game centimetres.
+        float AssemblyScale=1.30f;FParse::Value(FCommandLine::Get(),TEXT("MountedAssemblyScale="),AssemblyScale);
+        SetActorScale3D(FVector(FMath::Clamp(AssemblyScale,1.f,1.5f)));
+    }
     RefreshGroundSupport(0);Home.Z=GroundHeight;SetActorLocation(Home);
     Tags.AddUnique(TEXT("AshWellCombatEnemy"));Tags.AddUnique(TEXT("AshWellMountedBoss"));
     auto Audio=[](const TCHAR* N){const FString S=FString(TEXT("AW_Battle_"))+N;return LoadObject<USoundBase>(nullptr,*(FString(TEXT("/Game/AshWell/Combat/BattlePolish/"))+S+TEXT(".")+S));};
     SwingSound=Audio(TEXT("Swing"));ImpactSound=Audio(TEXT("GroundSlam"));HoofSound=Audio(TEXT("Kick"));
+    auto Recorded=[](const TCHAR* Name){return LoadObject<USoundBase>(nullptr,*FString::Printf(TEXT("/Game/AshWell/Combat/MountedChargeSample/Audio/%s.%s"),Name,Name));};
+    if(auto* S=Recorded(TEXT("SC_HalberdSwing")))SwingSound=S;
+    WeaponHitSound=Recorded(TEXT("SC_WeaponHit"));BodyHitSound=Recorded(TEXT("SC_BodyHit"));
+    ShieldBlockSound=Recorded(TEXT("SC_ShieldBlock"));
+    if(auto* S=Recorded(TEXT("SC_Landing")))ImpactSound=S;
+    if(auto* S=Recorded(TEXT("SC_Hoof")))HoofSound=S;
     InitializeVisuals();UpdatePose(0);CacheWeaponSweepPose();
     if(SampleRig)if(const auto* D=SampleRig->GetActionDefinition(TEXT("charge")))
     {
@@ -119,7 +131,7 @@ void AAshWellMountedBoss::ChangeState(EMountedBossState NewState)
         // The first active pose may differ from the final preparation pose.
         // Seed history only after that pose has actually been evaluated below.
         bResetWeaponSweep=true;
-        PlaySound(SwingSound,GetAimPoint(),AttackKind==EMountedBossAttack::Rear?.18f:.42f,AttackKind==EMountedBossAttack::BodyCheck?.85f:1.f);
+        if(!UsesAuthoredAnimation())PlayAttackSwing();
         UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_STRIKE kind=%s phase=%d yaw=%.2f"),*GetAttackLabel(),bPhaseTwo?2:1,CommittedYaw);
     }
     if(State==EMountedBossState::Dead)
@@ -219,7 +231,7 @@ void AAshWellMountedBoss::StepCombat(float Dt)
                 // the body clears them. This choice freezes at the normal commit point.
                 const FVector ForwardToTarget=(Goal-GetActorLocation()).GetSafeNormal2D();
                 const FVector RightOfTarget(-ForwardToTarget.Y,ForwardToTarget.X,0);
-                SteeringGoal-=RightOfTarget*105.f;
+                SteeringGoal-=RightOfTarget*(105.f*GetActorScale3D().X);
             }
             // In the reference the raised weapon loads while the horse keeps
             // approaching. Preserve the warning/commit times and use a walk;
@@ -307,7 +319,7 @@ void AAshWellMountedBoss::StepMovement(float Dt,const FVector& Goal,float Desire
         const float Degrees=FMath::Clamp(FMath::RadiansToDegrees(FMath::Max(Speed,130.f)/Radius),27.f,72.f);
         const FRotator Candidate(0,FMath::FixedTurn(GetActorRotation().Yaw,Wanted,Degrees*Dt),0);
         FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedBodyTurn),false,this);
-        if(!GetWorld()->OverlapBlockingTestByChannel(BodyCollision->GetComponentLocation(),Candidate.Quaternion()*BodyCollision->GetRelativeRotation().Quaternion(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params))SetActorRotation(Candidate);
+        if(!GetWorld()->OverlapBlockingTestByChannel(BodyCollision->GetComponentLocation(),Candidate.Quaternion()*BodyCollision->GetRelativeRotation().Quaternion(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetScaledBoxExtent()),Params))SetActorRotation(Candidate);
         else ++BlockedTurnCount;
     }
     const FVector Before=GetActorLocation();
@@ -348,7 +360,7 @@ void AAshWellMountedBoss::MoveSwept(const FVector& Delta)
     const FVector Destination=Position+Delta*Fraction;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedBodyMove),false,this);FHitResult Hit;
     const FVector Center=BodyCollision->GetComponentLocation();const FVector Move=Destination-GetActorLocation();
-    const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,Center,Center+Move,BodyCollision->GetComponentQuat(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetUnscaledBoxExtent()),Params);
+    const bool Blocked=GetWorld()->SweepSingleByChannel(Hit,Center,Center+Move,BodyCollision->GetComponentQuat(),ECC_Pawn,FCollisionShape::MakeBox(BodyCollision->GetScaledBoxExtent()),Params);
     SetActorLocation(GetActorLocation()+Move*(Blocked?FMath::Max(0.f,Hit.Time-.005f):1.f),false);
     if(Blocked&&Hit.GetActor()==Target.Get()&&State==EMountedBossState::Active&&AttackKind==EMountedBossAttack::BodyCheck)bBodyContactPending=true;
     if(Blocked&&Hit.Time<.05f)Speed=FMath::Max(0.f,Speed-30.f);
@@ -386,6 +398,25 @@ void AAshWellMountedBoss::SelectAttack()
     const FVector Delta=Target->GetActorLocation()-GetActorLocation();const float Distance=Delta.Size2D();
     const float Angle=FMath::FindDeltaAngleDegrees(GetActorRotation().Yaw,Delta.Rotation().Yaw);
     const auto Ready=[&](EMountedBossAttack Kind){return Cooldowns[static_cast<int32>(Kind)]<=0;};
+    if(SampleRig)
+    {
+        // Reference-size candidates retain the same six combat rules. Match
+        // near-range selection to the visible assembly and avoid priority-order
+        // starvation when several attacks are valid at once.
+        const float D=Distance/GetActorScale3D().X;
+        TArray<TPair<EMountedBossAttack,float>> Choices;
+        auto Add=[&](EMountedBossAttack K,bool Valid,float Weight){if(Valid&&Ready(K))Choices.Emplace(K,Weight*(K==AttackKind?.18f:1.f));};
+        Add(EMountedBossAttack::Sweep,D<315&&Angle>-40&&Angle<110,3.f);
+        Add(EMountedBossAttack::Overhead,D<310&&FMath::Abs(Angle)<50,2.5f);
+        Add(EMountedBossAttack::BodyCheck,D<215&&FMath::Abs(Angle)<55,1.5f);
+        Add(EMountedBossAttack::Charge,Distance>570&&Distance<1000&&FMath::Abs(Angle)<20,2.f);
+        Add(EMountedBossAttack::Rear,D<340&&(bPhaseTwo||FMath::Abs(Angle)>100),1.2f);
+        Add(EMountedBossAttack::LeapShield,bPhaseTwo&&D>320&&D<600&&FMath::Abs(Angle)<30,2.5f);
+        float Total=0;for(const auto& C:Choices)Total+=C.Value;
+        float Pick=FMath::FRand()*Total;
+        for(const auto& C:Choices){Pick-=C.Value;if(Pick<=0){++SelectionCount;BeginAttack(C.Key);return;}}
+        DecisionDelay=.12f;return;
+    }
     EMountedBossAttack Choice=EMountedBossAttack::Sweep;bool Chosen=false;
     if(bPhaseTwo&&Distance>320&&Distance<600&&FMath::Abs(Angle)<30&&Ready(EMountedBossAttack::LeapShield)){Choice=EMountedBossAttack::LeapShield;Chosen=true;}
     else if((bPhaseTwo||FMath::Abs(Angle)>100)&&Distance<340&&Ready(EMountedBossAttack::Rear)) {Choice=EMountedBossAttack::Rear;Chosen=true;}
@@ -412,6 +443,7 @@ void AAshWellMountedBoss::TryDamage()
 {
     if(!Target.IsValid()||!IsHitWindowOpen())return;
     bool Contact=false,BladeContact=false;FHitResult Hit;FCollisionQueryParams Params(SCENE_QUERY_STAT(MountedVisibleWeapon),false,this);
+    if(SampleRig)Params.AddIgnoredActor(SampleRig); // The shield belongs to the boss, including area line-of-sight.
     if(AttackKind==EMountedBossAttack::Rear||AttackKind==EMountedBossAttack::LeapShield)
     {
         if(StateTime<.075f)return;
@@ -483,7 +515,7 @@ void AAshWellMountedBoss::TryDamage()
         else if(AttackKind==EMountedBossAttack::BodyCheck)++BodyContactCount;else ++WeaponContactCount;
         if(BladeContact)++BladeEdgeContactCount;
         const float Applied=UGameplayStatics::ApplyDamage(Target.Get(),Spec().Damage,nullptr,this,nullptr);
-        if(Applied>0)PlaySound(ImpactSound,Target->GetActorLocation(),.32f,1.16f);
+        if(Applied>0)PlaySound((AttackKind==EMountedBossAttack::BodyCheck||AttackKind==EMountedBossAttack::Rear||AttackKind==EMountedBossAttack::LeapShield)?BodyHitSound:WeaponHitSound,Target->GetActorLocation(),.72f,1.f);
         UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_CONTACT kind=%s applied=%.1f window=%.3f"),*GetAttackLabel(),Applied,StateTime);
     }
 }
@@ -510,8 +542,17 @@ bool AAshWellMountedBoss::ReceiveMeleeHit(float Damage,const FVector& Source,uin
     {Speed*=.6f;DecisionDelay=FMath::Max(DecisionDelay,.20f);LastHitTime=FightTime;}
     return true;
 }
+bool AAshWellMountedBoss::ReceiveShieldContact(const FHitResult& Hit,uint64 AttackId)
+{
+    if(!SampleRig||Hit.GetComponent()!=SampleRig->Shield||IsDead()||IsReturning())return false;
+    if(AttackId&&ReceivedAttackIds.Contains(AttackId))return false;
+    if(AttackId)ReceivedAttackIds.Add(AttackId);
+    ++ShieldBlocks;PlaySound(ShieldBlockSound,Hit.ImpactPoint,.78f);
+    UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_SHIELD_BLOCK attack=%llu point=%s hp=%.1f"),AttackId,*Hit.ImpactPoint.ToCompactString(),Health);
+    return true;
+}
 
-FVector AAshWellMountedBoss::GetAimPoint() const{return GetActorLocation()+FVector(0,0,185.f);}
+FVector AAshWellMountedBoss::GetAimPoint() const{return GetActorTransform().TransformPosition(FVector(0,0,185.f));}
 FVector AAshWellMountedBoss::GetAttackContact() const{return AttackKind==EMountedBossAttack::BodyCheck?ShieldPoint:AttackKind==EMountedBossAttack::Rear?GetActorLocation()+GetActorForwardVector()*85.f:WeaponTip;}
 float AAshWellMountedBoss::GetAttackProgress() const{return State==EMountedBossState::Windup?FMath::Clamp(StateTime/Spec().Windup,0.f,1.f):State==EMountedBossState::Active?FMath::Clamp(StateTime/Spec().Active,0.f,1.f):0.f;}
 FString AAshWellMountedBoss::GetStateLabel() const
@@ -521,7 +562,15 @@ FString AAshWellMountedBoss::GetAttackLabel() const
 void AAshWellMountedBoss::PlaySound(USoundBase* Sound,const FVector& Point,float Volume,float Pitch)
 {
     ActiveAudio.RemoveAll([](const auto& A){return !IsValid(A)||!A->IsPlaying();});
-    if(Sound&&!bAudioPaused)if(auto* A=UGameplayStatics::SpawnSoundAtLocation(this,Sound,Point,FRotator::ZeroRotator,Volume,Pitch)){A->bShouldRemainActiveIfDropped=false;ActiveAudio.Add(A);}
+    if(Sound&&!bAudioPaused)if(auto* A=UGameplayStatics::SpawnSoundAtLocation(this,Sound,Point,FRotator::ZeroRotator,Volume,Pitch)){A->bShouldRemainActiveIfDropped=false;ActiveAudio.Add(A);UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_AUDIO cue=%s kind=%s state=%s clock=%.4f gain=%.3f"),*Sound->GetName(),*GetAttackLabel(),*GetStateLabel(),SampleRig?SampleRig->GetChargeTime():StateTime,Volume);}
+}
+void AAshWellMountedBoss::PlayAttackSwing()
+{
+    if(IsDead()||bAudioPaused)return;
+    // A hoof stamp and a body shove have no blade whoosh. Their contact sounds
+    // are emitted by the actual collision/landing event instead.
+    if(AttackKind==EMountedBossAttack::Rear||AttackKind==EMountedBossAttack::BodyCheck||AttackKind==EMountedBossAttack::LeapShield)return;
+    PlaySound(SwingSound,WeaponGrip,.65f,1.f);
 }
 
 bool AAshWellMountedBoss::IsQAEnabled() const
@@ -563,6 +612,7 @@ O->SetNumberField(TEXT("ground_height_cm"),GroundHeight);O->SetNumberField(TEXT(
     O->SetNumberField(TEXT("health"),Health);O->SetNumberField(TEXT("speed_cm_s"),Speed);
     O->SetNumberField(TEXT("maximum_health"),MaximumHealth);O->SetNumberField(TEXT("actual_speed_cm_s"),ActualSpeed);O->SetNumberField(TEXT("blocked_turn_count"),BlockedTurnCount);
     const FVector BodyHalfExtents=BodyCollision->GetScaledBoxExtent();
+    O->SetNumberField(TEXT("assembly_scale"),GetActorScale3D().X);O->SetNumberField(TEXT("shield_blocks"),ShieldBlocks);
     O->SetNumberField(TEXT("body_half_length_cm"),BodyHalfExtents.X);O->SetNumberField(TEXT("body_half_width_cm"),BodyHalfExtents.Y);O->SetNumberField(TEXT("body_half_height_cm"),BodyHalfExtents.Z);
     O->SetNumberField(TEXT("state_time"),StateTime);O->SetNumberField(TEXT("fight_time"),FightTime);
     O->SetNumberField(TEXT("distance_travelled_cm"),DistanceTravelled);O->SetNumberField(TEXT("gait_phase"),GaitPhase);

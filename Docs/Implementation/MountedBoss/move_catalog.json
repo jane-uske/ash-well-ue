@@ -1156,5 +1156,23 @@
       "Cooldown"
     ],
     "editing_validation": "Current defaults inspected and tested. Keep all6 elements and order; editing arbitrary config values has not been tested."
+  },
+  "latest_sync": {
+    "date": "2026-09-12",
+    "baseline": "8a78f76",
+    "document": "SIZE_SOUND_MOVES_SYNC_20260912.md",
+    "implemented_attack_entries": 6,
+    "new_attack_entries": 0,
+    "native_authored_attacks": [
+      "charge"
+    ],
+    "sample_selection": "eligible weighted choice with last-move penalty; distance scales for enlarged assembly",
+    "official_exact_attack_count": null,
+    "a_status": "new size candidate, pending dynamic review",
+    "b_status": "new displacement/audio candidate, pending new footage",
+    "c_status": "human initial test not done",
+    "sound": "24 recorded derivatives, 8 native SoundCues; import/runtime pending",
+    "shield": "visible triangle contact and distinct block sound, test pending",
+    "note": "Earlier catalog parameter snapshots remain historical; they do not prove this modified version passed."
   }
 }
