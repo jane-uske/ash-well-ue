@@ -1,0 +1,87 @@
+{
+  "A_SampleRider_SeatedIdle": {
+    "duration": 2.0,
+    "frames": 121
+  },
+  "A_SampleRider_ChargeSweep": {
+    "duration": 3.55,
+    "frames": 214
+  },
+  "rider_contacts_cm": {
+    "left_foot": [
+      12.0,
+      35.0,
+      35.0
+    ],
+    "right_foot": [
+      12.0,
+      -35.0,
+      35.0
+    ],
+    "seat_hips": [
+      2.0286574363708496,
+      0.733456552028656,
+      89.9888687133789
+    ]
+  },
+  "A_SampleHorse_Idle": {
+    "duration": 3.3333333333333335,
+    "frames": 201
+  },
+  "A_SampleHorse_Walk": {
+    "duration": 1.1666666666666667,
+    "frames": 71
+  },
+  "A_SampleHorse_Gallop": {
+    "duration": 0.6,
+    "frames": 37
+  },
+  "horse_mapping": {
+    "Bone_000": "Back",
+    "Bone_001": "Back",
+    "Bone_003": "Torso",
+    "Bone_002": "Torso2",
+    "Bone_016": "Torso3",
+    "Bone_015": "Neck1",
+    "Bone_020": "Neck2",
+    "Bone_019": "Neck2",
+    "Bone_038": "Neck3",
+    "Bone_037": "Neck3",
+    "Bone_045": "Head",
+    "Bone_044": "Head",
+    "Bone_043": "Head",
+    "Bone_042": "Head",
+    "Bone_041": "Head",
+    "Bone_018": "Back",
+    "Bone_017": "Back",
+    "Bone_051": "FrontUpperLeg.R",
+    "Bone_050": "FrontLowerLeg.R",
+    "Bone_049": "IKFrontLeg.R",
+    "Bone_048": "FF.R",
+    "Bone_047": "FF.R",
+    "Bone_046": "FF.R",
+    "Bone_057": "FrontUpperLeg.L",
+    "Bone_056": "FrontLowerLeg.L",
+    "Bone_055": "IKFrontLeg.L",
+    "Bone_054": "FF.L",
+    "Bone_053": "FF.L",
+    "Bone_052": "FF.L",
+    "Bone_030": "BackLeg.R",
+    "Bone_029": "BackUpperLeg.R",
+    "Bone_028": "BackLowerLeg.R",
+    "Bone_027": "IKBackLeg.R",
+    "Bone_026": "FFB.R",
+    "Bone_025": "FFB.R",
+    "Bone_036": "BackLeg.L",
+    "Bone_035": "BackUpperLeg.L",
+    "Bone_034": "BackLowerLeg.L",
+    "Bone_033": "IKBackLeg.L",
+    "Bone_032": "FFB.L",
+    "Bone_031": "FFB.L",
+    "Bone_014": "Tail1",
+    "Bone_013": "Tail2",
+    "Bone_012": "Tail3",
+    "Bone_011": "Tail4",
+    "Bone_010": "Tail5"
+  }
+}

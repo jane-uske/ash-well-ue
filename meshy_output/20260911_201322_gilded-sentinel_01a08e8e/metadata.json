@@ -1,0 +1,20 @@
+{
+  "project_name": "Gilded Sentinel",
+  "folder": "20260911_201322_gilded-sentinel_01a08e8e",
+  "root_task_id": "01a08e8e-e421-73d5-80a8-8c01f784fa59",
+  "created_at": "2026-09-11T20:13:30.003448",
+  "updated_at": "2026-09-11T20:13:30.003456",
+  "tasks": [
+    {
+      "task_id": "01a08e8e-e421-73d5-80a8-8c01f784fa59",
+      "task_type": "rigging",
+      "stage": "downloaded-existing",
+      "files": [
+        "rigged.glb",
+        "walking.glb",
+        "running.glb"
+      ],
+      "created_at": "2026-09-11T20:13:30.003455"
+    }
+  ]
+}

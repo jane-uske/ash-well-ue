@@ -16,6 +16,8 @@
 #include "Sound/SoundBase.h"
 #include "Animation/AnimSequence.h"
 #include "Components/AudioComponent.h"
+#include "AshWellMountedSampleRig.h"
+#include "AshWellMountedSampleAnimation.h"
 
 AAshWellMountedBoss::AAshWellMountedBoss()
 {
@@ -45,6 +47,7 @@ const FMountedAttackSpec& AAshWellMountedBoss::Spec() const
 
 void AAshWellMountedBoss::ClearAttackTransient()
 {
+    if(SampleRig)SampleRig->StopCharge();
     bDamageConsumed=true;bResetWeaponSweep=true;bPreviousWeaponPoseValid=false;
     bBodyContactPending=false;bComboPending=bFollowup=bHeadingCommitted=false;
     for(auto A:ActiveAudio)if(IsValid(A))A->Stop();
@@ -66,11 +69,14 @@ void AAshWellMountedBoss::EndPlay(const EEndPlayReason::Type Reason)
 bool AAshWellMountedBoss::IsHitWindowOpen() const
 {
     if(bAudioPaused||UGameplayStatics::IsGamePaused(this)||State!=EMountedBossState::Active||bDamageConsumed)return false;
+    if(UsesAuthoredAnimation())return SampleRig->HasWeaponWindow();
     if(AttackKind==EMountedBossAttack::Charge)return StateTime>=.16f;
     if(AttackKind==EMountedBossAttack::Rear)return StateTime>=.075f;
     if(AttackKind==EMountedBossAttack::LeapShield)return bLeapLanded;
     return true;
 }
+bool AAshWellMountedBoss::UsesAuthoredAnimation() const
+{return SampleRig&&SampleRig->HasAuthoredAction(FName(*GetAttackLabel()));}
 
 void AAshWellMountedBoss::SetArenaBounds(FVector Center,FVector2D HalfExtents)
 {ArenaCenter=Center;ArenaHalfExtents=FVector2D(FMath::Max(500.,HalfExtents.X),FMath::Max(500.,HalfExtents.Y));}
@@ -117,6 +123,7 @@ void AAshWellMountedBoss::ChangeState(EMountedBossState NewState)
 
 void AAshWellMountedBoss::BeginAttack(EMountedBossAttack Kind,bool bIsFollowup)
 {
+    if(SampleRig)SampleRig->StopCharge();
     ++AttackSerial;bLeapLanded=false;bBodyContactPending=false;
     AttackKind=Kind;bFollowup=bIsFollowup;bHeadingCommitted=false;bDamageConsumed=false;bImpactPlayed=false;
     bResetWeaponSweep=true;
@@ -124,6 +131,8 @@ void AAshWellMountedBoss::BeginAttack(EMountedBossAttack Kind,bool bIsFollowup)
     // One authored optional follow-up: overhead after a sweep; shield/rear always give their full punish.
     bComboPending=bPhaseTwo&&!bFollowup&&Kind==EMountedBossAttack::Sweep&&SelectionCount%3==0;
     ChangeState(EMountedBossState::Windup);
+    if(UsesAuthoredAnimation()&&!SampleRig->PlayAction(FName(*GetAttackLabel())))
+    {UE_LOG(LogTemp,Error,TEXT("AW_SAMPLE_BLOCKED charge montage failed to play"));ClearAttackTransient();ChangeState(EMountedBossState::Approach);return;}
     UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_WINDUP kind=%s windup=%.2f commit=%.2f active=%.2f recovery=%.2f combo=%d"),*GetAttackLabel(),Spec().Windup,Spec().Windup-Spec().CommitLead,Spec().Active,Spec().Recovery,bComboPending);
 }
 
@@ -131,15 +140,34 @@ void AAshWellMountedBoss::Tick(float DeltaSeconds)
 {
     if(UGameplayStatics::IsGamePaused(this))return; // Also reject ticks queued before the pause input.
     Super::Tick(DeltaSeconds);
+    const bool StandardFrame=SampleRig&&HorseMesh;
+    if(StandardFrame)SampleRig->EvaluatePose(DeltaSeconds,ActualSpeed);
     const int32 Steps=FMath::Clamp(FMath::CeilToInt(DeltaSeconds*120.f),1,240);
     for(int32 I=0;I<Steps;++I)StepCombat(DeltaSeconds/Steps);
     UpdateHorseAnimation(DeltaSeconds);
     UpdatePose(0); // Seat and hands follow the evaluated horse skeleton in this rendered frame.
+    if(StandardFrame)
+    {
+        if(bResetWeaponSweep)CacheWeaponSweepPose();
+        TryDamage();
+        if(State==EMountedBossState::Active&&StateTime>=Spec().Active)ChangeState(EMountedBossState::Recovery);
+        CacheWeaponSweepPose();
+    }
 }
 
 void AAshWellMountedBoss::StepCombat(float Dt)
 {
+    // Standard animation advances once per displayed frame. Collision movement
+    // retains its substeps; phases read the evaluated Montage position. Visible
+    // weapon sweeps run after the final world-space contact refresh in Tick.
     StateTime+=Dt;HitReaction=FMath::Max(0.f,HitReaction-Dt*4.f);
+    if(UsesAuthoredAnimation())
+    {
+        const float Clock=SampleRig->GetChargeTime();
+        if(State==EMountedBossState::Windup)StateTime=Clock;
+        else if(State==EMountedBossState::Active)StateTime=FMath::Max(0.f,Clock-Spec().Windup);
+        else if(State==EMountedBossState::Recovery)StateTime=FMath::Max(0.f,Clock-Spec().Windup-Spec().Active);
+    }
     if(IsEncounterRunning())FightTime+=Dt;
     for(float& C:Cooldowns)C=FMath::Max(0.f,C-Dt);
     DecisionDelay=FMath::Max(0.f,DecisionDelay-Dt);
@@ -183,7 +211,8 @@ void AAshWellMountedBoss::StepCombat(float Dt)
                 SteeringGoal-=RightOfTarget*105.f;
             }
             StepMovement(Dt,SteeringGoal,0,!bHeadingCommitted&&!bQAStationary);
-            if(StateTime>=Spec().Windup)ChangeState(EMountedBossState::Active);
+            if(StateTime>=Spec().Windup)
+            {ChangeState(EMountedBossState::Active);if(UsesAuthoredAnimation())StateTime=FMath::Max(0.f,SampleRig->GetChargeTime()-Spec().Windup);}
             break;
         }
         case EMountedBossState::Active:
@@ -232,6 +261,10 @@ void AAshWellMountedBoss::StepCombat(float Dt)
     {MoveSwept(FVector(0,0,FMath::Max(Home.Z,GetActorLocation().Z-550.f*Dt)-GetActorLocation().Z));LeapHeight=FMath::Max(0.f,float(GetActorLocation().Z-Home.Z));}
     if(bHeadingCommitted&&(State==EMountedBossState::Windup||State==EMountedBossState::Active))
         MaximumCommittedYawDrift=FMath::Max(MaximumCommittedYawDrift,FMath::Abs(FMath::FindDeltaAngleDegrees(CommittedYaw,GetActorRotation().Yaw)));
+    if(SampleRig&&HorseMesh)
+    {
+        return;
+    }
     UpdatePose(Dt);
     if(bResetWeaponSweep)CacheWeaponSweepPose();
     if(State==EMountedBossState::Active)
@@ -305,6 +338,7 @@ void AAshWellMountedBoss::SelectAttack()
 
 void AAshWellMountedBoss::FinishAttack()
 {
+    if(SampleRig)SampleRig->StopCharge();
     bHeadingCommitted=false;
     if(bPhasePending)
     {bPhasePending=false;bPhaseTwo=true;bComboPending=false;bFollowup=false;ChangeState(EMountedBossState::PhaseChange);return;}
@@ -321,7 +355,8 @@ void AAshWellMountedBoss::TryDamage()
     if(AttackKind==EMountedBossAttack::Rear||AttackKind==EMountedBossAttack::LeapShield)
     {
         if(StateTime<.075f)return;
-        if(AttackKind==EMountedBossAttack::LeapShield&&ShieldPoint.Z-90.f>Home.Z+25.f)return;
+        const float ShieldBottom=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z:ShieldPoint.Z-90.f;
+        if(AttackKind==EMountedBossAttack::LeapShield&&ShieldBottom>Home.Z+25.f)return;
         const FVector Ground=AttackKind==EMountedBossAttack::LeapShield?FVector(ShieldPoint.X,ShieldPoint.Y,Home.Z):GetActorLocation()+GetActorForwardVector()*85.f;
         if(!bImpactPlayed)
         {bImpactPlayed=true;PlaySound(ImpactSound,Ground,.7f,.92f);if(auto* FX=AAshWellBattleFX::Find(GetWorld()))FX->Burst(Ground,.9f,false,false);}
@@ -339,14 +374,34 @@ void AAshWellMountedBoss::TryDamage()
     }
     else
     {
-        if(AttackKind==EMountedBossAttack::Charge&&StateTime<.16f)return;
+        if(!SampleRig&&AttackKind==EMountedBossAttack::Charge&&StateTime<.16f)return;
         // Sweep the distal 95 cm of the rigid, visible polearm, including between-frame travel.
-        for(int32 I=0;I<7&&!Contact;++I)
+        for(int32 I=0;!SampleRig&&I<7&&!Contact;++I)
         {
             const float A=.51f+.49f*I/6.f;
             Contact=GetWorld()->SweepSingleByChannel(Hit,FMath::Lerp(PreviousGrip,PreviousTip,A),FMath::Lerp(WeaponGrip,WeaponTip,A),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(18.f),Params)&&Hit.GetActor()==Target.Get();
         }
-        if(!Contact&&bPreviousWeaponPoseValid&&Weapon&&Weapon->GetStaticMesh()&&Weapon->GetStaticMesh()->GetFName()==FName(TEXT("SM_MountedHalberd")))
+        if(SampleRig&&!Contact&&bPreviousWeaponPoseValid)
+        {
+            // Actual optimized mesh vertices; provenance in poleaxe_edge_samples.json.
+            const FVector Edge[]={{1.696f,-116.819f,-19.647f},{-.276f,-120.968f,33.508f},{-1.315f,-133.925f,-39.376f},{.268f,-131.845f,45.144f},{.174f,-135.774f,-45.193f},{.372f,-135.241f,35.976f},{.027f,-150.732f,-22.716f},{.257f,-148.387f,26.319f},{1.006f,-163.084f,-12.204f},{.192f,-161.188f,19.622f}};
+            const FTransform Current=SampleRig->Poleaxe->GetComponentTransform();
+            const float Angle=FMath::RadiansToDegrees(PreviousWeaponTransform.GetRotation().AngularDistance(Current.GetRotation()));
+            const float Travel=FVector::Distance(PreviousWeaponTransform.GetLocation(),Current.GetLocation());
+            const int Steps=FMath::Clamp(FMath::CeilToInt(FMath::Max(Angle/7.f,Travel/20.f)),1,24);
+            FTransform Before=PreviousWeaponTransform;
+            for(int Step=1;Step<=Steps&&!Contact;++Step)
+            {
+                const float Alpha=float(Step)/Steps;FTransform After;After.Blend(PreviousWeaponTransform,Current,Alpha);
+                auto SweepPoint=[&](FVector Point){return GetWorld()->SweepSingleByChannel(Hit,Before.TransformPosition(Point),After.TransformPosition(Point),FQuat::Identity,ECC_Pawn,FCollisionShape::MakeSphere(18.f),Params)&&Hit.GetActor()==Target.Get();};
+                // Interpolate the visible rigid weapon transform, not a new pose
+                // clock. This preserves the curved blade path on slower frames.
+                for(int I=0;I<7&&!Contact;++I)Contact=SweepPoint(FVector(0,-171.5f*(.51f+.49f*I/6.f),0));
+                for(const FVector& Point:Edge)if(!Contact&&SweepPoint(Point)){Contact=true;BladeContact=true;}
+                Before=After;
+            }
+        }
+        if(!SampleRig&&!Contact&&bPreviousWeaponPoseValid&&Weapon&&Weapon->GetStaticMesh()&&Weapon->GetStaticMesh()->GetFName()==FName(TEXT("SM_MountedHalberd")))
         {
             // Actual outer edge from Scripts/build_mounted_asset_props.py, in mesh-local cm:
             // (125,0,39) -> (144,0,51) -> (169,0,47). Midpoints keep sample spacing <= 13 cm.
@@ -375,8 +430,9 @@ void AAshWellMountedBoss::TryDamage()
 void AAshWellMountedBoss::CacheWeaponSweepPose()
 {
     PreviousGrip=WeaponGrip;PreviousTip=WeaponTip;PreviousShield=ShieldPoint;
-    bPreviousWeaponPoseValid=Weapon!=nullptr;
-    if(Weapon)PreviousWeaponTransform=Weapon->GetComponentTransform();
+    const auto* VisibleWeapon=SampleRig?SampleRig->Poleaxe.Get():Weapon.Get();
+    bPreviousWeaponPoseValid=VisibleWeapon!=nullptr;
+    if(VisibleWeapon)PreviousWeaponTransform=VisibleWeapon->GetComponentTransform();
     bResetWeaponSweep=false;
 }
 
@@ -424,6 +480,14 @@ bool AAshWellMountedBoss::ForceAttack(const FString& Name)
 TSharedRef<FJsonObject> AAshWellMountedBoss::GetTelemetry() const
 {
     auto O=MakeShared<FJsonObject>();
+    O->SetBoolField(TEXT("standard_sample"),SampleRig!=nullptr);
+    if(SampleRig)
+    {
+        auto* A=SampleRig->RiderAnimation();
+        O->SetNumberField(TEXT("montage_time"),SampleRig->GetChargeTime());O->SetStringField(TEXT("notify_phase"),A?A->ActionPhase.ToString():TEXT("missing"));
+        O->SetBoolField(TEXT("montage_playing"),SampleRig->IsChargePlaying());
+        O->SetNumberField(TEXT("phase_notifies"),A?A->PhaseNotifyCount:0);O->SetNumberField(TEXT("window_begins"),A?A->WindowBeginCount:0);O->SetNumberField(TEXT("window_ends"),A?A->WindowEndCount:0);O->SetBoolField(TEXT("notify_window"),SampleRig->HasWeaponWindow());
+    }
     O->SetBoolField(TEXT("hoof_bones_valid"),bHoofBonesValid);O->SetNumberField(TEXT("hoof_contacts"),HoofContacts);O->SetNumberField(TEXT("support_sample_seconds"),SupportSampleTime);O->SetNumberField(TEXT("support_drift_cm_s"),SupportSampleTime>0?SupportDriftDistance/SupportSampleTime:0);
     O->SetNumberField(TEXT("shield_ground_gap_cm"),ShieldPoint.Z-Home.Z-90.f);O->SetNumberField(TEXT("attack_serial"),AttackSerial);O->SetBoolField(TEXT("hit_window_open"),IsHitWindowOpen());O->SetNumberField(TEXT("body_contacts"),BodyContactCount);
     O->SetNumberField(TEXT("cancelled_attacks"),CancelledAttacks);O->SetNumberField(TEXT("duplicate_receive_rejected"),DuplicateReceiveRejected);O->SetNumberField(TEXT("maximum_leap_height_cm"),MaximumLeapHeight);O->SetBoolField(TEXT("leap_landed"),bLeapLanded);
@@ -441,7 +505,7 @@ TSharedRef<FJsonObject> AAshWellMountedBoss::GetTelemetry() const
     O->SetNumberField(TEXT("commit_at_seconds"),Spec().Windup-Spec().CommitLead);
     O->SetNumberField(TEXT("strikes"),StrikeCount);O->SetNumberField(TEXT("contacts"),ContactCount);
     O->SetNumberField(TEXT("weapon_contacts"),WeaponContactCount);O->SetNumberField(TEXT("shield_contacts"),ShieldContactCount);O->SetNumberField(TEXT("area_contacts"),AreaContactCount);
-    O->SetNumberField(TEXT("blade_edge_contacts"),BladeEdgeContactCount);O->SetNumberField(TEXT("blade_edge_samples"),5);O->SetNumberField(TEXT("weapon_sweep_radius_cm"),18);
+    O->SetNumberField(TEXT("blade_edge_contacts"),BladeEdgeContactCount);O->SetNumberField(TEXT("blade_edge_samples"),SampleRig?10:5);O->SetNumberField(TEXT("weapon_sweep_radius_cm"),18);
     O->SetNumberField(TEXT("reset_count"),ResetCount);O->SetBoolField(TEXT("phase_two"),bPhaseTwo);O->SetBoolField(TEXT("combo_pending"),bComboPending);
     O->SetBoolField(TEXT("horse_visual"),bHorseVisual);O->SetBoolField(TEXT("rider_visual"),bRiderVisual);
     O->SetBoolField(TEXT("walk_loaded"),HorseWalk!=nullptr);O->SetBoolField(TEXT("run_loaded"),HorseRun!=nullptr);O->SetBoolField(TEXT("rear_loaded"),HorseRear!=nullptr);O->SetBoolField(TEXT("death_loaded"),HorseDeath!=nullptr);

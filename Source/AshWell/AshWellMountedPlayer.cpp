@@ -77,6 +77,8 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         if(Frame>QACaptureIndex){QACaptureIndex=Frame;const FString Dir=FPaths::ProjectSavedDir()/TEXT("MountedBoss/Capture")/MountedProbe;IFileManager::Get().MakeDirectory(*Dir,true);FScreenshotRequest::RequestScreenshot(Dir/FString::Printf(TEXT("frame-%04d.png"),Frame),false,false);}
     }
     const bool NaturalCharge=MountedProbe==TEXT("natural_charge");
+    const bool SampleCleanup=MountedProbe==TEXT("sample_cleanup");
+    const bool Cleanup=SampleCleanup||MountedProbe==TEXT("cleanup");
     const bool HitCase=MountedProbe.StartsWith(TEXT("hit_"));
     const bool DodgeCase=MountedProbe.StartsWith(TEXT("dodge_"));
     const FString AttackName=(HitCase||DodgeCase)?MountedProbe.RightChop(HitCase?4:6):TEXT("");
@@ -96,6 +98,7 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
             FVector P(230,120,88);
             if(AttackName==TEXT("overhead"))P=FVector(255,0,88);
             if(AttackName==TEXT("charge"))P=FVector(560,65,88);
+            if(AttackName==TEXT("charge")&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))P.Y=105;
             if(AttackName==TEXT("body_check"))P=FVector(170,-35,88);
             if(AttackName==TEXT("rear"))P=FVector(185,130,88);
             if(AttackName==TEXT("leap_shield"))P=FVector(380,-80,88);
@@ -114,7 +117,8 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         else if(MountedProbe==TEXT("disengage")){MountedBoss->SetQAStationary(false);Place(FVector(-2070,0,88),0);MountedQAStep=2;}
         else if(MountedProbe==TEXT("phase")){MountedBoss->SetQAHealth(440);MountedBoss->ForceAttack(TEXT("sweep"));MountedQAStep=2;}
         else if(MountedProbe==TEXT("retry")){TakeDamage(200,FDamageEvent(),nullptr,MountedBoss);if(!IsDead())++MountedQAFailures;MountedQAStep=1;}
-        else if(MountedProbe==TEXT("cleanup")){Place(FVector(1000,0,88),180);MountedBoss->ForceAttack(TEXT("leap_shield"));MountedQAStep=2;}
+        else if(Cleanup){Place(FVector(1000,0,88),180);MountedBoss->ForceAttack(SampleCleanup?TEXT("charge"):TEXT("leap_shield"));MountedQAStep=2;}
+        else if(MountedProbe==TEXT("sample_pre_cancel")){Place(FVector(1000,0,88),180);MountedBoss->ForceAttack(TEXT("charge"));MountedQAStep=2;}
         else if(MountedProbe==TEXT("input")){Stamina=100;Attack();Attack();HeavyAttack();if(AttackCount!=1||Stamina!=88)++MountedQAFailures;MountedQAStep=2;}
     }
     if(MountedProbe==TEXT("retry")&&IsDead()&&MountedQATime>2)
@@ -125,12 +129,20 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         const bool RollNow=AttackName==TEXT("leap_shield")?(MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.49f):AttackName==TEXT("charge")?(MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.20f):(MountedBoss->GetCombatState()==EMountedBossState::Windup&&MountedBoss->GetStateTime()>MountedBoss->GetTelemetry()->GetNumberField(TEXT("windup_seconds"))-.13f);
         if(RollNow){if(AttackName==TEXT("charge"))RightInput=1;Dodge();RightInput=0;MountedQAStep=3;}
     }
-    if(MountedProbe==TEXT("cleanup"))
+    if(MountedProbe==TEXT("sample_pre_cancel"))
     {
-        if(MountedQAStep==2&&MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.3f)
+        if(MountedQAStep==2&&MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.45f)
+        {if(MountedBoss->IsHitWindowOpen())++MountedQAFailures;MountedBoss->DebugCancelAttack();MountedQAStep=3;}
+        if(MountedQAStep==3&&MountedQATime>4.2f)
+        {if(MountedBoss->GetTelemetry()->GetBoolField(TEXT("notify_window"))||MountedBoss->GetTelemetry()->GetNumberField(TEXT("window_begins"))!=0)++MountedQAFailures;MountedQAStep=4;}
+    }
+    if(Cleanup)
+    {
+        const bool InCancelWindow=SampleCleanup?MountedBoss->IsHitWindowOpen():(MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.3f);
+        if(MountedQAStep==2&&InCancelWindow)
         {MountedBoss->SetDebugPaused(true);if(MountedBoss->IsHitWindowOpen())++MountedQAFailures;MountedBoss->SetDebugPaused(false);MountedBoss->DebugCancelAttack();MountedQAStep=3;}
-        if(MountedQAStep==3&&MountedQATime>3){MountedBoss->ForceAttack(TEXT("leap_shield"));MountedQAStep=4;}
-        if(MountedQAStep==4&&MountedBoss->GetCombatState()==EMountedBossState::Active&&MountedBoss->GetStateTime()>.3f){MountedBoss->SetQAHealth(0);MountedQAStep=5;}
+        else if(MountedQAStep==3&&MountedQATime>3){MountedBoss->ForceAttack(SampleCleanup?TEXT("charge"):TEXT("leap_shield"));MountedQAStep=4;}
+        else if(MountedQAStep==4&&InCancelWindow){MountedBoss->SetQAHealth(0);MountedQAStep=5;}
         if(MountedQAStep==5&&MountedQATime>6)
         {
             if(!MountedBoss->IsDead()||MountedBoss->GetActorLocation().Z>.5f||MountedBoss->IsHitWindowOpen())++MountedQAFailures;
@@ -184,7 +196,7 @@ void AAshWellCombatCharacter::RunMountedQA(float Dt)
         if(MountedQAStep==2&&ActionState==EAction::Attack&&StateTime>.71f){Dodge();MountedQAStep=3;}
         if(MountedQAStep==3&&DodgeCount==1&&ActionState==EAction::Idle){if(AttackCount!=1)++MountedQAFailures;Stamina=0;Attack();HeavyAttack();Dodge();if(AttackCount!=1||DodgeCount!=1)++MountedQAFailures;MountedQAStep=4;}
     }
-    const float Duration=MountedProbe==TEXT("cleanup")?8.f:MountedProbe==TEXT("loop")?90.f:(MountedProbe==TEXT("movement")||MountedProbe==TEXT("camera"))?16.f:(MountedProbe==TEXT("disengage")||MountedProbe==TEXT("death"))?20.f:MountedProbe==TEXT("victory")?35.f:6.f;
+    const float Duration=Cleanup?8.f:MountedProbe==TEXT("loop")?90.f:(MountedProbe==TEXT("movement")||MountedProbe==TEXT("camera"))?16.f:(MountedProbe==TEXT("disengage")||MountedProbe==TEXT("death"))?20.f:MountedProbe==TEXT("victory")?35.f:6.f;
     if(MountedProbe==TEXT("victory")&&HasWon()&&EndingTime>.8f){Finish();return;}
     if(MountedProbe==TEXT("loop")&&((IsDead()&&StateTime>1.f)||(HasWon()&&EndingTime>1.f))){Finish();return;}
     if(MountedQATime>Duration)Finish();

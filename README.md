@@ -2,11 +2,11 @@
 
 ## 当前进度（2026-09-11）
 
-当前制作重心是独立骑战 Boss 实验；完整世界、剧情和背包扩写暂停。用户已要求今天停止制作，保存分组提交与私有远程仓库。后续从 [骑战当前状态](Docs/Implementation/MountedBoss/CURRENT_STATE.md) 接续，历史剧情文档不代表本轮开发范围。
+当前制作阶段为骑战 Boss 的“冲锋横扫”质量样本。新资产、AnimBP、Montage、Notify 与 UE 原生马匹 IK 重定向已实际运行，保留原六招入口。当前 A/B 连续实机录像已交付为待验收候选；C 普通输入尝试受操作工具限制，未通过。详见 [样本状态、录像与启动/回退](Docs/Implementation/MountedBoss/ChargeSample/STATUS.md)。本轮不扩世界、剧情或背包。
 
 - 骑战入口：`Scripts/launch_mounted_boss.command`。六招、阶段变化、死亡/胜利和重试已实现；马步滑移、完整自然交锋与美术仍待打磨。
 - 守井者入口：`Scripts/launch_station_gate.command`。保留现有主角 v02、长剑与原战斗基线。
-- 最新构建通过 9 项必要骑战回测、2 项守井者回归；另有 UI 修复前 27 项回测及实际 Debug UI 13 项日志检查。版本范围与局限见 [验收矩阵](Docs/Implementation/MountedBoss/qa_matrix.json)。新录制器仅编译通过，未剪辑实战录像尚未交付。
+- 验证：样本战斗实现版本 27/27 必要回归（含原六招与守井者）；后续录制/盾朝向修正的最新二进制 5/5 针对性回归。版本 hash 与覆盖范围见样本状态，不能作为视觉验收。旧阶段测试保留在 [验收矩阵](Docs/Implementation/MountedBoss/qa_matrix.json)。
 - 私有远程仓库：[jane-uske/ash-well-ue](https://github.com/jane-uske/ash-well-ue)。旧网页原型仓库独立保留。
 
 ## 既有方向与文档入口（2026-09-10）

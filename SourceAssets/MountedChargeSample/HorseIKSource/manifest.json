@@ -1,0 +1,14 @@
+{
+  "Idle": {
+    "frames": 201,
+    "max_world_position_error_cm": 0.00018342308471941082
+  },
+  "Walk": {
+    "frames": 71,
+    "max_world_position_error_cm": 0.00017398741809053362
+  },
+  "Gallop": {
+    "frames": 37,
+    "max_world_position_error_cm": 0.00017213755367078388
+  }
+}

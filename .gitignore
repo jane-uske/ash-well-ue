@@ -21,4 +21,7 @@ Artifacts/
 Build/Mac/FileOpenOrder/
 Build/Mac/*.PackageVersionCounter
 meshy_output/**/task_*.json
+meshy_output/**/task.json
 meshy_output/**/download_*.json
+meshy_output/retrieval_*/*.json
+!meshy_output/retrieval_*/download-manifest.json

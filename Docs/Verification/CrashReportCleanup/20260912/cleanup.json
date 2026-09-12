@@ -1,0 +1,22 @@
+[
+  {
+    "pid": 14775,
+    "action": "SIGTERM",
+    "still_present": false
+  },
+  {
+    "pid": 61836,
+    "action": "SIGTERM",
+    "still_present": false
+  },
+  {
+    "pid": 64572,
+    "action": "SIGTERM",
+    "still_present": false
+  },
+  {
+    "pid": 87211,
+    "action": "SIGTERM",
+    "still_present": false
+  }
+]

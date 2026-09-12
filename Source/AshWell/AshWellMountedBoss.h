@@ -12,6 +12,7 @@ class UAnimSequence;
 class USoundBase;
 class UAudioComponent;
 class FJsonObject;
+class AAshWellMountedSampleRig;
 
 UENUM()
 enum class EMountedBossState : uint8 { Idle, Approach, Windup, Active, Recovery, PhaseChange, Return, Dead };
@@ -105,6 +106,7 @@ private:
     void UpdateRiderPose(float Dt);
     void PlaySound(USoundBase* Sound, const FVector& Point, float Volume = .5f, float Pitch = 1.f);
     bool IsQAEnabled() const;
+    bool UsesAuthoredAnimation() const;
 
     TWeakObjectPtr<APawn> Target;
     EMountedBossState State = EMountedBossState::Idle;
@@ -135,6 +137,7 @@ private:
     FTransform HorseSeatRestBone = FTransform::Identity;
     bool bHorseSeatBone = false;
     UPROPERTY(Transient) TObjectPtr<USkeletalMeshComponent> HorseMesh;
+    UPROPERTY(Transient) TObjectPtr<AAshWellMountedSampleRig> SampleRig;
     UPROPERTY(Transient) TObjectPtr<UPoseableMeshComponent> RiderMesh;
     UPROPERTY(Transient) TObjectPtr<USceneComponent> RiderRoot;
     UPROPERTY(Transient) TObjectPtr<UStaticMeshComponent> Weapon;

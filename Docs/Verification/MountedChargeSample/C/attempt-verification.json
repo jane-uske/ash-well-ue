@@ -1,0 +1,41 @@
+{
+  "scope": "Ordinary input attempt with natural AI. Rejected as complete C: unreliable interactive input, no demonstrated counterattack/dodge exchange.",
+  "source": "/Users/rare/Desktop/Recording at 2026-09-11 23.57.23.mp4",
+  "source_sha256": "cb5b48e74d05073ce763c250922cf39b9bc785dc50e66edb0fcb1958c1d1c336",
+  "source_kept": true,
+  "capture": "QuickRecorder window capture, app audio enabled, microphone disabled",
+  "observed_inputs": [
+    "E enter",
+    "Tab lock",
+    "R retry"
+  ],
+  "tool_blockers": [
+    "Standalone Shift rejected: keyPressIncludedNoNonModifierKeys",
+    "No documented sustained key-down/key-up interface",
+    "Native pipe closed during input; QuickRecorder AX repeatedly timeoutReached"
+  ],
+  "cuts": 0,
+  "speed": 1,
+  "accepted": false,
+  "delivery": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/C/ordinary-input-attempt-uncut.mp4",
+  "delivery_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1600,
+        "height": 932
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "format": {
+      "duration": "237.454000",
+      "size": "20102737"
+    }
+  }
+}

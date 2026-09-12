@@ -1,0 +1,84 @@
+{
+  "editor_readonly_exit": {
+    "process_exit_code": 0,
+    "loaded_sample_assets": true,
+    "normal_exit": true,
+    "fatal_or_ensure": false
+  },
+  "cleanup": [
+    {
+      "pid": 14775,
+      "action": "SIGTERM",
+      "still_present": false
+    },
+    {
+      "pid": 61836,
+      "action": "SIGTERM",
+      "still_present": false
+    },
+    {
+      "pid": 64572,
+      "action": "SIGTERM",
+      "still_present": false
+    },
+    {
+      "pid": 87211,
+      "action": "SIGTERM",
+      "still_present": false
+    }
+  ],
+  "scope": "Cleanup and fresh startup/exit checks; not a frame-rate benchmark and not a root-cause fix for all historical import crashes.",
+  "runtime_charge_check": {
+    "case": "hit_charge",
+    "passed": true,
+    "elapsed_seconds": 15.33,
+    "evidence_directory": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260912-104020-1d3d10cd/hit_charge",
+    "probe_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/probe-hit_charge.json",
+    "process": {
+      "pid": 19716,
+      "terminated_by_harness": true,
+      "killed_after_grace": false,
+      "exit_code": 0
+    },
+    "checks": {
+      "completed": true,
+      "correct_probe": true,
+      "correct_map": true,
+      "hero_v02_loaded": true,
+      "horse_visual_loaded": true,
+      "rider_visual_loaded": true,
+      "finite_health": true,
+      "finite_stamina": true,
+      "stamina_never_negative": true,
+      "fixture_assertions_passed": true,
+      "no_global_slowdown": true,
+      "no_fatal_error": true,
+      "no_hero_load_error": true,
+      "hero_material_compiles": true,
+      "cloth_scale_valid": true,
+      "correct_attack": true,
+      "strike_executed": true,
+      "heading_stayed_committed": true,
+      "readable_commit_lead": true,
+      "explicit_recovery": true,
+      "correct_damage": true,
+      "damaged_once": true,
+      "no_unrequested_dodge": true,
+      "correct_contact_source": true,
+      "no_duplicate_contact": true,
+      "standard_sample_loaded": true,
+      "montage_finished_and_returned": true,
+      "one_window_closed": true,
+      "six_beats_observed": true,
+      "horse_passed_player": true,
+      "engine_log_present": true,
+      "owned_process_stopped": true
+    },
+    "failed_checks": [],
+    "health": 68,
+    "boss_health": 900,
+    "screenshot_path": "/Users/rare/dev/ash-well-ue/Saved/MountedBoss/runs/20260912-104020-1d3d10cd/hit_charge/screenshot.png"
+  },
+  "remaining_ue_or_reporter_processes": [],
+  "verified_at": "2026-09-12T10:41:29"
+}

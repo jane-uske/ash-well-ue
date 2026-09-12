@@ -1,0 +1,12 @@
+[
+  {
+    "file": "model.glb",
+    "bytes": 86726772,
+    "sha256": "e2d0274012f92f94f8c405cba172419ca91a437745ee2bd5a9cb5f189f65be92",
+    "meshes": 1,
+    "materials": 1,
+    "images": 3,
+    "skins": 0,
+    "animations": []
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "SK_SampleKnight": "/Game/AshWell/Combat/MountedChargeSample/SK_SampleKnight.SK_SampleKnight",
+  "SK_SampleHorse": "/Game/AshWell/Combat/MountedChargeSample/SK_SampleHorse.SK_SampleHorse",
+  "SM_SamplePoleaxe": "/Game/AshWell/Combat/MountedChargeSample/SM_SamplePoleaxe.SM_SamplePoleaxe",
+  "SM_SampleShield": "/Game/AshWell/Combat/MountedChargeSample/SM_SampleShield.SM_SampleShield",
+  "A_SampleRider_SeatedIdle": 2.0,
+  "A_SampleRider_ChargeSweep": 3.549999952316284,
+  "A_SampleHorse_Idle": 3.3333332538604736,
+  "A_SampleHorse_Walk": 1.1666666269302368,
+  "A_SampleHorse_Gallop": 0.6000000238418579,
+  "ABP_SampleHorse": "nodes=5 errors=0 warnings=0 status=3",
+  "ABP_SampleRider": "nodes=9 errors=0 warnings=0 status=3",
+  "montage": "/Game/AshWell/Combat/MountedChargeSample/AM_SampleChargeSweep.AM_SampleChargeSweep",
+  "passed": true
+}

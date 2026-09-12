@@ -104,6 +104,8 @@ void AAshWellCombatCharacter::BeginPlay()
         FActorSpawnParameters Spawn;Spawn.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
         MountedBoss=GetWorld()->SpawnActor<AAshWellMountedBoss>(FVector(600,0,0),FRotator(0,180,0),Spawn);
         if(MountedBoss)MountedBoss->SetArenaBounds(FVector::ZeroVector,FVector2D(2400,1900));
+        if(FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview")))
+        {SetActorLocation(FVector(180,-200,88),false,nullptr,ETeleportType::TeleportPhysics);bLockedOn=true;}
         FParse::Value(FCommandLine::Get(),TEXT("MountedProbe="),MountedProbe);
     }
     auto LoadAnimation=[](const TCHAR* Suffix)

@@ -1,0 +1,28 @@
+{
+  "baseline_commit": "a8c455c65a3c19812d14f64b65ff217a87caeac0",
+  "branch": "codex/mounted-charge-standard",
+  "stage_a": "pending visual review after material/axis fixes; Mac locked",
+  "stage_b": "not integrated",
+  "stage_c": "not run",
+  "montage_playback_verified": false,
+  "baseline_mounted_cases_passed": 10,
+  "baseline_mounted_run_id": "20260911-211146-864e1a51",
+  "original_downloads_preserved": true,
+  "module_sha256": "f7215eaf3a84c4cdb4a332851c39f160dc988d8ac73fb96261a0ae8c1108f636",
+  "source_sha256": {
+    "Source/AshWell/AshWellMountedSampleRig.cpp": "c8311da4e41ee274350148e87369d082b3197f161c98f7be5b3c99a16fb8d76b",
+    "Source/AshWell/AshWellMountedSampleAnimation.cpp": "acefd14be7deddef061de9dad73c5cfc48e279a61bf8314c16826fcdafbc9adc",
+    "Source/AshWell/AshWellMountedSampleRig.h": "0dc8d4fbc7489ab42b9044e7c2157497a24bd8ba21b57637e3731f8a8ac76a3d",
+    "Source/AshWell/AshWellMountedSampleAnimation.h": "a10ae7bc199e9d35af798d643c1b337e79524cf5a378e7dc8d0215fc28f4ed23",
+    "Source/AshWell/AshWell.Build.cs": "7b3fd18452716ed5915c4185d3a9e192006eaf6c85a8e75ae15c07728c984f5f",
+    "Source/AshWell/AshWellMountedBoss.cpp": "c3afd7e79f3b2fba7134541c66651b755e25a17d372219bc5adf6b27a7c72438",
+    "Source/AshWell/AshWellCombatCharacter.h": "b04aee877254dc4403a15cfe0af91cb0742e70c05bc44f7d06a05ec1ff420eaf",
+    "Source/AshWell/AshWellMountedPlayer.cpp": "2f62bbb9ce3681dd4f7eb7e6e30abcd6afc64a422ea2cfbdb5916c1e4e8537f7",
+    "Source/AshWell/AshWellMountedDebug.cpp": "8784f3dc932a0869b93e4c2fb659b724596d49ae21966984a601a39a26b8bf49",
+    "Source/AshWell/AshWellCombatCharacter.cpp": "bde5692745b4ee0b5070d9d76b93675951191224ced2baa549136617ef3d409a",
+    "Source/AshWell/AshWellMountedBoss.h": "2aaa00d5eb7dc52c3489006882a6af7744f2d16ff6b84795e0d3df653ca08cf9",
+    "Source/AshWell/AshWellMountedBossVisual.cpp": "519bc6e5da97da2f4dc89dba0f59e555954067c6ab6128be7f2507d8dafb955f"
+  },
+  "module_path": "Binaries/Mac/libUnrealEditor-AshWell.dylib",
+  "baseline_warden_cases_passed": 2
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Tree Sentinel Shield",
+    "id": "cad64068-b3c2-43a2-a2b6-91b822ffe243",
+    "kind": "textured-model",
+    "directory": "/Users/rare/dev/ash-well-ue/meshy_output/20260911_201130_tree-sentinel-shield_cad64068",
+    "validation": [
+      {
+        "file": "model.glb",
+        "bytes": 86726772,
+        "sha256": "e2d0274012f92f94f8c405cba172419ca91a437745ee2bd5a9cb5f189f65be92",
+        "meshes": 1,
+        "materials": 1,
+        "images": 3,
+        "skins": 0,
+        "animations": []
+      }
+    ]
+  },
+  {
+    "name": "Tree Sentinel Halberd",
+    "id": "87d0ac80-8549-42be-bfb3-1f1efc542552",
+    "kind": "textured-model",
+    "directory": "/Users/rare/dev/ash-well-ue/meshy_output/20260911_201214_tree-sentinel-halberd_87d0ac80",
+    "validation": [
+      {
+        "file": "model.glb",
+        "bytes": 86145488,
+        "sha256": "e5e959b4ae15091ec82e79573e77b59b341cd48d7ad1153a411bc6b3a50e1218",
+        "meshes": 1,
+        "materials": 1,
+        "images": 3,
+        "skins": 0,
+        "animations": []
+      }
+    ]
+  },
+  {
+    "name": "Gilded Warhorse",
+    "id": "01a08f11-1688-7309-ad1b-721605a95ee3",
+    "kind": "rigging",
+    "directory": "/Users/rare/dev/ash-well-ue/meshy_output/20260911_201320_gilded-warhorse_01a08f11",
+    "validation": [
+      {
+        "file": "rigged.glb",
+        "bytes": 12052240,
+        "sha256": "445befde223822b9527985b1041f06f5c978b65e4e55cfacf9d0037eadbfa1c4",
+        "meshes": 1,
+        "materials": 0,
+        "images": 0,
+        "skins": 1,
+        "animations": []
+      }
+    ]
+  },
+  {
+    "name": "Gilded Sentinel",
+    "id": "01a08e8e-e421-73d5-80a8-8c01f784fa59",
+    "kind": "rigging",
+    "directory": "/Users/rare/dev/ash-well-ue/meshy_output/20260911_201322_gilded-sentinel_01a08e8e",
+    "validation": [
+      {
+        "file": "rigged.glb",
+        "bytes": 13155568,
+        "sha256": "a0202c97ee5fb838bec5173ca6e3c0fa7e7bdec773b985931b8f5bcaaa772195",
+        "meshes": 1,
+        "materials": 1,
+        "images": 1,
+        "skins": 1,
+        "animations": []
+      },
+      {
+        "file": "walking.glb",
+        "bytes": 81860,
+        "sha256": "b2f3ca71dca4b41c3faefbccd336d21aa27c524708f50384a1947b1ba791c1db",
+        "meshes": 0,
+        "materials": 0,
+        "images": 0,
+        "skins": 0,
+        "animations": [
+          {
+            "name": "retarget_clip",
+            "channels": 66
+          },
+          {
+            "name": "Armature|clip0|baselayer",
+            "channels": 66
+          }
+        ]
+      },
+      {
+        "file": "running.glb",
+        "bytes": 72992,
+        "sha256": "0f6069e2b72f8e4c2810364daed5b3b7549230c6c785d29a213ba2d8fab88073",
+        "meshes": 0,
+        "materials": 0,
+        "images": 0,
+        "skins": 0,
+        "animations": [
+          {
+            "name": "retarget_clip",
+            "channels": 66
+          },
+          {
+            "name": "Armature|clip0|baselayer",
+            "channels": 66
+          }
+        ]
+      }
+    ]
+  }
+]

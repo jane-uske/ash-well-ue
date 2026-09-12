@@ -1,0 +1,18 @@
+{
+  "project_name": "Gilded Warhorse",
+  "folder": "20260911_201320_gilded-warhorse_01a08f11",
+  "root_task_id": "01a08f11-1688-7309-ad1b-721605a95ee3",
+  "created_at": "2026-09-11T20:13:22.310717",
+  "updated_at": "2026-09-11T20:13:22.310733",
+  "tasks": [
+    {
+      "task_id": "01a08f11-1688-7309-ad1b-721605a95ee3",
+      "task_type": "rigging",
+      "stage": "downloaded-existing",
+      "files": [
+        "rigged.glb"
+      ],
+      "created_at": "2026-09-11T20:13:22.310731"
+    }
+  ]
+}

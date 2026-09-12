@@ -11,6 +11,9 @@
 #include "WardenHQRestPose.inl"
 #include "Misc/PackageName.h"
 #include "MountedGallopDistance.inl"
+#include "AshWellMountedSampleRig.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 namespace
 {
@@ -37,6 +40,13 @@ void Limb(const FVector& RestA,const FVector& RestB,const FVector& RestC,const F
 
 void AAshWellMountedBoss::InitializeVisuals()
 {
+    if(FParse::Param(FCommandLine::Get(),TEXT("MountedAssetReview")))
+    {
+        FActorSpawnParameters Params;Params.Owner=this;
+        SampleRig=GetWorld()->SpawnActor<AAshWellMountedSampleRig>(GetActorLocation(),GetActorRotation(),Params);
+        if(SampleRig){SampleRig->AttachToActor(this,FAttachmentTransformRules::KeepWorldTransform);bHorseVisual=bRiderVisual=SampleRig->IsReady();}
+        bQAStationary=true;return; // Explicit A review: normal speed, no AI attack acceptance implied.
+    }
     auto* Dark=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/AshWell/Materials/M_DarkSteel.M_DarkSteel"));
     auto* Rust=LoadObject<UMaterialInterface>(nullptr,TEXT("/Game/AshWell/Materials/V2/M_Rust.M_Rust"));
     auto Static=[&](const TCHAR* Name,UStaticMesh* Mesh,USceneComponent* Parent,UMaterialInterface* Mat)
@@ -101,10 +111,25 @@ void AAshWellMountedBoss::InitializeVisuals()
     Shield=Static(TEXT("MountedShield"),LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cylinder.Cylinder")),SceneRoot,Dark);
     Shield->SetRelativeScale3D(FVector(1.3f,1.8f,.095f));
     UE_LOG(LogTemp,Display,TEXT("AW_MOUNTED_VISUAL horse=%d rider=%d rear_clip=%d"),bHorseVisual,bRiderVisual,HorseRear!=nullptr);
+    if(FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))
+    {
+        FActorSpawnParameters Params;Params.Owner=this;
+        SampleRig=GetWorld()->SpawnActor<AAshWellMountedSampleRig>(GetActorLocation(),GetActorRotation(),Params);
+        if(SampleRig&&SampleRig->IsReady())
+        {
+            SampleRig->AttachToActor(this,FAttachmentTransformRules::KeepWorldTransform);
+            // Retain the five legacy drivers as compatibility sources. Only charge
+            // changes to authored Montage timing; original assets are untouched.
+            for(USceneComponent* C:{static_cast<USceneComponent*>(HorseMesh),RiderRoot.Get(),static_cast<USceneComponent*>(Weapon),static_cast<USceneComponent*>(Shield),static_cast<USceneComponent*>(Saddle)})if(C)C->SetVisibility(false,true);
+            for(auto C:FallbackHorse)if(C)C->SetVisibility(false,true);
+        }
+        else {UE_LOG(LogTemp,Error,TEXT("AW_SAMPLE_BLOCKED required sample asset missing"));if(SampleRig)SampleRig->Destroy();SampleRig=nullptr;}
+    }
 }
 
 void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
 {
+    if(SampleRig&&!HorseMesh){SampleRig->EvaluatePose(Dt,ActualSpeed);return;}
     if(!HorseMesh)return;
     const float Travel=DistanceTravelled-LastAnimationDistance;LastAnimationDistance=DistanceTravelled;
     const float Turn=TurnTravel-LastAnimationTurnTravel;LastAnimationTurnTravel=TurnTravel;
@@ -165,6 +190,7 @@ void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
 
 void AAshWellMountedBoss::UpdatePose(float Dt)
 {
+    if(SampleRig&&!RiderRoot){WeaponGrip=SampleRig->GetGrip();WeaponTip=SampleRig->GetTip();ShieldPoint=SampleRig->Shield->GetComponentLocation();return;}
     const float Moving=FMath::Clamp(ActualSpeed/220.f,0.f,1.f);
     RiderBob=FMath::Sin(GaitPhase*4*PI)*1.7f*Moving;
     HorsePitch=0;
@@ -200,6 +226,11 @@ void AAshWellMountedBoss::UpdatePose(float Dt)
     if(RiderRoot){RiderRoot->SetRelativeLocation(Seat+SeatRotation.RotateVector(FVector(0,0,-71.4f)));RiderRoot->SetRelativeRotation(SeatRotation);}
     if(Saddle){Saddle->SetRelativeLocation(Seat);Saddle->SetRelativeRotation(SeatRotation);}
     UpdateRiderPose(Dt);
+    if(SampleRig)
+    {
+        SampleRig->EvaluatePose(0,ActualSpeed);
+        WeaponGrip=SampleRig->GetGrip();WeaponTip=SampleRig->GetTip();ShieldPoint=SampleRig->Shield->GetComponentLocation();
+    }
 }
 
 void AAshWellMountedBoss::UpdateRiderPose(float Dt)
@@ -274,6 +305,13 @@ void AAshWellMountedBoss::UpdateRiderPose(float Dt)
     Poses[3]=MapLink(LShoulder,LElbow,Torso.TransformPosition(LShoulder),LJoint);Poses[4]=MapLink(LElbow,LHand,LJoint,LGrip);
     const bool LeapShield=AttackKind==EMountedBossAttack::LeapShield&&AttackPose;
     ShieldPoint=Frame.TransformPosition(LGrip)+GetActorQuat().RotateVector(FVector(12,-15,-55.f));
+    if(SampleRig)
+    {
+        // Match the existing leap's shield-rim contact, accounting for the new
+        // 90 cm radius and 32.4 cm socket drop versus the old 90 / 55 cm offsets.
+        const FVector NewShieldHand=Frame.TransformPosition(LGrip)-FVector(0,0,LeapShield?22.6f:0.f);
+        SampleRig->SetLegacyPose(WeaponGrip,WorldDirection,NewShieldHand,TorsoRotation,HorsePitch,AttackPose&&!UsesAuthoredAnimation());
+    }
 
     if(Shield)Shield->SetWorldLocationAndRotation(ShieldPoint,GetActorQuat()*FRotator(0,0,90).Quaternion());
     FVector Knee,Ankle;

@@ -1,0 +1,22 @@
+{
+  "project_name": "Tree Sentinel Shield",
+  "folder": "20260911_201130_tree-sentinel-shield_cad64068",
+  "root_task_id": "cad64068-b3c2-43a2-a2b6-91b822ffe243",
+  "created_at": "2026-09-11T20:12:14.830052",
+  "updated_at": "2026-09-11T20:12:14.830068",
+  "tasks": [
+    {
+      "task_id": "cad64068-b3c2-43a2-a2b6-91b822ffe243",
+      "task_type": "textured-model",
+      "stage": "downloaded-existing",
+      "files": [
+        "model.glb",
+        "texture_0_base_color.png",
+        "texture_0_metallic.png",
+        "texture_0_roughness.png",
+        "texture_0_normal.png"
+      ],
+      "created_at": "2026-09-11T20:12:14.830067"
+    }
+  ]
+}

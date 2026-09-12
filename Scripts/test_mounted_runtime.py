@@ -111,8 +111,11 @@ def check_fixture(case: str, data: dict, engine_log: str, expected_hp: float = 9
                 correct_contact_source=boss.get(source) == 1,
                 no_duplicate_contact=boss.get("contacts") == 1,
             )
-    elif case == "cleanup":
+    elif case in ("cleanup","sample_cleanup"):
         checks.update(cancelled=boss.get("cancelled_attacks",0)>=1, no_late_damage=data.get("damage_count")==0, no_open_window=boss.get("hit_window_open") is False, duplicate_rejected=boss.get("duplicate_receive_rejected",0)>=1, grounded=near(boss.get("z"),0), cleanup_steps=data.get("step",0)>=5)
+        if case=='sample_cleanup':checks.update(notify_windows_exercised=boss.get('window_begins',0)>=2, montage_stopped=boss.get('montage_playing') is False, notify_cleared=boss.get('notify_window') is False)
+    elif case=='sample_pre_cancel':
+        checks.update(cancelled_before_window=data.get('step')==4 and boss.get('cancelled_attacks',0)>=1,no_late_notify=boss.get('window_begins')==0,window_closed=boss.get('notify_window') is False,montage_stopped=boss.get('montage_playing') is False,no_late_damage=data.get('damage_count')==0)
     elif case == "loop":
         checks.update(player_dodged=data.get("dodges",0)>=1, player_counter_hit=data.get("hits",0)>=1, boss_continued=boss.get("strikes",0)>=2, terminal_result=data.get("dead") is True or data.get("won") is True)
     elif case == "movement":
@@ -205,7 +208,7 @@ def stop_owned_process(process: subprocess.Popen) -> dict:
     return result
 
 
-def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False) -> dict:
+def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False, sample: bool = False) -> dict:
     case_dir = run_dir / case
     case_dir.mkdir(parents=True)
     probe_file = OUTPUT / f"probe-{case}.json"
@@ -220,6 +223,7 @@ def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, captu
     marker_ns = marker.stat().st_mtime_ns
     command = [str(ROOT / "Scripts/launch_mounted_boss.command"), f"-MountedProbe={case}",
                f"-MountedQARun={run_token}", f"-abslog={case_dir / 'engine.log'}"]
+    if sample:command.append('-MountedChargeSample')
     if capture:
         command.append("-MountedCapture")
         capture_dir=OUTPUT / "Capture" / case
@@ -274,6 +278,14 @@ def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, captu
     if data is not None:
         write_json(case_dir / "probe.json", data)
         checks = check_fixture(case, data, engine_log, expected_hp)
+        if sample:
+            checks['standard_sample_loaded']=data.get('boss',{}).get('standard_sample') is True
+            if case in ('hit_charge','dodge_charge'):
+                boss=data.get('boss',{})
+                checks['montage_finished_and_returned']=boss.get('state')=='approach' and near(boss.get('montage_time'),3.55)
+                checks['one_window_closed']=boss.get('window_begins')==1 and boss.get('window_ends')==1 and boss.get('notify_window') is False
+                checks['six_beats_observed']=boss.get('phase_notifies')==6
+                checks['horse_passed_player']=boss.get('x',0)>800
         checks["engine_log_present"] = bool(engine_log)
         checks["owned_process_stopped"] = cleanup.get("exit_code") is not None
         result.update(checks=checks, passed=all(checks.values()), failed_checks=[k for k, v in checks.items() if not v])
@@ -300,18 +312,20 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=90, help="Per-case UE completion deadline, at most 90 seconds.")
     parser.add_argument("--boss-health", type=float, default=900, help="Expected full Boss HP for this build.")
     parser.add_argument("--capture", action="store_true", help="Save timed native game frames for visual review.")
+    parser.add_argument("--sample", action="store_true", help="Run unchanged fixtures against the opt-in standard-animation sample, with additional charge checks.")
     parser.add_argument("--list", action="store_true", help="List cases without starting UE.")
     args = parser.parse_args()
+    available=ALL_CASES+(['sample_cleanup','sample_pre_cancel'] if args.sample else [])
     if args.list:
-        print("\n".join(ALL_CASES))
+        print("\n".join(available))
         return 0
-    if any(case not in ALL_CASES for case in args.cases):
-        parser.error("Unknown case(s): " + ", ".join(case for case in args.cases if case not in ALL_CASES))
+    if any(case not in available for case in args.cases):
+        parser.error("Unknown case(s): " + ", ".join(case for case in args.cases if case not in available))
     if not 0 < args.timeout <= 90:
         parser.error("--timeout must be greater than 0 and at most 90 seconds")
     if not math.isfinite(args.boss_health) or args.boss_health <= 0:
         parser.error("--boss-health must be a positive finite number")
-    requested = args.cases or (ALL_CASES if args.all else DEFAULT_CASES)
+    requested = args.cases or (available if args.all else DEFAULT_CASES)
     cases = []
     for case in requested:
         # A harmless roll alone is insufficient evidence: the same attack must hit
@@ -332,7 +346,7 @@ def main() -> int:
               "scope_note": "Runtime checks do not certify horse foot sliding, rider quality or camera occlusion."}
     try:
         for case in cases:
-            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture)
+            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture,args.sample)
             if case.startswith("dodge_") and "checks" in result:
                 control = next((item for item in report["results"] if item["case"] == "hit_" + case[6:]), None)
                 result["checks"]["paired_hit_control_passed"] = bool(control and control["passed"])

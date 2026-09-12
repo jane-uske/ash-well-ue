@@ -1,0 +1,50 @@
+[
+  {
+    "file": "rigged.glb",
+    "bytes": 13155568,
+    "sha256": "a0202c97ee5fb838bec5173ca6e3c0fa7e7bdec773b985931b8f5bcaaa772195",
+    "meshes": 1,
+    "materials": 1,
+    "images": 1,
+    "skins": 1,
+    "animations": []
+  },
+  {
+    "file": "walking.glb",
+    "bytes": 81860,
+    "sha256": "b2f3ca71dca4b41c3faefbccd336d21aa27c524708f50384a1947b1ba791c1db",
+    "meshes": 0,
+    "materials": 0,
+    "images": 0,
+    "skins": 0,
+    "animations": [
+      {
+        "name": "retarget_clip",
+        "channels": 66
+      },
+      {
+        "name": "Armature|clip0|baselayer",
+        "channels": 66
+      }
+    ]
+  },
+  {
+    "file": "running.glb",
+    "bytes": 72992,
+    "sha256": "0f6069e2b72f8e4c2810364daed5b3b7549230c6c785d29a213ba2d8fab88073",
+    "meshes": 0,
+    "materials": 0,
+    "images": 0,
+    "skins": 0,
+    "animations": [
+      {
+        "name": "retarget_clip",
+        "channels": 66
+      },
+      {
+        "name": "Armature|clip0|baselayer",
+        "channels": 66
+      }
+    ]
+  }
+]

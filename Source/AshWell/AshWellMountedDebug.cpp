@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
+#include "GameFramework/HUD.h"
 #include "GameFramework/PlayerInput.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
@@ -44,6 +45,10 @@ bool MountedRecording=false;
 FString MountedRecordingPath;
 double MountedRecordingStarted=0,MountedRecordingNext=0;
 int MountedRecordingFrame=0;
+FIntPoint MountedRecordingSize=FIntPoint::ZeroValue;
+TWeakObjectPtr<AAshWellCombatCharacter> MountedReviewOwner;
+bool MountedReviewStarted=false,MountedReviewFixtureStarted=false,MountedReviewFinished=false,MountedReviewAIResumed=false;
+TSharedPtr<FJsonObject> MountedReviewFirstCharge;
 constexpr int32 MountedCaptureFPS=24,MountedCaptureMaxWrites=8;
 TUniquePtr<FFrameGrabber> MountedFrameGrabber;
 FTSTicker::FDelegateHandle MountedCaptureTicker;
@@ -159,14 +164,20 @@ bool StartMountedCapture(AAshWellCombatCharacter* Owner)
     // Resolve once here so image and WAV output use the same correct absolute directory.
     MountedRecordingPath=FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir()/TEXT("MountedBoss/Recordings")/(FDateTime::UtcNow().ToString(TEXT("%Y%m%dT%H%M%SZ"))+TEXT("-")+FGuid::NewGuid().ToString(EGuidFormats::Digits).Left(8)));
     if(!IFileManager::Get().MakeDirectory(*MountedRecordingPath,true))return false;
-    MountedFrameGrabber=MakeUnique<FFrameGrabber>(SharedViewport.ToSharedRef(),FIntPoint(1280,720),PF_B8G8R8A8,4);
+    // UE 5.8 DrawRectangle uses the capture rect as target-buffer size. Capturing
+    // to a smaller texture leaves an unrendered border on Metal. Keep sizes equal
+    // and encode the entire native frame; never crop that defect out of evidence.
+    MountedRecordingSize=SharedViewport->GetSize();
+    if(Widget.IsValid())
+    {const FVector2D Size=Widget->GetCachedGeometry().GetAbsoluteSize();if(Size.X>0&&Size.Y>0)MountedRecordingSize=FIntPoint(FMath::RoundToInt(Size.X),FMath::RoundToInt(Size.Y));}
+    MountedFrameGrabber=MakeUnique<FFrameGrabber>(SharedViewport.ToSharedRef(),MountedRecordingSize,PF_B8G8R8A8,4);
     MountedFrameGrabber->StartCapturingFrames();MountedFrameWrites.Reset();MountedRecordingOwner=Owner;
     MountedRecordingFrame=MountedFramesInFlight=MountedFramesWritten=MountedFrameWriteFailures=MountedCaptureSkippedSlots=0;
     MountedRecordingStarted=FPlatformTime::Seconds();MountedRecordingNext=MountedRecordingStarted;
     UAudioMixerBlueprintLibrary::StartRecordingOutput(Owner,180.f);MountedRecording=true;
     MountedCaptureTicker=FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateStatic(&TickMountedCapture));
     auto Meta=MakeShared<FJsonObject>();Meta->SetStringField(TEXT("status"),TEXT("recording"));Meta->SetStringField(TEXT("source"),TEXT("presented UE viewport via FFrameGrabber; master audio submix"));
-    Meta->SetNumberField(TEXT("nominal_capture_fps"),MountedCaptureFPS);Meta->SetNumberField(TEXT("width"),1280);Meta->SetNumberField(TEXT("height"),720);
+    Meta->SetNumberField(TEXT("nominal_capture_fps"),MountedCaptureFPS);Meta->SetNumberField(TEXT("width"),MountedRecordingSize.X);Meta->SetNumberField(TEXT("height"),MountedRecordingSize.Y);
     WriteMountedRecordingJson(MountedRecordingPath/TEXT("recording.json"),Meta);return true;
 }
 
@@ -191,11 +202,14 @@ bool StopMountedCapture(AAshWellCombatCharacter* Owner,const FString& Reason)
     Meta->SetStringField(TEXT("stop_reason"),Reason);Meta->SetNumberField(TEXT("duration_seconds"),Stopped-MountedRecordingStarted);
     Meta->SetNumberField(TEXT("frames_requested"),MountedRecordingFrame);Meta->SetNumberField(TEXT("frames_written"),MountedFramesWritten);Meta->SetNumberField(TEXT("frame_write_failures"),MountedFrameWriteFailures);
     Meta->SetNumberField(TEXT("uncaptured_requests_at_stop"),MountedFramesInFlight);Meta->SetNumberField(TEXT("skipped_capture_slots"),MountedCaptureSkippedSlots);
-    Meta->SetNumberField(TEXT("nominal_capture_fps"),MountedCaptureFPS);Meta->SetNumberField(TEXT("width"),1280);Meta->SetNumberField(TEXT("height"),720);
+    Meta->SetNumberField(TEXT("nominal_capture_fps"),MountedCaptureFPS);Meta->SetNumberField(TEXT("width"),MountedRecordingSize.X);Meta->SetNumberField(TEXT("height"),MountedRecordingSize.Y);
     Meta->SetBoolField(TEXT("audio_wav_complete"),AudioComplete);Meta->SetStringField(TEXT("audio_path"),WavFile);
     Meta->SetStringField(TEXT("source"),TEXT("presented UE viewport via FFrameGrabber; asynchronous PNG compression; master audio submix"));
     Meta->SetStringField(TEXT("timing"),TEXT("Real frame-ready/request timestamps in frames.jsonl. Preserve gaps and full duration; no cuts or time compression."));
     Meta->SetStringField(TEXT("reload_policy"),TEXT("Every actor EndPlay closes this segment. Press F8 after R to start a new segment; loading gaps are not represented as captured footage."));
+    FString ReviewMode;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewRecord="),ReviewMode);
+    Meta->SetStringField(TEXT("review_fixture"),ReviewMode);
+    Meta->SetStringField(TEXT("input_source"),ReviewMode.IsEmpty()?TEXT("interactive window controls"):TEXT("explicit asset/single-action review fixture; not ordinary-input combat"));
     Meta->SetNumberField(TEXT("save_wait_seconds"),FPlatformTime::Seconds()-Stopped);
     WriteMountedRecordingJson(MountedRecordingPath/TEXT("recording.json"),Meta);MountedRecordingOwner.Reset();return Complete;
 }
@@ -327,6 +341,34 @@ void AAshWellCombatCharacter::TickMountedDebug(float DeltaSeconds)
     {RecordMountedDebugEvent(TEXT("contact_counts"));MountedDebugLastDamage=DamageTakenCount;MountedDebugLastHits=HitCount;MountedDebugLastContacts=MountedBoss->GetContactCount();}
     const double Now=FPlatformTime::Seconds();
     if(Now>=MountedDebugNextTrace){RecordMountedDebugEvent(TEXT("trace"));MountedDebugNextTrace=Now+.20;}
+    // Explicit project-owned render export, usable without operating the desktop.
+    // It is intentionally labelled a fixture and is never used to claim C.
+    FString ReviewMode;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewRecord="),ReviewMode);
+    if(ReviewMode==TEXT("asset")||ReviewMode==TEXT("charge"))
+    {
+        if(MountedReviewOwner.Get()!=this){MountedReviewOwner=this;MountedReviewStarted=MountedReviewFixtureStarted=MountedReviewFinished=MountedReviewAIResumed=false;MountedReviewFirstCharge.Reset();}
+        if(!MountedReviewStarted&&GetWorld()->GetRealTimeSeconds()>3)
+        {
+            MountedReviewStarted=true;if(ReviewMode==TEXT("asset")){SetActorHiddenInGame(true);if(auto* PC=Cast<APlayerController>(Controller))if(PC->GetHUD())PC->GetHUD()->bShowHUD=false;}
+            ToggleMountedRecording();UE_LOG(LogTemp,Display,TEXT("AW_REVIEW_RECORD mode=%s path=%s"),*ReviewMode,*MountedRecordingPath);
+            if(!MountedRecording){UE_LOG(LogTemp,Error,TEXT("AW_REVIEW_RECORD_BLOCKED no live viewport capture"));FPlatformMisc::RequestExit(false);}
+        }
+        if(MountedRecording&&!MountedReviewFinished)
+        {
+            const double Elapsed=Now-MountedRecordingStarted;
+            if(ReviewMode==TEXT("charge")&&!MountedReviewFixtureStarted&&Elapsed>.5)
+            {MountedReviewFixtureStarted=true;StartMountedDebugFixture(2);bMountedDebugVisible=false;}
+            if(ReviewMode==TEXT("charge")&&MountedReviewFixtureStarted&&!MountedReviewAIResumed&&Elapsed>5.2&&MountedBoss->GetCombatState()==EMountedBossState::Approach)
+            {MountedReviewFirstCharge=MountedBoss->GetTelemetry();ResumeMountedDebugAI();MountedReviewAIResumed=true;}
+            float Duration=ReviewMode==TEXT("asset")?25.f:18.f;FParse::Value(FCommandLine::Get(),TEXT("MountedReviewSeconds="),Duration);
+            if(Elapsed>=FMath::Clamp(Duration,8.f,60.f))
+            {
+                MountedReviewFinished=true;auto Summary=MakeShared<FJsonObject>();Summary->SetObjectField(TEXT("boss"),MountedBoss->GetTelemetry());Summary->SetNumberField(TEXT("player_health"),Health);Summary->SetStringField(TEXT("mode"),ReviewMode);Summary->SetNumberField(TEXT("dilation"),UGameplayStatics::GetGlobalTimeDilation(this));
+                Summary->SetBoolField(TEXT("natural_ai_resumed"),MountedReviewAIResumed);if(MountedReviewFirstCharge)Summary->SetObjectField(TEXT("first_charge_complete"),MountedReviewFirstCharge.ToSharedRef());
+                WriteMountedRecordingJson(MountedRecordingPath/TEXT("review.json"),Summary);ToggleMountedRecording();FPlatformMisc::RequestExit(false);
+            }
+        }
+    }
 }
 
 void AAshWellCombatCharacter::ToggleMountedDebugPanel()
@@ -383,7 +425,9 @@ void AAshWellCombatCharacter::StartMountedDebugFixture(int32 Index)
     MountedBoss->SetActorLocation(FVector::ZeroVector);MountedBoss->SetActorRotation(FRotator::ZeroRotator);
     MountedBoss->SetQAStationary(true);
     const FVector Positions[]={FVector(230,120,88),FVector(255,0,88),FVector(560,65,88),FVector(165,-55,88),FVector(185,130,88),FVector(380,-80,88)};
-    SetActorLocation(Positions[Index],false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,(-Positions[Index]).Rotation().Yaw,0));
+    FVector Position=Positions[Index];
+    if(Index==2&&FParse::Param(FCommandLine::Get(),TEXT("MountedChargeSample")))Position.Y=105;
+    SetActorLocation(Position,false,nullptr,ETeleportType::TeleportPhysics);SetActorRotation(FRotator(0,(-Position).Rotation().Yaw,0));
     if(Controller)Controller->SetControlRotation(FRotator(-10,(-Positions[Index]).Rotation().Yaw,0));
     bEncounterActive=true;bLockedOn=true;MountedBoss->ActivateEncounter(this);
     const bool Started=MountedBoss->ForceAttack(MountedFixtureNames[Index]);
@@ -417,7 +461,7 @@ void AAshWellCombatCharacter::ToggleMountedRecording()
     if(!MountedRecording)
     {
         if(StartMountedCapture(this))
-        {bMountedRecordingObserved=true;Feedback=TEXT("开始录制：720p / 24fps，F8 停止保存");FeedbackTime=3;RecordMountedDebugEvent(TEXT("record_start"),MountedRecordingPath);}
+        {bMountedRecordingObserved=true;Feedback=TEXT("开始录制：原尺寸 / 24fps，F8 停止保存");FeedbackTime=3;RecordMountedDebugEvent(TEXT("record_start"),MountedRecordingPath);}
         else
         {Feedback=TEXT("录制未启动：游戏视口或输出目录不可用");FeedbackTime=4;RecordMountedDebugEvent(TEXT("record_start_failed"));}
     }

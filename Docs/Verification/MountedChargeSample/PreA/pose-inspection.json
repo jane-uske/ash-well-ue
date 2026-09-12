@@ -1,0 +1,52 @@
+{
+  "Knight": {
+    "bounds": "<Struct 'BoxSphereBounds' (0x73daee545c0) {origin: {x: 0.047268, y: 0.069692, z: 84.948881}, box_extent: {x: 44.909721, y: 20.364085, z: 84.994952}, sphere_radius: 98.263528}>",
+    "materials": [
+      "<Object '/Game/AshWell/Combat/MountedChargeSample/M_SampleKnight.M_SampleKnight' (0x73db8da2a00) Class 'Material'>"
+    ]
+  },
+  "Horse": {
+    "bounds": "<Struct 'BoxSphereBounds' (0x73daee534c0) {origin: {x: 0.498528, y: -1.758514, z: 85.009450}, box_extent: {x: 32.032905, y: 111.214722, z: 85.009456}, sphere_radius: 143.601633}>",
+    "materials": [
+      "<Object '/Game/AshWell/Combat/MountedChargeSample/M_SampleHorse.M_SampleHorse' (0x73db8daee00) Class 'Material'>"
+    ]
+  },
+  "SM_SamplePoleaxe": {
+    "bounds": "<Struct 'Box' (0x73daee5a740) {min: {x: -17.067400, y: -171.483627, z: -45.193142}, max: {x: 17.174623, y: 73.323776, z: 45.143871}, is_valid: True}>"
+  },
+  "SM_SampleShield": {
+    "bounds": "<Struct 'Box' (0x73da162e580) {min: {x: -12.513788, y: -52.610184, z: -52.488022}, max: {x: 12.485533, y: 52.414700, z: 52.572784}, is_valid: True}>"
+  },
+  "A_SampleRider_SeatedIdle": {
+    "Hips": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.000000, y: -0.724716, z: 0.689048, w: -0.000000}, translation: {x: -0.733457, y: -2.028657, z: 89.988869}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.000000, y: -0.724716, z: 0.689048, w: -0.000000}, translation: {x: -0.733457, y: -2.028657, z: 89.988869}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    },
+    "Head": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: -0.000000, y: 0.746269, z: -0.663469, w: 0.053776}, translation: {x: -0.733456, y: -0.895389, z: 133.995864}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: -0.000000, y: 0.746269, z: -0.663469, w: 0.053776}, translation: {x: -0.733456, y: -0.895389, z: 133.995864}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    },
+    "RightHand": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.559392, y: 0.057705, z: 0.281094, w: 0.777648}, translation: {x: 30.999980, y: -30.999994, z: 108.000036}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: -0.559392, y: -0.057705, z: -0.281094, w: -0.777648}, translation: {x: 37.408756, y: 3.683273, z: 81.332557}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    },
+    "LeftHand": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: -0.609111, y: 0.132819, z: 0.306079, w: -0.719485}, translation: {x: -26.999992, y: -34.999981, z: 114.000026}, scale3d: {x: 1.000000, y: 0.999999, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.609112, y: -0.132820, z: -0.306078, w: 0.719485}, translation: {x: -38.875674, y: 3.984928, z: 81.700575}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    },
+    "LeftFoot": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: -0.000001, y: -0.845647, z: -0.427847, w: 0.319106}, translation: {x: -35.000017, y: -12.000046, z: 34.999980}, scale3d: {x: 1.000001, y: 1.000001, z: 1.000001}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.000002, y: 0.845647, z: 0.427847, w: -0.319105}, translation: {x: -20.903561, y: 0.465938, z: 13.484585}, scale3d: {x: 1.000002, y: 1.000000, z: 1.000001}}>"
+    }
+  },
+  "A_SampleHorse_Idle": {
+    "Bone_002": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.131559, y: 0.131559, z: -0.017618, w: -0.982382}, translation: {x: 0.029083, y: 12.505101, z: 100.121767}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.131559, y: 0.131559, z: -0.017618, w: -0.982382}, translation: {x: 0.029083, y: 12.505101, z: 100.121767}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    },
+    "Bone_000": {
+      "pose": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.480762, y: 0.480762, z: 0.362639, w: 0.637361}, translation: {x: 0.029081, y: 52.253720, z: 106.170456}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "reference": "<Struct 'Transform' (0x7113388d50) {rotation: {x: 0.480762, y: 0.480762, z: 0.362639, w: 0.637361}, translation: {x: 0.029081, y: 52.253720, z: 106.170456}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "knight": {
+    "source": "/Users/rare/Downloads/Meshy_AI_Gilded_Sentinel_0911123105_texture.glb",
+    "copy": "/Users/rare/dev/ash-well-ue/SourceAssets/MountedChargeSample/originals/knight_textured.glb",
+    "sha256": "625ba199ffe1fe57b358a0984cb0c7234c00390b1791447803d2c3eae567e4a4",
+    "materials": [
+      {
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "metallicFactor": 1.0,
+          "roughnessFactor": 1.0,
+          "baseColorTexture": {
+            "index": 0,
+            "texCoord": 0
+          },
+          "metallicRoughnessTexture": {
+            "index": 1,
+            "texCoord": 0
+          }
+        },
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true
+      }
+    ],
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 4
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 5
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 6
+      }
+    ],
+    "primitives": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 2,
+          "TEXCOORD_0": 1
+        },
+        "position": {
+          "bufferView": 1,
+          "byteOffset": 0,
+          "componentType": 5126,
+          "normalized": false,
+          "count": 1648906,
+          "type": "VEC3",
+          "max": [
+            0.5016710162162781,
+            0.9491140246391296,
+            0.22624799609184265
+          ],
+          "min": [
+            -0.5026090145111084,
+            -0.9511629939079285,
+            -0.22891999781131744
+          ]
+        },
+        "indices": {
+          "bufferView": 0,
+          "byteOffset": 0,
+          "componentType": 5125,
+          "normalized": false,
+          "count": 9140784,
+          "type": "SCALAR"
+        }
+      }
+    ]
+  },
+  "horse": {
+    "source": "/Users/rare/Downloads/Meshy_AI_Gilded_Warhorse_0911123133_texture.glb",
+    "copy": "/Users/rare/dev/ash-well-ue/SourceAssets/MountedChargeSample/originals/horse_textured.glb",
+    "sha256": "369cdf9220ffd60d8bee492931976b5a3abc517a73984651266a30f8126a24cf",
+    "materials": [
+      {
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "metallicFactor": 1.0,
+          "roughnessFactor": 1.0,
+          "baseColorTexture": {
+            "index": 0,
+            "texCoord": 0
+          },
+          "metallicRoughnessTexture": {
+            "index": 1,
+            "texCoord": 0
+          }
+        },
+        "normalTexture": {
+          "index": 2,
+          "texCoord": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true
+      }
+    ],
+    "images": [
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 4
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 5
+      },
+      {
+        "mimeType": "image/jpeg",
+        "bufferView": 6
+      }
+    ],
+    "primitives": [
+      {
+        "attributes": {
+          "POSITION": 0,
+          "NORMAL": 2,
+          "TEXCOORD_0": 1
+        },
+        "position": {
+          "bufferView": 1,
+          "byteOffset": 0,
+          "componentType": 5126,
+          "normalized": false,
+          "count": 1673234,
+          "type": "VEC3",
+          "max": [
+            0.9314280152320862,
+            0.7192180156707764,
+            0.2672779858112335
+          ],
+          "min": [
+            -0.9507520198822021,
+            -0.7192580103874207,
+            -0.27534401416778564
+          ]
+        },
+        "indices": {
+          "bufferView": 0,
+          "byteOffset": 0,
+          "componentType": 5125,
+          "normalized": false,
+          "count": 9356682,
+          "type": "SCALAR"
+        }
+      }
+    ]
+  }
+}
