@@ -1,0 +1,1 @@
+Only A_ReferenceHorse_ChargeSweep.fbx from this folder is installed by import_mounted_sync_assets.py. Rider outputs are preserved authoring derivatives, not active runtime clips; the active rider remains the ProportionRevision native-IK adaptation. Whole-assembly scale1.30; horse world scale1.69; distance curve uses charge-timing.json. Original source assets remain untouched.

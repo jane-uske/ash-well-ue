@@ -1,3 +1,5 @@
+> **当前骑卫候选 c62edc2：声音、现有六招反馈和整体尺寸已同步。** [启动当前实战](Scripts/launch_mounted_boss_current.command) · [本轮交付/缺口/回退](Docs/Implementation/MountedBoss/SIZE_SOUND_MOVES_SYNC_20260912.md)。现有录像对应c2e44ae；最新蹄声采样修正待解锁补录。原作全招式、稳定60FPS、真人C均未验收。以下旧状态以本条和当前状态文件为准。
+
 > **当前制作：声音、六招反馈、整体人马尺寸同步候选。** 用户已恢复制作，最新决定/验收入口见 [SIZE_SOUND_MOVES_SYNC_20260912.md](Docs/Implementation/MountedBoss/SIZE_SOUND_MOVES_SYNC_20260912.md)。原作完整动作仍有缺口，A/B待新版本验收、C未初测；下方暂停说明仅为历史。
 
 # Ash Well — Unreal

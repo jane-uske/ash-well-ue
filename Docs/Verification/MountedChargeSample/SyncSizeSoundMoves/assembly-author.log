@@ -1,0 +1,28 @@
+00:00.662  blend            | Read blend: "/Users/rare/dev/ash-well-ue/SourceAssets/MountedChargeSample/KnightPrepared.blend"
+00:03.222  blend            | Read blend: "/Users/rare/dev/ash-well-ue/SourceAssets/MountedChargeSample/HorsePrepared.blend"
+
+FBX export starting... '/Users/rare/dev/ash-well-ue/SourceAssets/MountedReferenceProduction/AssemblyRevision/A_ReferenceRider_SeatedIdle.fbx'
+export finished in 0.1105 sec.
+
+FBX export starting... '/Users/rare/dev/ash-well-ue/SourceAssets/MountedReferenceProduction/AssemblyRevision/A_ReferenceRider_ChargeSweep.fbx'
+export finished in 0.2078 sec.
+信息: 已另存为 "RiderAuthored.blend"
+
+FBX export starting... '/Users/rare/dev/ash-well-ue/SourceAssets/MountedReferenceProduction/AssemblyRevision/A_ReferenceRider_Death.fbx'
+export finished in 0.0987 sec.
+信息: 已另存为 "RiderDeathAuthored.blend"
+FBX version: 7300
+FBX version: 7300
+FBX version: 7300
+
+FBX export starting... '/Users/rare/dev/ash-well-ue/SourceAssets/MountedReferenceProduction/AssemblyRevision/A_ReferenceHorse_ChargeSweep.fbx'
+export finished in 0.2733 sec.
+Info: Saved as "HorseContactAuthoring.blend"
+
+FBX export starting... '/Users/rare/dev/ash-well-ue/SourceAssets/MountedReferenceProduction/AssemblyRevision/A_ReferenceHorse_ChargeSweep.fbx'
+export finished in 0.2686 sec.
+Info: Saved as "HorseAuthored.blend"
+REFERENCE_ANIMATION_READY {"assembly_scale": 1.3, "horse_world_scale": 1.6900000000000002, "A_ReferenceRider_SeatedIdle": {"duration": 2.0, "frames": 121}, "A_ReferenceRider_ChargeSweep": {"duration": 5.8, "frames": 349}, "rider_beats": [[0.0, 0, 0, 31, -31, 108, 0], [0.32, 2, -8, 5, -40, 134, -0.2], [0.75, 8, -22, -5, -42, 140, -1.0], [0.9, 12, -28, -4, -43, 137, -1.6], [1.35, 24, -32, 10, -43, 132, -1.3], [1.48, 28, -27, 29, -38, 111, -1.2], [1.75, 22, 9, 43, -25, 108, -0.4], [2.18, 15, 30, 38, -12, 130, 0.3], [2.7, 7, 26, 28, -18, 139, 0.6], [3.85, -6, 15, 24, -23, 130, 1.0], [4.65, -3, 4, 29, -28, 113, 0.4], [5.8, 0, 0, 31, -31, 108, 0]], "blade_beats": [[0.0, 0, 73.74], [0.32, 110, 50], [0.75, 135, 12], [0.9, 140, 10], [1.266279069767442, 155, 8], [1.3846666666666667, 215, -12], [1.48, 295, -23], [1.75, 345, -20], [1.98, 380, 18], [2.18, 395, 35], [2.7, 400, 45], [3.85, 375, 62], [4.65, 360, 73.74], [5.8, 360, 73.74]], "A_ReferenceRider_Death": {"duration": 2.8, "frames": 169}, "A_ReferenceHorse_ChargeSweep": {"duration": 5.8, "frames": 349}, "offline_native_ik": {"before_support_drift_cm_s": 189.89820920226865, "after_support_drift_cm_s": 43.3908119190239, "contact_seconds": 10.166666666666751, "solver": "Blender native IK, four links; runtime remains UE Foot Placement / Leg IK"}, "horse_source": "Existing UE-retargeted Idle/Walk/Gallop, distance-driven cadence; authored brake compression. No merged skeleton.", "scope": "A/B animation candidate, not accepted. Contact details occluded in the original are authored interpretations."}
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

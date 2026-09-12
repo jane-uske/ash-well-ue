@@ -1,0 +1,14 @@
+{
+  "scope": "Native window recording of explicit review fixtures, not human C. Moves mode resets between six single actions.",
+  "mode": "size",
+  "pid": 60231,
+  "module_and_assets": "version.json",
+  "video_seconds": 30.075,
+  "audio_seconds": 30.040167,
+  "duration_gap_seconds": 0.034832999999999004,
+  "av_duration_gate_passed": true,
+  "cuts": 0,
+  "speed": 1,
+  "interpolation": false,
+  "directory": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/ReferenceProduction/Native-size-220130"
+}

@@ -1,0 +1,73 @@
+{
+  "cues": {
+    "SC_PlayerSwing": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_PlayerSwing.SC_PlayerSwing",
+      "variants": [
+        "AW_Mounted_PlayerSwing_01",
+        "AW_Mounted_PlayerSwing_02",
+        "AW_Mounted_PlayerSwing_03"
+      ]
+    },
+    "SC_HalberdSwing": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_HalberdSwing.SC_HalberdSwing",
+      "variants": [
+        "AW_Mounted_HalberdSwing_01",
+        "AW_Mounted_HalberdSwing_02",
+        "AW_Mounted_HalberdSwing_03"
+      ]
+    },
+    "SC_ArmourHit": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_ArmourHit.SC_ArmourHit",
+      "variants": [
+        "AW_Mounted_ArmourHit_01",
+        "AW_Mounted_ArmourHit_02",
+        "AW_Mounted_ArmourHit_03"
+      ]
+    },
+    "SC_WeaponHit": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_WeaponHit.SC_WeaponHit",
+      "variants": [
+        "AW_Mounted_WeaponHit_01",
+        "AW_Mounted_WeaponHit_02",
+        "AW_Mounted_WeaponHit_03"
+      ]
+    },
+    "SC_ShieldBlock": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_ShieldBlock.SC_ShieldBlock",
+      "variants": [
+        "AW_Mounted_ShieldBlock_01",
+        "AW_Mounted_ShieldBlock_02",
+        "AW_Mounted_ShieldBlock_03"
+      ]
+    },
+    "SC_BodyHit": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_BodyHit.SC_BodyHit",
+      "variants": [
+        "AW_Mounted_BodyHit_01",
+        "AW_Mounted_BodyHit_02",
+        "AW_Mounted_BodyHit_03"
+      ]
+    },
+    "SC_Landing": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_Landing.SC_Landing",
+      "variants": [
+        "AW_Mounted_Landing_01",
+        "AW_Mounted_Landing_02",
+        "AW_Mounted_Landing_03"
+      ]
+    },
+    "SC_Hoof": {
+      "path": "/Game/AshWell/Combat/MountedChargeSample/Audio/SC_Hoof.SC_Hoof",
+      "variants": [
+        "AW_Mounted_Hoof_01",
+        "AW_Mounted_Hoof_02",
+        "AW_Mounted_Hoof_03"
+      ]
+    }
+  },
+  "forward_distance_cm": 1405.3499755859375,
+  "passed": true,
+  "horse": "/Game/AshWell/Combat/MountedChargeSample/ReferenceProduction/A_ReferenceHorse_ChargeSweep.A_ReferenceHorse_ChargeSweep",
+  "horse_world_scale": 1.69,
+  "rider_charge_unchanged": true
+}

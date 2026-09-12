@@ -1,0 +1,41 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'Docs/Verification/MountedChargeSample/ReferenceProduction/Native-moves-220741/window-uncut.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2026-09-12T14:07:50.000000Z
+  Duration: 00:00:52.06, start: 0.000000, bitrate: 16318 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1112, 16278 kb/s, 56.07 fps, 120 tbr, 600 tbn (default)
+    Metadata:
+      creation_time   : 2026-09-12T14:07:50.000000Z
+      handler_name    : Core Media Video
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 30 kb/s, start 0.001437 (default)
+    Metadata:
+      creation_time   : 2026-09-12T14:07:50.000000Z
+      handler_name    : Core Media Audio
+[Parsed_volumedetect_0 @ 0x7a3f01c6c0] n_samples: 0
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    encoder         : Lavf62.12.101
+  Stream #0:0(und): Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.101 pcm_s16le
+      creation_time   : 2026-09-12T14:07:50.000000Z
+      handler_name    : Core Media Audio
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] n_samples: 4994944
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] mean_volume: -43.8 dB
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] max_volume: -17.0 dB
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_16db: 2
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_17db: 110
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_18db: 190
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_19db: 783
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_20db: 1846
+[Parsed_volumedetect_0 @ 0x7a3f01ca80] histogram_21db: 2753
+[out#0/null @ 0x7a3f01c3c0] video:0KiB audio:9756KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:00:52.03 bitrate=N/A speed=2.44e+03x elapsed=0:00:00.02    

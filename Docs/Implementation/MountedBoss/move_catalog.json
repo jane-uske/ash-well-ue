@@ -1168,11 +1168,13 @@
     ],
     "sample_selection": "eligible weighted choice with last-move penalty; distance scales for enlarged assembly",
     "official_exact_attack_count": null,
-    "a_status": "new size candidate, pending dynamic review",
-    "b_status": "new displacement/audio candidate, pending new footage",
-    "c_status": "human initial test not done",
-    "sound": "24 recorded derivatives, 8 native SoundCues; import/runtime pending",
-    "shield": "visible triangle contact and distinct block sound, test pending",
-    "note": "Earlier catalog parameter snapshots remain historical; they do not prove this modified version passed."
+    "a_status": "size recording available, user dynamic review pending",
+    "b_status": "c2e44ae normal-speed comparison available; c62edc2 re-record blocked by Mac lock",
+    "c_status": "human ordinary-input initial/final test not run",
+    "sound": "8 native SoundCues/24 recorded variants run; Strike Notify and real contact events logged. Hoof detector followup has5 passes, new capture blocked by lock screen.",
+    "shield": "Visible triangle contact: one block, no HP damage, native shield cue; runtime verified.",
+    "note": "Earlier catalog parameter snapshots remain historical; they do not prove this modified version passed.",
+    "runtime_commit": "c62edc2",
+    "recorded_commit": "c2e44ae"
   }
 }

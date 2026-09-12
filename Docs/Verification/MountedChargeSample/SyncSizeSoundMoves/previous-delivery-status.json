@@ -1,0 +1,47 @@
+{
+  "status": "production_paused_for_reference_research",
+  "runtime_commit": "074cf9af411778cfba4d27f696e8ca4fba35a43e",
+  "branch": "codex/mounted-charge-standard",
+  "rollback_before_round": "db1ee62b844f873f993efdb14df80d71b50b025a",
+  "initial_user_baseline": "bd791aa7827c8d27ea3fda419b1adbcde3af3b9d",
+  "module_sha256": "ddc87a3eb7e527592a62f31d7e7583ce8470b2ca9987d39ee31c00be5d73fc35",
+  "launch": "Scripts/launch_mounted_charge_sample.command",
+  "human_C_launcher": "Scripts/launch_mounted_human_test.command",
+  "human_C_launcher_validation": "shared native recorder validated in A/B; full human C session not performed",
+  "A": "user rejected size as insufficient; current rider1.60 horse1.30 retained",
+  "B": "native recording timing verified; last video predates grip correction; new B capture paused by user",
+  "C_initial": "not performed",
+  "C_final": "not performed",
+  "meshy_credits_used": 140,
+  "permanent_credits_used": 0,
+  "regression_scope": "Historical44 plus size-only23 and grip-corrected14 are separate versions; no visual or human C acceptance",
+  "regression_reports": [
+    "Regression/six-moves-and-terrain.json",
+    "Regression/lifecycle-camera.json",
+    "Regression/Warden/runtime-probes.json",
+    "ProportionRevision/Regression/test-results.json",
+    "ProportionRevision/grip-corrected-regression.json"
+  ],
+  "performance": "Performance/summary.json",
+  "viewable_process_videos": [
+    "A-Current/current-asset-uncut.mp4",
+    "B-SoleContact/current-charge-uncut.mp4",
+    "Death-Repaired/current-death-uncut.mp4"
+  ],
+  "known_gaps": [
+    "scene composition and vegetation remain below reference fidelity",
+    "hoof support drift ~31.45 cm/s in B-SoleContact; low-speed/braking needs further visual refinement",
+    "dead rider/horse armour interpenetration",
+    "1080p average14.29ms but p95 18.47ms; not stable60fps",
+    "QuickRecorder two recordings rejected for severe audio/video duration mismatch",
+    "rider remains too small according to user; full assembly enlargement paused",
+    "complete original moveset is not covered by six legacy entries",
+    "combat audio uses synthetic stand-ins; swing event occurs about0.58s before charge Strike marker",
+    "new native rider hit reaction and shield blocking feedback incomplete"
+  ],
+  "second_action": "Docs/Implementation/MountedBoss/ChargeSample/AUTHOR_NEXT_ACTION.md; no second move promoted",
+  "merge_main": false,
+  "active_research": "Docs/Implementation/MountedBoss/TREE_SENTINEL_RESEARCH_20260912.md",
+  "current_revision": "ProportionRevision/revision.json",
+  "performance_scope": "Performance/summary.json is historical f87f955, not a new profile of the resized candidate"
+}

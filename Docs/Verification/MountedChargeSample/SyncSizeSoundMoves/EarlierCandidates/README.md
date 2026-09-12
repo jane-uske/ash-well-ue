@@ -1,0 +1,1 @@
+Earlier candidates retain their failures and version scope. These are not the final module regression: initial wider body blocked charge; changed offset missed; curve was not saved on first reimport; shield fixture read the pre-relocation cached point; shield also occluded its owner's area query before the final fix.

@@ -1,47 +1,130 @@
 {
-  "status": "production_paused_for_reference_research",
-  "runtime_commit": "074cf9af411778cfba4d27f696e8ca4fba35a43e",
+  "date": "2026-09-12",
+  "round": "Size, sound and six-move feedback synchronization",
+  "runtime_commit": "c62edc2",
+  "baseline": "8a78f76",
   "branch": "codex/mounted-charge-standard",
-  "rollback_before_round": "db1ee62b844f873f993efdb14df80d71b50b025a",
-  "initial_user_baseline": "bd791aa7827c8d27ea3fda419b1adbcde3af3b9d",
-  "module_sha256": "ddc87a3eb7e527592a62f31d7e7583ce8470b2ca9987d39ee31c00be5d73fc35",
-  "launch": "Scripts/launch_mounted_charge_sample.command",
-  "human_C_launcher": "Scripts/launch_mounted_human_test.command",
-  "human_C_launcher_validation": "shared native recorder validated in A/B; full human C session not performed",
-  "A": "user rejected size as insufficient; current rider1.60 horse1.30 retained",
-  "B": "native recording timing verified; last video predates grip correction; new B capture paused by user",
-  "C_initial": "not performed",
-  "C_final": "not performed",
-  "meshy_credits_used": 140,
-  "permanent_credits_used": 0,
-  "regression_scope": "Historical44 plus size-only23 and grip-corrected14 are separate versions; no visual or human C acceptance",
-  "regression_reports": [
-    "Regression/six-moves-and-terrain.json",
-    "Regression/lifecycle-camera.json",
-    "Regression/Warden/runtime-probes.json",
-    "ProportionRevision/Regression/test-results.json",
-    "ProportionRevision/grip-corrected-regression.json"
+  "runtime_push": "c62edc2 confirmed on origin/codex/mounted-charge-standard; prior224 LFS objects/628MB uploaded; main unchanged",
+  "candidate_sha256": "bbb9023202c82e0ff3e0db4e39ae9eea38a8a49de4795922eafd13cca9965649",
+  "launch": "Scripts/launch_mounted_boss_current.command",
+  "human_test_launch": "Scripts/launch_mounted_human_test.command",
+  "implemented_moves": 6,
+  "new_attack_entries": 0,
+  "native_authored_attacks": [
+    "charge"
   ],
-  "performance": "Performance/summary.json",
-  "viewable_process_videos": [
-    "A-Current/current-asset-uncut.mp4",
-    "B-SoleContact/current-charge-uncut.mp4",
-    "Death-Repaired/current-death-uncut.mp4"
+  "assembly_scale": 1.3,
+  "rider_world_scale": 2.08,
+  "horse_world_scale": 1.69,
+  "official_size_verified": false,
+  "audio": {
+    "sound_cues": 8,
+    "wave_variants": 24,
+    "original_game_audio": false,
+    "manifest": "SourceAssets/MountedReferenceProduction/Audio/audio-manifest.json",
+    "moves_recording_mean_dbfs": -43.8,
+    "moves_recording_peak_dbfs": -17.0
+  },
+  "verification": {
+    "same_candidate_files_as_regression": false,
+    "rendered_fixture_passed": 22,
+    "rendered_fixture_total": 22,
+    "terrain_passed": 8,
+    "terrain_total": 8,
+    "warden_passed": 2,
+    "warden_total": 2,
+    "human_C_initial_test": false,
+    "human_C_final_acceptance": false,
+    "base_regression_commit": "c2e44ae",
+    "hoof_followup": {
+      "commit": "c62edc2",
+      "passed": 5,
+      "total": 5,
+      "cases": [
+        "movement",
+        "hit_charge",
+        "dodge_charge",
+        "sample_cleanup",
+        "retry"
+      ],
+      "note": "Only hoof contact detection/reset sampling changed after the 32 baseline checks; do not claim all37 were rerun on one module."
+    }
+  },
+  "media": {
+    "size": {
+      "path": "Docs/Verification/MountedChargeSample/ReferenceProduction/Native-size-220130/window-uncut.mp4",
+      "head": "c2e44aec1652e5731ba1e826442a811fd6f16a93",
+      "candidate_sha256": "bbb9023202c82e0ff3e0db4e39ae9eea38a8a49de4795922eafd13cca9965649",
+      "raw_capture_audit_passed": true,
+      "observed_capture_fps": 55.99334995843724,
+      "engine_fps": null
+    },
+    "moves": {
+      "path": "Docs/Verification/MountedChargeSample/ReferenceProduction/Native-moves-220741/window-uncut.mp4",
+      "head": "c2e44aec1652e5731ba1e826442a811fd6f16a93",
+      "candidate_sha256": "bbb9023202c82e0ff3e0db4e39ae9eea38a8a49de4795922eafd13cca9965649",
+      "raw_capture_audit_passed": true,
+      "observed_capture_fps": 56.07171478195431,
+      "engine_fps": null
+    },
+    "charge": {
+      "path": "Docs/Verification/MountedChargeSample/ReferenceProduction/Native-charge-221032/window-uncut.mp4",
+      "head": "c2e44aec1652e5731ba1e826442a811fd6f16a93",
+      "candidate_sha256": "bbb9023202c82e0ff3e0db4e39ae9eea38a8a49de4795922eafd13cca9965649",
+      "raw_capture_audit_passed": true,
+      "observed_capture_fps": 56.77740863787375,
+      "engine_fps": null
+    }
+  },
+  "comparison": "Docs/Verification/MountedChargeSample/ReferenceProduction/Native-charge-221032/original-left-current-right-1x.mp4",
+  "feedback": "Docs/Verification/MountedChargeSample/SyncSizeSoundMoves/Feedback-221345",
+  "performance": {
+    "resolution": [
+      1920,
+      1080
+    ],
+    "exclude_warmup_frames": 300,
+    "sampled_frames": 900,
+    "frame_time_ms": {
+      "samples": 900,
+      "mean_ms": 12.80701111111111,
+      "p50_ms": 12.4139,
+      "p95_ms": 20.9544,
+      "p99_ms": 22.16
+    },
+    "stable_60fps": false,
+    "path": "Docs/Verification/MountedChargeSample/SyncSizeSoundMoves/Performance",
+    "measured_commit": "c2e44ae"
+  },
+  "acceptance": {
+    "A": "size candidate, needs user dynamic review",
+    "B": "c2e44ae comparison recorded; newest hoof-audio revision c62edc2 cannot be recorded while Mac is locked",
+    "C": "human ordinary-input test not performed; no automated input claim"
+  },
+  "known_issues": [
+    "Other five attacks retain compatibility animation, not original-quality native authored moves.",
+    "Original thrust, reverse/turning attacks, separate shield variants and magic reflection remain missing.",
+    "Sword hit reaction, death/saddle intersections and horse weight/transition still need visual work.",
+    "Local reference video has no audio; the comparison uses current game audio only.",
+    "Frame-time p95 exceeds the 16.67 ms target; not stable 60 FPS.",
+    "Hoof support sampling has limited coverage; its high drift proxy is not a complete gait assessment. Hoof contact/weight and braking remain visually pending."
   ],
-  "known_gaps": [
-    "scene composition and vegetation remain below reference fidelity",
-    "hoof support drift ~31.45 cm/s in B-SoleContact; low-speed/braking needs further visual refinement",
-    "dead rider/horse armour interpenetration",
-    "1080p average14.29ms but p95 18.47ms; not stable60fps",
-    "QuickRecorder two recordings rejected for severe audio/video duration mismatch",
-    "rider remains too small according to user; full assembly enlargement paused",
-    "complete original moveset is not covered by six legacy entries",
-    "combat audio uses synthetic stand-ins; swing event occurs about0.58s before charge Strike marker",
-    "new native rider hit reaction and shield blocking feedback incomplete"
-  ],
-  "second_action": "Docs/Implementation/MountedBoss/ChargeSample/AUTHOR_NEXT_ACTION.md; no second move promoted",
-  "merge_main": false,
-  "active_research": "Docs/Implementation/MountedBoss/TREE_SENTINEL_RESEARCH_20260912.md",
-  "current_revision": "ProportionRevision/revision.json",
-  "performance_scope": "Performance/summary.json is historical f87f955, not a new profile of the resized candidate"
+  "processes": "All owned UE, recorder, CrashReportClient and TraceServer processes exited or were stopped; crash records preserved.",
+  "B_first_charge": {
+    "contacts": 1,
+    "support_drift_cm_s": 346.2071838378906,
+    "support_sample_seconds": 0.24435991048812866,
+    "phase_notifies": 6,
+    "window_begins": 1,
+    "window_ends": 1,
+    "slip_acceptance_valid": false,
+    "reason": "Only0.244s supporting-foot samples in a5.8s action; marker threshold was under-scaled. Latest detector has5 runtime checks but no unlocked-window recapture."
+  },
+  "recorded_runtime_commit": "c2e44ae",
+  "latest_recording_blocker": {
+    "utc": "2026-09-12T15:03:13.109628+00:00",
+    "reason": "macOS session is locked; native capture preflight refused; no UE or recorder launched",
+    "requested_user_unlock": true,
+    "log": "Saved/MountedReferenceProduction/sync-final-captures.log"
+  }
 }

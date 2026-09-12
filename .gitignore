@@ -25,3 +25,6 @@ meshy_output/**/task.json
 meshy_output/**/download_*.json
 meshy_output/retrieval_*/*.json
 !meshy_output/retrieval_*/download-manifest.json
+
+# Raw process dump stays in the preserved local crash archive.
+Docs/Verification/MountedChargeSample/SyncSizeSoundMoves/ImportFailure/CrashReport/minidump.dmp

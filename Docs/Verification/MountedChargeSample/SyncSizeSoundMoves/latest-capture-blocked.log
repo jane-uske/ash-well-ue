@@ -1,0 +1,8 @@
+FINAL_CAPTURE size
+Mac 已锁屏，无法录制游戏窗口。请手动解锁后重新启动；未尝试绕过锁屏。
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['python3', '-u', 'Scripts/capture_mounted_native_review.py', 'size']' returned non-zero exit status 1.
