@@ -1,0 +1,39 @@
+{
+  "status": "candidate_not_accepted",
+  "runtime_commit": "f87f95501b3248fd028e5f413c3a850f479971ae",
+  "branch": "codex/mounted-charge-standard",
+  "rollback_before_round": "db1ee62b844f873f993efdb14df80d71b50b025a",
+  "initial_user_baseline": "bd791aa7827c8d27ea3fda419b1adbcde3af3b9d",
+  "module_sha256": "96f958109d1154012129e50e418ef916467c8d786c355b982a26547286aecb11",
+  "launch": "Scripts/launch_mounted_charge_sample.command",
+  "human_C_launcher": "Scripts/launch_mounted_human_test.command",
+  "human_C_launcher_validation": "new native recording integration is unverified while screen is locked; do not claim C readiness from static checks",
+  "A": "candidate; latest scene loop requires new recording after unlock",
+  "B": "paired native action ran; latest trustworthy external 1x comparison pending; B-SoleContact is earlier process evidence",
+  "C_initial": "not performed",
+  "C_final": "not performed",
+  "meshy_credits_used": 140,
+  "permanent_credits_used": 0,
+  "regression_scope": "44 rendered assertions across documented versions, not human or visual acceptance",
+  "regression_reports": [
+    "Regression/six-moves-and-terrain.json",
+    "Regression/lifecycle-camera.json",
+    "Regression/Warden/runtime-probes.json"
+  ],
+  "performance": "Performance/summary.json",
+  "viewable_process_videos": [
+    "A-Current/current-asset-uncut.mp4",
+    "B-SoleContact/current-charge-uncut.mp4",
+    "Death-Repaired/current-death-uncut.mp4"
+  ],
+  "known_gaps": [
+    "scene composition and vegetation remain below reference fidelity",
+    "hoof support drift ~31.45 cm/s in B-SoleContact; low-speed/braking needs further visual refinement",
+    "dead rider/horse armour interpenetration",
+    "1080p average14.29ms but p95 18.47ms; not stable60fps",
+    "QuickRecorder two recordings rejected for severe audio/video duration mismatch",
+    "Mac screen locked; native capture displays list empty; unlock requested"
+  ],
+  "second_action": "Docs/Implementation/MountedBoss/ChargeSample/AUTHOR_NEXT_ACTION.md; no second move promoted",
+  "merge_main": false
+}
