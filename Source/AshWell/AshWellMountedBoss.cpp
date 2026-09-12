@@ -141,13 +141,14 @@ void AAshWellMountedBoss::Tick(float DeltaSeconds)
     if(UGameplayStatics::IsGamePaused(this))return; // Also reject ticks queued before the pause input.
     Super::Tick(DeltaSeconds);
     const bool StandardFrame=SampleRig&&HorseMesh;
-    if(StandardFrame)SampleRig->EvaluatePose(DeltaSeconds,ActualSpeed);
+    if(StandardFrame)SampleRig->EvaluatePose(DeltaSeconds,FMath::Max(ActualSpeed,SampleRig->UsesFootPlacement()?FMath::Min(TurnSpeed,180.f):0.f),SampleRig->UsesFootPlacement());
     const int32 Steps=FMath::Clamp(FMath::CeilToInt(DeltaSeconds*120.f),1,240);
     for(int32 I=0;I<Steps;++I)StepCombat(DeltaSeconds/Steps);
     UpdateHorseAnimation(DeltaSeconds);
     UpdatePose(0); // Seat and hands follow the evaluated horse skeleton in this rendered frame.
     if(StandardFrame)
     {
+        UpdateSampleHoofContacts(DeltaSeconds);
         if(bResetWeaponSweep)CacheWeaponSweepPose();
         TryDamage();
         if(State==EMountedBossState::Active&&StateTime>=Spec().Active)ChangeState(EMountedBossState::Recovery);
@@ -210,7 +211,11 @@ void AAshWellMountedBoss::StepCombat(float Dt)
                 const FVector RightOfTarget(-ForwardToTarget.Y,ForwardToTarget.X,0);
                 SteeringGoal-=RightOfTarget*105.f;
             }
-            StepMovement(Dt,SteeringGoal,0,!bHeadingCommitted&&!bQAStationary);
+            // In the reference the raised weapon loads while the horse keeps
+            // approaching. Preserve the warning/commit times and use a walk;
+            // the sample's Launch phase compensates with a gentler acceleration.
+            const float PreparationSpeed=UsesAuthoredAnimation()&&AttackKind==EMountedBossAttack::Charge?90.f:0.f;
+            StepMovement(Dt,SteeringGoal,PreparationSpeed,!bHeadingCommitted&&!bQAStationary);
             if(StateTime>=Spec().Windup)
             {ChangeState(EMountedBossState::Active);if(UsesAuthoredAnimation())StateTime=FMath::Max(0.f,SampleRig->GetChargeTime()-Spec().Windup);}
             break;
@@ -278,7 +283,9 @@ void AAshWellMountedBoss::StepCombat(float Dt)
 void AAshWellMountedBoss::StepMovement(float Dt,const FVector& Goal,float DesiredSpeed,bool bAllowTurning)
 {
     const float PreviousYaw=GetActorRotation().Yaw;
-    const float Accel=State==EMountedBossState::Active?(AttackKind==EMountedBossAttack::Charge?1300.f:AttackKind==EMountedBossAttack::BodyCheck?1000.f:380.f):380.f;
+    const bool SampleLaunch=UsesAuthoredAnimation()&&SampleRig->RiderAnimation()&&SampleRig->RiderAnimation()->ActionPhase==FName(TEXT("Launch"));
+    const float ChargeAccel=SampleLaunch?700.f:1300.f;
+    const float Accel=State==EMountedBossState::Active?(AttackKind==EMountedBossAttack::Charge?ChargeAccel:AttackKind==EMountedBossAttack::BodyCheck?1000.f:380.f):380.f;
     Speed=FMath::FInterpConstantTo(Speed,DesiredSpeed,Dt,DesiredSpeed>Speed?Accel:700.f);
     if(bAllowTurning)
     {
@@ -356,6 +363,7 @@ void AAshWellMountedBoss::TryDamage()
     {
         if(StateTime<.075f)return;
         const float ShieldBottom=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z:ShieldPoint.Z-90.f;
+        if(SampleRig&&AttackKind==EMountedBossAttack::LeapShield)MinimumSampleShieldGap=FMath::Min(MinimumSampleShieldGap,ShieldBottom-float(Home.Z));
         if(AttackKind==EMountedBossAttack::LeapShield&&ShieldBottom>Home.Z+25.f)return;
         const FVector Ground=AttackKind==EMountedBossAttack::LeapShield?FVector(ShieldPoint.X,ShieldPoint.Y,Home.Z):GetActorLocation()+GetActorForwardVector()*85.f;
         if(!bImpactPlayed)
@@ -489,7 +497,11 @@ TSharedRef<FJsonObject> AAshWellMountedBoss::GetTelemetry() const
         O->SetNumberField(TEXT("phase_notifies"),A?A->PhaseNotifyCount:0);O->SetNumberField(TEXT("window_begins"),A?A->WindowBeginCount:0);O->SetNumberField(TEXT("window_ends"),A?A->WindowEndCount:0);O->SetBoolField(TEXT("notify_window"),SampleRig->HasWeaponWindow());
     }
     O->SetBoolField(TEXT("hoof_bones_valid"),bHoofBonesValid);O->SetNumberField(TEXT("hoof_contacts"),HoofContacts);O->SetNumberField(TEXT("support_sample_seconds"),SupportSampleTime);O->SetNumberField(TEXT("support_drift_cm_s"),SupportSampleTime>0?SupportDriftDistance/SupportSampleTime:0);
-    O->SetNumberField(TEXT("shield_ground_gap_cm"),ShieldPoint.Z-Home.Z-90.f);O->SetNumberField(TEXT("attack_serial"),AttackSerial);O->SetBoolField(TEXT("hit_window_open"),IsHitWindowOpen());O->SetNumberField(TEXT("body_contacts"),BodyContactCount);
+    const float ShieldGap=SampleRig?SampleRig->Shield->GetStaticMesh()->GetBoundingBox().TransformBy(SampleRig->Shield->GetComponentTransform()).Min.Z-Home.Z:ShieldPoint.Z-Home.Z-90.f;
+    O->SetNumberField(TEXT("shield_ground_gap_cm"),ShieldGap);
+    if(MinimumSampleShieldGap<MAX_flt)O->SetNumberField(TEXT("minimum_active_shield_gap_cm"),MinimumSampleShieldGap);
+    O->SetStringField(TEXT("hoof_measurement_source"),SampleRig?TEXT("visible_sample_mesh"):TEXT("original_horse_mesh"));
+    O->SetNumberField(TEXT("attack_serial"),AttackSerial);O->SetBoolField(TEXT("hit_window_open"),IsHitWindowOpen());O->SetNumberField(TEXT("body_contacts"),BodyContactCount);
     O->SetNumberField(TEXT("cancelled_attacks"),CancelledAttacks);O->SetNumberField(TEXT("duplicate_receive_rejected"),DuplicateReceiveRejected);O->SetNumberField(TEXT("maximum_leap_height_cm"),MaximumLeapHeight);O->SetBoolField(TEXT("leap_landed"),bLeapLanded);
     O->SetNumberField(TEXT("active_audio_components"),ActiveAudio.FilterByPredicate([](const auto& A){return IsValid(A)&&A->IsPlaying();}).Num());
     O->SetStringField(TEXT("state"),GetStateLabel());O->SetStringField(TEXT("attack"),GetAttackLabel());

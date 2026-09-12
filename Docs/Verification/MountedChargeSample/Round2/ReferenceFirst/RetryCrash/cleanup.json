@@ -1,0 +1,9 @@
+{
+  "reporter_pid": 98786,
+  "owner_game_pid": 98611,
+  "report_preserved": true,
+  "action": "SIGTERM",
+  "timestamp": 1789190540.907181,
+  "forced_after_ignored_sigterm": true,
+  "forced_epoch": 1789190920.073049
+}

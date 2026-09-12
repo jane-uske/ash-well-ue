@@ -1,0 +1,15 @@
+{
+  "reference": "Saved/MountedReference/BV1cw411M7xw-video.m4s",
+  "reference_start": 19.3,
+  "reference_end": 25.1,
+  "current_original": "/Users/rare/Desktop/Recording at 2026-09-12 12.34.32.mp4",
+  "current_start": 74.1,
+  "current_end": 79.9,
+  "current_module_sha256": "5620e275570b6aa3d31a3c0e7dd6cb19707a9b1f381231e818348cc46ec8fe24",
+  "alignment": "One fixed offset at approximate beginning of preparation. No per-phase fitting.",
+  "speed": 1,
+  "presentation_fps": 30,
+  "interpolation": false,
+  "audio": "comparison silent; uncut original preserved with audio",
+  "acceptance": "B reference review only; not C; FootPlacement experiment not used"
+}

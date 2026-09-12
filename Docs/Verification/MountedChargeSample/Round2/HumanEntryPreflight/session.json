@@ -1,0 +1,42 @@
+{
+  "scope": "launcher preflight only; no human C test performed",
+  "status": "ended_review_pending",
+  "head": "bd791aa7827c8d27ea3fda419b1adbcde3af3b9d",
+  "module_sha256": "93e87cf6e25e94399191438e39c3756b306474f96c8f804fb05a076103caacc5",
+  "command": [
+    "/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor",
+    "/Users/rare/dev/ash-well-ue/AshWell.uproject",
+    "/Game/AshWell/MountedBoss/L_MountedCourtyard",
+    "-game",
+    "-windowed",
+    "-ResX=1600",
+    "-ResY=900",
+    "-NoSplash",
+    "-CombatPrototype",
+    "-MountedExperiment",
+    "-MountedChargeSample",
+    "-MountedDebug",
+    "-DisablePlugins=AllToolsets,ModelContextProtocol",
+    "-abslog=/Users/rare/dev/ash-well-ue/Saved/MountedHumanTests/20260912-114314/engine.log"
+  ],
+  "video": null,
+  "video_status": "awaiting external window recording",
+  "input_source": "none; no input injected",
+  "forced_attack": false,
+  "boss_health_override": false,
+  "ai_frozen": false,
+  "time_scale_override": false,
+  "started_utc": "2026-09-12T03:43:14.181019+00:00",
+  "pid": 47785,
+  "elapsed_wall_seconds": 20.60830716698547,
+  "exit_code": 0,
+  "ended_utc": "2026-09-12T03:43:34.788185+00:00",
+  "debug_logs": [
+    "20260912T034322Z-DBBA8CC8.jsonl"
+  ],
+  "fatal_or_ensure": false,
+  "cleanup": {
+    "preserved_crash_directories": [],
+    "reporters_sent_sigterm": []
+  }
+}

@@ -13,7 +13,7 @@ class UBlendSpace;
 class UAnimMontage;
 class USkeletalMesh;
 
-/** Only accepted authored actions are registered. Missing entries retain their
+/** Authored action candidates are registered explicitly. Missing entries retain their
  * existing compatibility driver, so adding one move never migrates the others. */
 UCLASS(BlueprintType)
 class ASHWELL_API UAshWellMountedActionSet : public UDataAsset
@@ -31,6 +31,7 @@ class ASHWELL_API UAshWellMountedSampleAnimInstance : public UAnimInstance
 public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float GroundSpeed=0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float StrideRate=1;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") float HorseContactAlpha=1;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector LeftFootTarget=FVector(-35,-12,35);
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector RightFootTarget=FVector(35,-12,35);
     // Compatibility inputs from the existing five action drivers. New authored
@@ -39,6 +40,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector LegacyRightHand;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector LegacyLeftHand;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FRotator LegacyTorsoRotation;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FVector LegacyPelvisOffset;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FRotator LegacyRightHandRotation;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Mounted Sample") FRotator LegacyLeftHandRotation;
     UPROPERTY(BlueprintReadOnly, Category="Mounted Sample") FName ActionPhase=NAME_None;
@@ -75,7 +77,7 @@ class ASHWELL_API UAshWellMountedSampleTools : public UBlueprintFunctionLibrary
     GENERATED_BODY()
 public:
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
-    static FString BuildAnimationGraph(UAnimBlueprint* Blueprint,UAnimSequence* Idle,UBlendSpace* Locomotion,bool FeetIK,FVector LeftFoot,FVector RightFoot);
+    static FString BuildAnimationGraph(UAnimBlueprint* Blueprint,UAnimSequence* Idle,UBlendSpace* Locomotion,bool FeetIK,FVector LeftFoot,FVector RightFoot,bool HorsePlant=false);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
     static bool ConfigureHorseBlendSpace(UBlendSpace* BlendSpace,UAnimSequence* Idle,UAnimSequence* Walk,UAnimSequence* Gallop);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
@@ -84,4 +86,6 @@ public:
     static bool ConfigureRiderSockets(USkeletalMesh* Mesh);
     UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
     static bool ConfigureHorseSockets(USkeletalMesh* Mesh,FVector LeftStirrup,FVector RightStirrup);
+    UFUNCTION(BlueprintCallable,Category="AshWell|Mounted Sample")
+    static bool ConfigureHorseContactBones(USkeletalMesh* Mesh);
 };

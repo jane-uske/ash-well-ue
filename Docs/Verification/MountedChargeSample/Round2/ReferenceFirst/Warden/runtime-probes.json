@@ -1,0 +1,39 @@
+[
+  {
+    "case": "battle_light",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "damage": true,
+      "once": true,
+      "impact": true,
+      "slowdown_observed": true,
+      "no_missing_assets": true,
+      "hero_material_compiles": true,
+      "cloth_scale_valid": true
+    },
+    "health": 100,
+    "enemy_health": 760,
+    "duration": 2.612183815741446
+  },
+  {
+    "case": "battle_dodge_charge",
+    "passed": true,
+    "checks": {
+      "complete": true,
+      "new_assets": true,
+      "speed_restored": true,
+      "unharmed": true,
+      "dodged": true,
+      "heading": true,
+      "no_missing_assets": true,
+      "hero_material_compiles": true,
+      "cloth_scale_valid": true
+    },
+    "health": 100,
+    "enemy_health": 800,
+    "duration": 3.5351490182220004
+  }
+]

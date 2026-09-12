@@ -1,16 +1,22 @@
 # 冲锋横扫目标质量样本
 
-更新：2026-09-12 凌晨。基线：`a8c455c65a3c19812d14f64b65ff217a87caeac0`，工作分支：`codex/mounted-charge-standard`。
+更新：2026-09-12 第二轮。当前基线：`bd791aa7827c8d27ea3fda419b1adbcde3af3b9d`（原六招回退基线 `a8c455c`），工作分支：`codex/mounted-charge-standard`。
+
+当前更新（原片优先）：本轮新修正直接在原工程，尚未提交。最新视频为 `Round2/ReferenceFirst/reference-vs-current-1x.mp4` 及同目录 `After/B/current-charge-uncut.mp4`；以下早期 A/B、180 cm 盾和旧回归属于历史版本。最新盾高 150 cm，左手挂点下移 18 本地 cm，骑士 AnimBP 27 节点；冲锋已改为抬柄蓄力—低扫—上扬，准备阶段慢行 90 cm/s，并由 Launch 通知阶段采用较缓加速。3.55 秒时序、原预警/锁向/恢复规则未变。默认入口不启用 Foot Placement 试验。
+
+A/B 未获动态验收，C 初测和最终验收均未完成。最新启动检查发生一次布料渲染断言，后续单独重试通过，仍保留未解决稳定性问题。详细证据、范围与回退见 ROUND2.md；不要沿用下方历史绿灯代替本轮测试。
 
 **UE 标准动画流程已在当前游戏版本运行：有内容的 AnimBP、Montage、Notify / Notify State、IK 重定向与接触约束均已接通。A/B 当前版本连续录像已保存，仍是待验收候选；C 普通输入尝试因操作工具限制未形成合格交锋。未推广至第二招。**
+
+本轮目标、决定与待验收项以 [ROUND2.md](ROUND2.md) 为准。
 
 ## 三个验收节点
 
 | 节点 | 当前证据 | 当前结论 |
 | --- | --- | --- |
 | A：资产与坐姿 | `Docs/Verification/MountedChargeSample/A/current-asset-uncut-silent.mp4`，25.01 秒、1280×720、1 倍速、无剪切的游戏内绕拍 | 四件新资产、坐姿、盾正面已可观察。盾牌偏大，侧面遮住骑士轮廓；持握、裙甲与接触仍待用户动态验收。该片段无音轨 |
-| B：正常速度完整冲锋 | `Docs/Verification/MountedChargeSample/B/current-charge-uncut.mp4`，18.02 秒、1280×720、游戏音轨、1 倍速、无剪切 | 当前版本完整 3.55 秒 Montage、六阶段通知、一次伤害、掠过玩家、制动恢复后接回自然 AI。录制约 18 帧/秒；步态与制动观感未判定达标 |
-| C：正常输入、自然 AI | `Docs/Verification/MountedChargeSample/C/ordinary-input-attempt-uncut.mp4`，QuickRecorder 单独窗口录像，约 237 秒 | 普通 E / Tab / R 曾实际触发，AI 自主出招；没有可靠跑位、闪避和反打，明确 rejected，不能宣称 C 通过 |
+| B：正常速度完整冲锋 | `Docs/Verification/MountedChargeSample/B/current-charge-uncut.mp4`，18.02 秒、1280×720、游戏音轨、1 倍速、无剪切 | 当前版本完整 3.55 秒 Montage、六阶段通知、一次伤害、掠过玩家、制动恢复后接回自然 AI。该旧文件音轨仅 12.181 秒，不满足完整音画交付；采集约 18 帧/秒，不能当作游戏 FPS。新版录制修正见 ROUND2.md；动作观感仍待验收 |
+| C：正常输入、自然 AI | `Docs/Verification/MountedChargeSample/C/ordinary-input-attempt-uncut.mp4`，QuickRecorder 单独窗口录像，约 237 秒 | 普通 E / Tab / R 曾实际触发，AI 自主出招；没有可靠跑位、闪避和反打，该录像不足以交付 C；普通输入验证受工具阻塞，不代表游戏失败，也不能宣称通过 |
 
 Mac 后来已解锁。当前 C 阻塞是操作接口：单独 Shift 返回 `keyPressIncludedNoNonModifierKeys`，没有已文档化的持续按住接口，期间还出现 native pipe closed 和录制应用 AX timeout。没有修改正常键位或添加自动玩家来冒充 C。QuickRecorder 实际录到了游戏窗口与应用音频，麦克风关闭；退出本次游戏后录制已结束，原件保留在桌面。其格式帧率不代表游戏实际性能。
 
@@ -76,4 +82,4 @@ Mac 后来已解锁。当前 C 阻塞是操作接口：单独 Shift 返回 `keyP
 
 即时回到原六招使用原入口，不需要覆盖或删除新资产。基线提交保持为 `a8c455c65a3c19812d14f64b65ff217a87caeac0`；需要完整旧源码版本时，在新的独立 worktree 检出该提交并按 README 构建，保留当前工作目录，不对当前目录执行 reset/clean。
 
-`Saved/MountedChargeStandard/Baseline` 保存初始 git 状态、已有 diff、Meshy 索引和 28 个原始导出文件的 hash；它不是完整项目备份。原始文件、新派生资产与失败候选分别保留。当前改动未合并或推送，也没有购买、重新生成资产或扩展世界/剧情/背包系统。
+`Saved/MountedChargeStandard/Baseline` 保存初始 git 状态、已有 diff、Meshy 索引和 28 个原始导出文件的 hash；它不是完整项目备份。原始文件、新派生资产与失败候选分别保留。第一轮已提交并推送 `bd791aa`，未合并 main；第二轮工作尚在进行，也没有购买、重新生成资产或扩展世界/剧情/背包系统。

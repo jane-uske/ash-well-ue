@@ -23,7 +23,7 @@ AAshWellMountedSampleRig::AAshWellMountedSampleRig()
     // Match the retained combat reach with visible geometry (196 cm grip-to-tip),
     // rather than increasing the hit tolerance around a shorter new weapon.
     Poleaxe->SetRelativeScale3D(FVector(280.f/245.f));
-    Shield->SetRelativeScale3D(FVector(180.f/105.f));
+    Shield->SetRelativeScale3D(FVector(150.f/105.f));
     for(auto* M:{Horse.Get(),Rider.Get()})
     {M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetGenerateOverlapEvents(false);M->VisibilityBasedAnimTickOption=EVisibilityBasedAnimTickOption::AlwaysTickPoseAndRefreshBones;M->PrimaryComponentTick.bStartWithTickEnabled=false;}
     for(auto* M:{Poleaxe.Get(),Shield.Get()}){M->SetCollisionEnabled(ECollisionEnabled::NoCollision);M->SetGenerateOverlapEvents(false);}
@@ -35,7 +35,8 @@ void AAshWellMountedSampleRig::BeginPlay()
     auto Skin=[&](const TCHAR* N){return LoadObject<USkeletalMesh>(nullptr,*(Base+N+TEXT(".")+N));};
     auto Static=[&](const TCHAR* N){return LoadObject<UStaticMesh>(nullptr,*(Base+N+TEXT(".")+N));};
     Horse->SetSkeletalMesh(Skin(TEXT("SK_SampleHorse")));Rider->SetSkeletalMesh(Skin(TEXT("SK_SampleKnight")));
-    Horse->SetAnimInstanceClass(LoadClass<UAnimInstance>(nullptr,*(Base+TEXT("ABP_SampleHorse.ABP_SampleHorse_C"))));
+    const bool ContactCandidate=FParse::Param(FCommandLine::Get(),TEXT("MountedFootPlacement"));bFootPlacementCandidate=ContactCandidate;
+    Horse->SetAnimInstanceClass(LoadClass<UAnimInstance>(nullptr,*(Base+(ContactCandidate?TEXT("FootContactCandidate/ABP_SampleHorse_Planted.ABP_SampleHorse_Planted_C"):TEXT("ABP_SampleHorse.ABP_SampleHorse_C")))));
     Rider->SetAnimInstanceClass(LoadClass<UAnimInstance>(nullptr,*(Base+TEXT("ABP_SampleRider.ABP_SampleRider_C"))));
     Poleaxe->SetStaticMesh(Static(TEXT("SM_SamplePoleaxe")));Shield->SetStaticMesh(Static(TEXT("SM_SampleShield")));
     ActionSet=LoadObject<UAshWellMountedActionSet>(nullptr,*(Base+TEXT("DA_MountedSampleActions.DA_MountedSampleActions")));
@@ -52,15 +53,28 @@ void AAshWellMountedSampleRig::BeginPlay()
     EvaluatePose(0,0);
 }
 UAshWellMountedSampleAnimInstance* AAshWellMountedSampleRig::RiderAnimation() const{return Cast<UAshWellMountedSampleAnimInstance>(Rider->GetAnimInstance());}
-void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed)
+void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed,bool DeferHorse)
 {
     if(!bReady)return;
     const FQuat Tilt=FRotator(LegacyPitch,0,0).Quaternion();
     Horse->SetRelativeRotation(Tilt*FRotator(0,90,0).Quaternion());
     Horse->SetRelativeLocation(FVector(-79,0,0)-Tilt.RotateVector(FVector(-79,0,0)));
     if(auto* A=Cast<UAshWellMountedSampleAnimInstance>(Horse->GetAnimInstance()))
-    {A->GroundSpeed=Speed;A->StrideRate=Speed>250?FMath::Clamp(Speed/550.f,.65f,1.7f):Speed>15?FMath::Clamp(Speed/150.f,.55f,1.2f):1.f;}
-    Horse->TickAnimation(Dt,false);Horse->RefreshBoneTransforms();
+    {
+        A->GroundSpeed=Speed;
+        // Individual BlendSpace samples carry their calibrated cadence. A second
+        // speed multiplier here made the idle/walk transition slow down twice.
+        A->StrideRate=1.f;
+        A->HorseContactAlpha=GetActorLocation().Z<3.f&&FMath::Abs(LegacyPitch)<1.f?1.f:0.f;
+    }
+    if(DeferHorse)PendingHorseDelta+=Dt;
+    else
+    {
+        // Foot Placement needs the completed actor move and the actual frame
+        // delta. Advance the rider's Montage first for combat timing, then solve
+        // the horse once after movement instead of evaluating its springs twice.
+        Horse->TickAnimation(Dt+PendingHorseDelta,false);Horse->RefreshBoneTransforms();PendingHorseDelta=0;
+    }
     const FTransform Bone=Horse->GetSocketTransform(TEXT("Bone_002"),RTS_Component);
     const FQuat Delta=Bone.GetRotation()*SeatRest.GetRotation().Inverse();
     // FBX scene conversion makes imported component forward -Y. The component's
@@ -76,6 +90,7 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed)
         A->LegacyAlpha=FMath::FInterpConstantTo(A->LegacyAlpha,bLegacyPose&&!bChargeStarted?1.f:0.f,Dt,8.f);
         A->LegacyRightHand=Rider->GetComponentTransform().InverseTransformPosition(LegacyGrip);
         A->LegacyLeftHand=Rider->GetComponentTransform().InverseTransformPosition(LegacyShieldHand);
+        A->LegacyPelvisOffset=Rider->GetComponentTransform().InverseTransformVectorNoScale(GetActorQuat().RotateVector(LegacyPelvisOffset));
         const FQuat Basis=Rider->GetComponentQuat().Inverse()*GetActorQuat();
         A->LegacyTorsoRotation=(Basis*LegacyTorso*Basis.Inverse()).Rotator();
         if(const auto* Socket=Rider->GetSkeletalMeshAsset()->FindSocket(TEXT("SampleWeaponGrip")))
@@ -104,8 +119,8 @@ void AAshWellMountedSampleRig::EvaluatePose(float Dt,float Speed)
         UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_POSE speed=%.1f montage=%.3f window=%d footL=%s footR=%s contactL=%.3f contactR=%.3f phase=%s"),Speed,GetChargeTime(),A->bWeaponWindow,*L.ToCompactString(),*R.ToCompactString(),FVector::Distance(Rider->GetSocketLocation(TEXT("LeftFoot")),LeftTarget),FVector::Distance(Rider->GetSocketLocation(TEXT("RightFoot")),RightTarget),*A->ActionPhase.ToString());
     }
 }
-void AAshWellMountedSampleRig::SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float Pitch,bool Enabled)
-{LegacyGrip=Grip;LegacyDirection=Direction;LegacyShieldHand=ShieldHand;LegacyTorso=Torso;LegacyPitch=Pitch;bLegacyPose=Enabled;}
+void AAshWellMountedSampleRig::SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float Pitch,bool Enabled,FVector PelvisOffset)
+{LegacyGrip=Grip;LegacyDirection=Direction;LegacyShieldHand=ShieldHand;LegacyTorso=Torso;LegacyPitch=Pitch;bLegacyPose=Enabled;LegacyPelvisOffset=PelvisOffset;}
 bool AAshWellMountedSampleRig::HasAuthoredAction(FName Action) const{return ActionSet&&IsValid(ActionSet->Montages.FindRef(Action));}
 bool AAshWellMountedSampleRig::PlayCharge(){return PlayAction(TEXT("charge"));}
 bool AAshWellMountedSampleRig::PlayAction(FName Action)

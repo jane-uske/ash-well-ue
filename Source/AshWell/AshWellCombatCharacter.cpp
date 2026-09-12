@@ -559,12 +559,16 @@ void AAshWellCombatCharacter::UpdateCamera(float Dt)
             if(ActionState==EAction::Idle&&!bSprint)SetActorRotation(FMath::RInterpTo(GetActorRotation(),FRotator(0,Direction.Rotation().Yaw,0),Dt,9));
         }
         const float D=MountedBoss?FVector::Dist2D(GetActorLocation(),MountedBoss->GetActorLocation()):800;
-        const float Length=bLockedOn?FMath::GetMappedRangeValueClamped(FVector2D(180,1500),FVector2D(650,800),D):540;
+        const bool SampleCamera=MountedBoss&&MountedBoss->HasSampleRig();
+        // Readable rider/weapon framing for the large mounted sample. Collision
+        // probing and the retained Warden / original mounted cameras are unchanged.
+        const FVector2D CameraRange=SampleCamera?FVector2D(570,720):FVector2D(650,800);
+        const float Length=bLockedOn?FMath::GetMappedRangeValueClamped(FVector2D(180,1500),CameraRange,D):540;
         CameraBoom->TargetArmLength=FMath::FInterpTo(CameraBoom->TargetArmLength,Length,Dt,3);
         CameraBoom->TargetOffset.Z=115;
         CameraBoom->SocketOffset=FMath::VInterpTo(CameraBoom->SocketOffset,FVector(0,bLockedOn?25:55,25),Dt,5);
         CameraBoom->SocketOffset.Z=25+(BattleFX?BattleFX->Shake()*FMath::Sin(GetWorld()->GetRealTimeSeconds()*65)*1.6f:0)+DamageFlash*FMath::Sin(StateTime*65)*.6f;
-        FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?80.f:76.f,Dt,3);
+        FollowCamera->FieldOfView=FMath::FInterpTo(FollowCamera->FieldOfView,bLockedOn?(SampleCamera?74.f:80.f):76.f,Dt,3);
         return;
     }
     if(IsEntryClosed())bLockedOn=false;

@@ -171,6 +171,9 @@ void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
     }
     HorseMesh->SetPosition(HorseAnimationTime,false);
     HorseMesh->TickAnimation(0.f,false);HorseMesh->RefreshBoneTransforms();
+    // The compatibility horse stays hidden in the sample. Its feet must not
+    // trigger sounds or masquerade as measurements of the visible retarget.
+    if(SampleRig)return;
     static const FName HoofBones[]={TEXT("FF_L"),TEXT("FF_R"),TEXT("FFB_L"),TEXT("FFB_R")};
     bHoofBonesValid=true;
     for(int I=0;I<4;++I)
@@ -182,6 +185,35 @@ void AAshWellMountedBoss::UpdateHorseAnimation(float Dt)
         if(bHoofPrimed&&!Changed&&!IsDead()&&!LeapPose&&(ActualSpeed>25.f||TurnSpeed>10.f)&&Ground&&!bHoofGrounded[I])
         {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
         if(bHoofPrimed&&!Changed&&Ground&&bHoofGrounded[I]&&ActualSpeed>30.f&&TurnSpeed<10.f&&!RearPose&&!LeapPose&&Dt>0)
+        {SupportDriftDistance+=FVector::Dist2D(P,PreviousHoof[I]);SupportSampleTime+=Dt;}
+        bHoofGrounded[I]=Ground;PreviousHoof[I]=P;
+    }
+    bHoofPrimed=true;
+}
+
+void AAshWellMountedBoss::UpdateSampleHoofContacts(float Dt)
+{
+    if(!SampleRig||Dt<=0)return;
+    static const FName Bones[]={TEXT("Bone_052"),TEXT("Bone_046"),TEXT("Bone_031"),TEXT("Bone_025")};
+    const bool AirAction=(AttackKind==EMountedBossAttack::LeapShield||AttackKind==EMountedBossAttack::Rear)&&
+        (State==EMountedBossState::Windup||State==EMountedBossState::Active||State==EMountedBossState::Recovery);
+    bHoofBonesValid=true;
+    for(int I=0;I<4;++I)
+    {
+        if(SampleRig->Horse->GetBoneIndex(Bones[I])==INDEX_NONE){bHoofBonesValid=false;continue;}
+        const FVector P=SampleRig->Horse->GetSocketLocation(Bones[I]);
+        const bool Ground=P.Z-Home.Z<(bHoofGrounded[I]?8.f:6.f);
+        if(bHoofPrimed&&SampleRig->UsesFootPlacement()&&FParse::Param(FCommandLine::Get(),TEXT("MountedFootAudit"))&&ActualSpeed>30)
+        {
+            static const FName FK[]={TEXT("Bone_053"),TEXT("Bone_047"),TEXT("Bone_032"),TEXT("Bone_026")};
+            static const FName IK[]={TEXT("VB SampleFL"),TEXT("VB SampleFR"),TEXT("VB SampleBL"),TEXT("VB SampleBR")};
+            static const FName Gates[]={TEXT("ContactGateFL"),TEXT("ContactGateFR"),TEXT("ContactGateBL"),TEXT("ContactGateBR")};
+            const float Gate=SampleRig->Horse->GetAnimInstance()->GetCurveValue(Gates[I]);
+            UE_LOG(LogTemp,Display,TEXT("AW_FOOT_AUDIT leg=%d speed=%.2f gate=%.2f z=%.2f drift=%.2f reach=%.2f"),I,ActualSpeed,Gate,P.Z-Home.Z,FVector::Dist2D(P,PreviousHoof[I])/Dt,FVector::Distance(SampleRig->Horse->GetSocketLocation(FK[I]),SampleRig->Horse->GetSocketLocation(IK[I])));
+        }
+        if(bHoofPrimed&&!IsDead()&&!AirAction&&Ground&&!bHoofGrounded[I]&&(ActualSpeed>25||TurnSpeed>10))
+        {++HoofContacts;PlaySound(HoofSound,P,.055f,I<2?1.18f:1.02f);}
+        if(bHoofPrimed&&!IsDead()&&!AirAction&&Ground&&bHoofGrounded[I]&&ActualSpeed>30&&TurnSpeed<10)
         {SupportDriftDistance+=FVector::Dist2D(P,PreviousHoof[I]);SupportSampleTime+=Dt;}
         bHoofGrounded[I]=Ground;PreviousHoof[I]=P;
     }
@@ -228,7 +260,7 @@ void AAshWellMountedBoss::UpdatePose(float Dt)
     UpdateRiderPose(Dt);
     if(SampleRig)
     {
-        SampleRig->EvaluatePose(0,ActualSpeed);
+        SampleRig->EvaluatePose(0,FMath::Max(ActualSpeed,SampleRig->UsesFootPlacement()?FMath::Min(TurnSpeed,180.f):0.f));
         WeaponGrip=SampleRig->GetGrip();WeaponTip=SampleRig->GetTip();ShieldPoint=SampleRig->Shield->GetComponentLocation();
     }
 }
@@ -308,9 +340,22 @@ void AAshWellMountedBoss::UpdateRiderPose(float Dt)
     if(SampleRig)
     {
         // Match the existing leap's shield-rim contact, accounting for the new
-        // 90 cm radius and 32.4 cm socket drop versus the old 90 / 55 cm offsets.
-        const FVector NewShieldHand=Frame.TransformPosition(LGrip)-FVector(0,0,LeapShield?22.6f:0.f);
-        SampleRig->SetLegacyPose(WeaponGrip,WorldDirection,NewShieldHand,TorsoRotation,HorsePitch,AttackPose&&!UsesAuthoredAnimation());
+        // 75 cm radius and 24.3 cm socket drop versus the old 90 / 55 cm offsets.
+        // The smaller visible rim must reach the floor; damage tolerance is unchanged.
+        const FVector NewShieldHand=Frame.TransformPosition(LGrip)-FVector(0,0,LeapShield?45.7f:0.f);
+        FQuat SampleTorso=TorsoRotation;
+        FVector PelvisOffset=FVector::ZeroVector;
+        if(LeapShield)
+        {
+            // Reach the smaller rim by lowering the shield-side shoulder through
+            // the existing native upper-body control, not by stretching the arm
+            // or increasing the ground-contact tolerance.
+            const float Drop=State==EMountedBossState::Active?FMath::SmoothStep(.25f,.64f,StateTime):State==EMountedBossState::Recovery?1.f:0.f;
+            const float RecoveryAlpha=State==EMountedBossState::Recovery?1.f-FMath::SmoothStep(0.f,Spec().Recovery,StateTime):1.f;
+            SampleTorso=FRotator(Lean,Twist,SideLean-22.f*Drop*RecoveryAlpha).Quaternion();
+            PelvisOffset=FVector(0,-12,-22)*Drop*RecoveryAlpha;
+        }
+        SampleRig->SetLegacyPose(WeaponGrip,WorldDirection,NewShieldHand,SampleTorso,HorsePitch,AttackPose&&!UsesAuthoredAnimation(),PelvisOffset);
     }
 
     if(Shield)Shield->SetWorldLocationAndRotation(ShieldPoint,GetActorQuat()*FRotator(0,0,90).Quaternion());

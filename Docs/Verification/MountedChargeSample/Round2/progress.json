@@ -1,0 +1,102 @@
+{
+  "updated": "2026-09-12T13:31:49.514470",
+  "baseline": "bd791aa7827c8d27ea3fda419b1adbcde3af3b9d",
+  "branch": "codex/mounted-charge-standard",
+  "remote_baseline_verified": true,
+  "remote_check": "git ls-remote origin refs/heads/codex/mounted-charge-standard matched bd791aa on 2026-09-12",
+  "new_changes_committed": false,
+  "main_merged": false,
+  "working_project": "/Users/rare/dev/ash-well-ue",
+  "user_steering": [
+    "Directly modify original project",
+    "Review original video before making changes",
+    "UE standard facilities first; single charge sample only"
+  ],
+  "reference": {
+    "local": "Saved/MountedReference/BV1cw411M7xw-video.m4s",
+    "range_seconds": [
+      19.3,
+      25.1
+    ],
+    "observed_frames_seconds": [
+      20.45,
+      21.04,
+      21.4
+    ],
+    "uncertain": [
+      "occluded wrist",
+      "exact hoof sequence",
+      "3D rotations",
+      "physical distances",
+      "brake/next attack boundary"
+    ]
+  },
+  "changes": [
+    "Rider shoulder-level load, low sweep, rising follow-through",
+    "90 cm/s moving preparation and Notify-phase-based launch acceleration",
+    "150 cm shield and compatible native pelvis/arm reach for existing leap",
+    "Calibrated existing horse BlendSpace",
+    "Limited readability and sample camera adjustments",
+    "Native recording timeline and full-length audio checks"
+  ],
+  "standard_facilities": [
+    "AnimBP and blend",
+    "Montage",
+    "phase Notify",
+    "weapon Notify State",
+    "native IK retarget and limb constraints"
+  ],
+  "foot_placement_experiment": "Not adopted, default off; further work paused after reference-first steering",
+  "module_sha256": "1365168a17ff7b8145ce5cd454d34b0f18c4a6da3357b1965b1ddb8ee15a3711",
+  "videos": {
+    "A": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/After/A/current-asset-uncut.mp4",
+    "B_uncut": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/After/B/current-charge-uncut.mp4",
+    "B_reference_comparison": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/reference-vs-current-1x.mp4"
+  },
+  "A_capture_limit": "536 captured frames over 25.003 s, max capture gap .205 s, timestamp gaps preserved; not UE fps",
+  "B_recording_audit": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/recording-audit.json",
+  "functional_verification": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/verification.json",
+  "execution_summary": {
+    "mounted_execution_passes": 21,
+    "mounted_execution_failures": 1,
+    "warden_passes": 2,
+    "acceptance": "Functional assertions only. A/B candidates, C not complete. One startup cloth-render crash retained despite successful rerun."
+  },
+  "human_initial_test": {
+    "record": "Saved/MountedHumanTests/20260912-114909",
+    "scope": "about one minute of input evidence; no paired video; not full 10-15 minute initial test",
+    "current_version_tested_by_human": false
+  },
+  "acceptance": {
+    "A": "candidate, not dynamically accepted",
+    "B": "candidate, not dynamically accepted; visible fidelity still insufficient",
+    "C_initial": "incomplete; needs human ordinary input",
+    "C_final": "incomplete"
+  },
+  "known_issues": [
+    "Horse low-speed planting and braking weight remain below target",
+    "Rider/horse mass and transitions still need visible comparison",
+    "Knight death/dismount pose not adapted",
+    "One startup crash in cloth GPU render buffer before retry fixture; subsequent unchanged rerun passed, cause not established",
+    "External B master audio tail exceeds last video frame by 1.101375 s; no retiming or padding; event sync not individually measured"
+  ],
+  "rollback": {
+    "reference_changes": "Saved/MountedChargeRound2/before-reference-correction/manifest.json",
+    "earlier_visuals": "Saved/MountedChargeRound2/before-visual-production/manifest.json",
+    "unadopted_foot_experiment": "Saved/MountedChargeRound2/before-foot-placement/manifest.json",
+    "legacy_launcher": "Scripts/launch_mounted_boss.command"
+  },
+  "next_order": [
+    "Review current A/B candidate against the same source",
+    "Only repair observed pose/braking issues; no broader feature expansion",
+    "Human C initial with ordinary keys, full HP and natural AI, separate from final acceptance",
+    "Adapt knight death pose in a bounded follow-up and recheck affected lifecycle"
+  ],
+  "owned_game_processes_remaining": false,
+  "owned_crash_reporter": {
+    "pid": 98786,
+    "report_preserved": true,
+    "normal_termination_ignored": true,
+    "force_stopped_after_grace": true
+  }
+}

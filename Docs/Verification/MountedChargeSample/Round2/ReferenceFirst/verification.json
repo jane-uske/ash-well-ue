@@ -1,0 +1,232 @@
+{
+  "module_sha256": "1365168a17ff7b8145ce5cd454d34b0f18c4a6da3357b1965b1ddb8ee15a3711",
+  "runs": [
+    {
+      "run": "20260912-131450-2c35da12",
+      "mode": "standard sample",
+      "cases": [
+        {
+          "case": "dodge_charge",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131450-2c35da12/dodge_charge/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131450-2c35da12/hit_charge/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "natural_charge",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131450-2c35da12/natural_charge/result.json",
+          "error": null,
+          "failed_checks": []
+        }
+      ]
+    },
+    {
+      "run": "20260912-131957-dcf58421",
+      "mode": "standard sample",
+      "cases": [
+        {
+          "case": "camera",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/camera/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "dodge_leap_shield",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/dodge_leap_shield/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "heavy",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/heavy/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_body_check",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/hit_body_check/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_leap_shield",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/hit_leap_shield/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_overhead",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/hit_overhead/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_rear",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/hit_rear/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_sweep",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/hit_sweep/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "light",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/light/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "retry",
+          "passed": false,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/retry/result.json",
+          "error": "Owned UE process exited before a fresh completion (exit 1).",
+          "failed_checks": []
+        },
+        {
+          "case": "sample_cleanup",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/sample_cleanup/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "sample_pre_cancel",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-131957-dcf58421/sample_pre_cancel/result.json",
+          "error": null,
+          "failed_checks": []
+        }
+      ]
+    },
+    {
+      "run": "20260912-132443-2b8b3c89",
+      "mode": "standard sample",
+      "cases": [
+        {
+          "case": "retry",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132443-2b8b3c89/retry/result.json",
+          "error": null,
+          "failed_checks": []
+        }
+      ]
+    },
+    {
+      "run": "20260912-132522-985e6fb8",
+      "mode": "legacy six moves",
+      "cases": [
+        {
+          "case": "hit_body_check",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_body_check/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_charge",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_charge/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_leap_shield",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_leap_shield/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_overhead",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_overhead/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_rear",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_rear/result.json",
+          "error": null,
+          "failed_checks": []
+        },
+        {
+          "case": "hit_sweep",
+          "passed": true,
+          "evidence": "Saved/MountedBoss/runs/20260912-132522-985e6fb8/hit_sweep/result.json",
+          "error": null,
+          "failed_checks": []
+        }
+      ]
+    }
+  ],
+  "warden": [
+    {
+      "case": "battle_light",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "damage": true,
+        "once": true,
+        "impact": true,
+        "slowdown_observed": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 760,
+      "duration": 2.612183815741446
+    },
+    {
+      "case": "battle_dodge_charge",
+      "passed": true,
+      "checks": {
+        "complete": true,
+        "new_assets": true,
+        "speed_restored": true,
+        "unharmed": true,
+        "dodged": true,
+        "heading": true,
+        "no_missing_assets": true,
+        "hero_material_compiles": true,
+        "cloth_scale_valid": true
+      },
+      "health": 100,
+      "enemy_health": 800,
+      "duration": 3.5351490182220004
+    }
+  ],
+  "summary": {
+    "mounted_execution_passes": 21,
+    "mounted_execution_failures": 1,
+    "warden_passes": 2,
+    "acceptance": "Functional assertions only. A/B candidates, C not complete. One startup cloth-render crash retained despite successful rerun."
+  },
+  "recording_version_matches": true,
+  "A_video": "After/A/current-asset-uncut.mp4",
+  "A_same_module": true,
+  "original_tracked_sourceassets_changed_vs_bd791aa": []
+}

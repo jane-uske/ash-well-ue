@@ -1,0 +1,15 @@
+{
+  "reference_start": 19.3,
+  "reference_end": 25.1,
+  "current_start": 13.9,
+  "current_end": 19.7,
+  "current_recording": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/After/B/current-charge-uncut.mp4",
+  "speed": 1,
+  "presentation_fps": 30,
+  "interpolation": false,
+  "audio": "silent comparison; game audio kept in uncut original",
+  "alignment": "Single fixed offset based on visible start of preparation, approx +/-0.1 s; not per-stage alignment",
+  "module_sha256": "1365168a17ff7b8145ce5cd454d34b0f18c4a6da3357b1965b1ddb8ee15a3711",
+  "scope": "B candidate only; not C or target-quality acceptance",
+  "reference_sha256": "1a008fd450126fb3c9afc0f9ded8eed0154398381deefca57690b309626ac6b6"
+}

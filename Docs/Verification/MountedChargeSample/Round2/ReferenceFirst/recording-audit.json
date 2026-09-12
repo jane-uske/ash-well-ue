@@ -1,0 +1,22 @@
+{
+  "scope": "unmodified QuickRecorder window master; encoded timestamps are not UE fps",
+  "original_sha256": "2c964f43f753b6b9aa29d2755b511aa2d7a73ea03b0a03bb0b13cb7507a5982f",
+  "original_source": "/Users/rare/Desktop/Recording at 2026-09-12 13.17.21.mp4",
+  "uncut_copy": "/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/After/B/current-charge-uncut.mp4",
+  "total_duration_seconds": 112.244708,
+  "video_seconds": 111.143333,
+  "audio_start_seconds": 0.012354,
+  "audio_seconds": 112.232354,
+  "video_frame_count": 14948,
+  "packet_pts_strictly_increasing_after_decode_order_sort": true,
+  "max_video_pts_gap_seconds": 0.01833299999999838,
+  "charge_segment_max_video_pts_gap_seconds": 0.013334000000000401,
+  "audio_video_end_difference_seconds": 1.1013750000000044,
+  "capture_settings_requested_fps": 60,
+  "rate_conversion_applied_to_master": false,
+  "interpolation": false,
+  "speed": 1,
+  "audio_event_sync_review": "not yet individually measured; end difference retained, no stretch or padding",
+  "content": "about 14 s startup; explicit charge approximately 13.9-17.5 s; idle wait; F5 resumes natural AI around 86 s; player idle; not C",
+  "module_sha256": "1365168a17ff7b8145ce5cd454d34b0f18c4a6da3357b1965b1ddb8ee15a3711"
+}

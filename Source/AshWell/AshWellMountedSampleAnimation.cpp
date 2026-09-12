@@ -18,6 +18,9 @@
 #include "AnimGraphNode_ComponentToLocalSpace.h"
 #include "AnimGraphNode_TwoBoneIK.h"
 #include "AnimGraphNode_ModifyBone.h"
+#include "AnimGraphNode_CopyBone.h"
+#include "AnimGraphNode_LegIK.h"
+#include "AnimGraph/AnimGraphNode_FootPlacement.h"
 #include "K2Node_VariableGet.h"
 #include "Kismet2/KismetEditorUtilities.h"
 #include "Kismet2/BlueprintEditorUtils.h"
@@ -40,7 +43,20 @@ bool UAshWellMountedSampleTools::ConfigureHorseBlendSpace(UBlendSpace* B,UAnimSe
     auto* Property=FindFProperty<FStructProperty>(UBlendSpace::StaticClass(),TEXT("BlendParameters"));if(!Property)return false;
     auto* Axis=Property->ContainerPtrToValuePtr<FBlendParameter>(B,0);
     Axis->DisplayName=TEXT("Ground speed (cm/s)");Axis->Min=0;Axis->Max=850;Axis->GridNum=10;
-    B->AddSample(Idle,FVector(0,0,0));B->AddSample(Walk,FVector(150,0,0));B->AddSample(Gallop,FVector(550,0,0));B->AddSample(Gallop,FVector(850,0,0));
+    // Measured in evaluated, retargeted clips at the runtime 1.3 horse scale.
+    // These are support-bone medians, not a claim of exact sole planting.
+    constexpr float WalkSupportSpeed=140.25174f,GallopSupportSpeed=562.19050f;
+    auto* SamplesProperty=FindFProperty<FArrayProperty>(UBlendSpace::StaticClass(),TEXT("SampleData"));if(!SamplesProperty)return false;
+    while(B->GetNumberOfBlendSamples()>0)B->DeleteSample(B->GetNumberOfBlendSamples()-1);
+    auto Add=[&](UAnimSequence* Clip,float Speed,float Rate)
+    {
+        const int32 Index=B->AddSample(Clip,FVector(Speed,0,0));
+        FScriptArrayHelper Samples(SamplesProperty,SamplesProperty->ContainerPtrToValuePtr<void>(B));
+        if(Index>=0&&Index<Samples.Num())reinterpret_cast<FBlendSample*>(Samples.GetRawPtr(Index))->RateScale=Rate;
+    };
+    Add(Idle,0,1);Add(Walk,45,45/WalkSupportSpeed);Add(Walk,180,180/WalkSupportSpeed);
+    Add(Gallop,470,470/GallopSupportSpeed);Add(Gallop,850,850/GallopSupportSpeed);
+    B->TargetWeightInterpolationSpeedPerSec=12.f;
     B->ValidateSampleData();B->ResampleData();B->PostEditChange();B->MarkPackageDirty();return true;
 #else
     return false;
@@ -61,7 +77,7 @@ bool UAshWellMountedSampleTools::ConfigureRiderSockets(USkeletalMesh* Mesh)
         Socket->BoneName=Bone;
         const FQuat Desired=I==0?FRotationMatrix::MakeFromY(FVector(0,.28,-.96)).ToQuat():FQuat(FVector::UpVector,PI);
         Socket->RelativeRotation=(Transforms[Index].GetRotation().Inverse()*Desired).Rotator();
-        Socket->RelativeLocation=Transforms[Index].InverseTransformVectorNoScale(I==0?FVector::ZeroVector:FVector(-8,0,-24));
+        Socket->RelativeLocation=Transforms[Index].InverseTransformVectorNoScale(I==0?FVector::ZeroVector:FVector(-8,0,-18));
     }
     Skeleton->RegisterSlotNode(TEXT("MountedFullBody"));Skeleton->MarkPackageDirty();return true;
 #else
@@ -122,7 +138,24 @@ void UAshWellMountedWeaponNotifyState::NotifyEnd(USkeletalMeshComponent* Mesh,UA
     {A->bWeaponWindow=false;++A->WindowEndCount;UE_LOG(LogTemp,Display,TEXT("AW_SAMPLE_WINDOW end=%d"),A->WindowEndCount);}
 }
 
-FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnimSequence* Idle,UBlendSpace* Locomotion,bool FeetIK,FVector LeftFoot,FVector RightFoot)
+bool UAshWellMountedSampleTools::ConfigureHorseContactBones(USkeletalMesh* Mesh)
+{
+#if WITH_EDITOR
+    if(!Mesh||!Mesh->GetSkeleton())return false;
+    auto* S=Mesh->GetSkeleton();
+    const TPair<FName,FName> Pairs[]={{TEXT("VB SampleGround"),TEXT("Bone_001")},{TEXT("VB SampleFL"),TEXT("Bone_053")},{TEXT("VB SampleFR"),TEXT("Bone_047")},{TEXT("VB SampleBL"),TEXT("Bone_032")},{TEXT("VB SampleBR"),TEXT("Bone_026")}};
+    for(const auto& Pair:Pairs)
+    {
+        bool Found=false;for(const auto& V:S->GetVirtualBones())if(V.VirtualBoneName==Pair.Key)Found=true;
+        if(!Found&&!S->AddNewNamedVirtualBone(TEXT("Bone_000"),Pair.Value,Pair.Key))return false;
+    }
+    S->MarkPackageDirty();return true;
+#else
+    return false;
+#endif
+}
+
+FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnimSequence* Idle,UBlendSpace* Locomotion,bool FeetIK,FVector LeftFoot,FVector RightFoot,bool HorsePlant)
 {
 #if WITH_EDITOR
     if(!BP||!BP->TargetSkeleton||!Idle)return TEXT("ERROR: missing blueprint/skeleton/sequence");
@@ -152,6 +185,48 @@ FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnim
     }
     else Source=Create.template operator()<UAnimGraphNode_SequencePlayer>(-1000,0,[&](auto* N){N->Node.SetSequence(Idle);N->Node.SetLoopAnimation(true);});
     auto* Slot=Create.template operator()<UAnimGraphNode_Slot>(-650,0,[](auto* N){N->Node.SlotName=TEXT("MountedFullBody");});Link(Source,Slot);Source=Slot;
+    if(HorsePlant&&Locomotion)
+    {
+        auto* CS=Create.template operator()<UAnimGraphNode_LocalToComponentSpace>(-350,0,[](auto*){});Link(Source,CS);Source=CS;
+        auto* Ground=Create.template operator()<UAnimGraphNode_ModifyBone>(-100,0,[](auto* N)
+        {N->Node.BoneToModify.BoneName=TEXT("VB SampleGround");N->Node.TranslationMode=BMM_Replace;N->Node.TranslationSpace=BCS_ComponentSpace;N->Node.RotationMode=BMM_Replace;N->Node.RotationSpace=BCS_ComponentSpace;});
+        Link(Source,Ground);Source=Ground;
+        const FName FK[]={TEXT("Bone_053"),TEXT("Bone_047"),TEXT("Bone_032"),TEXT("Bone_026")};
+        const FName Ball[]={TEXT("Bone_052"),TEXT("Bone_046"),TEXT("Bone_031"),TEXT("Bone_025")};
+        const FName IK[]={TEXT("VB SampleFL"),TEXT("VB SampleFR"),TEXT("VB SampleBL"),TEXT("VB SampleBR")};
+        const FName Gates[]={TEXT("ContactGateFL"),TEXT("ContactGateFR"),TEXT("ContactGateBL"),TEXT("ContactGateBR")};
+        for(int I=0;I<4;++I)
+        {
+            auto* Copy=Create.template operator()<UAnimGraphNode_CopyBone>(150+I*250,0,[&](auto* N)
+            {N->Node.SourceBone.BoneName=FK[I];N->Node.TargetBone.BoneName=IK[I];N->Node.bCopyTranslation=true;N->Node.bCopyRotation=true;N->Node.ControlSpace=BCS_ComponentSpace;});
+            Link(Source,Copy);Source=Copy;
+        }
+        auto* Plant=Create.template operator()<UAnimGraphNode_FootPlacement>(1200,0,[&](auto* N)
+        {
+            N->Node.IKFootRootBone.BoneName=TEXT("VB SampleGround");N->Node.PelvisBone.BoneName=TEXT("Bone_000");
+            N->Node.PlantSpeedMode=EWarpingEvaluationMode::Manual;
+            N->Node.PlantSettings.LockType=EFootPlacementLockType::LockRotation;
+            N->Node.PlantSettings.SpeedThreshold=60;N->Node.PlantSettings.DistanceToGround=10;
+            N->Node.PlantSettings.UnplantRadius=40;N->Node.PlantSettings.MaxExtensionRatio=.8f;
+            N->Node.PelvisSettings.MaxOffset=12;N->Node.PelvisSettings.HorizontalRebalancingWeight=0;
+            N->Node.PelvisSettings.MaxOffsetHorizontal=25;N->Node.PelvisSettings.HeelLiftRatio=.2f;
+            N->Node.TraceSettings.MaxGroundPenetration=1;N->Node.TraceSettings.SweepRadius=2;
+            // The retained body collider already ignores Camera while the arena
+            // floor blocks it. Reuse that channel so the child rig cannot plant
+            // its hooves on its owning Boss's body, without changing collisions.
+            N->Node.TraceSettings.SimpleTraceChannel=UEngineTypes::ConvertToTraceType(ECC_Camera);
+            N->Node.TraceSettings.ComplexTraceChannel=UEngineTypes::ConvertToTraceType(ECC_Camera);
+            for(int I=0;I<4;++I){auto& L=N->Node.LegDefinitions.AddDefaulted_GetRef();L.FKFootBone.BoneName=FK[I];L.IKFootBone.BoneName=IK[I];L.BallBone.BoneName=Ball[I];L.NumBonesInLimb=4;L.SpeedCurveName=Gates[I];}
+        });
+        for(int I=0;I<Plant->ShowPinForProperties.Num();++I)if(Plant->ShowPinForProperties[I].PropertyName==FName(TEXT("Alpha")))Plant->SetPinVisibility(true,I);
+        auto* Alpha=Create.template operator()<UK2Node_VariableGet>(1200,300,[](auto* N){N->VariableReference.SetSelfMember(TEXT("HorseContactAlpha"));});
+        auto* AlphaIn=Plant->FindPin(TEXT("Alpha"));LinksOK&=AlphaIn&&Graph->GetSchema()->TryCreateConnection(Alpha->GetValuePin(),AlphaIn);
+        Link(Source,Plant);Source=Plant;
+        auto* Solve=Create.template operator()<UAnimGraphNode_LegIK>(1550,0,[&](auto* N)
+        {for(int I=0;I<4;++I){auto& L=N->Node.LegsDefinition.AddDefaulted_GetRef();L.FKFootBone.BoneName=FK[I];L.IKFootBone.BoneName=IK[I];L.NumBonesInLimb=4;L.bEnableKneeTwistCorrection=false;}});
+        Link(Source,Solve);Source=Solve;
+        auto* LS=Create.template operator()<UAnimGraphNode_ComponentToLocalSpace>(1900,0,[](auto*){});Link(Source,LS);Source=LS;Root->NodePosX=2200;
+    }
     if(FeetIK)
     {
         auto* ToComponent=Create.template operator()<UAnimGraphNode_LocalToComponentSpace>(-400,0,[](auto*){});Link(Source,ToComponent);Source=ToComponent;
@@ -167,6 +242,12 @@ FString UAshWellMountedSampleTools::BuildAnimationGraph(UAnimBlueprint* BP,UAnim
             for(int I=0;I<N->ShowPinForProperties.Num();++I)if(N->ShowPinForProperties[I].PropertyName==FName(TEXT("Rotation"))||N->ShowPinForProperties[I].PropertyName==FName(TEXT("Alpha")))N->SetPinVisibility(true,I);
             Link(Source,N);Source=N;Input(N,TEXT("Rotation"),Variable,-180);Input(N,TEXT("Alpha"),TEXT("LegacyAlpha"),-100);
         };
+        // A bounded seat shift lets the shield-side shoulder reach down without
+        // stretching the arm. Feet are resolved afterward by the native IK nodes.
+        auto* Pelvis=Create.template operator()<UAnimGraphNode_ModifyBone>(-300,-700,[](auto* N)
+        {N->Node.BoneToModify.BoneName=TEXT("Hips");N->Node.TranslationMode=BMM_Additive;N->Node.TranslationSpace=BCS_ComponentSpace;});
+        for(int I=0;I<Pelvis->ShowPinForProperties.Num();++I)if(Pelvis->ShowPinForProperties[I].PropertyName==FName(TEXT("Translation"))||Pelvis->ShowPinForProperties[I].PropertyName==FName(TEXT("Alpha")))Pelvis->SetPinVisibility(true,I);
+        Link(Source,Pelvis);Source=Pelvis;Input(Pelvis,TEXT("Translation"),TEXT("LegacyPelvisOffset"),-1000);Input(Pelvis,TEXT("Alpha"),TEXT("LegacyAlpha"),-900);
         RotationControl(TEXT("Spine02"),TEXT("LegacyTorsoRotation"),true,-250);
         for(int I=0;I<2;++I)
         {

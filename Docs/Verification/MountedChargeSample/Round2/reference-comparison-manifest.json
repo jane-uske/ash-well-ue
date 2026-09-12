@@ -1,0 +1,15 @@
+{
+  "source_url": "https://www.bilibili.com/video/BV1cw411M7xw/",
+  "source_path": "/Users/rare/dev/ash-well-ue/Saved/MountedReference/BV1cw411M7xw-video.m4s",
+  "source_sha256": "1a008fd450126fb3c9afc0f9ded8eed0154398381deefca57690b309626ac6b6",
+  "reference_start_seconds": 19.3,
+  "reference_duration_seconds": 5.8,
+  "current_source": "RecordingPreflight/current-charge-uncut.mp4",
+  "current_start_seconds": 0.5,
+  "current_duration_seconds": 5.8,
+  "alignment": "One fixed offset at approximate preparation onset; no per-phase retiming. Boundaries below are observation ranges, not original game frame data.",
+  "speed_both": 1,
+  "audio": "Silent visual comparison. Original downloaded research media has no audio stream.",
+  "interpolation": "No synthesized intermediate poses or optical-flow interpolation. Each panel holds its latest original frame until the next timestamp.",
+  "accepted": false
+}

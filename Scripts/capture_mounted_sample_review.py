@@ -4,12 +4,14 @@ This is not ordinary input or natural-AI acceptance. No desktop input is injecte
 """
 import argparse,subprocess,json,hashlib,time
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('mode',choices=['asset','charge']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('mode',choices=['asset','charge']);p.add_argument('--output-directory',type=Path);p.add_argument('--foot-placement',action='store_true');p.add_argument('--continuous-submixes',action='store_true',help='UE-native silence rendering for recording clock verification.');a=p.parse_args()
 R=Path(__file__).resolve().parents[1];records=R/'Saved/MountedBoss/Recordings';before=set(records.glob('*'))
-out=R/'Docs/Verification/MountedChargeSample'/('A' if a.mode=='asset' else 'B');out.mkdir(exist_ok=True)
+out=a.output_directory.resolve() if a.output_directory else R/'Docs/Verification/MountedChargeSample'/('A' if a.mode=='asset' else 'B');out.mkdir(exist_ok=True,parents=True)
 engine='/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor'
 flags=['-MountedAssetReview','-MountedReviewOrbit'] if a.mode=='asset' else ['-MountedChargeSample']
 cmd=[engine,str(R/'AshWell.uproject'),'/Game/AshWell/MountedBoss/L_MountedCourtyard','-game','-windowed','-ResX=1280','-ResY=720','-NoSplash','-CombatPrototype','-MountedExperiment','-MountedDebug','-DisablePlugins=AllToolsets,ModelContextProtocol',f'-MountedReviewRecord={a.mode}',f'-abslog={out}/current-{a.mode}-engine.log',*flags]
+if a.foot_placement:cmd+=['-MountedFootPlacement']
+if a.continuous_submixes:cmd+=['-ExecCmds=au.NeverDisableSubmixes 1']
 import os
 env=dict(os.environ,DEVELOPER_DIR='/Applications/Xcode-beta.app/Contents/Developer')
 with (out/f'current-{a.mode}-console.log').open('w') as log:

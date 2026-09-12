@@ -1,0 +1,9 @@
+{
+  "tracked_count": 3,
+  "changed_vs_baseline": [],
+  "sha256": {
+    "SourceAssets/MountedChargeSample/originals/horse_textured.glb": "369cdf9220ffd60d8bee492931976b5a3abc517a73984651266a30f8126a24cf",
+    "SourceAssets/MountedChargeSample/originals/knight_textured.glb": "625ba199ffe1fe57b358a0984cb0c7234c00390b1791447803d2c3eae567e4a4",
+    "SourceAssets/MountedChargeSample/originals/provenance.json": "4c0abae2187810ab7c73ce5ac63b80fa29afc95426b0d96bdeb48118f17218d7"
+  }
+}

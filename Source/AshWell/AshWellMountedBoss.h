@@ -54,6 +54,7 @@ public:
     void SetArenaBounds(FVector Center, FVector2D HalfExtents);
     float GetHealthFraction() const { return Health / MaximumHealth; }
     float GetHealth() const { return Health; }
+    bool HasSampleRig() const {return SampleRig!=nullptr;}
     FVector GetAimPoint() const;
     bool IsDead() const { return State == EMountedBossState::Dead; }
     bool IsAttacking() const { return State == EMountedBossState::Windup || State == EMountedBossState::Active; }
@@ -157,6 +158,8 @@ private:
     bool bHoofGrounded[4]={true,true,true,true},bHoofPrimed=false,bHoofBonesValid=false;
     FVector PreviousHoof[4];
     float SupportDriftDistance=0,SupportSampleTime=0;
+    float MinimumSampleShieldGap=MAX_flt;
+    void UpdateSampleHoofContacts(float DeltaSeconds);
     int32 HoofContacts=0;
     UPROPERTY(Transient) TObjectPtr<USoundBase> SwingSound;
     UPROPERTY(Transient) TObjectPtr<USoundBase> ImpactSound;

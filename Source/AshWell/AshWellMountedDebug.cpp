@@ -38,6 +38,8 @@
 #include "Modules/ModuleManager.h"
 #include "RenderingThread.h"
 #include "HAL/PlatformProcess.h"
+#include "HAL/IConsoleManager.h"
+#include "Audio.h"
 
 namespace
 {
@@ -54,6 +56,8 @@ TUniquePtr<FFrameGrabber> MountedFrameGrabber;
 FTSTicker::FDelegateHandle MountedCaptureTicker;
 TWeakObjectPtr<AAshWellCombatCharacter> MountedRecordingOwner;
 int32 MountedFramesInFlight=0,MountedFramesWritten=0,MountedFrameWriteFailures=0,MountedCaptureSkippedSlots=0;
+int32 MountedPreviousContinuousSubmixes=0;
+bool MountedChangedContinuousSubmixes=false;
 
 struct FMountedFramePayload final : IFramePayload
 {
@@ -174,6 +178,10 @@ bool StartMountedCapture(AAshWellCombatCharacter* Owner)
     MountedFrameGrabber->StartCapturingFrames();MountedFrameWrites.Reset();MountedRecordingOwner=Owner;
     MountedRecordingFrame=MountedFramesInFlight=MountedFramesWritten=MountedFrameWriteFailures=MountedCaptureSkippedSlots=0;
     MountedRecordingStarted=FPlatformTime::Seconds();MountedRecordingNext=MountedRecordingStarted;
+    // UE's submix auto-disable returns before the legacy recording append. Keep
+    // real silent samples on the audio clock; never repair missing time in muxing.
+    if(auto* CVar=IConsoleManager::Get().FindConsoleVariable(TEXT("au.NeverDisableSubmixes")))
+    {MountedPreviousContinuousSubmixes=CVar->GetInt();CVar->SetWithCurrentPriority(1);MountedChangedContinuousSubmixes=true;}
     UAudioMixerBlueprintLibrary::StartRecordingOutput(Owner,180.f);MountedRecording=true;
     MountedCaptureTicker=FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateStatic(&TickMountedCapture));
     auto Meta=MakeShared<FJsonObject>();Meta->SetStringField(TEXT("status"),TEXT("recording"));Meta->SetStringField(TEXT("source"),TEXT("presented UE viewport via FFrameGrabber; master audio submix"));
@@ -187,6 +195,8 @@ bool StopMountedCapture(AAshWellCombatCharacter* Owner,const FString& Reason)
     const double Stopped=FPlatformTime::Seconds();MountedRecording=false;
     if(MountedCaptureTicker.IsValid()){FTSTicker::GetCoreTicker().RemoveTicker(MountedCaptureTicker);MountedCaptureTicker.Reset();}
     UAudioMixerBlueprintLibrary::StopRecordingOutput(Owner,EAudioRecordingExportType::WavFile,TEXT("game-audio"),MountedRecordingPath);
+    if(MountedChangedContinuousSubmixes)
+    {if(auto* CVar=IConsoleManager::Get().FindConsoleVariable(TEXT("au.NeverDisableSubmixes")))CVar->SetWithCurrentPriority(MountedPreviousContinuousSubmixes);MountedChangedContinuousSubmixes=false;}
     // Waiting is confined to explicit stop/save or actor teardown, never the capture tick.
     if(MountedFrameGrabber)
     {
@@ -197,13 +207,22 @@ bool StopMountedCapture(AAshWellCombatCharacter* Owner,const FString& Reason)
     const FString WavFile=MountedRecordingPath/TEXT("game-audio.wav");const double AudioDeadline=FPlatformTime::Seconds()+5.;
     bool AudioComplete=MountedWavIsComplete(WavFile);
     while(!AudioComplete&&FPlatformTime::Seconds()<AudioDeadline){FPlatformProcess::Sleep(.01f);AudioComplete=MountedWavIsComplete(WavFile);}
-    const bool Complete=MountedFrameWriteFailures==0&&MountedFramesWritten>0&&AudioComplete;
+    double AudioSeconds=0;
+    if(AudioComplete)
+    {
+        TArray<uint8> Bytes;FWaveModInfo Info;
+        if(FFileHelper::LoadFileToArray(Bytes,*WavFile)&&Info.ReadWaveInfo(Bytes.GetData(),Bytes.Num())&&Info.pAvgBytesPerSec&&*Info.pAvgBytesPerSec)
+            AudioSeconds=double(Info.SampleDataSize)/double(*Info.pAvgBytesPerSec);
+    }
+    const bool AudioCoversTimeline=AudioComplete&&FMath::Abs(AudioSeconds-(Stopped-MountedRecordingStarted))<=.25;
+    const bool Complete=MountedFrameWriteFailures==0&&MountedFramesWritten>0&&AudioCoversTimeline;
     auto Meta=MakeShared<FJsonObject>();Meta->SetStringField(TEXT("status"),Complete?(MountedCaptureSkippedSlots||MountedFramesInFlight?TEXT("saved_with_gaps"):TEXT("saved")):TEXT("incomplete"));
     Meta->SetStringField(TEXT("stop_reason"),Reason);Meta->SetNumberField(TEXT("duration_seconds"),Stopped-MountedRecordingStarted);
     Meta->SetNumberField(TEXT("frames_requested"),MountedRecordingFrame);Meta->SetNumberField(TEXT("frames_written"),MountedFramesWritten);Meta->SetNumberField(TEXT("frame_write_failures"),MountedFrameWriteFailures);
     Meta->SetNumberField(TEXT("uncaptured_requests_at_stop"),MountedFramesInFlight);Meta->SetNumberField(TEXT("skipped_capture_slots"),MountedCaptureSkippedSlots);
     Meta->SetNumberField(TEXT("nominal_capture_fps"),MountedCaptureFPS);Meta->SetNumberField(TEXT("width"),MountedRecordingSize.X);Meta->SetNumberField(TEXT("height"),MountedRecordingSize.Y);
     Meta->SetBoolField(TEXT("audio_wav_complete"),AudioComplete);Meta->SetStringField(TEXT("audio_path"),WavFile);
+    Meta->SetNumberField(TEXT("audio_duration_seconds"),AudioSeconds);Meta->SetBoolField(TEXT("audio_covers_wall_timeline"),AudioCoversTimeline);
     Meta->SetStringField(TEXT("source"),TEXT("presented UE viewport via FFrameGrabber; asynchronous PNG compression; master audio submix"));
     Meta->SetStringField(TEXT("timing"),TEXT("Real frame-ready/request timestamps in frames.jsonl. Preserve gaps and full duration; no cuts or time compression."));
     Meta->SetStringField(TEXT("reload_policy"),TEXT("Every actor EndPlay closes this segment. Press F8 after R to start a new segment; loading gaps are not represented as captured footage."));

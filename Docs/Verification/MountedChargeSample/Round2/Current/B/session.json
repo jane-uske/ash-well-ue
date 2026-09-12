@@ -1,0 +1,37 @@
+{
+  "scope": "B explicit single charge review followed by natural AI; not human C",
+  "started_epoch": 1789187624.750892,
+  "pid": 75254,
+  "command": [
+    "/Users/Shared/Epic Games/UE_5.8/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor",
+    "/Users/rare/dev/ash-well-ue/AshWell.uproject",
+    "/Game/AshWell/MountedBoss/L_MountedCourtyard",
+    "-game",
+    "-windowed",
+    "-ResX=1600",
+    "-ResY=900",
+    "-NoSplash",
+    "-CombatPrototype",
+    "-MountedExperiment",
+    "-MountedChargeSample",
+    "-MountedDebug",
+    "-DisablePlugins=AllToolsets,ModelContextProtocol",
+    "-abslog=/Users/rare/dev/ash-well-ue/Docs/Verification/MountedChargeSample/Round2/Current/B/engine.log"
+  ],
+  "module_sha256": "5620e275570b6aa3d31a3c0e7dd6cb19707a9b1f381231e818348cc46ec8fe24",
+  "desktop_mp4_before": [
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 01.47.33.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 02.09.23.mp4",
+    "/Users/rare/Desktop/Recording at 2026-09-11 23.57.23.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 02.37.26.mp4",
+    "/Users/rare/Desktop/Screen Recording iPhone 17 Pro 11-07-2026 at 1.37.06\u202fAM.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 01.54.34.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 03.47.45.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 01.54.53.mp4",
+    "/Users/rare/Desktop/\u5f55\u5236\u4e8e 2026-08-23 01.49.12.mp4"
+  ],
+  "recorder": "QuickRecorder window capture, pending",
+  "speed": 1,
+  "exit_code": 0,
+  "ended_epoch": 1789187853.737119
+}

@@ -18,8 +18,8 @@ public:
     AAshWellMountedSampleRig();
     virtual void BeginPlay() override;
     virtual void EndPlay(const EEndPlayReason::Type Reason) override;
-    void EvaluatePose(float DeltaSeconds,float GroundSpeed);
-    void SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float HorsePitch,bool Enabled);
+    void EvaluatePose(float DeltaSeconds,float GroundSpeed,bool DeferHorse=false);
+    void SetLegacyPose(FVector Grip,FVector Direction,FVector ShieldHand,FQuat Torso,float HorsePitch,bool Enabled,FVector PelvisOffset=FVector::ZeroVector);
     bool PlayCharge();
     bool HasAuthoredAction(FName Action) const;
     bool PlayAction(FName Action);
@@ -28,6 +28,7 @@ public:
     bool IsChargePlaying() const;
     bool HasWeaponWindow() const;
     bool IsReady() const{return bReady;}
+    bool UsesFootPlacement() const{return bFootPlacementCandidate;}
     FVector GetGrip() const;
     FVector GetTip() const;
     UAshWellMountedSampleAnimInstance* RiderAnimation() const;
@@ -41,10 +42,13 @@ private:
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> ReviewCamera;
     float ReviewTime=0;
     FVector LegacyGrip,LegacyDirection=FVector::ForwardVector,LegacyShieldHand;
+    FVector LegacyPelvisOffset;
     FQuat LegacyTorso=FQuat::Identity;
     float LegacyPitch=0,ChargeElapsed=0;
     bool bLegacyPose=false,bChargeStarted=false;
     FTransform SeatRest;
     bool bReady=false;
+    bool bFootPlacementCandidate=false;
+    float PendingHorseDelta=0;
     float ReportTime=0;
 };

@@ -1,5 +1,15 @@
 # Mounted Boss 当前状态
 
+## 当前第二轮（2026-09-12，原片优先修正）
+
+工作分支 `codex/mounted-charge-standard`，已推送基线 `bd791aa`；本轮新改动仍在原工程，未提交/推送，不合并 main。已按用户“直接在旧版上面改”“先参考原视频，再来制作”执行：重查普通大树守卫 19.3–25.1 秒，修正高位架柄、压身低扫、抬起收势，并让准备阶段保持有限推进。UE AnimBP / Montage / Notify 与原战斗规则保留；马蹄 Foot Placement 试验未采用，停止扩展。
+
+新版正常速度对照：`Docs/Verification/MountedChargeSample/Round2/ReferenceFirst/reference-vs-current-1x.mp4`。未剪辑窗口原片和对应模块/资产记录位于该目录 `After/B/`。对照仅作固定时间平移，无变速/插帧；原片含单招检查、等待和恢复自然 AI，玩家没有进行真人交锋，不能称 C。旧 A/B 证据不代表最新修正已验收。
+
+A/B 仍待动态验收；新版有动作轮廓进展，马匹制动、身体重量和比例感仍未达到普通大树守卫目标。真人初次反馈只有约一分钟有效按键记录且无对应录像，10–15 分钟 C 初测与最终 C 均未完成。新骑士死亡离鞍姿态仍未适配。一次回归启动在布料首帧渲染断言崩溃，报告已保存，自有残留进程已清理；单独重试随后通过，不据此宣称启动崩溃已修好。
+
+本轮依据、详细新旧测试归属及回退方式见 [ChargeSample/ROUND2.md](ChargeSample/ROUND2.md)、[参考比较](ChargeSample/REFERENCE_COMPARISON.md) 和 `Docs/Verification/MountedChargeSample/Round2/progress.json`。历史段落以下保留，不能覆盖当前验收状态。
+
 ## 当前阶段切换（2026-09-11，冲锋横扫目标样本）
 
 用户已恢复制作，采用 UE 标准动画设施优先。当前新资产冲锋已实际运行 AnimBP、Montage、阶段/武器窗口 Notify、原生马匹 IK 重定向，并交付当前版本 A 绕拍与 B 正常速度完整冲锋录像。A/B 待动态验收；C 普通输入尝试已录下但受工具按键/连接限制，未形成合格交锋，明确未通过。原六招默认入口、守井者与原件保留，未推广第二招。详见 [ChargeSample/STATUS.md](ChargeSample/STATUS.md)；完整回归 27/27 与最后录制/盾朝向修改后针对性 5/5 分别存于 CurrentBuild / PostExportBuild。以下原暂停与测试记录是历史版本证据。

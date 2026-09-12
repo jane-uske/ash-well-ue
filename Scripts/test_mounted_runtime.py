@@ -208,7 +208,7 @@ def stop_owned_process(process: subprocess.Popen) -> dict:
     return result
 
 
-def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False, sample: bool = False) -> dict:
+def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, capture: bool = False, sample: bool = False, foot_placement: bool = False) -> dict:
     case_dir = run_dir / case
     case_dir.mkdir(parents=True)
     probe_file = OUTPUT / f"probe-{case}.json"
@@ -224,6 +224,7 @@ def run_case(case: str, run_dir: Path, timeout: float, expected_hp: float, captu
     command = [str(ROOT / "Scripts/launch_mounted_boss.command"), f"-MountedProbe={case}",
                f"-MountedQARun={run_token}", f"-abslog={case_dir / 'engine.log'}"]
     if sample:command.append('-MountedChargeSample')
+    if foot_placement:command.append('-MountedFootPlacement')
     if capture:
         command.append("-MountedCapture")
         capture_dir=OUTPUT / "Capture" / case
@@ -313,8 +314,10 @@ def main() -> int:
     parser.add_argument("--boss-health", type=float, default=900, help="Expected full Boss HP for this build.")
     parser.add_argument("--capture", action="store_true", help="Save timed native game frames for visual review.")
     parser.add_argument("--sample", action="store_true", help="Run unchanged fixtures against the opt-in standard-animation sample, with additional charge checks.")
+    parser.add_argument("--foot-placement", action="store_true", help="Exercise the opt-in native four-limb Foot Placement candidate (requires --sample).")
     parser.add_argument("--list", action="store_true", help="List cases without starting UE.")
     args = parser.parse_args()
+    if args.foot_placement and not args.sample:parser.error("--foot-placement requires --sample")
     available=ALL_CASES+(['sample_cleanup','sample_pre_cancel'] if args.sample else [])
     if args.list:
         print("\n".join(available))
@@ -346,7 +349,7 @@ def main() -> int:
               "scope_note": "Runtime checks do not certify horse foot sliding, rider quality or camera occlusion."}
     try:
         for case in cases:
-            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture,args.sample)
+            result = run_case(case, run_dir, args.timeout, args.boss_health, args.capture,args.sample,args.foot_placement)
             if case.startswith("dodge_") and "checks" in result:
                 control = next((item for item in report["results"] if item["case"] == "hit_" + case[6:]), None)
                 result["checks"]["paired_hit_control_passed"] = bool(control and control["passed"])
